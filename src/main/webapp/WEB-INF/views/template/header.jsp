@@ -39,7 +39,7 @@
 				<div class="not_mem">
 					<div class="box">
 						<!-- 로그인 -->
-						<a href="#" class="login">로그인</a>
+						<a href="../member/memberLogin" class="login">로그인</a>
 						<!-- 추후 쿠키 -->
 						<a href="#layer_h_cont2" class="count">
 							<span>
