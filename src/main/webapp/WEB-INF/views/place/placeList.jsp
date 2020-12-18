@@ -130,7 +130,7 @@
 	}
 	.listTy1 ul li ul{
 		display: inherit;
-		padding-top: 1px;
+		padding-top: 10px;
 		letter-spacing: -.50px;
 	}
 	.listTy1 ul li p{
@@ -174,6 +174,7 @@
 		</h3>
 		<!-- 리스트 -->
 		<ul>
+		<c:forEach items="${list}" var="place">
 			<li>
 				<div class="cont">
 					<a href="#">
@@ -181,29 +182,30 @@
 							<img alt="" src="" width="560" height="448">
 						</span>
 						<div class="cnt">
-							<!-- 별점 기능 구현 시도 -->
+							<!-- 별점 기능 구현 시도 
 							<em class="score">0.0</em>
 							<!-- -------------- -->
 							<!-- 식당 이름 -->
 							<div class="box_tit">
-								<strong class="store">식당이름</strong>
+								<strong class="store">${place.restaurant}</strong>
 							</div>
-							<!-- 식당 주소 -->
-							<ul>
-								<li>주소</li>
-							</ul>
 							<!-- 식당 정보 -->
 							<p>
 								<!-- 영업시간 -->
-								09:00 ~ 11:00
+								${place.time}
 								<br>
 								<!-- 메뉴 -->
-								고기
+								${place.menu}
 							</p>
+							<!-- 식당 주소 -->
+							<ul>
+								<li>${place.address}</li>
+							</ul>
 						</div>
 					</a>
 				</div>
 			</li>
+		</c:forEach>
 		</ul>
 	</div>
 </div>
