@@ -177,7 +177,7 @@
 		<c:forEach items="${list}" var="place">
 			<li>
 				<div class="cont">
-					<a href="#">
+					<a href="./placeSelect?num=${place.num}">
 						<span class="img">
 							<img alt="" src="" width="560" height="448">
 						</span>

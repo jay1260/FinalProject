@@ -11,6 +11,11 @@ public class PlaceService {
 	@Autowired
 	private PlaceMapper placeMapper;
 	
+	// 상세 글 조회
+	public PlaceVO getOne(PlaceVO placeVO) throws Exception{
+		return placeMapper.getOne(placeVO);
+	}
+	
 	// 맛집 추천 리스트
 	public List<PlaceVO> getList() throws Exception{
 		return placeMapper.getList();

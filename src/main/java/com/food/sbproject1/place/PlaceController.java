@@ -16,6 +16,16 @@ public class PlaceController {
 	@Autowired
 	private PlaceService placeService;
 
+	// 상세 글 조회
+	@GetMapping("placeSelect")
+	public ModelAndView getOne(PlaceVO placeVO) throws Exception{
+		ModelAndView mv = new ModelAndView();
+		placeVO = placeService.getOne(placeVO);
+		mv.addObject("one", placeVO);
+		
+		return mv;
+	}
+	
 	// 맛집 추천 작성
 	@PostMapping("placeWrite")
 	public ModelAndView setInsert(PlaceVO placeVO) throws Exception{
