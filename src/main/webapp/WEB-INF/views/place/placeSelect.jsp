@@ -90,8 +90,8 @@
 	.column-wrapper{
 		display: flex;
 		border-top: 6px solid #fff;
-		width: 80%;
-		margin: 0 auto;
+		width: 70%;
+		margin: 30px auto 0;
 	}
 	.column-contents{
 		background-color: #fff;
@@ -235,6 +235,34 @@
 					</figure>
 				</div>
 				<!-- 이미지 반복 !!!!1 -->
+				<div class="owl-item" style="width: 300px;">
+					<figure class="list-photo">
+						<figure class="restaurant-photos-item">
+							<img class="center-croping" alt="" src="../image/food/food8.jpg">
+						</figure>
+					</figure>
+				</div>
+				<div class="owl-item" style="width: 300px;">
+					<figure class="list-photo">
+						<figure class="restaurant-photos-item">
+							<img class="center-croping" alt="" src="../image/food/food8.jpg">
+						</figure>
+					</figure>
+				</div>
+				<div class="owl-item" style="width: 300px;">
+					<figure class="list-photo">
+						<figure class="restaurant-photos-item">
+							<img class="center-croping" alt="" src="../image/food/food8.jpg">
+						</figure>
+					</figure>
+				</div>
+				<div class="owl-item" style="width: 300px;">
+					<figure class="list-photo">
+						<figure class="restaurant-photos-item">
+							<img class="center-croping" alt="" src="../image/food/food8.jpg">
+						</figure>
+					</figure>
+				</div>
 			</div>
 		</div>
 	</div>
