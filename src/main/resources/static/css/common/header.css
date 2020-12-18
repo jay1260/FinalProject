@@ -1,0 +1,184 @@
+@charset "UTF-8";
+	#header{
+		border-top: 1px solid #aeaeae;
+		border-bottom:2px solid #000;
+		min-height: 110px;
+		background: #fff;
+		min-width: 1024px;
+	}
+	
+	/* 언어 부분*/
+	.lang_word{
+		position: fixed;
+		left: 0;
+		top: 0;
+		width: 100%;
+		height: 32px;
+		border-bottom: 1px solid #d7d7d7;
+		overflow: hidden;
+	}
+	
+	.lang_word .lang_box{
+		float: right;
+		letter-spacing: -.50px;
+		padding-right: 25px;
+	}
+	
+	.lang_word .lang_box span{
+		float: left;
+		line-height: 32px;
+		font-size: 1.167em;
+		padding-left: 20px;
+		margin-right: 13px;
+		background: url("/image/icon/bg_txt_lang.png") no-repeat 0 center;
+	}
+	
+	/*--------------------------------------------------*/
+	
+	/*로고 회원가입*/
+	#header .header{
+		position: relative;
+		margin-top: 33px;
+		border-bottom: 1px solid #ededed;
+		padding: 12px 0;
+	}
+	
+	#header .header h1{
+		position: absolute;
+		left: 30px;
+		top: 19px;
+		font-size: 0;
+		line-height: 0;
+		text-indent: -999px;
+	}
+	
+	#header .header h1 a{
+		display: block;
+		width: 226px;
+		height: 33px;
+		background: url(/image/icon/logo_8.png) no-repeat 0 0;
+	}
+	
+	#header .header .h_sch{
+		margin: 0 auto;
+		position: relative;
+		width: 30%;
+		height: 46px;
+		min-width: 355px;
+		background: #f1f1f1;
+		border-radius: 6px;
+	}
+	
+	#header .header .h_sch .input{
+		margin: 0 56px 0 16px;
+		height: 46px;
+	}
+	
+	#header .header .h_sch .input label.label{
+		left: 16px;
+		color: #777;
+		font-size: 1.250em;
+		line-height: 46px;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+		overflow: hidden;
+	}
+	label.label{
+		position: absolute;
+		left: 0;
+		top: 0;
+		width: 100%;
+		cursor: text;
+		letter-spacing: -1px;
+	}
+	#header .header .h_sch .input input{
+		width: 100%;
+		height: 35px;
+		margin-top: 5px;
+		background: #f1f1f1;
+		border: 0 none;
+		font-size: 1.333em;
+	}
+	#header .header .h_sch .input .btn_sch{
+		position: absolute;
+		right: 0;
+		top: 0;
+		font-size: 0;
+	}
+	#header .header .h_sch .input .btn_sch img{
+		border-radius: 0 6px 6px 0;
+	}
+	#header .header .mem_or_not{
+		position: absolute;
+		right: 30px;
+		top: 0;
+		z-index: 12;
+	}
+	#header .header .mem_or_not .box{
+		position: relative;
+		z-index: 12;
+	}
+	#header .header .mem_or_not .not_mem .login{
+		font-size: 18px;
+		color: black;
+		font-weight: 400;
+		display: inline-block;
+		font-family: 'Nanum Gothic', sans-serif;
+	}
+	#header .header .mem_or_not .not_mem .count{
+		padding: 17px 0 0 0;
+		font-size: 1.250em;
+		font-weight: 700;
+		display: inline-block;
+	}
+	#header .header .mem_or_not .not_mem .count span{
+		display: inline-block;
+		width: 38px;
+		height: 38px;
+		margin-left: 14px;
+		background: #000;
+		text-align: center;
+		line-height: 38px;
+		font-weight: 400;
+		color: #fff;
+		border-radius: 100px;
+	}
+	#header .header .mem_or_not .not_mem .count span em{
+		font-style: normal;
+	}
+	/*로고, 회원가입 END*/
+	
+	/* 메뉴 부분 */
+	#header .gnb{
+		width:100%;
+		height: 51px;
+	}
+	#header .gnb ul{
+		overflow: hidden;
+		text-align: center;
+	}
+	#header .gnb ul li{
+		display: inline-block;
+	}
+	#header .gnb ul li a{
+		display: block;
+		height: 51px;
+		line-height: 51px;
+		font-size: 1.417em;
+		padding: 0 84px;
+		letter-spacing: -.50px;
+	}
+	#header .gnb ul li a span{
+		display: inline-block;
+		padding: 0 7px;
+		height: 46px;
+		font-family: 'Arial', sans-serif;
+		color: rgb(0, 0, 0);
+		font-size: 14px;
+	}
+	#header .gnb ul li a span:hover, #header .gnb ul li a span:active{
+		color:#66b3ff;
+		font-size: 110%;
+	}
+	
+	
