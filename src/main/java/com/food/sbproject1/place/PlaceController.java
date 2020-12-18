@@ -15,6 +15,10 @@ public class PlaceController {
 	@Autowired
 	private PlaceService placeService;
 
+	// 맛집 추천 작성
+	@GetMapping("placeWrite")
+	public void setInsert() throws Exception{}
+	
 	// 맛집 추천 리스트
 	@GetMapping("placeList")
 	public ModelAndView getList() throws Exception{

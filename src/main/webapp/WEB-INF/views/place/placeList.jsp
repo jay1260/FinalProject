@@ -170,7 +170,7 @@
 	<div class="listTy1">
 		<h3 class="title01">
 			추천 맛집(개시글 수)
-			<span>고객님들이 함께 엄선한 인기 맛집입니다.</span>
+			<span>원하시는 맛집을 함께 찾아보아요.</span>
 		</h3>
 		<!-- 리스트 -->
 		<ul>
@@ -213,4 +213,9 @@
 
 <c:import url="../template/footer.jsp"></c:import>
 </body>
+<script type="text/javascript">
+	$("#writeBtn").click(function(){
+		location.href="./placeWrite";
+	});
+</script>
 </html>
