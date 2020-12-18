@@ -11,6 +11,11 @@ public class PlaceService {
 	@Autowired
 	private PlaceMapper placeMapper;
 	
+	// 게시글 수 보내기
+	public long getCount() throws Exception{
+		return placeMapper.getCount();
+	}
+	
 	// 상세 글 조회
 	public PlaceVO getOne(PlaceVO placeVO) throws Exception{
 		return placeMapper.getOne(placeVO);

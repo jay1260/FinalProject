@@ -19,7 +19,6 @@
 		float: right;
 		margin-top: 50px;
 		margin-right: 50px;
-		background-color: #000000;
 	}
 	.basic-info-list{
 		border-bottom: 1px solid #dbdbdb;
@@ -158,7 +157,7 @@
 
 <!-- header 부분 -->
 <header class="basic-info-list">
-	<input type="button" class="btn btn-info" value="맛집추천하기" id="writeBtn">
+	<input type="button" class="btn btn-warning" value="맛집추천하기" id="writeBtn">
 	<div class="inner" style="padding-bottom: 10px;">
 		<h1 class="title">고객님들이 함께 엄선한 인기 맛집입니다.</h1>
 	</div>
@@ -169,7 +168,7 @@
 <div class="sub_cont_gray01" id="tabMove1">
 	<div class="listTy1">
 		<h3 class="title01">
-			추천 맛집(개시글 수)
+			추천 맛집( ${num} )
 			<span>원하시는 맛집을 함께 찾아보아요.</span>
 		</h3>
 		<!-- 리스트 -->

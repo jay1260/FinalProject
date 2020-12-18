@@ -15,7 +15,7 @@ public class PlaceController {
 
 	@Autowired
 	private PlaceService placeService;
-
+	
 	// 상세 글 조회
 	@GetMapping("placeSelect")
 	public ModelAndView getOne(PlaceVO placeVO) throws Exception{
@@ -49,6 +49,9 @@ public class PlaceController {
 		ModelAndView mv = new ModelAndView();
 		List<PlaceVO> ar = placeService.getList();
 		
+		long num = placeService.getCount();
+		
+		mv.addObject("num", num);
 		mv.addObject("list", ar);
 		mv.setViewName("place/placeList");
 		return mv;

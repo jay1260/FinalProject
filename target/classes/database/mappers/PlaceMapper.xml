@@ -10,6 +10,11 @@
 		select * from place where num = #{num}
 	</select>
 	
+	<!-- 게시글 수 조회 -->
+	<select id="getCount" resultType="java.lang.Long">
+		select count(num) from place
+	</select>
+	
 	<!-- 맛집 리스트 -->
 	<select id="getList" resultType="PlaceVO">
 		select * from place

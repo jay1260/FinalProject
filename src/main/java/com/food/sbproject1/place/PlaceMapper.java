@@ -6,7 +6,10 @@ import org.apache.ibatis.annotations.Mapper;
 
 @Mapper
 public interface PlaceMapper {
-
+	
+	// 게시글 수 조회
+	public long getCount() throws Exception;
+	
 	// 상세 글 조회
 	public PlaceVO getOne(PlaceVO placeVO) throws Exception;
 	

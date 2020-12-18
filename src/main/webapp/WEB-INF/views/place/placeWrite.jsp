@@ -37,8 +37,6 @@
 	}
 	#insertBtn{
 		width:40%;
-		background:lavenderblush;
-		color:black;
 		margin-top:40px;
 		margin-left: 30%;
 		margin-right: 30%;
@@ -61,13 +59,17 @@
 <!-- 글쓰기 폼 -->
 <div class="container">
 	<form action="./placeWrite" method="post">
+		<div class="form-group col-xs-12 col-md-4">
+			<label for="photo">대표사진을 첨부해주세요</label>
+			<input type="file" class="form-control" id="photo" name="photo">
+		</div>
 		<div class="form-group col-xs-12 col-md-10">
 			<label for="title">제목</label>
 			<input type="text" class="form-control" id="title" name="title">
 		</div>
 		<div class="form-group col-xs-12 col-md-10">
 			<label for="writer">작성자</label>
-			<input type="text" class="form-control" id="writer" value="작성자" name="writer">
+			<input type="text" class="form-control" id="writer" name="writer">
 		</div>
 		<div class="form-group col-xs-12 col-md-10">
 			<label for="address">식당 주소</label>
@@ -106,7 +108,7 @@
 			<textarea class="form-control" rows="5" id="contents" name="contents"></textarea>
 		</div>
 		<div class="btn-css">		
-			<input type="submit" class="col-sm-9 col-md-6 col-lg-8" value="등록하기" id="insertBtn">
+			<input type="submit" class="col-sm-9 col-md-6 col-lg-8 btn btn-warning" value="등록하기" id="insertBtn">
 		</div>
 	</form>
 </div>
