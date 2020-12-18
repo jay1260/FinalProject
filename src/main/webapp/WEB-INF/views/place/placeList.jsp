@@ -15,6 +15,12 @@
 	/* 공통 CSS END*/
 	
 	/* header 부분 */
+	#writeBtn{
+		float: right;
+		margin-top: 50px;
+		margin-right: 50px;
+		background-color: #000000;
+	}
 	.basic-info-list{
 		border-bottom: 1px solid #dbdbdb;
 		background-color: #f7f7f7;
@@ -70,13 +76,13 @@
 	.listTy1 ul li{
 		float: left;
 		width: 280px;
-		padding-bottom: 44px;
 		display: table-cell;
 		margin-right:40px;
 		vertical-align: top;
 	}
 	.listTy1 ul li a{
 		display: block;
+		text-decoration: none;
 	}
 	.listTy1 ul li .img{
 		display: block;
@@ -93,6 +99,57 @@
 		height: 100%;
 		object-fit: cover;
 	}
+	.listTy1 ul li .cnt{
+		padding-right: 20px;
+		position: relative;
+	}
+	.listTy1 ul li .score{
+		display: block;
+		font-size: 2.3em;
+		color: #ff7400;
+		font-weight: 700;
+		font-style: normal;
+		line-height: 22px;
+		padding-top: 18px;
+		letter-spacing: -1px;
+	}
+	.listTy1 ul li .box_tit{
+		position: relative;
+	}
+	.listTy1 ul li .store{
+		display: block;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+		overflow: hidden;
+		font-size: 1.5em;
+		line-height: 24px;
+		padding: 12px 0 6px;
+		font-weight: 700;
+		letter-spacing: -1px;
+		margin-right: 48px;
+	}
+	.listTy1 ul li ul{
+		display: inherit;
+		padding-top: 1px;
+		letter-spacing: -.50px;
+	}
+	.listTy1 ul li p{
+		color: #444;
+		font-size: 1.155em;
+		letter-spacing: -.50px;
+		padding-top: 5px;
+		margin-bottom: 4px;
+		line-height: 22px;
+		font-weight: 400;
+		height: 42px;
+		text-overflow: ellipsis;
+		display: -webkit-box;
+		-webkit-line-clamp: 2;
+		-webkid-box-orient: vertical;
+	}
+	.listTy1 ul li:nth-child(3n){
+		margin-right: 0;
+	}
 	/*container END*/
 </style>
 </head>
@@ -101,6 +158,7 @@
 
 <!-- header 부분 -->
 <header class="basic-info-list">
+	<input type="button" class="btn btn-info" value="맛집추천하기" id="writeBtn">
 	<div class="inner" style="padding-bottom: 10px;">
 		<h1 class="title">고객님들이 함께 엄선한 인기 맛집입니다.</h1>
 	</div>
@@ -111,7 +169,7 @@
 <div class="sub_cont_gray01" id="tabMove1">
 	<div class="listTy1">
 		<h3 class="title01">
-			추천 맛집
+			추천 맛집(개시글 수)
 			<span>고객님들이 함께 엄선한 인기 맛집입니다.</span>
 		</h3>
 		<!-- 리스트 -->
@@ -122,6 +180,27 @@
 						<span class="img">
 							<img alt="" src="" width="560" height="448">
 						</span>
+						<div class="cnt">
+							<!-- 별점 기능 구현 시도 -->
+							<em class="score">0.0</em>
+							<!-- -------------- -->
+							<!-- 식당 이름 -->
+							<div class="box_tit">
+								<strong class="store">식당이름</strong>
+							</div>
+							<!-- 식당 주소 -->
+							<ul>
+								<li>주소</li>
+							</ul>
+							<!-- 식당 정보 -->
+							<p>
+								<!-- 영업시간 -->
+								09:00 ~ 11:00
+								<br>
+								<!-- 메뉴 -->
+								고기
+							</p>
+						</div>
 					</a>
 				</div>
 			</li>
