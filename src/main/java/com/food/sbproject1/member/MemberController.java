@@ -12,6 +12,20 @@ public class MemberController {
 	public void memberLogin() throws Exception{
 		
 	}
+	
+	@GetMapping("memberJoin")
+	public void memberJoin()throws Exception{
+		
+	}
+	
+	@GetMapping("memberAgree")
+	public void memberAgree()throws Exception{
+		
+	}
+	@GetMapping("memberPage")
+	public void memberPage()throws Exception{
+		
+	}
 
 	
 }
