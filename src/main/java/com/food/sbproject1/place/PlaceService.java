@@ -15,4 +15,9 @@ public class PlaceService {
 	public List<PlaceVO> getList() throws Exception{
 		return placeMapper.getList();
 	}
+	
+	// 맛집 등록
+	public int setInsert(PlaceVO placeVO) throws Exception{
+		return placeMapper.setInsert(placeVO);
+	}
 }

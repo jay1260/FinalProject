@@ -7,6 +7,9 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <c:import url="../template/bootStrap.jsp"></c:import>
+<!-- include summernote css/js -->
+<link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
 <style type="text/css">
 	.basic-info-list{
 		border-bottom: 1px solid #dbdbdb;
@@ -29,13 +32,20 @@
 		margin-top: 50px;
 		margin-bottom: 100px;
 	}
-
+	.col-sm-6 .col-xs-12 .col-md-8 .col-sm-4 .col-sm-8{
+		padding-left: 0;
+	}
 	#insertBtn{
-		width:50%;
-		background:#a3a3c2;
+		width:40%;
+		background:lavenderblush;
+		color:black;
 		margin-top:40px;
-		margin-left: 25%;
-		margin-right: 25%;
+		margin-left: 30%;
+		margin-right: 30%;
+		border: none;
+		padding: 14px 40px;
+		border-radius: 12px;
+		font-size: 16px;
 	}
 	
 </style>
@@ -45,54 +55,68 @@
 <c:import url="../template/header.jsp"></c:import>
 <header class="basic-info-list">
 	<div class="inner" style="padding-bottom: 10px;">
-		<h1 class="title">정확한 정보를 입력해주세요.</h1>
+		<h1 class="title">추천하시는 식당의 정확한 정보를 입력해주세요.</h1>
 	</div>
 </header>		
 <!-- 글쓰기 폼 -->
 <div class="container">
-	<form>
-		<div class="form-group">
+	<form action="./placeWrite" method="post">
+		<div class="form-group col-xs-12 col-md-10">
 			<label for="title">제목</label>
 			<input type="text" class="form-control" id="title" name="title">
 		</div>
-		<div class="form-group">
+		<div class="form-group col-xs-12 col-md-10">
 			<label for="writer">작성자</label>
 			<input type="text" class="form-control" id="writer" value="작성자" name="writer">
 		</div>
-		<div class="form-group">
-			<label for="메뉴">대표 메뉴</label>
-			<input type="text" class="form-control" id="menu" name="menu">
-		</div>
-		<div class="form-group">
-			<label for="restaurant">식당 상호</label>
-			<input type="text" class="form-control" id="restaurant" name="restaurant">
-		</div>
-		<div class="form-group">
+		<div class="form-group col-xs-12 col-md-10">
 			<label for="address">식당 주소</label>
 			<input type="text" class="form-control" id="address" name="address">
 		</div>
-		<div class="form-group">
+		<div class="form-group col-xs-12 col-md-10">
 			<label for="phone">식당 번호</label>
 			<input type="text" class="form-control" id="phone" name="phone">
 		</div>
-		<div class="form-group">
-			<label for="time">운영시간</label>
-			<input type="text" class="form-control" id="time" name="time">
+		<div class="form-group col-sm-6">
+			<label for="메뉴">대표 메뉴</label>
+			<input type="text" class="form-control" id="menu" name="menu">
 		</div>
-		<div class="form-group">
+		<div class="form-group col-sm-6">
+			<label for="restaurant">식당 상호</label>
+			<input type="text" class="form-control" id="restaurant" name="restaurant">
+		</div>
+		<div class="form-group col-sm-6">
+			<label for="time">오픈 시간</label>
+			<input type="time" class="form-control" id="openTime" name="openTime">
+		</div>
+		<div class="form-group col-sm-6">
+			<label for="time">마감 시간</label>
+			<input type="time" class="form-control" id="closeTime" name="closeTime">
+		</div>
+		<div class="form-group col-sm-6">
 			<label for="price">가격대</label>
 			<input type="text" class="form-control" id="price" name="price">
 		</div>
-		<div class="form-group">
+		<div class="form-group col-sm-6">
 			<label for="rest">휴무일</label>
 			<input type="text" class="form-control" id="rest" name="rest">
 		</div>
+		<div class="form-group col-xs-12 col-md-12">
+			<label for="contents">추천 이유</label>
+			<textarea class="form-control" rows="5" id="contents" name="contents"></textarea>
+		</div>
 		<div class="btn-css">		
-			<input type="button" class="btn btn-primary col-sm-9 col-md-6 col-lg-8" value="등록하기" id="insertBtn">
+			<input type="submit" class="col-sm-9 col-md-6 col-lg-8" value="등록하기" id="insertBtn">
 		</div>
 	</form>
 </div>
 <c:import url="../template/footer.jsp"></c:import>
 
 </body>
+<script type="text/javascript">
+	$("#contents").summernote({
+		placeholder:'추천하시는 이유가 있으면 작성해주세요~',
+		height:300
+	});
+</script>
 </html>

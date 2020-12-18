@@ -192,10 +192,10 @@
 							<!-- 식당 정보 -->
 							<p>
 								<!-- 영업시간 -->
-								${place.time}
+								${place.openTime} ~ ${place.closeTime}
 								<br>
 								<!-- 메뉴 -->
-								${place.menu}
+								메뉴 ☞ ${place.menu}
 							</p>
 							<!-- 식당 주소 -->
 							<ul>
