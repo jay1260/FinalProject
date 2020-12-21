@@ -197,17 +197,14 @@
 	.section_sectionTitle{
 		width: 110px;
 		margin-right: 10px;
-		float: left;
 		font-size: 14.4px;
-		line-height: 25px;
 		color: #4f4f4f99;
-		margin-bottom: 30px;
 	}
 	.section_sectionContent{
 		max-width: 607px;
 		float: left;
 		margin-bottom: 30px;
-		border-bottom: 1px solid black;
+
 	}
 	.section_own{
 		line-height: 25px;
@@ -328,10 +325,18 @@
 			<section class="restaurant_introduce only">
 				<div class="section_section">
 					<section class="section_section ownSection">
-						<h3 class="section_sectionTitle" style="margin-top: 10px;">추천 이유</h3>
+						<h3 class="section_sectionTitle" style="margin-top: 10px;">제목</h3>
 						<div class="section_sectionContent">
 							<div class="section_own">
-								<p class="section_ownDesc">${one.contents}</p>
+								<p class="section_ownDesc"></p>
+								<p>${one.title}</p>
+							</div>
+						</div>
+						<h3 class="section_sectionTitle" style="margin-top: 10px; color: red;" >추천 이유</h3>
+						<div class="section_sectionContent">
+							<div class="section_own">
+								<p class="section_ownDesc"></p>
+								<p>${one.contents}</p>
 							</div>
 						</div>
 					</section>
