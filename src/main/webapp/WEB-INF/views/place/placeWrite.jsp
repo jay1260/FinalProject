@@ -58,7 +58,7 @@
 </header>		
 <!-- 글쓰기 폼 -->
 <div class="container">
-	<form action="./placeWrite" method="post">
+	<form action="./placeWrite" method="post" enctype="multipart/form-data">
 		<div class="form-group col-xs-12 col-md-4">
 			<label for="photo">대표사진을 첨부해주세요</label>
 			<input type="file" class="form-control" id="photo" name="photo">
