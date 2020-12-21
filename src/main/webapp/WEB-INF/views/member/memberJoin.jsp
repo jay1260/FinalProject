@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
  <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+ <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -71,52 +72,48 @@
 	</div>
 	<div class="memberJoin">
 	
-		<form action="./memberJoin" class ="mem">
-	         <div class="form-group" id="id">
-                <label for="inputId" class="col-lg-2 control-label">아이디</label>
-                  <div class="col-lg-10">
-                     <input type="text" class="form-control onlyAlphabetAndNumber" id="id" data-rule-required="true" placeholder="30자이내의 알파벳, 언더스코어(_), 숫자만 입력 가능합니다." maxlength="30">
-                   </div>
-             </div>
-             <div class="form-group" id="Password">
-                <label for="inputPassword" class="col-lg-2 control-label">패스워드</label>
-                  <div class="col-lg-10">
-                      <input type="password" class="form-control" id="password" name="excludeHangul" data-rule-required="true" placeholder="패스워드" maxlength="30">
-                  </div>
-             </div>
-             <div class="form-group" id="PasswordCheck">
-                <label for="inputPasswordCheck" class="col-lg-2 control-label">패스워드 확인</label>
-                  <div class="col-lg-10">
-                      <input type="password" class="form-control" id="passwordCheck" data-rule-required="true" placeholder="패스워드 확인" maxlength="30">
-                  </div>
-             </div>
-             <div class="form-group" id="Name">
-                 <label for="inputName" class="col-lg-2 control-label">이름</label>
-                  <div class="col-lg-10">
-                     <input type="text" class="form-control onlyHangul" id="name" data-rule-required="true" placeholder="한글만 입력 가능합니다." maxlength="15">
-                  </div>
-             </div>
-             <div class="form-group" id="age">
-                 <label for="age" class="col-lg-2 control-label">나이</label>
-                  <div class="col-lg-10">
-                     <input type="text" class="form-control onlyHangul" id="age" data-rule-required="true" placeholder="나이입력" maxlength="15">  
-                  </div>
-             </div>     
-             <div class="form-group" id="email">
-                 <label for="email" class="col-lg-2 control-label">이메일</label>
-                  <div class="col-lg-10">
-                     <input type="text" class="form-control onlyHangul" id="email" data-rule-required="true" placeholder="이메일 입력" maxlength="15">
-                  </div>
-             </div>
-             <div class="form-group" id="email">
-                 <label for="file" class="col-lg-2 control-label">사진첨부</label>
-                  <div class="col-lg-10">
-                     <input type="file" class="form-control onlyHangul" id="file" data-rule-required="true">
-                  </div>
-             </div>
-		</form>
-		<input type="button" value ="회원가입" class="btn btn-warning register">
-	</div>
+		<form:form modelAttribute="memberVO" enctype="multipart/form-data" id="frm">
+   	<div class="form-group">
+   
+      <label for="id">id:</label>
+      <!-- path:parameter Name -->
+      <form:input path="id" class="form-control"/>
+      <form:errors path="id"cssClass="error"></form:errors>
+    </div>
+   
+   <div class="form-group">
+      <label for="pw">PW:</label>
+      <form:input path="pw" class="form-control"/>
+      <form:errors path="pw" cssClass="error"/>
+    </div>
+    
+    
+   <div class="form-group">
+      <label for="pw">PW:</label>
+      <form:input path="pw2" class="form-control"/>
+      <form:errors path="pw2" cssClass="error"/>
+    </div>
+
+	<div class="form-group">
+	  <label for="name">name:</label>
+      <!-- path:parameter Name -->
+      <form:input path="name" class="form-control"/>
+      <form:errors path="name"cssClass="error"></form:errors>
+    </div>
+    
+    <div class="form-group">
+	  <label for="email">email:</label>
+      <!-- path:parameter Name -->
+      <form:input path="email" class="form-control"/>
+      <form:errors path="email"cssClass="error"></form:errors>
+    </div>
+   
+
+    <button type="submit" class="btn btn-primary">Write</button>
+    
+   </form:form>
+
+  </div>
 
 </div>
     <c:import url="../template/footer.jsp"></c:import>

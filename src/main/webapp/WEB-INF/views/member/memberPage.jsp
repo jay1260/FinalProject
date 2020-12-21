@@ -8,11 +8,44 @@
 <title>No.1 맛집탐험</title>
 <c:import url="../template/bootStrap.jsp"></c:import>
 <style type="text/css">
+.container{
+	width: 50%;
+
+}
 .page{
 	margin: 30px auto;
-	width: 10%;
+	width: 25%;
+	height:50px;
+}
+.form-control{
+	margin-bottom: 25px;
+	
+}
+.update{
+	float: right;
+	margin-right: 7px; 
+}
+.my-photo{
+
+	margin-top : 90px;
+	margin-bottom: 20px;
+
+}
+.photo{
+	width: 94px;
+	height: 94px;
+}
+.photo-update{
+	width: 200px;
 	height: 30px;
 }
+.delete{
+	margin-right:15px; 
+}
+#label{
+	width: 150px;
+}
+
 </style>
 </head>
 
@@ -20,14 +53,30 @@
 <c:import url="../template/header.jsp"></c:import>
  <div class="container">
  	<div class="page">
- 		 <h3 class = "my">내 정보</h3>
+ 		<table>
+		<tr>
+		<td><img alt="" class = "logo"src="../image/member/unnamed.png"></td>
+		<td><h3 class = "comment_log">내 정보</h3></td>
+		</tr>
+		</table>
+ 	</div>
+ 	<div class="my-photo"> 		 		
+ 		<table>
+			<tr>
+				<td><label for="inputphoto" class="col-lg-2 control-label"id="label">사진</label></td>
+				<td><img alt="" class = "logo"src="../image/member/unnamed.png"></td>
+				<td><input type="file" class="photo-update"></td>
+			</tr>
+		</table>
  	</div>
  	<div class="revise">
- 				<form action="./memberJoin" class ="mem">
+ 
+ 		<form action="./memberUpdate" class ="mem">
+ 		
 	         <div class="form-group" id="divId">
                 <label for="inputId" class="col-lg-2 control-label">아이디</label>
                   <div class="col-lg-10">
-                     <input type="text" class="form-control onlyAlphabetAndNumber" id="id" data-rule-required="true"  maxlength="30">
+                     <input type="text" class="form-control" id="id" data-rule-required="true"  maxlength="30">
                    </div>
              </div>
              <div class="form-group" id="divPassword">
@@ -45,26 +94,36 @@
              <div class="form-group" id="divName">
                  <label for="inputName" class="col-lg-2 control-label">이름</label>
                   <div class="col-lg-10">
-                     <input type="text" class="form-control onlyHangul" id="name" data-rule-required="true" placeholder="한글만 입력 가능합니다." maxlength="15">
+                     <input type="text" class="form-control " id="name" data-rule-required="true" placeholder="한글만 입력 가능합니다." maxlength="15">
                   </div>
              </div>
              <div class="form-group" id="age">
                  <label for="age" class="col-lg-2 control-label">나이</label>
                   <div class="col-lg-10">
-                     <input type="text" class="form-control onlyHangul" id="age" data-rule-required="true" placeholder="나이입력" maxlength="15">  
+                     <input type="text" class="form-control" id="age" data-rule-required="true" placeholder="나이입력" maxlength="15">  
                   </div>
              <div class="form-group" id="email">
                  <label for="email" class="col-lg-2 control-label">이메일</label>
                   <div class="col-lg-10">
-                     <input type="text" class="form-control onlyHangul" id="email" data-rule-required="true" placeholder="이메일 입력" maxlength="15">
+                     <input type="text" class="form-control" id="email" data-rule-required="true" placeholder="이메일 입력" maxlength="15">
                   </div>
+             </div>
+             <div class="update">
+					<input type="button" class ="btn btn-warning update" value="수정하기">
+					<input type="button" class ="btn btn-danger delete" value="탈퇴하기">             
              </div>
              </div>
 		</form>
+	 </table>
  	</div>
  </div>	
-
-
+ 
 <c:import url="../template/footer.jsp"></c:import>
 </body>
+<script type="text/javascript">
+$(".update").click(function(){
+		alert("수정완료");
+		location.href="../";
+});
+</script>
 </html>
