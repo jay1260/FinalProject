@@ -5,6 +5,10 @@
   
 <mapper namespace="com.food.sbproject1.place.PlaceMapper">
 	
+	<delete id="setDelete" parameterType="PlaceVO">
+		delete from place where num=#{num}
+	</delete>
+	
 	<!-- 글 수정 -->
 	<update id="setUpdate" parameterType="PlaceVO">
 		update place set title=#{title}, contents=#{contents}, address=#{address}, phone=#{phone},

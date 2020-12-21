@@ -21,11 +21,26 @@ public class PlaceController {
 	@Value("${place.filePath}")
 	private String filePath;
 	
+	// 글 삭제하기
+	@GetMapping("placeDelete")
+	public ModelAndView setDelete(PlaceVO placeVO) throws Exception{
+		ModelAndView mv = new ModelAndView();
+		int result = placeService.setDelete(placeVO);
+		if(result>0) {
+			mv.addObject("msg", "삭제 완료했습니다.");
+			mv.addObject("path", "./placeList");
+			mv.setViewName("common/result");
+		}
+		
+		return mv;
+	}
+	
 	// 글 수정하기
 	@PostMapping("placeUpdate")
 	public ModelAndView setUpdate(PlaceVO placeVO, long num) throws Exception{
 		ModelAndView mv = new ModelAndView();
 		int result = placeService.setUpdate(placeVO);
+		
 		if(result>0) {
 			mv.addObject("msg", "수정 완료했습니다.");
 			placeVO = placeService.getOne(placeVO);

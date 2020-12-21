@@ -368,5 +368,10 @@
 		var num = $(this).attr("title");
 		location.href="./placeUpdate?num="+num;
 	});
+
+	$("#deleteBtn").click(function(){
+		var num = $(this).attr("title");
+		location.href="./placeDelete?num="+num;
+	});
 </script>
 </html>

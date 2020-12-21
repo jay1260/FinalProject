@@ -24,6 +24,11 @@ public class PlaceService {
 	@Value("${place.filePath}")
 	private String filePath;
 	
+	// 글 삭제
+	public int setDelete(PlaceVO placeVO) throws Exception{
+		return placeMapper.setDelete(placeVO);
+	}
+	
 	// 글 수정
 	public int setUpdate(PlaceVO placeVO) throws Exception{
 		return placeMapper.setUpdate(placeVO);

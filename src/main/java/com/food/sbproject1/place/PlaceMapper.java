@@ -7,6 +7,9 @@ import org.apache.ibatis.annotations.Mapper;
 @Mapper
 public interface PlaceMapper {
 	
+	// 글 삭제
+	public int setDelete(PlaceVO placeVO) throws Exception;
+	
 	// 글 수정
 	public int setUpdate(PlaceVO placeVO) throws Exception;
 	
