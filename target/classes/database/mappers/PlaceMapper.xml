@@ -5,6 +5,12 @@
   
 <mapper namespace="com.food.sbproject1.place.PlaceMapper">
 	
+	<!-- 글 수정 -->
+	<update id="setUpdate" parameterType="PlaceVO">
+		update place set title=#{title}, contents=#{contents}, address=#{address}, phone=#{phone},
+		menu=#{menu}, openTime=#{openTime}, closeTime=#{closeTime}, price=#{price}, rest=#{rest}
+		where num = #{num}
+	</update>
 	
 	<!-- 게시글 수 조회 -->
 	<select id="getCount" resultType="java.lang.Long">

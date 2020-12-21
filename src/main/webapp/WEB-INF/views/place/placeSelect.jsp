@@ -202,7 +202,6 @@
 	}
 	.section_sectionContent{
 		max-width: 607px;
-		float: left;
 		margin-bottom: 30px;
 
 	}
@@ -214,6 +213,10 @@
 		color: #4f4f4f;
 	}
 	/* 내용 부분 END*/
+	.btn-div{
+		float: right;
+		margin-top: 40px;
+	}
 </style>
 </head>
 <body>
@@ -332,6 +335,10 @@
 								<p>${one.title}</p>
 							</div>
 						</div>
+					</section>
+				</div>
+				<div class="section_section">
+					<section class="section_section ownSection">
 						<h3 class="section_sectionTitle" style="margin-top: 10px; color: red;" >추천 이유</h3>
 						<div class="section_sectionContent">
 							<div class="section_own">
@@ -342,7 +349,11 @@
 					</section>
 				</div>	
 			</section>
-			
+			<div class="btn-div">
+				<button class="btn btn-warning" style="margin-right: 10px; width: 100px;" id="updateBtn" title="${one.num}">글 수정</button>
+				
+				<button class="btn btn-danger" style="width: 100px;" id="deleteBtn" title="${one.num}">글 삭제</button>
+			</div>
 			<!-- 리뷰 작성 정보 -->
 			
 			<!-- 리뷰 작성 -->	
@@ -352,4 +363,10 @@
 <!--  -->
 <c:import url="../template/footer.jsp"></c:import>
 </body>
+<script type="text/javascript">
+	$("#updateBtn").click(function(){
+		var num = $(this).attr("title");
+		location.href="./placeUpdate?num="+num;
+	});
+</script>
 </html>

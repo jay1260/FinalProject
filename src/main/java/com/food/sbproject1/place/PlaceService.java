@@ -24,6 +24,11 @@ public class PlaceService {
 	@Value("${place.filePath}")
 	private String filePath;
 	
+	// 글 수정
+	public int setUpdate(PlaceVO placeVO) throws Exception{
+		return placeMapper.setUpdate(placeVO);
+	}
+	
 	// 게시글 수 보내기
 	public long getCount() throws Exception{
 		return placeMapper.getCount();
