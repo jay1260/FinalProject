@@ -3,10 +3,12 @@ package com.food.sbproject1.place;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
@@ -15,6 +17,9 @@ public class PlaceController {
 
 	@Autowired
 	private PlaceService placeService;
+	
+	@Value("${place.filePath}")
+	private String filePath;
 	
 	// 상세 글 조회
 	@GetMapping("placeSelect")
@@ -28,9 +33,9 @@ public class PlaceController {
 	
 	// 맛집 추천 작성
 	@PostMapping("placeWrite")
-	public ModelAndView setInsert(PlaceVO placeVO) throws Exception{
+	public ModelAndView setInsert(PlaceVO placeVO, MultipartFile photo) throws Exception{
 		ModelAndView mv = new ModelAndView();
-		int result = placeService.setInsert(placeVO);
+		int result = placeService.setInsert(placeVO, photo);
 		if(result>0) {
 			mv.addObject("msg", "추천 감사드립니다!!");
 			mv.addObject("path", "./placeList");

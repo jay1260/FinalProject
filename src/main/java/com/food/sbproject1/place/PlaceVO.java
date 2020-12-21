@@ -22,4 +22,6 @@ public class PlaceVO {
 	private String price;		// 가격대
 	private String rest;		// 휴무일
 	
+	private PlaceFileVO placeFileVO;
+	
 }
