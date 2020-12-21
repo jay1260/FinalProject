@@ -178,7 +178,7 @@
 				<div class="cont">
 					<a href="./placeSelect?num=${place.num}">
 						<span class="img">
-							<img alt="" src="" width="560" height="448">
+							<img alt="" src="../upload/place/${place.placeFileVO.fileName}" width="560" height="448">
 						</span>
 						<div class="cnt">
 							<!-- 별점 기능 구현 시도 

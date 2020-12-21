@@ -16,7 +16,6 @@
 		select P.*, PF.* 
 		from place P left join placeFile PF
 		on(P.num = PF.num)
-		where P.num = #{num}
 	</select>
 	
 	<!-- 맛집 추천 작성 -->
