@@ -176,6 +176,7 @@
 		<c:forEach items="${list}" var="place">
 			<li>
 				<div class="cont">
+					${place.num}
 					<a href="./placeSelect?num=${place.num}">
 						<span class="img">
 							<img alt="" src="../upload/place/${place.placeFileVO.fileName}" width="560" height="448">
@@ -207,14 +208,17 @@
 		</c:forEach>
 		</ul>
 	</div>
+
 </div>
 <!-- Container END -->
 
 <c:import url="../template/footer.jsp"></c:import>
 </body>
 <script type="text/javascript">
+
 	$("#writeBtn").click(function(){
 		location.href="./placeWrite";
 	});
+
 </script>
 </html>

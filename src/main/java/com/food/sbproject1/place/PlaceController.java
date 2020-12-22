@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.food.sbproject1.util.Pager;
+
 @Controller
 @RequestMapping("/place/**")
 public class PlaceController {
@@ -93,13 +95,14 @@ public class PlaceController {
 	
 	// 맛집 추천 리스트
 	@GetMapping("placeList")
-	public ModelAndView getList() throws Exception{
+	public ModelAndView getList(Pager pager) throws Exception{
 		ModelAndView mv = new ModelAndView();
-		List<PlaceVO> ar = placeService.getList();
+		List<PlaceVO> ar = placeService.getList(pager);
 		
 		long num = placeService.getCount();
 		
 		mv.addObject("num", num);
+		mv.addObject("pager", pager);
 		mv.addObject("list", ar);
 		mv.setViewName("place/placeList");
 		return mv;

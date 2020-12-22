@@ -22,10 +22,11 @@
 	</select>
 	
 	<!-- 맛집 리스트 -->
-	<select id="getList" resultMap="getPlaceResult" parameterType="PlaceVO">
+	<select id="getList" resultMap="getPlaceResult" parameterType="Pager">
 		select P.*, PF.* 
 		from place P left join placeFile PF
 		on(P.num = PF.num)
+		order by P.num desc limit #{startRow}, #{perPage}
 	</select>
 	
 	<!-- 맛집 추천 작성 -->

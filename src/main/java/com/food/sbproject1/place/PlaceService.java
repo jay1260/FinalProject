@@ -10,6 +10,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.food.sbproject1.util.FileManager;
 import com.food.sbproject1.util.FilePathAppoint;
+import com.food.sbproject1.util.Pager;
 
 @Service
 public class PlaceService {
@@ -45,8 +46,10 @@ public class PlaceService {
 	}
 	
 	// 맛집 추천 리스트
-	public List<PlaceVO> getList() throws Exception{
-		return placeMapper.getList();
+	public List<PlaceVO> getList(Pager pager) throws Exception{
+		pager.makeRow();
+		
+		return placeMapper.getList(pager);
 	}
 	
 	// 맛집 등록

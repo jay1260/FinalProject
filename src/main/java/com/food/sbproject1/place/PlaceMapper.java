@@ -4,6 +4,8 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
 
+import com.food.sbproject1.util.Pager;
+
 @Mapper
 public interface PlaceMapper {
 	
@@ -20,7 +22,7 @@ public interface PlaceMapper {
 	public PlaceVO getOne(PlaceVO placeVO) throws Exception;
 	
 	// 맛집 추천글 리스트
-	public List<PlaceVO> getList() throws Exception;
+	public List<PlaceVO> getList(Pager pager) throws Exception;
 	
 	// 맛집 등록
 	public int setInsert(PlaceVO placeVO) throws Exception;
