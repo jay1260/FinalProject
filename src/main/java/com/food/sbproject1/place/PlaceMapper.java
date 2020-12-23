@@ -9,6 +9,9 @@ import com.food.sbproject1.util.Pager;
 @Mapper
 public interface PlaceMapper {
 	
+	// 검색 게시글 수
+	public long getListCount(Pager pager) throws Exception;
+	
 	// 글 삭제
 	public int setDelete(PlaceVO placeVO) throws Exception;
 	

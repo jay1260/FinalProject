@@ -203,7 +203,7 @@
 <div class="sub_cont_gray01" id="tabMove1">
 	<div class="page_div" style="left: 15px;">
 		<c:if test="${pager.beforeCheck}">
-			<a href="./placeList?curPage=${pager.startNum-1}" class="listMore">
+			<a href="./placeList?curPage=${pager.startNum-1}&search=${pager.search}" class="listMore">
 				<button class="btn page" id="back">
 					<img alt="이전" src="../image/icon/left-bt.png" style="height: 30px; width: 30px;">	
 				</button>
@@ -212,7 +212,7 @@
 	</div>
 	<div class="page_div" style="right: 15px;">
 		<c:if test="${pager.nextCheck}">
-			<a href="./placeList?curPage=${pager.startNum+1}" class="listMore">
+			<a href="./placeList?curPage=${pager.startNum+1}&search=${pager.search}" class="listMore">
 				<button class="btn page" id="more">
 					<img alt="다음" src="../image/icon/right-bt.png" style="height: 30px; width:30px;">
 				</button>
