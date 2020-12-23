@@ -94,23 +94,18 @@ public class PlaceController {
 	public void setInsert() throws Exception{}
 	
 	// 맛집 추천 리스트
-	@GetMapping("placeTest")
+	@GetMapping("placeList")
 	public ModelAndView getList(Pager pager) throws Exception{
 		ModelAndView mv = new ModelAndView();
 		List<PlaceVO> ar = placeService.getList(pager);
+		
+		long num = placeService.getCount();
 				
+		mv.addObject("num", num);
 		mv.addObject("pager", pager);
 		mv.addObject("list", ar);
-		mv.setViewName("place/placeTest");
+		mv.setViewName("place/placeList");
 		return mv;
 	}
 	
-	@GetMapping("placeList")
-	public ModelAndView getTest() throws Exception{
-		ModelAndView mv = new ModelAndView();
-		long num = placeService.getCount();
-		
-		mv.addObject("num", num);
-		return mv;
-	}
 }
