@@ -108,7 +108,6 @@ public class PlaceController {
 	@GetMapping("placeList")
 	public ModelAndView getTest() throws Exception{
 		ModelAndView mv = new ModelAndView();
-
 		long num = placeService.getCount();
 		
 		mv.addObject("num", num);

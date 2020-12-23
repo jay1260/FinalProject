@@ -89,7 +89,7 @@
 		<div id="result">	
 		</div>
 </div>
-
+<div>${pager.nextCheck}</div>
 <button class="btn btn-danger" id="more">더보기</button>
 
 <!-- Container END -->
