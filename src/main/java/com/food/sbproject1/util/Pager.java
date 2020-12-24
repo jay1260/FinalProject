@@ -25,13 +25,13 @@ public class Pager {
 	}
 	
 	// search 결과가 null값일 경우 ""문자열 넣어준다.
-		public String getSearch() {
-			if(this.search ==null) {
-				this.search ="";
-			}
-			
-			return this.search;
+	public String getSearch() {
+		if(this.search ==null) {
+			this.search ="";
 		}
+			
+		return this.search;
+	}
 		
 	// curPage 수정
 	public void setCurPage(long curPage) {
@@ -93,6 +93,7 @@ public class Pager {
 				this.nextCheck=true;
 			}
 			
+			System.out.println("startRow : "+startRow);
 			System.out.println("totalPage : "+ totalPage);
 			System.out.println("curBlock : " + curBlock);
 			System.out.println("totalBlock : " + totalBlock);

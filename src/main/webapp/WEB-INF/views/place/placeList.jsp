@@ -42,7 +42,7 @@
 	/*container 부분*/
 	.sub_cont_gray01{
 		background: #fbfbfb;
-		margin-bottom: 18px;
+		margin-bottom: 25px;
 	}
 	.sub_cont_gray01 .listTy1{
 		padding-bottom: 0;
