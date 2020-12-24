@@ -5,6 +5,13 @@
   
 <mapper namespace="com.food.sbproject1.place.PlaceMapper">
 	
+	<!-- slq 조각 -->
+	<sql id="getPlaceList">
+		menu like concat('%', #{search}, '%') or
+		address like concat('%', #{search}, '%') or
+		restaurant like concat('%', #{search}, '%')
+	</sql>
+	
 	<!-- 글 삭제 -->
 	<delete id="setDelete" parameterType="PlaceVO">
 		delete from place where num=#{num}
@@ -20,9 +27,7 @@
 	<!-- 게시글 수 조회 -->
 	<select id="getCount" resultType="java.lang.Long" parameterType="Pager">
 		select count(num) from place where
-		menu like concat('%', #{search}, '%') or
-		address like concat('%', #{search}, '%') or
-		restaurant like concat('%', #{search}, '%')
+		<include refid="getPlaceList"></include>
 	</select>
 	
 	<!-- 맛집 리스트 -->
@@ -30,9 +35,7 @@
 		select P.*, PF.* 
 		from place P left join placeFile PF
 		on(P.num = PF.num) where
-		menu like concat('%', #{search}, '%') or
-		address like concat('%', #{search}, '%') or
-		restaurant like concat('%', #{search}, '%')
+		<include refid="getPlaceList"></include>
 		order by P.num desc limit #{startRow}, #{perPage}
 	</select>
 	
