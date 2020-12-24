@@ -19,6 +19,8 @@ public class Pager {
 	private boolean beforeCheck;
 	private boolean nextCheck;
 	
+	private boolean notPage;
+	
 	// Pager 생성자
 	public Pager() {
 		this.perPage = 12;
@@ -91,6 +93,10 @@ public class Pager {
 			
 			if(curBlock<totalBlock) {
 				this.nextCheck=true;
+			}
+			
+			if(totalPage<curBlock) {
+				this.notPage=true;
 			}
 			
 			System.out.println("startRow : "+startRow);
