@@ -7,7 +7,6 @@ public class Pager {
 	
 	// 검색
 	private String search;
-	private String kind;
 
 	private long curPage;	// 현재 페이지 번호
 	private long perPage;	// 한 페이지에 보여줄 글의 개수
