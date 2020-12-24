@@ -16,10 +16,10 @@ public class Pager {
 	private long startNum;
 	private long lastNum;
 	
-	private boolean beforeCheck;
-	private boolean nextCheck;
+	private boolean beforeCheck;	// 이젠 페이지 체크
+	private boolean nextCheck;		// 다음 페이지 체크
 	
-	private boolean notPage;
+	private boolean notPage;		// 게시물 없는 페이지 접근 체크
 	
 	// Pager 생성자
 	public Pager() {
