@@ -38,7 +38,15 @@
 		display: block;
 		font-family: '맑은 고딕', sans-serif;
 	}
-	article aside figure{
+	article aside figure figcaption{
 		display: block;
+	}
+	img{
+		color: rgba(255,255,255,0);
+		text-indent: -9999px;
+	}
+	img{
+		border: none;
+		vertical-align: top;
 	}
 	/*-----------------------------------------------------*/

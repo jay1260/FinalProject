@@ -20,10 +20,9 @@
 			</h1>
 			<div class="h_sch">
 				<div class="input">
-				<form action="${pageContext.request.contextPath}/place/placeList">
+				<form action="${pageContext.request.contextPath}/place/placeSearch">
 					<div>
 						<label class="label" style="padding: 0; margin-bottom: 0;"></label>
-						<!-- kind -->
 						<input type="text" name="search" placeholder="우리 동네 맛집은 어디?">
 					</div>
 
