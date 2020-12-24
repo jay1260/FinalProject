@@ -16,7 +16,7 @@ public interface PlaceMapper {
 	public int setUpdate(PlaceVO placeVO) throws Exception;
 	
 	// 게시글 수 조회
-	public long getCount() throws Exception;
+	public long getCount(Pager pager) throws Exception;
 	
 	// 상세 글 조회
 	public PlaceVO getOne(PlaceVO placeVO) throws Exception;

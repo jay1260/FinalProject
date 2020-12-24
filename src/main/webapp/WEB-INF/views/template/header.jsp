@@ -20,12 +20,14 @@
 			</h1>
 			<div class="h_sch">
 				<div class="input">
-				<form action="${pageContext.request.contextPath}/place/placeSearch">
-					<div>
+				<form action="${pageContext.request.contextPath}/place/placeList">
+					
+					
+					<div>					
 						<label class="label" style="padding: 0; margin-bottom: 0;"></label>
 						<input type="text" name="search" placeholder="우리 동네 맛집은 어디?">
 					</div>
-
+				
 					<button class="btn_sch" style="border: none;">
 						<div class="component-reponsive-image">
 							<div class="component-reponsive-image-size">

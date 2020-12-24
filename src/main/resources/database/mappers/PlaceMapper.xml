@@ -18,15 +18,21 @@
 	</update>
 	
 	<!-- 게시글 수 조회 -->
-	<select id="getCount" resultType="java.lang.Long">
-		select count(num) from place
+	<select id="getCount" resultType="java.lang.Long" parameterType="Pager">
+		select count(num) from place where
+		menu like concat('%', #{search}, '%') or
+		address like concat('%', #{search}, '%') or
+		restaurant like concat('%', #{search}, '%')
 	</select>
 	
 	<!-- 맛집 리스트 -->
 	<select id="getList" resultMap="getPlaceResult" parameterType="Pager">
 		select P.*, PF.* 
 		from place P left join placeFile PF
-		on(P.num = PF.num)
+		on(P.num = PF.num) where
+		menu like concat('%', #{search}, '%') or
+		address like concat('%', #{search}, '%') or
+		restaurant like concat('%', #{search}, '%')
 		order by P.num desc limit #{startRow}, #{perPage}
 	</select>
 	

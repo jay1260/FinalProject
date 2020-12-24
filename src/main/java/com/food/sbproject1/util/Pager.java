@@ -24,6 +24,15 @@ public class Pager {
 	public Pager() {
 		this.perPage = 12;
 	}
+	
+	// search 결과가 null값일 경우 ""문자열 넣어준다.
+		public String getSearch() {
+			if(this.search ==null) {
+				this.search ="";
+			}
+			
+			return this.search;
+		}
 		
 	// curPage 수정
 	public void setCurPage(long curPage) {

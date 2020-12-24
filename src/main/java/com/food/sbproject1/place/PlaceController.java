@@ -99,7 +99,7 @@ public class PlaceController {
 		ModelAndView mv = new ModelAndView();
 		List<PlaceVO> ar = placeService.getList(pager);
 		
-		long num = placeService.getCount();
+		long num = placeService.getCount(pager);
 				
 		mv.addObject("num", num);
 		mv.addObject("pager", pager);

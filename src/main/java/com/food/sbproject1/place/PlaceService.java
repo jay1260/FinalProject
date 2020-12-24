@@ -36,8 +36,8 @@ public class PlaceService {
 	}
 	
 	// 게시글 수 보내기
-	public long getCount() throws Exception{
-		return placeMapper.getCount();
+	public long getCount(Pager pager) throws Exception{
+		return placeMapper.getCount(pager);
 	}
 	
 	// 상세 글 조회
@@ -48,7 +48,7 @@ public class PlaceService {
 	// 맛집 추천 리스트
 	public List<PlaceVO> getList(Pager pager) throws Exception{
 		pager.makeRow();
-		long totalCount = placeMapper.getCount();
+		long totalCount = placeMapper.getCount(pager);
 		pager.makePage(totalCount);
 		return placeMapper.getList(pager);
 	}
