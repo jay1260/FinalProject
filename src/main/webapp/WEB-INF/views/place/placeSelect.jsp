@@ -285,7 +285,7 @@
 							<!-- 별점 부분 -->	
 						</span>
 						<div class="restaurant_action_button_wrap">
-							<button class="review_writing_button">
+							<button class="review_writing_button" id="reviewBtn" title="${one.num}">
 								<i class="review_writing_button_icon"></i>
 								<span class="review_writing_button_text">리뷰쓰기</span>
 							</button>
@@ -372,6 +372,11 @@
 	$("#deleteBtn").click(function(){
 		var num = $(this).attr("title");
 		location.href="./placeDelete?num="+num;
+	});
+
+	$("#reviewBtn").click(function(){
+		var num = $(this).attr("title");
+		location.href="../review/reviewWrite?num="+num;
 	});
 </script>
 </html>

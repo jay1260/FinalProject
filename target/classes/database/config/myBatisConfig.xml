@@ -8,6 +8,8 @@
 		<typeAlias type="com.food.sbproject1.place.PlaceVO" alias="PlaceVO"/>
 		<typeAlias type="com.food.sbproject1.place.PlaceFileVO" alias="PlaceFileVO"/>
 		
+		<typeAlias type="com.food.sbproject1.review.ReviewVO" alias="ReviewVO"/>
+		
 		<typeAlias type="com.food.sbproject1.util.Pager" alias="Pager"/>
 	</typeAliases>
 </configuration>
