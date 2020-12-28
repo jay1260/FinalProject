@@ -128,6 +128,20 @@
 		text-align: center;
 		background-color: #ff7100;
 	}
+	#star{
+		margin-bottom: 15px;
+		text-align: center;
+		font-size: 18px;
+	}
+	
+	#star a{
+		text-decoration: none;
+		color: gray;
+	}
+	#star a.on{
+		color:#ff7100;
+	}
+	
 </style>
 </head>
 <body>
@@ -149,6 +163,13 @@
 				<div class="ReviewWritingPage_EditorWrap">
 					<div class="ReviewEditor">
 						<div class="ReviewEditor_Editor_Wrap">
+						<p id="star">
+							<a href="#" value="1">★</a>
+							<a href="#" value="2">★</a>
+							<a href="#" value="3">★</a>
+							<a href="#" value="4">★</a>
+							<a href="#" value="5">★</a>
+						</p>
 							<div class="ReviewWritingPage_RestaurantRecommendPickerWrap">
 								<textarea class="ReviewEditor_Editor" placeholder="아이디님 주문하신 메뉴는 어떠셨나요? 식당의 분위기와 서비스도 궁금해요!" style="overflow: hidden; overflow-wrap:break-word; height: 150px;" maxlength="10000"></textarea>
 							</div>
@@ -162,6 +183,7 @@
 				</div>	
 			</div>
 		</div>
+		
 		<div class="ReviewWritingPage_ButtonsWrap">
 			<div class="ReviewWritingPage_Buttons">
 				<button class="ReviewWritingPage_CancelButton" id="cancelBtn">취소</button>
@@ -181,9 +203,24 @@
 		$("#keyVal").html(remain);
 	});
 
+	$("#writeBtn").click(function(){
+		var inputlength = $('textarea').val().length;
+		if(inputlength==0){
+			alert("내용을 입력하세요");
+		}else{
+			alert("내용 감사");
+		}
+	});
+
 	$("#cancelBtn").click(function(){
 		var referrer = document.referrer;
 		location.href=referrer;
+	});
+
+	$("#star a").click(function(){
+		$(this).parent().children("a").removeClass("on");
+		$(this).addClass("on").prevAll("a").addClass("on");
+		//alert($(this).attr("value"));
 	});
 </script>
 </html>
