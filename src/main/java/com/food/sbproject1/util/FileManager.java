@@ -10,7 +10,6 @@ import org.springframework.web.multipart.MultipartFile;
 @Component
 public class FileManager {
 
-<<<<<<< HEAD
 	public String saveFileCopy(MultipartFile multipartFile, File file)throws Exception{
 	
 			String fileName=null;
@@ -25,7 +24,6 @@ public class FileManager {
 	}
 
 	
-=======
 	public String saveFileCopy(MultipartFile multipartFile, File file) throws Exception{
 		
 		String fileName = null;
@@ -39,5 +37,4 @@ public class FileManager {
 		
 		return fileName;
 	}
->>>>>>> gb_1218
 }
