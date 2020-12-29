@@ -16,7 +16,7 @@ import lombok.Data;
 @Data
 public class MemberVO {
 
-	@NotEmpty
+	
 	private String id;
 	@Length(min=8, max=16)
 	private String pw;

@@ -49,6 +49,7 @@
 	margin-bottom: 20px;
 }
 
+
 </style>
 </head>
 
@@ -79,7 +80,7 @@
 			<div class="form-group" id="divgrade">
                 <label for="inputgrade" class="col-lg-2 control-label">등급</label>
                   <div class="col-lg-10">
-                     <input type="text" class="form-control" id="grade" data-rule-required="true"  maxlength="30" readonly="readonly" value="${member.id}">
+                     <input type="text" class="form-control" id="grade" data-rule-required="true"  maxlength="30" value="${member.id}">
                    </div>
              </div>
  	
@@ -125,14 +126,13 @@
              </div>
     
              <div class="update">
-					<input type="button" class ="btn btn-warning update" value="수정하기">
-					<input type="button" class ="btn btn-danger delete" value="탈퇴하기">             
+					<button type="submit" class ="btn btn-warning" id="update">수정하기</button>
+					<button type="submit" class ="btn btn-danger" id="delete">탈퇴하기</button>             
              </div>
              
              </div>
 		</form>
 
-	 
  	</div>
  </div>
  	

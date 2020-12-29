@@ -10,10 +10,6 @@
 <script type="text/javascript">
 	var msg = '${msg}';
 	alert(msg);
-<<<<<<< HEAD
-=======
-
->>>>>>> gb_1218
 	location.href='${path}';
 </script>
 </body>
