@@ -49,7 +49,7 @@ public class PlaceService {
 	public List<PlaceVO> getList(Pager pager) throws Exception{
 		pager.makeRow();
 		long totalCount = placeMapper.getCount(pager);
-		pager.makePage(totalCount);
+		pager.makePage(totalCount, 1);
 		return placeMapper.getList(pager);
 	}
 	

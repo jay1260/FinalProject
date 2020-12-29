@@ -56,8 +56,8 @@ public class Pager {
 		this.startRow = (this.getCurPage()-1)*perPage;
 	}
 	
-	// Page 계산하는 메서드
-		public void makePage(long totalCount) {
+	// Page 계산하는 메서드 (추천 리스트와 게시판 용도 조건이 다를 수 있음)
+		public void makePage(long totalCount, long perBlock) {
 			
 			//2. 전체 페이지의 개수
 			long totalPage = totalCount/this.getPerPage();
@@ -66,7 +66,6 @@ public class Pager {
 			}
 			
 			//3. 전체 블럭의 수 구하기
-			long perBlock = 1;
 			long totalBlock = totalPage/perBlock;
 			if(totalPage%perBlock!=0) {
 				totalBlock++;
@@ -105,8 +104,8 @@ public class Pager {
 			System.out.println("totalBlock : " + totalBlock);
 			System.out.println("StartNum : "+this.getStartNum());
 			System.out.println("LastNum : "+this.getLastNum());
-			System.out.println("isBefore : "+this.beforeCheck);
-			System.out.println("isAfter : "+this.nextCheck);
+			System.out.println("BeforeCheck : "+this.beforeCheck);
+			System.out.println("NextCheck : "+this.nextCheck);
 		}
 	
 }

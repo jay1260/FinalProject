@@ -220,7 +220,7 @@
 	$("#star a").click(function(){
 		$(this).parent().children("a").removeClass("on");
 		$(this).addClass("on").prevAll("a").addClass("on");
-		//alert($(this).attr("value"));
+		alert($(this).attr("value"));
 	});
 </script>
 </html>
