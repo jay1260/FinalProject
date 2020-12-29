@@ -6,9 +6,17 @@
 <configuration>
 	<typeAliases>
 		<typeAlias type="com.food.sbproject1.place.PlaceVO" alias="PlaceVO"/>
+<<<<<<< HEAD
 		
 		<!-- member -->
 		<typeAlias type="com.food.sbproject1.member.MemberVO" alias="MemberVO"/>
 		<typeAlias type="com.food.sbproject1.member.MemberFileVO" alias="MemberFileVO"/>
+=======
+		<typeAlias type="com.food.sbproject1.place.PlaceFileVO" alias="PlaceFileVO"/>
+		
+		<typeAlias type="com.food.sbproject1.review.ReviewVO" alias="ReviewVO"/>
+		
+		<typeAlias type="com.food.sbproject1.util.Pager" alias="Pager"/>
+>>>>>>> gb_1218
 	</typeAliases>
 </configuration>

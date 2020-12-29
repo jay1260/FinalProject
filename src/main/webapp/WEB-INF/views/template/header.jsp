@@ -21,19 +21,20 @@
 			</h1>
 			<div class="h_sch">
 				<div class="input">
-					<div>
+				<form action="${pageContext.request.contextPath}/place/placeList">
+					<div>					
 						<label class="label" style="padding: 0; margin-bottom: 0;"></label>
-							<!-- kind -->
-						<input type="text" name="q" placeholder="우리 동네 맛집은 어디?">
+						<input type="text" name="search" placeholder="우리 동네 맛집은 어디?">
 					</div>
-						<!-- search -->
-					<a href="#" class="btn_sch" target="_self">
+				
+					<button class="btn_sch" style="border: none;">
 						<div class="component-reponsive-image">
 							<div class="component-reponsive-image-size">
 								<img src="../image/icon/btn_h_sch.gif">
 							</div>
 						</div>
-					</a>
+					</button>
+				</form>	
 				</div>
 			</div>
 			<div class="mem_or_not">

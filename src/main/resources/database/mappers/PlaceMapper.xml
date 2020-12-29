@@ -4,7 +4,82 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
 <mapper namespace="com.food.sbproject1.place.PlaceMapper">
-	<select id="getList" resultType="PlaceVO">
-		select * from place
+	
+	<!-- slq 조각 -->
+	<sql id="getPlaceList">
+		menu like concat('%', #{search}, '%') or
+		address like concat('%', #{search}, '%') or
+		restaurant like concat('%', #{search}, '%')
+	</sql>
+	
+	<!-- 글 삭제 -->
+	<delete id="setDelete" parameterType="PlaceVO">
+		delete from place where num=#{num}
+	</delete>
+	
+	<!-- 글 수정 -->
+	<update id="setUpdate" parameterType="PlaceVO">
+		update place set title=#{title}, contents=#{contents}, address=#{address}, phone=#{phone},
+		menu=#{menu}, openTime=#{openTime}, closeTime=#{closeTime}, price=#{price}, rest=#{rest}
+		where num = #{num}
+	</update>
+	
+	<!-- 게시글 수 조회 -->
+	<select id="getCount" resultType="java.lang.Long" parameterType="Pager">
+		select count(num) from place where
+		<include refid="getPlaceList"></include>
 	</select>
+	
+	<!-- 맛집 리스트 -->
+	<select id="getList" resultMap="getPlaceResult" parameterType="Pager">
+		select P.*, PF.* 
+		from place P left join placeFile PF
+		on(P.num = PF.num) where
+		<include refid="getPlaceList"></include>
+		order by P.num desc limit #{startRow}, #{perPage}
+	</select>
+	
+	<!-- 맛집 추천 작성 -->
+	<insert id="setInsert" parameterType="PlaceVO" useGeneratedKeys="true" keyProperty="num">
+		insert into place(num, title, writer, contents, regDate, hit, menu, restaurant, address, phone, openTime, closeTime, price, rest)
+		values(#{num}, #{title}, #{writer}, #{contents}, sysdate(), 0, #{menu}, #{restaurant}, #{address}, #{phone}, #{openTime}, #{closeTime}, #{price}, #{rest})
+	</insert>
+	
+	<insert id="setInsertFile" parameterType="PlaceFileVO">
+		insert into placeFile(num, fileName, oriName)
+		values(#{num}, #{fileName}, #{oriName})
+	</insert>
+	
+	<resultMap type="PlaceVO" id="getPlaceResult">
+		<id property="num" column="num"></id>
+		<result property="title" column="title"/>
+		<result property="writer" column="writer"/>
+		<result property="contents" column="contents"/>
+		<result property="regDate" column="regDate"/>
+		<result property="hit" column="hit"/>
+		<result property="menu" column="menu"/>
+		<result property="restaurant" column="restaurant"/>
+		<result property="address" column="address"/>
+		<result property="phone" column="phone"/>
+		<result property="openTime" column="openTime"/>
+		<result property="closeTime" column="closeTime"/>
+		<result property="price" column="price"/>
+		<result property="rest" column="rest"/>
+		<!-- 1:1 관계일때, 다른 VO에 있는 VO -->
+		<association property="placeFileVO" resultMap="placeFileResult" javaType="PlaceFileVO">
+		<!-- resultMap선언, javaType 선언 필수!!!! -->
+		</association>
+	</resultMap>
+	
+	<resultMap type="PlaceFileVO" id="placeFileResult">
+		<id property="fnum" column="fnum"/>
+		<result property="fileName" column="fileName"/>
+		<result property="oriName" column="oriName"/>
+	</resultMap>
+	
+	<!-- 상세 글 조회 -->
+	<select id="getOne" resultType="PlaceVO" parameterType="PlaceVO">
+		select * from place where num = #{num}
+	</select>
+	
 </mapper>  

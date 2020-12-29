@@ -17,8 +17,11 @@ public class PlaceVO {
 	private String restaurant;	// 식당이름	
 	private String address;		// 식당주소
 	private String phone;		// 식당번호
-	private String time;		// 영업시간
+	private String openTime;	// 오픈시간
+	private String closeTime;	// 마감시간
 	private String price;		// 가격대
 	private String rest;		// 휴무일
+	
+	private PlaceFileVO placeFileVO;
 	
 }
