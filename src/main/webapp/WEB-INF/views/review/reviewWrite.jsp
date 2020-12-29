@@ -154,7 +154,7 @@
 
 <section class="ReviewWritingPage_Container">
 	<div class="ReviewWritingPage_Row">
-		<strong class="RestaurantSubMessage_RestaurantName">가게이름</strong>
+		<strong class="RestaurantSubMessage_RestaurantName">${getOne.restaurant}</strong>
 		<div class="RestaurantSubMessage_SubMessageWrap">
 			<span class="RestaurantSubMessage_SubMessage">
 				에 대한 솔직한 리뷰를 써주세요.
