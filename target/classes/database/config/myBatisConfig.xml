@@ -6,6 +6,9 @@
 <configuration>
 	<typeAliases>
 		<typeAlias type="com.food.sbproject1.place.PlaceVO" alias="PlaceVO"/>
+		
+		<!-- member -->
 		<typeAlias type="com.food.sbproject1.member.MemberVO" alias="MemberVO"/>
+		<typeAlias type="com.food.sbproject1.member.MemberFileVO" alias="MemberFileVO"/>
 	</typeAliases>
 </configuration>

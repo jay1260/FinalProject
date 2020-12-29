@@ -16,7 +16,7 @@
 		margin: 50px auto;
 	}
 	.container{
-		height: 600px;
+		height: 800px;
 		width: 80%;
 	}
 	.title{
@@ -61,6 +61,7 @@
 </head>
 <body>
 <c:import url="../template/header.jsp"></c:import>
+
 <div class="container">
 	<div class = "title">
 		<table>
@@ -72,50 +73,54 @@
 	</div>
 	<div class="memberJoin">
 	
-		<form:form modelAttribute="memberVO" enctype="multipart/form-data" id="frm">
+		<form:form modelAttribute="memberVO" enctype="multipart/form-data" id="frm" method="post">
    	<div class="form-group">
    
-      <label for="id">id:</label>
+      <label for="id">아이디</label>
       <!-- path:parameter Name -->
-      <form:input path="id" class="form-control"/>
-      <form:errors path="id"cssClass="error"></form:errors>
+      <form:input type="text" path="id" class="form-control"/>
+      <form:errors path="id" cssClass="error"></form:errors>
     </div>
    
    <div class="form-group">
-      <label for="pw">PW:</label>
-      <form:input path="pw" class="form-control"/>
+      <label for="password">비밀번호</label>
+      <form:input  type="password" path="pw" class="form-control"/>
       <form:errors path="pw" cssClass="error"/>
     </div>
     
     
    <div class="form-group">
-      <label for="pw">PW:</label>
-      <form:input path="pw2" class="form-control"/>
+      <label for="password">비밀번호확인</label>
+      <form:input type="password" path="pw2" class="form-control"/>
       <form:errors path="pw2" cssClass="error"/>
     </div>
 
 	<div class="form-group">
-	  <label for="name">name:</label>
+	  <label for="name">이름</label>
       <!-- path:parameter Name -->
-      <form:input path="name" class="form-control"/>
-      <form:errors path="name"cssClass="error"></form:errors>
+      <form:input type="text" path="name" class="form-control"/>
+      <form:errors path="name" cssClass="error"/>
     </div>
     
     <div class="form-group">
-	  <label for="email">email:</label>
+	  <label for="email">이메일</label>
       <!-- path:parameter Name -->
-      <form:input path="email" class="form-control"/>
-      <form:errors path="email"cssClass="error"></form:errors>
+      <form:input type="email" path="email" class="form-control"/>
+      <form:errors path="email" cssClass="error"/>
     </div>
    
-
-    <button type="submit" class="btn btn-primary">Write</button>
+    <div class="form-group">
+	  <label for="photo">본인사진</label>
+      <input type="file" class="form-control">
+    </div>
+    
+    <button type="submit" class="btn btn-primary" id="reg">회원가입</button>
     
    </form:form>
 
   </div>
 
 </div>
-    <c:import url="../template/footer.jsp"></c:import>
+    <c:import url="../template/footer.jsp"/>
 </body>
 </html>

@@ -1,5 +1,9 @@
 package com.food.sbproject1.member;
 
+
+
+import java.util.List;
+
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
@@ -23,5 +27,8 @@ public class MemberVO {
 	private int age;
 	@Email
 	private String email;
+
+	private MemberFileVO memberFileVO;
 	
+	//private List<MemberRoleVO> role;
 }

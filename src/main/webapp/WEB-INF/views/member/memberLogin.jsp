@@ -48,7 +48,7 @@
 <div class="container">
 <div class="memberLogin">
 	
-	<form action="./memberLogin" class ="mem">
+	<form action="./memberLogin" class ="mem" method="post">
 	  <div class = "comment">
 	  	<table>
 		<tr>
@@ -57,11 +57,11 @@
 		</tr>
 		</table>
 	  </div>
-   	  <div class="form-group">
+   	  <div class="form-group" id="inputID">
 	    <input type="text" class="form-control" id="id"name="id" placeholder="ID 입력">
 	  </div>
 	
-	  <div class="form-group">
+	  <div class="form-group" id="inputPw">
 	    <input type="password" class="form-control" id="pw" name="pw" placeholder="PW 입력">
 	  </div>
 	   <button type="submit" class="btn btn-warning log" >로그인</button>
@@ -81,5 +81,7 @@
 </div>	
 </div>
 <c:import url="../template/footer.jsp"></c:import>
+
+
 </body>
 </html>
