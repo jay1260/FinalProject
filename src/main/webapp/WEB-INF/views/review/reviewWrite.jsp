@@ -169,7 +169,7 @@
 						<div class="ReviewEditor_Editor_Wrap">
 						
 						<input type="text" id="writer" name="writer">
-						
+						<input type="hidden" id="ref" name="ref" value="${getOne.num}">
 							<div class="review_rating">
 					            <div class="rating">
 					                <input type="radio" name="star" id="rating1" value="1" class="rate_radio" title="1점">

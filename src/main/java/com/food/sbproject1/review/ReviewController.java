@@ -7,6 +7,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.food.sbproject1.place.PlaceService;
+import com.food.sbproject1.place.PlaceVO;
 
 @Controller
 @RequestMapping("/review/**")
@@ -14,12 +16,15 @@ public class ReviewController {
 
 	@Autowired
 	private ReviewService reviewService;
-
+	@Autowired
+	private PlaceService placeService;
+	
 	// 리뷰
 	@PostMapping("reviewWrite")
 	public ModelAndView setInsert(ReviewVO reviewVO) throws Exception{
 		ModelAndView mv = new ModelAndView();
 		int result = reviewService.setInsert(reviewVO);
+		
 		System.out.println(result);
 		
 		if(result>0) {
@@ -32,5 +37,10 @@ public class ReviewController {
 	
 	// 리뷰폼
 	@GetMapping("reviewWrite")
-	public void setInsert() throws Exception{}
+	public ModelAndView setInsert(PlaceVO placeVO) throws Exception{
+		ModelAndView mv = new ModelAndView();
+		placeVO = placeService.getOne(placeVO);
+		mv.addObject("getOne", placeVO);
+		return mv;
+	}
 }
