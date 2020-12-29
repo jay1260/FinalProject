@@ -67,7 +67,7 @@
  		
  	</div>
  	<div class="revise">
- 		<form action="./memberUpdate" class ="mem" method="post">
+ 		<form action="./memberPage" class ="mem" method="post">
  	
  		<table>
 			<tr>
@@ -131,22 +131,12 @@
              
              </div>
 		</form>
-	 </table>
+
 	 
  	</div>
  </div>
  	
 <c:import url="../template/footer.jsp"></c:import>
 </body>
-<script type="text/javascript">
-$(".update").click(function(){
-		alert("수정완료");
-		location.href="../";
-		
-});
-$(".delete").click(function(){
-		alert("탈퇴완료");
-		
-});
-</script>
+
 </html>

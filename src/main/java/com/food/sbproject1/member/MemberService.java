@@ -58,7 +58,7 @@ public class MemberService  {
 	
 	public int setMemberJoin(MemberVO memberVO, MultipartFile multipartFile)throws Exception{
 		
-		int result=memberMapper.setMemberJoin(memberVO);
+		int result= memberMapper.setMemberJoin(memberVO);
 		memberVO=memberMapper.getMemberId(memberVO);
 		
 		File file = filePathGenerator.getResourceLoader(this.filePath);
@@ -79,19 +79,17 @@ public class MemberService  {
 		return memberMapper.getFile(memberFileVO);
 	}
 	
-	public MemberVO getMemberPage(MemberVO memberVO)throws Exception{
-		return memberMapper.getMemberPage(memberVO);
+	public MemberVO getMember(MemberVO memberVO)throws Exception{
+		return memberMapper.getMember(memberVO);	
 	}
 	
 	public int setMemberDelete(MemberVO memberVO) throws Exception{
 		return memberMapper.setMemberDelete(memberVO);
 	}
 	
-	public int setMemberPage(MemberVO memberVO)throws Exception{
+	public int setMemberUpdate(MemberVO memberVO)throws Exception{
+		return memberMapper.setMemberUpdate(memberVO);
 		
-		int result = memberMapper.setMemberPage(memberVO);
-		
-		return result;
 	}
 	
 }

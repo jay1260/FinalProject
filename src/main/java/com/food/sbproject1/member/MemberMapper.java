@@ -14,11 +14,11 @@ public interface MemberMapper {
 
 	public int setMemberFileInsert(MemberFileVO memberFileVO) throws Exception;
 
-	public MemberVO getMemberPage(MemberVO memberVO)throws Exception;
+	public MemberVO getMember(MemberVO memberVO)throws Exception;
 	
 	public int setMemberDelete(MemberVO memberVO) throws Exception;
 	
-	public int setMemberPage(MemberVO memberVO)throws Exception;
+	public int setMemberUpdate(MemberVO memberVO)throws Exception;
 	
 	public MemberFileVO getFile(MemberFileVO memberFileVO)throws Exception;
 	

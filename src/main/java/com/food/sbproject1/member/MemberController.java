@@ -34,14 +34,13 @@ public class MemberController {
 		memberVO=memberService.getMemberLogin(memberVO);
 		
 		if(memberVO !=null) {
-		
 			session.setAttribute("member", memberVO);
 			mv.setViewName("redirect:../");
 		}
 		else {
 			String message="아이디 또는 비밀번호가 틀렸습니다.";
 			mv.addObject("msg", message);
-			mv.addObject("path", "./memberLogin");
+			mv.addObject("path", "../");
 			mv.setViewName("common/result");
 		}
 		return mv;
@@ -79,29 +78,33 @@ public class MemberController {
 	public void memberAgree()throws Exception{
 	}
 	
+	//회원정보 조회
 	@GetMapping("memberPage")
 	public ModelAndView getMemberPage(MemberVO memberVO)throws Exception{
 		ModelAndView mv = new ModelAndView();
 		
-		memberVO = memberService.getMemberPage(memberVO);
+		memberVO=memberService.getMember(memberVO);
 		mv.addObject("member", memberVO);
 		mv.setViewName("member/memberPage");
 		
 		return mv;
 	}
 	
+	//회원정보 수정
 	@PostMapping("memberPage")
-	public ModelAndView setMemberPage(@Valid MemberVO memberVO, BindingResult bindingResult, MultipartFile multipartFile)throws Exception{
+	public ModelAndView setMemberPage(@Valid MemberVO memberVO, BindingResult bindingResult, HttpSession session)throws Exception{
 		ModelAndView mv = new ModelAndView();
 		if(memberService.getMemberError(memberVO, bindingResult)) {
 			mv.setViewName("member/meberPage");
 		}
 		else {
-			int result = memberService.setMemberPage(memberVO);
-			if(result!=0) {
+			int result = memberService.setMemberUpdate(memberVO);
+			session.setAttribute("member", memberVO);
+			if(result>0) {
 			String message = "수정완료";
 			mv.addObject("msg", message);
-			mv.setViewName("redirect:../");
+			mv.addObject("path", "../");
+			mv.setViewName("common/result");
 			}
 		}
 		
@@ -119,16 +122,19 @@ public class MemberController {
 		
 		return mv;
 	}
-	
+	//회원 탈퇴
 	@GetMapping("memberDelete")
-	public ModelAndView setmemberDelete(HttpSession session)throws Exception{
+	public ModelAndView setmemberDelete(MemberVO memberVO, HttpSession session)throws Exception{
 		
 		ModelAndView mv = new ModelAndView();
-		MemberVO memberVO = (MemberVO)session.getAttribute("member");
-		memberService.setMemberDelete(memberVO);
+		int result = memberService.setMemberDelete(memberVO);
 		session.invalidate();
+		if(result>0) {
+			mv.addObject("msg", "탈퇴완료");
+			mv.addObject("path", "../");
+			mv.setViewName("common/result");
+		}
 	
-		mv.setViewName("redirect:../");
 		return mv;
 	}
 	
