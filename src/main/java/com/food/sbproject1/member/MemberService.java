@@ -56,23 +56,25 @@ public class MemberService  {
 		return memberMapper.getMemberLogin(memberVO);
 	}
 	
-	public int setMemberJoin(MemberVO memberVO, MultipartFile multipartFile)throws Exception{
+	public int setMemberJoin(MemberVO memberVO, MultipartFile memberPhoto)throws Exception{
 		
 		int result= memberMapper.setMemberJoin(memberVO);
 		memberVO=memberMapper.getMemberId(memberVO);
 		
 		File file = filePathGenerator.getResourceLoader(this.filePath);
 			
-			String fileName= fileManager.saveFileCopy(multipartFile, file);
+			
+			if(memberPhoto.getSize()!=0) {
+			String fileName= fileManager.saveFileCopy(memberPhoto, file);
 			
 			MemberFileVO memberFileVO = new MemberFileVO();
 			memberFileVO.setFnum(memberFileVO.getFnum());
 			memberFileVO.setFileName(fileName);
-			memberFileVO.setOriName(multipartFile.getOriginalFilename());
+			memberFileVO.setOriName(memberPhoto.getOriginalFilename());
 			memberFileVO.setId(memberVO.getId());
-					
+		
 			result = memberMapper.setMemberFileInsert(memberFileVO);
-	
+			}
 		return result;
 	}
 	public MemberFileVO getFile(MemberFileVO memberFileVO)throws Exception{

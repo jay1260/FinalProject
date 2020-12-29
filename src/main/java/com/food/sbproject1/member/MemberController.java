@@ -35,7 +35,7 @@ public class MemberController {
 		
 		if(memberVO !=null) {
 			session.setAttribute("member", memberVO);
-			mv.setViewName("redirect:../");
+			mv.setViewName("./memberLogin");
 		}
 		else {
 			String message="아이디 또는 비밀번호가 틀렸습니다.";
@@ -56,7 +56,7 @@ public class MemberController {
 	}
 	
 	@PostMapping("memberJoin")
-	public ModelAndView setMemberJoin(@Valid MemberVO memberVO, BindingResult bindingResult,MultipartFile multipartFile)throws Exception{
+	public ModelAndView setMemberJoin(@Valid MemberVO memberVO, BindingResult bindingResult,MultipartFile memberPhoto)throws Exception{
 		ModelAndView mv = new ModelAndView();
 		
 		if(memberService.getMemberError(memberVO, bindingResult)) {
@@ -64,8 +64,11 @@ public class MemberController {
 			
 		}
 		else {
-			int result = memberService.setMemberJoin(memberVO, multipartFile);
-			mv.setViewName("redirect:../");
+			int result = memberService.setMemberJoin(memberVO, memberPhoto);
+			String msg = "회원가입을 축하드립니다!";
+			mv.addObject("msg", msg);
+			mv.addObject("path", "../");
+			mv.setViewName("common/result");
 		}
 		return mv;
 	}
