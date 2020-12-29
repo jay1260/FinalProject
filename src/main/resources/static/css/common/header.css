@@ -30,7 +30,7 @@
 		font-size: 1.167em;
 		padding-left: 20px;
 		margin-right: 13px;
-		background: url("/image/icon/bg_txt_lang.png") no-repeat 0 center;
+		
 	}
 	
 	/*--------------------------------------------------*/
@@ -124,7 +124,18 @@
 		font-weight: 400;
 		display: inline-block;
 		font-family: 'Nanum Gothic', sans-serif;
+		
 	}
+	.reset{
+		line-height: 32px;
+    	font-size: 13px;
+    	padding-left: 10px;
+    	margin-right: 13px;
+    	font-family: 'Nanum Gothic', sans-serif;
+    	color : gray;
+    	border-left : gray 1px solid;
+	}
+
 	#header .header .mem_or_not .not_mem .count{
 		padding: 17px 0 0 0;
 		font-size: 1.250em;

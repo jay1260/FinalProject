@@ -7,12 +7,13 @@
 		<c:if test="${not empty member}">
 			<div class="lang_word">
 				<div class="lang_box">
-					<span>님 환영합니다.</span>
+					<span>${member.id}님</span>
+					<a href="${pageContext.request.contextPath}/member/memberPage" class="reset">내 정보</a>
 				</div>
 			</div>
 		</c:if>
 		<!-- END -->
-			
+			 
 		<!-- 로고, 로그인 -->
 		<div class="header">
 			<h1 class="logo ko" style="margin-top: 0px;">
@@ -39,7 +40,13 @@
 				<div class="not_mem">
 					<div class="box">
 						<!-- 로그인 -->
-						<a href="#" class="login">로그인</a>
+						<c:choose>
+							<c:when test="${not empty member}">
+							<a href="${pageContext.request.contextPath}/member/memberLogout" class="login">로그아웃</a>
+							</c:when>
+							<c:when test="${empty member}"><a href="${pageContext.request.contextPath}/member/memberLogin" class="login">로그인</a></c:when>
+						</c:choose>
+						
 						<!-- 추후 쿠키 -->
 						<a href="#layer_h_cont2" class="count">
 							<span>
