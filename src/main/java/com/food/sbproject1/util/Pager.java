@@ -98,6 +98,7 @@ public class Pager {
 				this.notPage=true;
 			}
 			
+			System.out.println("perPage : "+ this.perPage);
 			System.out.println("startRow : "+startRow);
 			System.out.println("totalPage : "+ totalPage);
 			System.out.println("curBlock : " + curBlock);

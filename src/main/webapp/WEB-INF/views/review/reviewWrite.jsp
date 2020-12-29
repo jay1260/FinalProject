@@ -128,18 +128,22 @@
 		text-align: center;
 		background-color: #ff7100;
 	}
-	#star{
-		margin-bottom: 15px;
+	
+	.rating{
 		text-align: center;
-		font-size: 18px;
+		margin-bottom: 15px;
 	}
 	
-	#star a{
-		text-decoration: none;
-		color: gray;
+	.rating label{
+		color: #c2c2d6;
+		cursor: pointer;
+		font-size: 22px;
 	}
-	#star a.on{
+	.rating label.on{
 		color:#ff7100;
+	}
+	.rating .rate_radio {
+		display: none;
 	}
 	
 </style>
@@ -163,17 +167,27 @@
 				<div class="ReviewWritingPage_EditorWrap">
 					<div class="ReviewEditor">
 						<div class="ReviewEditor_Editor_Wrap">
-						<p id="star">
-							<a href="#" value="1">★</a>
-							<a href="#" value="2">★</a>
-							<a href="#" value="3">★</a>
-							<a href="#" value="4">★</a>
-							<a href="#" value="5">★</a>
-						</p>
+						
+							<div class="review_rating">
+					            <div class="rating">
+					                <input type="radio" name="star" id="rating1" value="1" class="rate_radio" title="1점">
+					                <label for="rating1">★</label>
+					                <input type="radio" name="star" id="rating2" value="2" class="rate_radio" title="2점">
+					                <label for="rating2">★</label>
+					                <input type="radio" name="star" id="rating3" value="3" class="rate_radio" title="3점" >
+					                <label for="rating3">★</label>
+					                <input type="radio" name="star" id="rating4" value="4" class="rate_radio" title="4점">
+					                <label for="rating4">★</label>
+					                <input type="radio" name="star" id="rating5" value="5" class="rate_radio" title="5점">
+					                <label for="rating5">★</label>
+					            </div>
+					        </div>
+				
 							<div class="ReviewWritingPage_RestaurantRecommendPickerWrap">
 								<textarea class="ReviewEditor_Editor" placeholder="아이디님 주문하신 메뉴는 어떠셨나요? 식당의 분위기와 서비스도 궁금해요!" style="overflow: hidden; overflow-wrap:break-word; height: 150px;" maxlength="10000"></textarea>
 							</div>
 						</div>
+						
 						<p class="ReviewEditor_TextLengthStateBox">
 							<span class="ReviewEditor_CurrentTextLength" id="keyVal">0</span>
 							<span class="ReviewEditor_TextLengthStateDivider">/</span>
@@ -197,6 +211,12 @@
 
 </body>
 <script type="text/javascript">
+
+	$(".rating label").click(function(){
+		$(this).parent().children("label").removeClass("on");
+		$(this).addClass("on").prevAll("label").addClass("on");
+	});
+
 	$('textarea').keyup(function(){
 		var inputlength = $(this).val().length;
 		var remain = 0+ inputlength;
@@ -217,10 +237,5 @@
 		location.href=referrer;
 	});
 
-	$("#star a").click(function(){
-		$(this).parent().children("a").removeClass("on");
-		$(this).addClass("on").prevAll("a").addClass("on");
-		alert($(this).attr("value"));
-	});
 </script>
 </html>
