@@ -23,18 +23,4 @@ public class FileManager {
 			return fileName;
 	}
 
-	
-	public String saveFileCopy(MultipartFile multipartFile, File file) throws Exception{
-		
-		String fileName = null;
-		
-		// 중복되지 않는 파일명 생성
-		fileName = UUID.randomUUID().toString()+"_"+multipartFile.getOriginalFilename();
-		
-		file = new File(file,fileName);
-		
-		FileCopyUtils.copy(multipartFile.getBytes(), file);
-		
-		return fileName;
-	}
 }
