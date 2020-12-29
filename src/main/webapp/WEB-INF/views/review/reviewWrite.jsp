@@ -161,12 +161,14 @@
 			</span>
 		</div>
 	</div>
-	<form action="">	
+	<form action="./reviewWrite" method="post" id="reviewFrm">	
 		<div class="ReviewWritingPage_ContentWrap">
 			<div class="ReviewWritingPage_FormWrap">
 				<div class="ReviewWritingPage_EditorWrap">
 					<div class="ReviewEditor">
 						<div class="ReviewEditor_Editor_Wrap">
+						
+						<input type="text" id="writer" name="writer">
 						
 							<div class="review_rating">
 					            <div class="rating">
@@ -184,7 +186,7 @@
 					        </div>
 				
 							<div class="ReviewWritingPage_RestaurantRecommendPickerWrap">
-								<textarea class="ReviewEditor_Editor" placeholder="아이디님 주문하신 메뉴는 어떠셨나요? 식당의 분위기와 서비스도 궁금해요!" style="overflow: hidden; overflow-wrap:break-word; height: 150px;" maxlength="10000"></textarea>
+								<textarea class="ReviewEditor_Editor" placeholder="아이디님 주문하신 메뉴는 어떠셨나요? 식당의 분위기와 서비스도 궁금해요!" style="overflow: hidden; overflow-wrap:break-word; height: 150px;" maxlength="10000" name="contents"></textarea>
 							</div>
 						</div>
 						

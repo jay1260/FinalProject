@@ -10,7 +10,7 @@ public class ReviewVO {
 	private long num;
 	private String writer;
 	private String contents;
-	private long start;
+	private long star;
 	private Date regDate;
 	private long ref;
 }
