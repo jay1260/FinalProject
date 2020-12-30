@@ -116,6 +116,7 @@
 
 </body>
 <script type="text/javascript">
+
 	$("#contents").summernote({
 		placeholder:'추천하시는 이유가 있으면 작성해주세요~',
 		height:300

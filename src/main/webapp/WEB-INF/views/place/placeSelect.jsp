@@ -318,18 +318,15 @@
 		width: 80px;
 		height: 17px;
 		float: left;
-		margin-top: 10px;
+		margin-top: 4.5px;
 		margin-right: 10px;
-		background: url("../image/icon/starUp.png") repeat-x 0 0;
-		background-size: 16px 34px;
 	}
 	.newStarBox .newStar .bg{
 		position: absolute;
 		left: 0;
 		top: 0;
 		height: 17px;
-		background: url("../image/icon/starUp.png") repeat-x 0 bottom;
-		background-size: 16px 35px;
+
 	}
 	.place_review .rList ul li .cont .score_story span{
 		display: block;
@@ -490,7 +487,7 @@
 						<div class="section_sectionContent">
 							<div class="section_own">
 								<p class="section_ownDesc"></p>
-								<p>${one.title}</p>
+								<p style="font-size: 1.75em;">${one.title}</p>
 							</div>
 						</div>
 					</section>
@@ -510,7 +507,7 @@
 		</div>
 		<!-- 리뷰 작성 정보 -->
 		<div class="place_review store_info">
-			<h4>맛집탐험 리뷰</h4>
+			<h4>No.1 맛집탐험 리뷰</h4>
 			<div class="txt_total">
 				<ul>
 					<li>
@@ -525,7 +522,7 @@
 			<div class="rList">
 				<ul>
 					<!-- 리뷰리스트 뿌리기 -->
-					<c:forEach items="${rList}" var="review">
+					<c:forEach items="${rList}" var="review" varStatus="status">
 					<li>
 						<span class="img">
 							<img alt="리뷰남긴회원이미지" src="" width="64" height="64">
@@ -538,7 +535,9 @@
 								<div class="score_story">
 									<div class="newStarBox">
 										<div class="newStar">
-											<div class="bg" style="width: 100%"></div>
+											<div class="bg" style="width: 100%; font-size: 16px; color:#ff7400;">
+												<c:forEach var="rating" varStatus="status" begin="1" end="${review.star}">★</c:forEach>
+											</div>
 										</div>
 										<span>
 											<strong>${review.star}.0</strong>
@@ -546,6 +545,9 @@
 									</div>
 									<p>
 										${review.contents}
+									</p>
+									<p>
+										${review.regDate}
 									</p>
 								</div>
 							</div>
@@ -570,6 +572,7 @@
 <c:import url="../template/footer.jsp"></c:import>
 </body>
 <script type="text/javascript">
+
 	$("#updateBtn").click(function(){
 		var num = $(this).attr("title");
 		location.href="./placeUpdate?num="+num;
