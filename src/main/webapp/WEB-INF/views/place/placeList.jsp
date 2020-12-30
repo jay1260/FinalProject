@@ -12,6 +12,9 @@
 	body{
 		font-family: 'Nanum Gothic', sans-serif;
 	}
+	a:hover{
+		color:#ff7400;
+	}
 	/* 공통 CSS END*/
 	
 	/* header 부분 */

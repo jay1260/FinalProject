@@ -6,6 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <c:import url="../template/bootStrap.jsp"></c:import>
 <style type="text/css">
 	body{
@@ -311,6 +312,20 @@
 		float: left;
 		font-weight: 400;
 	}
+	.writer_role{
+		float: left;
+		height: 18px;
+		line-height: 17px;
+		font-style: normal;
+		text-align: center;
+		background: #ff7400;
+		color: #fff;
+		font-size: .917em;
+		letter-spacing: normal;
+		padding: 0 6px;
+		margin: 2px 0 0 5px;
+		border-radius: 2px;
+	}
 	.newStarBox{
 		overflow: hidden;
 	}
@@ -543,6 +558,7 @@
 							<div class="cnt">
 								<div class="name_data">
 									<strong>${review.writer}</strong>
+									<em class="writer_role">회원등급</em>
 								</div>
 								<div class="score_story">
 									<div class="newStarBox">

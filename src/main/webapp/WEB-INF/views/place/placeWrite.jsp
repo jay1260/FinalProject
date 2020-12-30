@@ -76,7 +76,6 @@
 		</div>
 		<div class="form-group col-xs-12 col-md-10">
 			<label for="address">식당 주소</label>
-			<input type="button" value="주소검색" style="float: right;">
 			<input type="text" class="form-control" id="address" name="address">
 		</div>
 		<div class="form-group col-xs-12 col-md-10">

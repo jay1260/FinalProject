@@ -18,7 +18,7 @@
 	
 	<!-- 해당 글 리뷰 정보 -->
 	<select id="getReviewList" resultType="ReviewVO" parameterType="ReviewVO">
-		select * from review where ref = #{ref}
+		select * from review where ref = #{ref} order by num desc
 	</select>
 	
 	<!-- 해당 글 리뷰 수 -->

@@ -47,7 +47,7 @@
 				</p>
 				<div class="home-buttons">
 					<!-- 버튼 부분으로 사용 -->
-					<a class="home-button text-1 text-bold" href="#">
+					<a class="home-button text-1 text-bold" href="./place/placeList">
 						어디가 맛집일지 찾아봐요
 					</a>
 				</div>
