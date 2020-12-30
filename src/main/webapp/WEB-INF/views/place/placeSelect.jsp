@@ -230,7 +230,6 @@
 		position: relative;
 	}
 	.store_info h4{
-		font-size: 1.467em;
 		margin-top: 24px;
 		padding-bottom: 5px;
 		letter-spacing: -1px;
@@ -537,7 +536,7 @@
 		</div>
 		<!-- 리뷰 작성 정보 -->
 		<div class="place_review store_info">
-			<h4>No.1 맛집탐험 리뷰</h4>
+			<h4><span style="color: #ff7400;">No.1</span> 맛집탐험 리뷰</h4>
 			<div class="txt_total">
 				<ul>
 					<li>
