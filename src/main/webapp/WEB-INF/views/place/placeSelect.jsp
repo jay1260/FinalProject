@@ -183,6 +183,7 @@
 	}
 	.restaurant-detail .info td{
 		color: #4f4f4f;
+		font-size:1.355em;
 		line-height: 1.7;
 		text-align: left;
 		vertical-align: middle;
@@ -345,6 +346,22 @@
 		letter-spacing: -1px;
 	}
 	/* 리뷰 부분 end */
+	
+	/*수정 삭제 버튼*/
+	#deleteBtn{
+		width: 200px;
+		margin-top: 8px;
+		background-color: white;
+		color: red;
+	}
+	#updateBtn{
+		width: 200px; 
+		margin-top:50px;
+		background-color:white;
+		color:#ff7400;
+		display: block;
+	}
+	
 	/* 더보기 */
 	.btn_sMore{
 		display: block;
@@ -361,6 +378,7 @@
 		display: inline-block;
 		background: url("../image/icon/bg_btn_arr04.png") no-repeat right center;
 	}
+	/* 더보기 */
 </style>
 </head>
 <body>
@@ -558,8 +576,8 @@
 		<!-- 리뷰 작성 -->	
 	</div>	
 	<div class="btn-div">
-		<button class="btn btn-warning" style="margin-right: 10px; width: 100px;" id="updateBtn" title="${one.num}">글 수정</button>
-		<button class="btn btn-danger" style="width: 100px;" id="deleteBtn" title="${one.num}">글 삭제</button>
+		<button class="btn btn-warning" id="updateBtn" title="${one.num}">글 수정</button>
+		<button class="btn btn-danger" id="deleteBtn" title="${one.num}">글 삭제</button>
 	</div>
 </div>
 <!--  -->

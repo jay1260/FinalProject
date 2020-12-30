@@ -65,7 +65,10 @@
 		</div>
 		<div class="form-group col-xs-12 col-md-10">
 			<label for="title">제목</label>
-			<input type="text" class="form-control" id="title" name="title">
+			<span style="float: right;">40</span>
+			<span style="float: right;">/</span>
+			<span style="float: right;" id="keyValue">0</span>
+			<input type="text" class="form-control" id="title" name="title" placeholder="제목은 40글자 이내로 작성해주세요.">
 		</div>
 		<div class="form-group col-xs-12 col-md-10">
 			<label for="writer">작성자</label>
@@ -73,6 +76,7 @@
 		</div>
 		<div class="form-group col-xs-12 col-md-10">
 			<label for="address">식당 주소</label>
+			<input type="button" value="주소검색" style="float: right;">
 			<input type="text" class="form-control" id="address" name="address">
 		</div>
 		<div class="form-group col-xs-12 col-md-10">
@@ -116,6 +120,15 @@
 
 </body>
 <script type="text/javascript">
+
+	$("#title").keyup(function(){
+		var titleLength = $(this).val().length;
+		var remain = 0+titleLength
+		$("#keyValue").html(remain);
+		if(titleLength>=40){
+			alert("최대 40글자");
+		}
+	});
 
 	$("#contents").summernote({
 		placeholder:'추천하시는 이유가 있으면 작성해주세요~',
