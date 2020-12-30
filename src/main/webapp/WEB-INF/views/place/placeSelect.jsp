@@ -124,7 +124,7 @@
 		box-sizing: border-box;
 		position: relative;
 		max-width: 80%;
-		font-size: 1.8rem;
+		font-size: 24px;
 		line-height: 46px;
 		color: #000000;
 	}
@@ -135,6 +135,7 @@
 		display: inline-block;
 		max-width: 100%;
 		word-break:break-all;
+		font-size: 34px;
 	}
 
 	.restaurant-detail>header .title>.rate-point{

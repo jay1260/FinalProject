@@ -163,7 +163,6 @@
 		margin-bottom: 4px;
 		line-height: 22px;
 		font-weight: 400;
-		height: 42px;
 		text-overflow: ellipsis;
 		display: -webkit-box;
 		-webkit-line-clamp: 2;
@@ -253,7 +252,7 @@
 								${place.openTime} ~ ${place.closeTime}
 								<br>
 								<!-- 메뉴 -->
-								메뉴 ☞ ${place.menu}
+								대표메뉴 ☞ ${place.menu}
 							</p>
 							<!-- 식당 주소 -->
 							<ul>
