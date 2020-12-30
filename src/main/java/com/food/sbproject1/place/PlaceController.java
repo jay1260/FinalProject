@@ -79,9 +79,11 @@ public class PlaceController {
 		placeVO = placeService.getOne(placeVO);
 		
 		reviewVO.setRef(placeVO.getNum());
+		List<ReviewVO> ar = reviewService.getReviewList(reviewVO);
 		System.out.println(reviewVO.getRef());
 		float avg = reviewService.getStarAvg(reviewVO);
 		
+		mv.addObject("rList", ar);
 		mv.addObject("avg", avg);
 		mv.addObject("one", placeVO);
 		

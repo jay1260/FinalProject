@@ -525,6 +525,7 @@
 			<div class="rList">
 				<ul>
 					<!-- 리뷰리스트 뿌리기 -->
+					<c:forEach items="${rList}" var="review">
 					<li>
 						<span class="img">
 							<img alt="리뷰남긴회원이미지" src="" width="64" height="64">
@@ -532,7 +533,7 @@
 						<div class="cont">
 							<div class="cnt">
 								<div class="name_data">
-									<strong>회원아이디</strong>
+									<strong>${review.writer}</strong>
 								</div>
 								<div class="score_story">
 									<div class="newStarBox">
@@ -540,16 +541,17 @@
 											<div class="bg" style="width: 100%"></div>
 										</div>
 										<span>
-											<strong>1.0</strong>
+											<strong>${review.star}.0</strong>
 										</span>
 									</div>
 									<p>
-										리뷰내용 어쩌구 저쩌구 어쩌구 저쩌구 리뷰내용 어쩌구 저쩌구 어쩌구 저쩌구 리뷰내용 어쩌구 저쩌구 어쩌구 저쩌구 리뷰내용 어쩌구 저쩌구 어쩌구 저쩌구
+										${review.contents}
 									</p>
 								</div>
 							</div>
 						</div>
 					</li>
+					</c:forEach>
 					<!--  -->
 				</ul>
 				<a href="#" class="btn_sMore">
