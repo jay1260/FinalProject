@@ -7,4 +7,6 @@ public interface ReviewMapper {
 
 	// 리뷰 작성
 	public int setInsert(ReviewVO reviewVO) throws Exception;
+	
+	public Float getStarAvg(ReviewVO reviewVO) throws Exception;
 }

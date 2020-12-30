@@ -5,14 +5,19 @@
   
 <configuration>
 	<typeAliases>
+		<!-- java.lang -->
+		<typeAlias type="java.lang.Long" alias="Long"/>
+		<typeAlias type="java.lang.Float" alias="Float"/>
+	
+		<!-- place 맛집관련-->
 		<typeAlias type="com.food.sbproject1.place.PlaceVO" alias="PlaceVO"/>
+		<typeAlias type="com.food.sbproject1.place.PlaceFileVO" alias="PlaceFileVO"/>
 		
 		<!-- member -->
 		<typeAlias type="com.food.sbproject1.member.MemberVO" alias="MemberVO"/>
 		<typeAlias type="com.food.sbproject1.member.MemberFileVO" alias="MemberFileVO"/>
 		
-		<typeAlias type="com.food.sbproject1.place.PlaceFileVO" alias="PlaceFileVO"/>
-		
+		<!-- review 리뷰관련 -->
 		<typeAlias type="com.food.sbproject1.review.ReviewVO" alias="ReviewVO"/>
 		
 		<typeAlias type="com.food.sbproject1.util.Pager" alias="Pager"/>

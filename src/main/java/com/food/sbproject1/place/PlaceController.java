@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.food.sbproject1.review.ReviewService;
+import com.food.sbproject1.review.ReviewVO;
 import com.food.sbproject1.util.Pager;
 
 @Controller
@@ -21,6 +23,8 @@ public class PlaceController {
 
 	@Autowired
 	private PlaceService placeService;
+	@Autowired
+	private ReviewService reviewService;
 	
 	@Value("${place.filePath}")
 	private String filePath;
@@ -70,9 +74,15 @@ public class PlaceController {
 	
 	// 상세 글 조회
 	@GetMapping("placeSelect")
-	public ModelAndView getOne(PlaceVO placeVO) throws Exception{
+	public ModelAndView getOne(PlaceVO placeVO, ReviewVO reviewVO) throws Exception{
 		ModelAndView mv = new ModelAndView();
 		placeVO = placeService.getOne(placeVO);
+		
+		reviewVO.setRef(placeVO.getNum());
+		System.out.println(reviewVO.getRef());
+		float avg = reviewService.getStarAvg(reviewVO);
+		
+		mv.addObject("avg", avg);
 		mv.addObject("one", placeVO);
 		
 		return mv;

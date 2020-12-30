@@ -129,9 +129,7 @@
 		max-width: 100%;
 		word-break:break-all;
 	}
-	.restaurant-detail>header .title>.rate-point.expected{
-		color: #e9e9e9;
-	}
+
 	.restaurant-detail>header .title>.rate-point{
 		color:#ff792a;
 		margin-left: 5px;
@@ -279,8 +277,13 @@
 						<span class="title">
 							<h1 class="restaurant_name">${one.restaurant}</h1>
 							<!-- 별점 부분 -->
-							<strong class="rate-point expected">
-								<span>0.0</span>
+							<strong class="rate-point">
+								<c:if test="${avg gt 0.0}">
+									<span>${avg}</span>
+								</c:if>
+								<c:if test="${avg eq 0.0}">
+									<span>0.0</span>
+								</c:if>
 							</strong>
 							<!-- 별점 부분 -->	
 						</span>

@@ -25,7 +25,7 @@
 	</update>
 	
 	<!-- 게시글 수 조회 -->
-	<select id="getCount" resultType="java.lang.Long" parameterType="Pager">
+	<select id="getCount" resultType="Long" parameterType="Pager">
 		select count(num) from place where
 		<include refid="getPlaceList"></include>
 	</select>

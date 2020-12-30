@@ -4,8 +4,16 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
 <mapper namespace="com.food.sbproject1.review.ReviewMapper">
+	
+	<!-- 별점 리뷰 작성하기 -->
 	<insert id="setInsert" parameterType="ReviewVO">
 		insert into review(writer, contents, star, regDate, ref)
 		values(#{writer}, #{contents}, #{star}, sysdate(), #{ref})
 	</insert>
+	
+	<!-- 리스트에 별점 뿌리기 -->
+	<select id="getStarAvg" resultType="Float" parameterType="ReviewVO">
+		select ifnull(truncate(avg(star),1), 0.0) from review where ref = #{ref}
+	</select>
+
 </mapper>  

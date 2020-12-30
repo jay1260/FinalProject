@@ -13,4 +13,9 @@ public class ReviewService {
 	public int setInsert(ReviewVO reviewVO) throws Exception{
 		return reviewMapper.setInsert(reviewVO);
 	}
+	
+	// 별점 평균
+	public Float getStarAvg(ReviewVO reviewVO) throws Exception{
+		return reviewMapper.getStarAvg(reviewVO);
+	}
 }
