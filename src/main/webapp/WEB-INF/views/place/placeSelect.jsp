@@ -8,6 +8,12 @@
 <title>Insert title here</title>
 <c:import url="../template/bootStrap.jsp"></c:import>
 <style type="text/css">
+	body{
+		font-size: .95em;
+		font-family: 'Nanum Gothic', sans-serif;
+		font-weight: 400;
+	}
+
 	header, h1{
 		font-size: 100%;
 	}
@@ -90,7 +96,7 @@
 	.column-wrapper{
 		display: flex;
 		border-top: 6px solid #fff;
-		width: 70%;
+		width: 73%;
 		margin: 30px auto 0;
 	}
 	.column-contents{
@@ -214,6 +220,154 @@
 	.btn-div{
 		float: right;
 		margin-top: 40px;
+	}
+	/* 리뷰 작성 부분*/
+	.place_review{
+		position: relative;
+	}
+	.store_info h4{
+		font-size: 1.167em;
+		margin-top: 24px;
+		padding-bottom: 5px;
+		letter-spacing: -1px;
+		font-weight: 700;
+	}
+	.txt_total{
+		position: absolute;
+		right: 0;
+		top: -2px;
+	}
+	.store_info ul{
+		padding-bottom: 0;
+	}
+	.txt_total ul{
+		overflow: hidden;
+	}
+	.store_info ul li{
+		color: #444;
+		font-size: 1.167em;
+		line-height: 22px;
+		letter-spacing: -.50px;
+		overflow: hidden;
+	}
+	.txt_total ul li{
+		float: left;
+		color: #999;
+		padding-left: 12px;
+		font-size: 1.2em;
+	}
+	.txt_total ul li span{
+		color: #ff7400;
+		padding-left: 0;
+	}
+	.tabs01{
+		margin-top: 6px;
+	}
+	.tabs01 div{
+		padding: 0;
+		border-top: 3px solid #000;
+	}
+	.place_review .rList > ul{
+		border-bottom: 1px solid #d7d7d7;
+		margin-bottom: -1px;
+	}
+	.place_review .rList ul{
+		padding-bottom: 0;
+	}
+	.place_review .rList ul li{
+		position: relative;
+		border-bottom: 1px solid #d7d7d7;
+		padding: 20px 5px 17px;
+		overflow: hidden;
+		font-size: inherit;
+	}
+	.place_review .rList ul li .img{
+		float: left;
+		position: relative;
+		width: 64px;
+		height: 64px;
+		background: url("../image/icon/bg_photo_basic01.png") no-repeat 0 0;
+	}
+	.place_review .rList ul li .img > img{
+		position: absolute;
+		left: 0;
+		top:0;
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		border-radius: 100px;
+	}
+	.place_review .rList ul li .cont{
+		position: relative;
+		margin-left: 88px;
+	}
+	.place_review .rList ul li .cont .name_data{
+		overflow: hidden;
+		color: #000;
+	}
+	.place_review .rList ul li .cont .name_data strong{
+		float: left;
+		font-weight: 400;
+	}
+	.newStarBox{
+		overflow: hidden;
+	}
+	.newStarBox .newStar{
+		position: relative;
+		width: 80px;
+		height: 17px;
+		float: left;
+		margin-top: 10px;
+		margin-right: 10px;
+		background: url("../image/icon/starUp.png") repeat-x 0 0;
+		background-size: 16px 34px;
+	}
+	.newStarBox .newStar .bg{
+		position: absolute;
+		left: 0;
+		top: 0;
+		height: 17px;
+		background: url("../image/icon/starUp.png") repeat-x 0 bottom;
+		background-size: 16px 35px;
+	}
+	.place_review .rList ul li .cont .score_story span{
+		display: block;
+		font-weight: 700;
+		font-size: 1.6em;
+		color: #000;
+		padding-top: 6px;
+	}
+	.newStarBox span{
+		float: left;
+	}
+	.place_review .rList ul li .cont .score_story span strong{
+		color: #ff7400;
+		padding-right: 3px;
+	}
+	.place_review .rList ul li .cont .score_story p{
+		color: #444;
+		font-size: 1.2em;
+		word-break:break-all;
+		padding: 9px 0 0;
+		line-height: 21px;
+		letter-spacing: -1px;
+	}
+	/* 리뷰 부분 end */
+	/* 더보기 */
+	.btn_sMore{
+		display: block;
+		text-align: center;
+		border-top: 1px solid #d7d7d7;
+		height: 68px;
+		line-height: 68px;
+		color:#777;
+		font-size: 1.417em;
+		letter-spacing: -1px;
+	}
+	.btn_sMore span{
+		padding-right: 30px;
+		display: inline-block;
+		background: url("../image/icon/bg_btn_arr04.png") no-repeat right center;
 	}
 </style>
 </head>
@@ -352,16 +506,62 @@
 					</section>
 				</div>	
 			</section>
-			<div class="btn-div">
-				<button class="btn btn-warning" style="margin-right: 10px; width: 100px;" id="updateBtn" title="${one.num}">글 수정</button>
-				
-				<button class="btn btn-danger" style="width: 100px;" id="deleteBtn" title="${one.num}">글 삭제</button>
-			</div>
-			<!-- 리뷰 작성 정보 -->
-			
-			<!-- 리뷰 작성 -->	
 		</div>
+		<!-- 리뷰 작성 정보 -->
+		<div class="place_review store_info">
+			<h4>맛집탐험 리뷰</h4>
+			<div class="txt_total">
+				<ul>
+					<li>
+						전체리뷰
+						<span>44</span>
+					</li>
+				</ul>
+			</div>
+			<div class="tabs01">
+				<div></div>
+			</div>
+			<div class="rList">
+				<ul>
+					<!-- 리뷰리스트 뿌리기 -->
+					<li>
+						<span class="img">
+							<img alt="리뷰남긴회원이미지" src="" width="64" height="64">
+						</span>
+						<div class="cont">
+							<div class="cnt">
+								<div class="name_data">
+									<strong>회원아이디</strong>
+								</div>
+								<div class="score_story">
+									<div class="newStarBox">
+										<div class="newStar">
+											<div class="bg" style="width: 100%"></div>
+										</div>
+										<span>
+											<strong>1.0</strong>
+										</span>
+									</div>
+									<p>
+										리뷰내용 어쩌구 저쩌구 어쩌구 저쩌구 리뷰내용 어쩌구 저쩌구 어쩌구 저쩌구 리뷰내용 어쩌구 저쩌구 어쩌구 저쩌구 리뷰내용 어쩌구 저쩌구 어쩌구 저쩌구
+									</p>
+								</div>
+							</div>
+						</div>
+					</li>
+					<!--  -->
+				</ul>
+				<a href="#" class="btn_sMore">
+					<span>더보기</span>
+				</a>
+			</div>
+		</div>
+		<!-- 리뷰 작성 -->	
 	</div>	
+	<div class="btn-div">
+		<button class="btn btn-warning" style="margin-right: 10px; width: 100px;" id="updateBtn" title="${one.num}">글 수정</button>
+		<button class="btn btn-danger" style="width: 100px;" id="deleteBtn" title="${one.num}">글 삭제</button>
+	</div>
 </div>
 <!--  -->
 <c:import url="../template/footer.jsp"></c:import>
