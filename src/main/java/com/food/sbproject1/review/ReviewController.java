@@ -27,11 +27,9 @@ public class ReviewController {
 		ModelAndView mv = new ModelAndView();
 		int result = reviewService.setInsert(reviewVO);
 		
-		System.out.println(result);
-		
 		if(result>0) {
 			mv.addObject("msg", "작성 완료");
-			mv.addObject("path", "../place/placeList");
+			mv.addObject("path", "../place/placeSelect?num="+reviewVO.getRef());
 			mv.setViewName("common/result");
 		}
 		return mv;

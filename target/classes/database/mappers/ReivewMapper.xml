@@ -20,5 +20,10 @@
 	<select id="getReviewList" resultType="ReviewVO" parameterType="ReviewVO">
 		select * from review where ref = #{ref}
 	</select>
+	
+	<!-- 해당 글 리뷰 수 -->
+	<select id="getReviewCount" resultType="Long" parameterType="ReviewVO">
+		select count(num) from review where ref = #{ref}
+	</select>
 
 </mapper>  

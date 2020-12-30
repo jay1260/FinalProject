@@ -25,4 +25,9 @@ public class ReviewService {
 	public List<ReviewVO> getReviewList(ReviewVO reviewVO) throws Exception{
 		return reviewMapper.getReviewList(reviewVO);
 	}
+	
+	// 해당 글 리뷰 개수
+	public Long getReviewCount(ReviewVO reviewVO) throws Exception{
+		return reviewMapper.getReviewCount(reviewVO);
+	}
 }

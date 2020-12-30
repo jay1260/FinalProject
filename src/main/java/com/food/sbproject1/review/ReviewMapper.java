@@ -15,4 +15,7 @@ public interface ReviewMapper {
 
 	// 해당 글 리뷰정보
 	public List<ReviewVO> getReviewList(ReviewVO reviewVO) throws Exception;
+	
+	// 해당 글 리뷰 개수
+	public Long getReviewCount(ReviewVO reviewVO) throws Exception;
 }

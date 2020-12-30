@@ -227,7 +227,7 @@
 		position: relative;
 	}
 	.store_info h4{
-		font-size: 1.167em;
+		font-size: 1.467em;
 		margin-top: 24px;
 		padding-bottom: 5px;
 		letter-spacing: -1px;
@@ -246,7 +246,7 @@
 	}
 	.store_info ul li{
 		color: #444;
-		font-size: 1.167em;
+		font-size: 1.467em;
 		line-height: 22px;
 		letter-spacing: -.50px;
 		overflow: hidden;
@@ -255,7 +255,7 @@
 		float: left;
 		color: #999;
 		padding-left: 12px;
-		font-size: 1.2em;
+		font-size: 1.4em;
 	}
 	.txt_total ul li span{
 		color: #ff7400;
@@ -515,7 +515,7 @@
 				<ul>
 					<li>
 						전체리뷰
-						<span>44</span>
+						<span>${rCount}</span>
 					</li>
 				</ul>
 			</div>
