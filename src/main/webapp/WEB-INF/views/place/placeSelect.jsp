@@ -321,13 +321,7 @@
 		margin-top: 4.5px;
 		margin-right: 10px;
 	}
-	.newStarBox .newStar .bg{
-		position: absolute;
-		left: 0;
-		top: 0;
-		height: 17px;
 
-	}
 	.place_review .rList ul li .cont .score_story span{
 		display: block;
 		font-weight: 700;
@@ -535,8 +529,8 @@
 								<div class="score_story">
 									<div class="newStarBox">
 										<div class="newStar">
-											<div class="bg" style="width: 100%; font-size: 16px; color:#ff7400;">
-												<c:forEach var="rating" varStatus="status" begin="1" end="${review.star}">★</c:forEach>
+											<div class="bg" style="width: 100%; font-size: 16px; color:#ff9999;">
+												<c:forEach var="rating" varStatus="status" begin="1" end="${review.star}">★</c:forEach><c:forEach var="rating" varStatus="status" begin="1" end="${5-review.star}">☆</c:forEach>
 											</div>
 										</div>
 										<span>
