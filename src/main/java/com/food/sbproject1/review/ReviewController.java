@@ -28,7 +28,7 @@ public class ReviewController {
 		int result = reviewService.setInsert(reviewVO);
 		
 		if(result>0) {
-			mv.addObject("msg", "작성 완료");
+			mv.addObject("msg", "리뷰 감사합니다.");
 			mv.addObject("path", "../place/placeSelect?num="+reviewVO.getRef());
 			mv.setViewName("common/result");
 		}

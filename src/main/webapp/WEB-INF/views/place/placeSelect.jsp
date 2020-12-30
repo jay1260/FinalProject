@@ -368,6 +368,7 @@
 		margin-top: 8px;
 		background-color: white;
 		color: red;
+		outline: 0;
 	}
 	#updateBtn{
 		width: 200px; 
@@ -375,6 +376,7 @@
 		background-color:white;
 		color:#ff7400;
 		display: block;
+		outline: 0;
 	}
 	
 	/* 더보기 */

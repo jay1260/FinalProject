@@ -225,15 +225,6 @@
 		$("#keyVal").html(remain);
 	});
 
-	$("#writeBtn").click(function(){
-		var inputlength = $('textarea').val().length;
-		if(inputlength==0){
-			alert("내용을 입력하세요");
-		}else{
-			alert("내용 감사");
-		}
-	});
-
 	$("#cancelBtn").click(function(){
 		var referrer = document.referrer;
 		location.href=referrer;
