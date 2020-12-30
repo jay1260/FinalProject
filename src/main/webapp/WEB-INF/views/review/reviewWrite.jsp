@@ -202,7 +202,7 @@
 		
 		<div class="ReviewWritingPage_ButtonsWrap">
 			<div class="ReviewWritingPage_Buttons">
-				<button class="ReviewWritingPage_CancelButton" id="cancelBtn">취소</button>
+				<input type="button" class="ReviewWritingPage_CancelButton" id="cancelBtn" value="취소">
 				<button class="ReviewWritingPage_SubmitButton" id="writeBtn">리뷰 올리기</button>
 			</div>
 		</div>

@@ -175,6 +175,7 @@
 		width: 110px;
 		color: rgba(79,79,79,0.6);
 		line-height: 1.7;
+		font-size:1.5em;
 		text-align: left;
 		vertical-align: top;
 		padding-right: 10px;
