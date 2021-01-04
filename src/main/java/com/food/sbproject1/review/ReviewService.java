@@ -25,9 +25,9 @@ public class ReviewService {
 	
 	// 해당 글 리뷰 정보
 	public List<ReviewVO> getReviewList(Pager pager) throws Exception{
-		pager.makeRow();
+		pager.makeRow(10);
 		long totalCount = reviewMapper.getReviewCount(pager);
-		pager.makePage(totalCount, 1);
+		pager.makePage(totalCount, 1,10);
 		return reviewMapper.getReviewList(pager);
 	}
 	

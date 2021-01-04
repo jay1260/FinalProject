@@ -36,7 +36,7 @@
 		from place P left join placeFile PF
 		on(P.num = PF.num) where
 		<include refid="getPlaceList"></include>
-		order by P.num desc limit #{startRow}, #{perPage}
+		order by P.num desc limit #{startRow}, 12
 	</select>
 	
 	<!-- 맛집 추천 작성 -->

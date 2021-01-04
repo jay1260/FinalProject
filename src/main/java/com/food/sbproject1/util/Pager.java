@@ -13,7 +13,7 @@ public class Pager {
 
 	private long curPage;	// 현재 페이지 번호
 	private long perPage;	// 한 페이지에 보여줄 글의 개수
-
+	
 	private long startRow;
 	
 	private long startNum;
@@ -25,9 +25,9 @@ public class Pager {
 	private boolean notPage;		// 게시물 없는 페이지 접근 체크
 	
 	// Pager 생성자
-	public Pager() {
-		this.perPage = 9;
-	}
+//	public Pager() {
+//		this.perPage = 9;
+//	}
 	
 	// search 결과가 null값일 경우 ""문자열 넣어준다.
 	public String getSearch() {
@@ -54,17 +54,17 @@ public class Pager {
 	}
 	
 	// Row 계산하는 메서드
-	public void makeRow() {
+	public void makeRow(long perPage) {
 		// startRow 계산하는 메서드
 		this.startRow = (this.getCurPage()-1)*perPage;
 	}
 	
 	// Page 계산하는 메서드 (추천 리스트와 게시판 용도 조건이 다를 수 있음)
-		public void makePage(long totalCount, long perBlock) {
+		public void makePage(long totalCount, long perBlock, long perPage) {
 			
 			//2. 전체 페이지의 개수
-			long totalPage = totalCount/this.getPerPage();
-			if(totalCount%this.getPerPage()!=0) {
+			long totalPage = totalCount/perPage;
+			if(totalCount%perPage!=0) {
 				totalPage++;
 			}
 			
@@ -101,8 +101,9 @@ public class Pager {
 				this.notPage=true;
 			}
 			
-			System.out.println("perPage : "+ this.perPage);
+			System.out.println("perPage : "+ perPage);
 			System.out.println("startRow : "+startRow);
+			System.out.println("perBlock : "+perBlock);
 			System.out.println("totalPage : "+ totalPage);
 			System.out.println("curBlock : " + curBlock);
 			System.out.println("totalBlock : " + totalBlock);

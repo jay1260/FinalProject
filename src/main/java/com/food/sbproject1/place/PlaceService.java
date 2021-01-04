@@ -47,9 +47,9 @@ public class PlaceService {
 	
 	// 맛집 추천 리스트
 	public List<PlaceVO> getList(Pager pager) throws Exception{
-		pager.makeRow();
+		pager.makeRow(12);
 		long totalCount = placeMapper.getCount(pager);
-		pager.makePage(totalCount, 1);
+		pager.makePage(totalCount, 1,12);
 		return placeMapper.getList(pager);
 	}
 	

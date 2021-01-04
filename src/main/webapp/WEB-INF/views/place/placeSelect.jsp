@@ -552,10 +552,9 @@
 
 				<!-- 리뷰 정보 확인 -->
 			</div>
-
-			<button class="btn_sMore" id="sMoreBtn" title="${pager.curPage}"><span>더보기</span></button>
-
-			<button class="btn btn-warning" style="float: right; font-size: 18px; margin-bottom: 20px;">목록으로</button>
+			<c:if test="${pager.nextCheck}">
+				<button class="btn_sMore" id="sMoreBtn" title="${pager.curPage}"><span>더보기</span></button>
+			</c:if>
 		</div>
 		<!-- 리뷰 작성 -->	
 	</div>	
@@ -601,7 +600,6 @@
 			type:"GET",
 			data:{curPage:curPage},
 			success:function(data){
-				alert(data);
 				$("#listResult").append(data);
 			}
 		});
