@@ -553,7 +553,7 @@
 				<!-- 리뷰 정보 확인 -->
 			</div>
 			<c:if test="${pager.nextCheck}">
-				<button class="btn_sMore" id="sMoreBtn" title="${pager.curPage}"><span>더보기</span></button>
+				<button class="btn_sMore" id="sMoreBtn"><span>더보기</span></button>
 			</c:if>
 		</div>
 		<!-- 리뷰 작성 -->	
@@ -572,9 +572,14 @@
 
 	// 더보기 버튼 클릭
 	$("#sMoreBtn").click(function(){	
-		var cur = $(this).attr("title");
 		curPage++;
 		getList();
+
+		var num = $("#reviewBtn").attr("title");
+		var url = "./placeSelect?num="+num+"&curPage="+curPage;
+
+		history.pushState("","",url);
+		window.location.reload();
 	});
 
 	// 글 수정 버튼
@@ -612,19 +617,19 @@
 					getList();	// List 호출
 				}
 			}
-		})
+		});
 	});
 
 	// 리뷰 목록 불러오기
 	function getList(){
 		var num = $("#reviewBtn").attr("title");
+		
 		$.ajax({
 			url:"./placeReview?num="+num,
 			type:"GET",
 			data:{curPage:curPage},
 			success:function(data){
 				$("#listResult").append(data);
-				return false;
 			}
 		});
 	}
