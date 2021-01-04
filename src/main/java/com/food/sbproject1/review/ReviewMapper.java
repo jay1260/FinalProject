@@ -20,4 +20,7 @@ public interface ReviewMapper {
 	
 	// 해당 글 리뷰 개수
 	public Long getReviewCount(Pager pager) throws Exception;
+	
+	// 리뷰 삭제
+	public int setReviewDelete(ReviewVO reviewVO) throws Exception;
 }

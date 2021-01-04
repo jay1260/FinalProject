@@ -570,29 +570,52 @@
 	var curPage=1;
 	getList();
 
+	// 더보기 버튼 클릭
 	$("#sMoreBtn").click(function(){	
 		var cur = $(this).attr("title");
-		
 		curPage++;
 		getList();
 	});
 
-
+	// 글 수정 버튼
 	$("#updateBtn").click(function(){
 		var num = $(this).attr("title");
 		location.href="./placeUpdate?num="+num;
 	});
 
+	// 글 삭제 버튼
 	$("#deleteBtn").click(function(){
 		var num = $(this).attr("title");
 		location.href="./placeDelete?num="+num;
 	});
 
+	// 리뷰쓰기 버튼
 	$("#reviewBtn").click(function(){
 		var num = $(this).attr("title");
 		location.href="../review/reviewWrite?num="+num;
 	});
 
+	// 리뷰 삭제 버튼
+	$("#listResult").on("click", ".del", function(){
+		var num = $(this).attr("title");
+
+		$.ajax({
+			url:"../review/reviewDelete",
+			type:"POST",
+			data:{num:num},
+			success:function(data){
+				data=data.trim();
+				if(data>0){
+					alert("리뷰 삭제");
+					$("#listResult").html(''); // 초기화
+					curPage=1;	// curPage 초기화
+					getList();	// List 호출
+				}
+			}
+		})
+	});
+
+	// 리뷰 목록 불러오기
 	function getList(){
 		var num = $("#reviewBtn").attr("title");
 		$.ajax({
@@ -601,6 +624,7 @@
 			data:{curPage:curPage},
 			success:function(data){
 				$("#listResult").append(data);
+				return false;
 			}
 		});
 	}

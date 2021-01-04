@@ -13,6 +13,11 @@ public class ReviewService {
 	@Autowired
 	private ReviewMapper reviewMapper;
 	
+	// 리뷰 삭제
+	public int setReviewDelete(ReviewVO reviewVO) throws Exception{
+		return reviewMapper.setReviewDelete(reviewVO);
+	}
+	
 	// 리뷰 작성
 	public int setInsert(ReviewVO reviewVO) throws Exception{
 		return reviewMapper.setInsert(reviewVO);

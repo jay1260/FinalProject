@@ -25,5 +25,10 @@
 	<select id="getReviewCount" resultType="Long" parameterType="Pager">
 		select count(num) from review where ref = #{ref}
 	</select>
+	
+	<!-- 리뷰 삭제하기 -->
+	<delete id="setReviewDelete" parameterType="ReviewVO">
+		delete from review where num = #{num}
+	</delete>
 
 </mapper>  

@@ -6,6 +6,9 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<!-- include summernote css/js -->
+<link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
 <c:import url="../template/bootStrap.jsp"></c:import>
 <style type="text/css">
 	button{
@@ -186,7 +189,7 @@
 					        </div>
 				
 							<div class="ReviewWritingPage_RestaurantRecommendPickerWrap">
-								<textarea class="ReviewEditor_Editor" placeholder="아이디님 주문하신 메뉴는 어떠셨나요? 식당의 분위기와 서비스도 궁금해요!" style="overflow: hidden; overflow-wrap:break-word; height: 150px;" maxlength="10000" name="contents"></textarea>
+								<textarea class="ReviewEditor_Editor" placeholder="아이디님 주문하신 메뉴는 어떠셨나요? 식당의 분위기와 서비스도 궁금해요!" style="overflow: hidden; overflow-wrap:break-word; height: 150px;" maxlength="10000" name="contents" id="contents"></textarea>
 							</div>
 						</div>
 						
@@ -214,17 +217,20 @@
 </body>
 <script type="text/javascript">
 
+	// 별점 디자인
 	$(".rating label").click(function(){
 		$(this).parent().children("label").removeClass("on");
 		$(this).addClass("on").prevAll("label").addClass("on");
 	});
 
+	// 리뷰 글자수 세기
 	$('textarea').keyup(function(){
 		var inputlength = $(this).val().length;
 		var remain = 0+ inputlength;
 		$("#keyVal").html(remain);
 	});
 
+	// 취소 버튼 전 페이지 이동
 	$("#cancelBtn").click(function(){
 		var referrer = document.referrer;
 		location.href=referrer;

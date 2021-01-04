@@ -35,8 +35,11 @@
 							<p>
 								${review.contents}
 							</p>
-							<p>
+							<p style="display: inline-block;">
 								${review.regDate}
+							</p>
+							<p style="float: right;">
+								<button class="del" title="${review.num}">리뷰삭제</button>
 							</p>
 						</div>
 					</div>
