@@ -101,14 +101,13 @@ public class Pager {
 				this.notPage=true;
 			}
 			
+			System.out.println("curPage : "+ this.curPage);
 			System.out.println("perPage : "+ perPage);
 			System.out.println("startRow : "+startRow);
 			System.out.println("perBlock : "+perBlock);
 			System.out.println("totalPage : "+ totalPage);
 			System.out.println("curBlock : " + curBlock);
 			System.out.println("totalBlock : " + totalBlock);
-			System.out.println("StartNum : "+this.getStartNum());
-			System.out.println("LastNum : "+this.getLastNum());
 			System.out.println("BeforeCheck : "+this.beforeCheck);
 			System.out.println("NextCheck : "+this.nextCheck);
 		}

@@ -39,7 +39,7 @@
 								${review.regDate}
 							</p>
 							<p style="float: right;">
-								<button class="del" title="${review.num}">리뷰삭제</button>
+								<button class="del" title="${review.num}">리뷰_삭제</button>
 							</p>
 						</div>
 					</div>

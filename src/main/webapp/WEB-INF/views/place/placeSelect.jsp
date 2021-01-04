@@ -555,6 +555,7 @@
 			<c:if test="${pager.nextCheck}">
 				<button class="btn_sMore" id="sMoreBtn"><span>더보기</span></button>
 			</c:if>
+			<div id="reloadCheck">${pager.nextCheck}</div>
 		</div>
 		<!-- 리뷰 작성 -->	
 	</div>	
@@ -575,11 +576,6 @@
 		curPage++;
 		getList();
 
-		var num = $("#reviewBtn").attr("title");
-		var url = "./placeSelect?num="+num+"&curPage="+curPage;
-
-		history.pushState("","",url);
-		window.location.reload();
 	});
 
 	// 글 수정 버튼
