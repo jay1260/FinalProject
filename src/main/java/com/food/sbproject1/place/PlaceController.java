@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -74,22 +75,37 @@ public class PlaceController {
 	
 	// 상세 글 조회
 	@GetMapping("placeSelect")
-	public ModelAndView getOne(PlaceVO placeVO, ReviewVO reviewVO) throws Exception{
+	public ModelAndView getOne(PlaceVO placeVO, ReviewVO reviewVO,Pager pager) throws Exception{
 		ModelAndView mv = new ModelAndView();
 		placeVO = placeService.getOne(placeVO);
 		
 		reviewVO.setRef(placeVO.getNum());
 		System.out.println(reviewVO.getRef());
+		pager.setRef(placeVO.getNum());
 		
-		List<ReviewVO> ar = reviewService.getReviewList(reviewVO);
-		long rCount = reviewService.getReviewCount(reviewVO);
+		List<ReviewVO> ar = reviewService.getReviewList(pager);
+		long rCount = reviewService.getReviewCount(pager);
 		float avg = reviewService.getStarAvg(reviewVO);
 		
+		mv.addObject("pager", pager);
 		mv.addObject("rList", ar);
 		mv.addObject("rCount", rCount);
 		mv.addObject("avg", avg);
 		mv.addObject("one", placeVO);
 		
+		return mv;
+	}
+	
+	// 리뷰 정보 항목 
+	@GetMapping("placeReview")
+	public ModelAndView getPlaceReviewList(Pager pager, PlaceVO placeVO) throws Exception{
+		ModelAndView mv = new ModelAndView();
+		placeVO = placeService.getOne(placeVO);
+		pager.setRef(placeVO.getNum());
+		List<ReviewVO> ar = reviewService.getReviewList(pager);
+		
+		mv.addObject("rList", ar);
+		mv.setViewName("place/placeReview");
 		return mv;
 	}
 	

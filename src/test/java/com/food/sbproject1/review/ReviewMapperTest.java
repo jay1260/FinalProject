@@ -19,9 +19,7 @@ class ReviewMapperTest {
 		
 		ReviewVO reviewVO = new ReviewVO();
 		reviewVO.setRef(10);
-		List<ReviewVO> ar = reviewMapper.getReviewList(reviewVO);
 		
-		System.out.println(ar.size());
 			
 	}
 

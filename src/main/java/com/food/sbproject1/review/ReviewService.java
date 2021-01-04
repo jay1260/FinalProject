@@ -5,6 +5,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.food.sbproject1.util.Pager;
+
 @Service
 public class ReviewService {
 
@@ -22,12 +24,15 @@ public class ReviewService {
 	}
 	
 	// 해당 글 리뷰 정보
-	public List<ReviewVO> getReviewList(ReviewVO reviewVO) throws Exception{
-		return reviewMapper.getReviewList(reviewVO);
+	public List<ReviewVO> getReviewList(Pager pager) throws Exception{
+		pager.makeRow();
+		long totalCount = reviewMapper.getReviewCount(pager);
+		pager.makePage(totalCount, 1);
+		return reviewMapper.getReviewList(pager);
 	}
 	
 	// 해당 글 리뷰 개수
-	public Long getReviewCount(ReviewVO reviewVO) throws Exception{
-		return reviewMapper.getReviewCount(reviewVO);
+	public Long getReviewCount(Pager pager) throws Exception{
+		return reviewMapper.getReviewCount(pager);
 	}
 }

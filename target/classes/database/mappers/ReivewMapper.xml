@@ -17,12 +17,12 @@
 	</select>
 	
 	<!-- 해당 글 리뷰 정보 -->
-	<select id="getReviewList" resultType="ReviewVO" parameterType="ReviewVO">
-		select * from review where ref = #{ref} order by num desc
+	<select id="getReviewList" resultType="ReviewVO" parameterType="Pager">
+		select * from review where ref = #{ref} order by num desc limit #{startRow}, #{perPage};
 	</select>
 	
 	<!-- 해당 글 리뷰 수 -->
-	<select id="getReviewCount" resultType="Long" parameterType="ReviewVO">
+	<select id="getReviewCount" resultType="Long" parameterType="Pager">
 		select count(num) from review where ref = #{ref}
 	</select>
 

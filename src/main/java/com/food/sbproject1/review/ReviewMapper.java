@@ -4,6 +4,8 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
 
+import com.food.sbproject1.util.Pager;
+
 @Mapper
 public interface ReviewMapper {
 
@@ -14,8 +16,8 @@ public interface ReviewMapper {
 	public Float getStarAvg(ReviewVO reviewVO) throws Exception;
 
 	// 해당 글 리뷰정보
-	public List<ReviewVO> getReviewList(ReviewVO reviewVO) throws Exception;
+	public List<ReviewVO> getReviewList(Pager pager) throws Exception;
 	
 	// 해당 글 리뷰 개수
-	public Long getReviewCount(ReviewVO reviewVO) throws Exception;
+	public Long getReviewCount(Pager pager) throws Exception;
 }

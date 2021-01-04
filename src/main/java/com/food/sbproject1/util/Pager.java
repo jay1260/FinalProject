@@ -7,6 +7,9 @@ public class Pager {
 	
 	// 검색
 	private String search;
+	
+	// 리뷰
+	private long ref;
 
 	private long curPage;	// 현재 페이지 번호
 	private long perPage;	// 한 페이지에 보여줄 글의 개수
@@ -23,7 +26,7 @@ public class Pager {
 	
 	// Pager 생성자
 	public Pager() {
-		this.perPage = 12;
+		this.perPage = 9;
 	}
 	
 	// search 결과가 null값일 경우 ""문자열 넣어준다.

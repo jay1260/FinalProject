@@ -382,7 +382,7 @@
 	/* 더보기 */
 	.btn_sMore{
 		display: block;
-		text-align: center;
+		margin:0 auto;
 		border-top: 1px solid #d7d7d7;
 		height: 68px;
 		line-height: 68px;
@@ -548,48 +548,14 @@
 			<div class="tabs01">
 				<div></div>
 			</div>
-			<div class="rList">
-				<ul>
-					<!-- 리뷰리스트 뿌리기 -->
-					<c:forEach items="${rList}" var="review" varStatus="status">
-					<li>
-						<span class="img">
-							<img alt="리뷰남긴회원이미지" src="" width="64" height="64">
-						</span>
-						<div class="cont">
-							<div class="cnt">
-								<div class="name_data">
-									<strong>${review.writer}</strong>
-									<em class="writer_role">회원등급</em>
-								</div>
-								<div class="score_story">
-									<div class="newStarBox">
-										<div class="newStar">
-											<div class="bg" style="width: 100%; font-size: 16px; color:#ff9999;">
-												<c:forEach var="rating" varStatus="status" begin="1" end="${review.star}">★</c:forEach><c:forEach var="rating" varStatus="status" begin="1" end="${5-review.star}">☆</c:forEach>
-											</div>
-										</div>
-										<span>
-											<strong>${review.star}.0</strong>
-										</span>
-									</div>
-									<p>
-										${review.contents}
-									</p>
-									<p>
-										${review.regDate}
-									</p>
-								</div>
-							</div>
-						</div>
-					</li>
-					</c:forEach>
-					<!--  -->
-				</ul>
-				<a href="#" class="btn_sMore">
-					<span>더보기</span>
-				</a>
+			<div class="rList" id="listResult">
+
+				<!-- 리뷰 정보 확인 -->
 			</div>
+
+			<button class="btn_sMore" id="sMoreBtn" title="${pager.curPage}"><span>더보기</span></button>
+
+			<button class="btn btn-warning" style="float: right; font-size: 18px; margin-bottom: 20px;">목록으로</button>
 		</div>
 		<!-- 리뷰 작성 -->	
 	</div>	
@@ -602,6 +568,16 @@
 <c:import url="../template/footer.jsp"></c:import>
 </body>
 <script type="text/javascript">
+	var curPage=1;
+	getList();
+
+	$("#sMoreBtn").click(function(){	
+		var cur = $(this).attr("title");
+		
+		curPage++;
+		getList();
+	});
+
 
 	$("#updateBtn").click(function(){
 		var num = $(this).attr("title");
@@ -617,5 +593,19 @@
 		var num = $(this).attr("title");
 		location.href="../review/reviewWrite?num="+num;
 	});
+
+	function getList(){
+		var num = $("#reviewBtn").attr("title");
+		$.ajax({
+			url:"./placeReview?num="+num,
+			type:"GET",
+			data:{curPage:curPage},
+			success:function(data){
+				alert(data);
+				$("#listResult").append(data);
+			}
+		});
+	}
+
 </script>
 </html>
