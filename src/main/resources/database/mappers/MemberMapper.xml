@@ -14,16 +14,22 @@
   		insert into member(id,pw,name,age,email)
 		values(#{id}, #{pw}, #{name}, #{age}, #{email})
   	</insert>
+ 
+ 	<insert id="setMemberFileInsert" parameterType="MemberFileVO">
+		insert into memberfile(id,fileName,oriName)
+		values(#{id}, #{fileName}, #{oriName})
+	</insert>
   	
   	<select id="getMember" parameterType="MemberVO" resultType="MemberVO">
     	select id from member where id=#{id}
     </select>
+
 	<select id="getMemberLogin" resultMap="memberLoginResult" parameterType="MemberVO">
-		select M.id, M.name,M.age,M.email, M.pw, MF.fileName, MF.oriName
+		select M.id, M.name,M.age,M.email, MF.fileName, MF.oriName
 		from member M left join memberfile MF 
 		on M.id = MF.id
 		where M.id= #{id} and M.pw= #{pw}
-		<!-- id, name, role -->
+	
 	</select>
 	<resultMap type="MemberVO" id="memberLoginResult">
 		<id column="id" property="id"/>
@@ -32,22 +38,20 @@
 		<result column="pw2" property="pw2"/>
 		<result column="email" property="email"/>
 		<result column="age" property="age"/>
-		<association property="memberFileVO" javaType="MemberFileVO">
+	
+		<association property="memberFileVO" resultMap="MemberFileResult" javaType="MemberFileVO">
+		
+		</association>
+	</resultMap>
+	<resultMap type="MemberFileVO" id="MemberFileResult">
 			<id column="id" property="id"/>
 			<result column="fileName" property="fileName"/>
 			<result column="oriName" property="oriName"/>
-		</association>
-	
-	</resultMap>
+		</resultMap>	
 	
 	
-	<insert id="setMembertFileInsert" parameterType="MemberFileVO">
-		insert into memberfile(id,fnum,fileName,oriName)
-		values(#{id}, #{fnum}, #{fileName}, #{oriName})
-	</insert>
-  
   	<update id="setMemberUpdate" parameterType="MemberVO">
-  		update member set pw= #{pw}, email= #{email} where id= #{id}
+  		update member set age= #{age}, email= #{email} where id= #{id}
   	</update>
   	
   	<delete id="setMemberDelete" parameterType="MemberVO">

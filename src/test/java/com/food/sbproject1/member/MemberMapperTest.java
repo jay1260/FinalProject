@@ -39,7 +39,6 @@ class MemberMapperTest {
 	void setInsertFileTest()throws Exception{
 		MemberFileVO memberFileVO = new MemberFileVO();
 		memberFileVO.setId("t2");
-		memberFileVO.setFnum(1);
 		memberFileVO.setFileName("testfileName");
 		memberFileVO.setOriName("testoriName");
 		int result = memberMapper.setMemberFileInsert(memberFileVO);

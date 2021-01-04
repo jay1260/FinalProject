@@ -1,6 +1,7 @@
 package com.food.sbproject1.member;
 
 import org.apache.ibatis.annotations.Mapper;
+import org.springframework.web.multipart.MultipartFile;
 
 @Mapper
 public interface MemberMapper {

@@ -49,7 +49,7 @@
 		insert into placeFile(num, fileName, oriName)
 		values(#{num}, #{fileName}, #{oriName})
 	</insert>
-	
+	 
 	<resultMap type="PlaceVO" id="getPlaceResult">
 		<id property="num" column="num"></id>
 		<result property="title" column="title"/>

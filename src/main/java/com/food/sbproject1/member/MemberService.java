@@ -14,10 +14,11 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.food.sbproject1.util.FileManager;
+import com.food.sbproject1.util.FilePathAppoint;
 import com.food.sbproject1.util.FilePathGenerator;
 
 @Service
-@Transactional(rollbackFor = Exception.class)
+
 public class MemberService  {
 
 	@Autowired
@@ -25,6 +26,9 @@ public class MemberService  {
 	
 	@Autowired
 	private FilePathGenerator filePathGenerator;
+	
+	@Autowired
+	private FilePathAppoint filePathAppoint;
 	
 	@Value("${member.filePath}")
 	private String filePath;
@@ -61,20 +65,22 @@ public class MemberService  {
 		int result= memberMapper.setMemberJoin(memberVO);
 		memberVO=memberMapper.getMemberId(memberVO);
 		
-		File file = filePathGenerator.getResourceLoader(this.filePath);
+		File file = filePathAppoint.getUseResoureLoader(this.filePath);
 			
-			
-			if(memberPhoto.getSize()!=0) {
-			String fileName= fileManager.saveFileCopy(memberPhoto, file);
-			
-			MemberFileVO memberFileVO = new MemberFileVO();
-			memberFileVO.setFnum(memberFileVO.getFnum());
-			memberFileVO.setFileName(fileName);
-			memberFileVO.setOriName(memberPhoto.getOriginalFilename());
-			memberFileVO.setId(memberVO.getId());
 		
-			result = memberMapper.setMemberFileInsert(memberFileVO);
-			}
+		  if(memberPhoto.getSize()!=0) {
+		  String fileName=fileManager.saveFileCopy(memberPhoto, file); 
+		  System.out.println(fileName);
+		  
+		  MemberFileVO memberFileVO = new MemberFileVO();
+		  memberFileVO.setFileName(fileName);
+		  memberFileVO.setOriName(memberPhoto.getOriginalFilename());
+		  memberFileVO.setId(memberVO.getId());
+		  
+		  result = memberMapper.setMemberFileInsert(memberFileVO); 
+		  
+		  }
+		 	
 		return result;
 	}
 	public MemberFileVO getFile(MemberFileVO memberFileVO)throws Exception{
@@ -90,6 +96,7 @@ public class MemberService  {
 	}
 	
 	public int setMemberUpdate(MemberVO memberVO)throws Exception{
+		
 		return memberMapper.setMemberUpdate(memberVO);
 		
 	}

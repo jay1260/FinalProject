@@ -4,6 +4,7 @@ import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.eclipse.jdt.internal.compiler.apt.model.ModuleElementImpl;
+import org.hibernate.validator.internal.util.privilegedactions.GetResolvedMemberMethods;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
@@ -27,7 +28,7 @@ public class MemberController {
 	public void memberLogin() throws Exception{
 		
 	}
-	
+	//로그인
 	@PostMapping("memberLogin")
 	public ModelAndView getMemberLogin(MemberVO memberVO, HttpSession session) throws Exception{
 		ModelAndView mv = new ModelAndView();
@@ -45,7 +46,7 @@ public class MemberController {
 		}
 		return mv;
 	}
-	
+	//로그아웃
 	@GetMapping("memberLogout")
 	public ModelAndView getMemberLogout(HttpSession session)throws Exception{
 		ModelAndView mv = new ModelAndView();
@@ -54,21 +55,23 @@ public class MemberController {
 		mv.setViewName("redirect:../");
 		return mv;
 	}
-	
+	//회원가입
 	@PostMapping("memberJoin")
 	public ModelAndView setMemberJoin(@Valid MemberVO memberVO, BindingResult bindingResult,MultipartFile memberPhoto)throws Exception{
 		ModelAndView mv = new ModelAndView();
 		
 		if(memberService.getMemberError(memberVO, bindingResult)) {
 			mv.setViewName("member/memberJoin");
-			
 		}
 		else {
 			int result = memberService.setMemberJoin(memberVO, memberPhoto);
+			if(result>0) {
 			String msg = "회원가입을 축하드립니다!";
 			mv.addObject("msg", msg);
 			mv.addObject("path", "../");
 			mv.setViewName("common/result");
+			}
+	
 		}
 		return mv;
 	}
@@ -76,49 +79,68 @@ public class MemberController {
 	@GetMapping("memberJoin")
 	public void setMemberJoin(MemberVO memberVO)throws Exception{
 	}
-	
+	//약관동의
 	@GetMapping("memberAgree")
 	public void memberAgree()throws Exception{
 	}
 	
 	//회원정보 조회
 	@GetMapping("memberPage")
-	public ModelAndView getMemberPage(MemberVO memberVO)throws Exception{
+	public ModelAndView getMember(MemberVO memberVO)throws Exception{
 		ModelAndView mv = new ModelAndView();
 		
-		memberVO=memberService.getMember(memberVO);
+		memberVO = memberService.getMember(memberVO);
 		mv.addObject("member", memberVO);
 		mv.setViewName("member/memberPage");
 		
 		return mv;
 	}
-	
-	//회원정보 수정
-	@PostMapping("memberPage")
-	public ModelAndView setMemberPage(@Valid MemberVO memberVO, HttpSession session)throws Exception{
+	//회원수정
+	@GetMapping("memberUpdate")
+	public ModelAndView setMemberUpdate(MemberVO memberVO) throws Exception{
 		ModelAndView mv = new ModelAndView();
 		
-		
-		int result = memberService.setMemberUpdate(memberVO);
-		
-		String msg = "수정 실패";
-		
-		if(result>0) {
-		
-		MemberVO memberVO2=(MemberVO)session.getAttribute("member");
-		memberVO2.setPw(memberVO.getPw());
-		memberVO2.setPw2(memberVO.getPw2());
-		memberVO2.setEmail(memberVO2.getEmail());
-		msg = "수정완료";
-		session.setAttribute("member", memberVO2);
-		
-		}
-		mv.addObject("msg", msg);
-		mv.addObject("path", "../");
-		mv.setViewName("common/result");
+		memberVO=memberService.getMember(memberVO);
+		mv.addObject("member", memberVO);
+		mv.setViewName("member/memberUpdate");
 		
 		return mv;
 	}
+	@PostMapping("memberUpdate")
+	public ModelAndView setMemberUpdate(MemberVO memberVO, MultipartFile memberPhoto)throws Exception{
+		ModelAndView mv = new ModelAndView();
+		int result = memberService.setMemberUpdate(memberVO);
+		
+		if(result>0) {
+			
+			mv.addObject("msg", "정보 수정완료");
+			memberVO=memberService.getMember(memberVO);
+			
+			
+			mv.addObject("path", "../");
+			mv.setViewName("common/result");
+			
+			System.out.println(memberVO.getAge());
+			System.out.println(memberVO.getEmail());
+		}
+	
+		return mv;
+	}
+	//회원 탈퇴
+	@GetMapping("memberDelete")
+	public ModelAndView setMemberDelete(MemberVO memberVO, HttpSession session) throws Exception{
+		ModelAndView mv = new ModelAndView();
+		int result = memberService.setMemberDelete(memberVO);
+		
+		if(result>0) {
+			mv.addObject("msg","탈퇴완료");
+			mv.addObject("path", "../");
+			mv.setViewName("common/result");
+			session.invalidate();
+		}
+		return mv;
+	}
+	
 	
 	@GetMapping("memberFileDown")
 	public ModelAndView getmemberFileDown(MemberFileVO memberFileVO)throws Exception{
@@ -131,31 +153,6 @@ public class MemberController {
 		
 		return mv;
 	}
-	//회원 탈퇴
-	@GetMapping("memberDelete")
-	public ModelAndView setMemberDelete(MemberVO memberVO, HttpSession session)throws Exception{
-		
-		ModelAndView mv = new ModelAndView();
-		
-		mv.setViewName("member/memberPage");
-		
-		return mv;
-	}
-	
-	public ModelAndView setMemberDelete(HttpSession session)throws Exception  {
-		ModelAndView mv = new ModelAndView();
-		MemberVO memberVO = (MemberVO)session.getAttribute("member");
-		
-		int result = memberService.setMemberDelete(memberVO);
-		
-		if(result>0) {
-			mv.addObject("msg", "탈퇴완료");
-			mv.addObject("path", "../");
-			mv.setViewName("common/result");
-			
-			session.invalidate();
-		}
-		return mv;
-	}
+
 	
 }
