@@ -548,34 +548,47 @@
 			<div class="tabs01">
 				<div></div>
 			</div>
+			
 			<div class="rList" id="listResult">
-
 				<!-- 리뷰 정보 확인 -->
 			</div>
+			
 			<c:if test="${pager.nextCheck}">
 				<button class="btn_sMore" id="sMoreBtn"><span>더보기</span></button>
 			</c:if>
-			<div id="reloadCheck">${pager.nextCheck}</div>
+			
+			<div id="total" title="${pager.totalPage}" hidden="hidden"></div>
 		</div>
 		<!-- 리뷰 작성 -->	
 	</div>	
+	
 	<div class="btn-div">
 		<button class="btn btn-warning" id="updateBtn" title="${one.num}">글 수정</button>
 		<button class="btn btn-danger" id="deleteBtn" title="${one.num}">글 삭제</button>
 	</div>
+
 </div>
 <!--  -->
 <c:import url="../template/footer.jsp"></c:import>
 </body>
 <script type="text/javascript">
+
 	var curPage=1;
 	getList();
+	var total = $("#total").attr("title");
 
 	// 더보기 버튼 클릭
 	$("#sMoreBtn").click(function(){	
 		curPage++;
 		getList();
 
+		if(total == curPage){
+			$(this).hide();
+		}
+
+		console.log("total:"+total);
+		console.log("curPage:"+curPage);
+		
 	});
 
 	// 글 수정 버튼
@@ -599,7 +612,7 @@
 	// 리뷰 삭제 버튼
 	$("#listResult").on("click", ".del", function(){
 		var num = $(this).attr("title");
-
+		
 		$.ajax({
 			url:"../review/reviewDelete",
 			type:"POST",
@@ -629,6 +642,5 @@
 			}
 		});
 	}
-
 </script>
 </html>

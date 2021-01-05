@@ -18,7 +18,7 @@
 	
 	<!-- 해당 글 리뷰 정보 -->
 	<select id="getReviewList" resultType="ReviewVO" parameterType="Pager">
-		select * from review where ref = #{ref} order by num desc limit #{startRow}, 10;
+		select * from review where ref = #{ref} order by num desc limit #{startRow}, 5;
 	</select>
 	
 	<!-- 해당 글 리뷰 수 -->

@@ -13,6 +13,7 @@ public class Pager {
 
 	private long curPage;	// 현재 페이지 번호
 	private long perPage;	// 한 페이지에 보여줄 글의 개수
+	private long totalPage;
 	
 	private long startRow;
 	
@@ -63,14 +64,14 @@ public class Pager {
 		public void makePage(long totalCount, long perBlock, long perPage) {
 			
 			//2. 전체 페이지의 개수
-			long totalPage = totalCount/perPage;
+			this.totalPage = totalCount/perPage;
 			if(totalCount%perPage!=0) {
-				totalPage++;
+				this.totalPage++;
 			}
 			
 			//3. 전체 블럭의 수 구하기
-			long totalBlock = totalPage/perBlock;
-			if(totalPage%perBlock!=0) {
+			long totalBlock = this.totalPage/perBlock;
+			if(this.totalPage%perBlock!=0) {
 				totalBlock++;
 			}
 			
@@ -86,7 +87,7 @@ public class Pager {
 			
 			//curBlock이 마지막 Block(totalBock)일 때 lastNum 변경
 			if(curBlock==totalBlock) {
-				this.lastNum = totalPage;
+				this.lastNum = this.totalPage;
 			}
 			
 			if(curBlock>1) {
@@ -97,7 +98,7 @@ public class Pager {
 				this.nextCheck=true;
 			}
 			
-			if(totalPage<curBlock) {
+			if(this.totalPage<curBlock) {
 				this.notPage=true;
 			}
 			
@@ -105,7 +106,7 @@ public class Pager {
 			System.out.println("perPage : "+ perPage);
 			System.out.println("startRow : "+startRow);
 			System.out.println("perBlock : "+perBlock);
-			System.out.println("totalPage : "+ totalPage);
+			System.out.println("totalPage : "+ this.totalPage);
 			System.out.println("curBlock : " + curBlock);
 			System.out.println("totalBlock : " + totalBlock);
 			System.out.println("BeforeCheck : "+this.beforeCheck);
