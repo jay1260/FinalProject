@@ -29,4 +29,7 @@ public interface PlaceMapper {
 	
 	// 대표 사진 등록
 	public int setInsertFile(PlaceFileVO placeFileVO) throws Exception;
+	
+	// 음식 사진 등록
+	public int setInsertFiles(PlaceFilesVO placeFilesVO) throws Exception;
 }

@@ -1,6 +1,7 @@
 package com.food.sbproject1.place;
 
 import java.sql.Date;
+import java.util.List;
 
 import lombok.Data;
 
@@ -24,4 +25,6 @@ public class PlaceVO {
 	
 	private PlaceFileVO placeFileVO;
 	
+	private List<PlaceFilesVO> placeFilesVO;
+		
 }

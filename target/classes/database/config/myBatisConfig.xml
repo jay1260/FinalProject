@@ -12,6 +12,7 @@
 		<!-- place 맛집관련-->
 		<typeAlias type="com.food.sbproject1.place.PlaceVO" alias="PlaceVO"/>
 		<typeAlias type="com.food.sbproject1.place.PlaceFileVO" alias="PlaceFileVO"/>
+		<typeAlias type="com.food.sbproject1.place.PlaceFilesVO" alias="PlaceFilesVO"/>
 		
 		<!-- member -->
 		<typeAlias type="com.food.sbproject1.member.MemberVO" alias="MemberVO"/>

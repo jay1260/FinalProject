@@ -111,11 +111,11 @@ public class PlaceController {
 	
 	// 맛집 추천 작성
 	@PostMapping("placeWrite")
-	public ModelAndView setInsert(PlaceVO placeVO, MultipartFile photo) throws Exception{
+	public ModelAndView setInsert(PlaceVO placeVO, MultipartFile photo, MultipartFile [] files) throws Exception{
 		ModelAndView mv = new ModelAndView();
-		int result = placeService.setInsert(placeVO, photo);
+		int result = placeService.setInsert(placeVO, photo, files);
 		if(result>0) {
-			mv.addObject("msg", "추천 감사드립니다!!");
+			mv.addObject("msg", "추천 감사합니다.");
 			mv.addObject("path", "./placeList");
 			mv.setViewName("common/result");
 		}

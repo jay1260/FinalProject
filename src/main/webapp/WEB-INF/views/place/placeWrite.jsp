@@ -46,6 +46,10 @@
 		font-size: 16px;
 	}
 	
+	.files{
+		margin-bottom: 4px;
+	}
+	
 </style>
 </head>
 <body>
@@ -110,6 +114,15 @@
 			<label for="contents">추천 이유</label>
 			<textarea class="form-control" rows="5" id="contents" name="contents"></textarea>
 		</div>
+		<div class="form-group col-xs-12 col-md-4">
+			<label for="photo">5장의 사진을 첨부해주세요.</label>
+			<input type="file" class="form-control files" name="files">
+			<input type="file" class="form-control files" name="files">
+			<input type="file" class="form-control files" name="files">
+			<input type="file" class="form-control files" name="files">
+			<input type="file" class="form-control files" name="files">
+		</div>
+
 		<div class="btn-css">		
 			<input type="submit" class="col-sm-9 col-md-6 col-lg-8 btn btn-warning" value="등록하기" id="insertBtn">
 		</div>

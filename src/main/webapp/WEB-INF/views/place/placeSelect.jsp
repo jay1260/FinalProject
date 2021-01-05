@@ -228,6 +228,7 @@
 	/* 리뷰 작성 부분*/
 	.place_review{
 		position: relative;
+		margin-bottom: 50px;
 	}
 	.store_info h4{
 		margin-top: 24px;
@@ -360,6 +361,7 @@
 		line-height: 21px;
 		letter-spacing: -1px;
 	}
+
 	/* 리뷰 부분 end */
 	
 	/*수정 삭제 버튼*/
@@ -406,42 +408,15 @@
 		<div class="owl-wrapper-outer">
 			<div class="owl-wrapper" style="width: 3000px; left: 0px; display: block; transform: translate3d(0px, 0px, 0px); transition: all 200ms ease 0s;">
 				<!-- 이미지 반복 최대 5개 -->
-				<div class="owl-item" style="width: 300px;">
-					<figure class="list-photo">
-						<figure class="restaurant-photos-item">
-							<img class="center-croping" alt="" src="../image/food/food8.jpg">
+				<c:forEach items="${one.placeFilesVO}" var="file">
+					<div class="owl-item" style="width: 300px; margin-top:4px;">
+						<figure class="list-photo">
+							<figure class="restaurant-photos-item" style="margin-bottom: 4px;">
+								<img alt="" src="../upload/place/${file.fileName}" class="center-croping">
+							</figure>
 						</figure>
-					</figure>
-				</div>
-				<!-- 이미지 반복 !!!!1 -->
-				<div class="owl-item" style="width: 300px;">
-					<figure class="list-photo">
-						<figure class="restaurant-photos-item">
-							<img class="center-croping" alt="" src="../image/food/food8.jpg">
-						</figure>
-					</figure>
-				</div>
-				<div class="owl-item" style="width: 300px;">
-					<figure class="list-photo">
-						<figure class="restaurant-photos-item">
-							<img class="center-croping" alt="" src="../image/food/food8.jpg">
-						</figure>
-					</figure>
-				</div>
-				<div class="owl-item" style="width: 300px;">
-					<figure class="list-photo">
-						<figure class="restaurant-photos-item">
-							<img class="center-croping" alt="" src="../image/food/food8.jpg">
-						</figure>
-					</figure>
-				</div>
-				<div class="owl-item" style="width: 300px;">
-					<figure class="list-photo">
-						<figure class="restaurant-photos-item">
-							<img class="center-croping" alt="" src="../image/food/food8.jpg">
-						</figure>
-					</figure>
-				</div>
+					</div>
+				</c:forEach>
 			</div>
 		</div>
 	</div>
@@ -566,6 +541,8 @@
 		<button class="btn btn-warning" id="updateBtn" title="${one.num}">글 수정</button>
 		<button class="btn btn-danger" id="deleteBtn" title="${one.num}">글 삭제</button>
 	</div>
+	
+
 
 </div>
 <!--  -->

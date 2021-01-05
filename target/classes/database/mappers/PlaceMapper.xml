@@ -50,6 +50,12 @@
 		values(#{num}, #{fileName}, #{oriName})
 	</insert>
 	
+	<insert id="setInsertFiles" parameterType="PlaceFilesVO">
+		insert into placeFiles(num, fileName, oriName)
+		values(#{num}, #{fileName}, #{oriName})
+	</insert>
+	
+	<!-- 대표 사진 첨부 -->
 	<resultMap type="PlaceVO" id="getPlaceResult">
 		<id property="num" column="num"></id>
 		<result property="title" column="title"/>
@@ -70,16 +76,45 @@
 		<!-- resultMap선언, javaType 선언 필수!!!! -->
 		</association>
 	</resultMap>
-	
+
 	<resultMap type="PlaceFileVO" id="placeFileResult">
 		<id property="fnum" column="fnum"/>
 		<result property="fileName" column="fileName"/>
 		<result property="oriName" column="oriName"/>
 	</resultMap>
 	
+	<!-- 사진 여러개 테스트 -->
+	<resultMap type="PlaceVO" id="getOneResult">
+		<id property="num" column="num"></id>
+		<result property="title" column="title"/>
+		<result property="writer" column="writer"/>
+		<result property="contents" column="contents"/>
+		<result property="regDate" column="regDate"/>
+		<result property="hit" column="hit"/>
+		<result property="menu" column="menu"/>
+		<result property="restaurant" column="restaurant"/>
+		<result property="address" column="address"/>
+		<result property="phone" column="phone"/>
+		<result property="openTime" column="openTime"/>
+		<result property="closeTime" column="closeTime"/>
+		<result property="price" column="price"/>
+		<result property="rest" column="rest"/>
+		<!-- 1:다 관계 Collection -->
+		
+		<collection property="placeFilesVO" javaType="java.util.List" ofType="PlaceFilesVO">
+			<id column="fnum" property="fnum"/>
+			<result property="fileName" column="fileName"/>
+			<result property="oriName" column="oriName"/>
+		</collection>
+	</resultMap>
+	
+	
 	<!-- 상세 글 조회 -->
-	<select id="getOne" resultType="PlaceVO" parameterType="PlaceVO">
-		select * from place where num = #{num}
+	<select id="getOne" parameterType="PlaceVO" resultMap="getOneResult">
+		select P.*, PFS.*
+		from place P left join placeFiles PFS
+		on P.num = PFS.num
+		where P.num=#{num}
 	</select>
 	
 </mapper>  
