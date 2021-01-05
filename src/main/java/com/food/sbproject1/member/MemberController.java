@@ -59,12 +59,13 @@ public class MemberController {
 	@PostMapping("memberJoin")
 	public ModelAndView setMemberJoin(@Valid MemberVO memberVO, BindingResult bindingResult,MultipartFile memberPhoto)throws Exception{
 		ModelAndView mv = new ModelAndView();
+		MemberRoleVO memberRoleVO = new MemberRoleVO();
 		
 		if(memberService.getMemberError(memberVO, bindingResult)) {
 			mv.setViewName("member/memberJoin");
 		}
 		else {
-			int result = memberService.setMemberJoin(memberVO, memberPhoto);
+			int result = memberService.setMemberJoin(memberVO, memberPhoto, memberRoleVO);
 			if(result>0) {
 			String msg = "회원가입을 축하드립니다!";
 			mv.addObject("msg", msg);
@@ -86,16 +87,17 @@ public class MemberController {
 	
 	//회원정보 조회
 	@GetMapping("memberPage")
-	public ModelAndView getMember(MemberVO memberVO)throws Exception{
+	public ModelAndView getMember(MemberVO memberVO, MemberRoleVO memberRoleVO)throws Exception{
 		ModelAndView mv = new ModelAndView();
 		
 		memberVO = memberService.getMember(memberVO);
 		mv.addObject("member", memberVO);
+		//mv.addObject("role", memberRoleVO);
 		mv.setViewName("member/memberPage");
 		
 		return mv;
 	}
-	//회원수정
+	//회원수정 폼
 	@GetMapping("memberUpdate")
 	public ModelAndView setMemberUpdate(MemberVO memberVO) throws Exception{
 		ModelAndView mv = new ModelAndView();
@@ -106,9 +108,12 @@ public class MemberController {
 		
 		return mv;
 	}
+	//정보수정 하기
 	@PostMapping("memberUpdate")
 	public ModelAndView setMemberUpdate(MemberVO memberVO, MultipartFile memberPhoto)throws Exception{
+		
 		ModelAndView mv = new ModelAndView();
+		
 		int result = memberService.setMemberUpdate(memberVO);
 		
 		if(result>0) {
@@ -116,12 +121,9 @@ public class MemberController {
 			mv.addObject("msg", "정보 수정완료");
 			memberVO=memberService.getMember(memberVO);
 			
-			
 			mv.addObject("path", "../");
 			mv.setViewName("common/result");
 			
-			System.out.println(memberVO.getAge());
-			System.out.println(memberVO.getEmail());
 		}
 	
 		return mv;

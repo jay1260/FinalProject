@@ -55,6 +55,7 @@
 
 <body>
 <c:import url="../template/header.jsp"></c:import>
+	
  <div class="container">
  
  	<div class="page">
@@ -78,7 +79,7 @@
 			<div class="form-group" id="divgrade">
                 <label for="inputgrade" class="col-lg-2 control-label">등급</label>
                   <div class="col-lg-10">
-                     <input type="text" class="form-control" id="grade" data-rule-required="true"  maxlength="30" value="${member.id}" readonly="readonly">
+                     <input type="text" class="form-control" id="grade" data-rule-required="true"  maxlength="30" <%-- value="${role.grade}" --%> readonly="readonly">
                    </div>
              </div>
  	
@@ -89,7 +90,6 @@
                    </div>
              </div>
     
-           
              <div class="form-group" id="divName">
                  <label for="inputName" class="col-lg-2 control-label">이름</label>
                   <div class="col-lg-10">

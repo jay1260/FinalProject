@@ -11,7 +11,7 @@ class MemberMapperTest {
 	@Autowired
 	private MemberMapper memberMapper;
 	
-	@Test
+	//@Test
 	void setDeleteTest()throws Exception{
 		MemberVO memberVO = new MemberVO();
 		memberVO.setId("test id1");
@@ -20,7 +20,7 @@ class MemberMapperTest {
 		assertNotEquals(0, result);
 	}
 	
-	//@Test
+	@Test
 	void setUpdateTest()throws Exception{
 		MemberVO memberVO = new MemberVO();
 		memberVO.setEmail("qwe@naver.com");
@@ -28,7 +28,7 @@ class MemberMapperTest {
 		memberVO.setName("wr");
 		memberVO.setPw("1");
 		memberVO.setPw2("1");
-		memberVO.setId("kwr");
+		memberVO.setId("cxz");
 		
 		int result=memberMapper.setMemberUpdate(memberVO);
 		

@@ -60,24 +60,33 @@ public class MemberService  {
 		return memberMapper.getMemberLogin(memberVO);
 	}
 	
-	public int setMemberJoin(MemberVO memberVO, MultipartFile memberPhoto)throws Exception{
+	public int setMemberJoin(MemberVO memberVO, MultipartFile memberPhoto, MemberRoleVO memberRoleVO)throws Exception{
 		
-		int result= memberMapper.setMemberJoin(memberVO);
+	
+		 int result= memberMapper.setMemberJoin(memberVO);
+		 	
 		memberVO=memberMapper.getMemberId(memberVO);
 		
 		File file = filePathAppoint.getUseResoureLoader(this.filePath);
-			
 		
 		  if(memberPhoto.getSize()!=0) {
-		  String fileName=fileManager.saveFileCopy(memberPhoto, file); 
-		  System.out.println(fileName);
+			  String fileName=fileManager.saveFileCopy(memberPhoto, file); 
+			  System.out.println(fileName);
 		  
-		  MemberFileVO memberFileVO = new MemberFileVO();
-		  memberFileVO.setFileName(fileName);
-		  memberFileVO.setOriName(memberPhoto.getOriginalFilename());
-		  memberFileVO.setId(memberVO.getId());
+			  MemberFileVO memberFileVO = new MemberFileVO();
+			  memberFileVO.setFileName(fileName);
+			  memberFileVO.setOriName(memberPhoto.getOriginalFilename());
+			  memberFileVO.setId(memberVO.getId());
 		  
-		  result = memberMapper.setMemberFileInsert(memberFileVO); 
+			  memberRoleVO.setId(memberVO.getId());
+			  memberRoleVO.setGrade("3등급");
+		  
+			  result = memberMapper.setGradeInsert(memberRoleVO);
+		  
+			  System.out.println(memberRoleVO);
+		  
+			  result = memberMapper.setMemberFileInsert(memberFileVO); 
+		  
 		  
 		  }
 		 	
@@ -89,6 +98,10 @@ public class MemberService  {
 	
 	public MemberVO getMember(MemberVO memberVO)throws Exception{
 		return memberMapper.getMember(memberVO);	
+	}
+	
+	public MemberRoleVO getGrade(MemberRoleVO memberRoleVO) throws Exception{
+		return memberMapper.getGrade(memberRoleVO);
 	}
 	
 	public int setMemberDelete(MemberVO memberVO) throws Exception{

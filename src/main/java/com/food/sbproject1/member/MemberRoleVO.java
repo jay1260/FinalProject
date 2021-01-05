@@ -5,6 +5,7 @@ import lombok.Data;
 @Data
 public class MemberRoleVO {
 
-	private String name;
+	private long num;
+	private String id;
 	private String grade;
 }

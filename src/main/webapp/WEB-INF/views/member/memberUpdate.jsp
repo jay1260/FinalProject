@@ -78,7 +78,7 @@
 			<div class="form-group" id="divgrade">
                 <label for="inputgrade" class="col-lg-2 control-label">등급</label>
                   <div class="col-lg-10">
-                     <input type="text" class="form-control" id="grade" data-rule-required="true"  maxlength="30" value="${member.id}" readonly="readonly">
+                     <input type="text" class="form-control" id="grade" data-rule-required="true"  maxlength="30" value="${role.grade}" readonly="readonly">
                    </div>
              </div>
  	

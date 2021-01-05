@@ -23,5 +23,9 @@ public interface MemberMapper {
 	
 	public MemberFileVO getFile(MemberFileVO memberFileVO)throws Exception;
 	
+	public int setGradeInsert(MemberRoleVO memberRoleVO) throws Exception;
+	
+	public MemberRoleVO getGrade(MemberRoleVO memberRoleVO) throws Exception;
+	
 	
 }
