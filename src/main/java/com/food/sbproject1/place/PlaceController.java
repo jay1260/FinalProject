@@ -141,4 +141,14 @@ public class PlaceController {
 		return mv;
 	}
 	
+
+	@GetMapping("jusoPopup")
+	public void getJusoPopup() throws Exception{
+	}
+	
+	@PostMapping("jusoPopup")
+	public void getJusoPopup2() throws Exception{
+	}
+	
+	
 }

@@ -458,7 +458,7 @@
 					<tbody>
 						<tr class="select_info">
 							<th>주소</th>
-							<td>${one.address}</td>
+							<td>${one.roadFullAddr}</td>
 						</tr>
 						<tr class="select_info">
 							<th>전화번호</th>

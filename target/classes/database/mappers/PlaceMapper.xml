@@ -8,7 +8,7 @@
 	<!-- slq 조각 -->
 	<sql id="getPlaceList">
 		menu like concat('%', #{search}, '%') or
-		address like concat('%', #{search}, '%') or
+		roadFullAddr like concat('%', #{search}, '%') or
 		restaurant like concat('%', #{search}, '%')
 	</sql>
 	
@@ -19,7 +19,7 @@
 	
 	<!-- 글 수정 -->
 	<update id="setUpdate" parameterType="PlaceVO">
-		update place set title=#{title}, contents=#{contents}, address=#{address}, phone=#{phone},
+		update place set title=#{title}, contents=#{contents}, roadFullAddr=#{roadFullAddr}, phone=#{phone},
 		menu=#{menu}, openTime=#{openTime}, closeTime=#{closeTime}, price=#{price}, rest=#{rest}
 		where num = #{num}
 	</update>
@@ -41,8 +41,8 @@
 	
 	<!-- 맛집 추천 작성 -->
 	<insert id="setInsert" parameterType="PlaceVO" useGeneratedKeys="true" keyProperty="num">
-		insert into place(num, title, writer, contents, regDate, hit, menu, restaurant, address, phone, openTime, closeTime, price, rest)
-		values(#{num}, #{title}, #{writer}, #{contents}, sysdate(), 0, #{menu}, #{restaurant}, #{address}, #{phone}, #{openTime}, #{closeTime}, #{price}, #{rest})
+		insert into place(num, title, writer, contents, regDate, hit, menu, restaurant, roadFullAddr, phone, openTime, closeTime, price, rest)
+		values(#{num}, #{title}, #{writer}, #{contents}, sysdate(), 0, #{menu}, #{restaurant}, #{roadFullAddr}, #{phone}, #{openTime}, #{closeTime}, #{price}, #{rest})
 	</insert>
 	
 	<insert id="setInsertFile" parameterType="PlaceFileVO">
@@ -65,7 +65,7 @@
 		<result property="hit" column="hit"/>
 		<result property="menu" column="menu"/>
 		<result property="restaurant" column="restaurant"/>
-		<result property="address" column="address"/>
+		<result property="roadFullAddr" column="roadFullAddr"/>
 		<result property="phone" column="phone"/>
 		<result property="openTime" column="openTime"/>
 		<result property="closeTime" column="closeTime"/>
@@ -93,7 +93,7 @@
 		<result property="hit" column="hit"/>
 		<result property="menu" column="menu"/>
 		<result property="restaurant" column="restaurant"/>
-		<result property="address" column="address"/>
+		<result property="roadFullAddr" column="roadFullAddr"/>
 		<result property="phone" column="phone"/>
 		<result property="openTime" column="openTime"/>
 		<result property="closeTime" column="closeTime"/>

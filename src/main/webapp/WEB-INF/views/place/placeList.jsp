@@ -256,7 +256,7 @@
 							</p>
 							<!-- 식당 주소 -->
 							<ul>
-								<li>${place.address}</li>
+								<li>${place.roadFullAddr}</li>
 							</ul>
 						</div>
 					</a>

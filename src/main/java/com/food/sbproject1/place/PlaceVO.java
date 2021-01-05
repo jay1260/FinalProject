@@ -16,7 +16,7 @@ public class PlaceVO {
 	private long hit;			// 조회수
 	private String menu;		// 메뉴이름
 	private String restaurant;	// 식당이름	
-	private String address;		// 식당주소
+	private String roadFullAddr; // 식당 도로명 주소
 	private String phone;		// 식당번호
 	private String openTime;	// 오픈시간
 	private String closeTime;	// 마감시간
@@ -26,5 +26,6 @@ public class PlaceVO {
 	private PlaceFileVO placeFileVO;
 	
 	private List<PlaceFilesVO> placeFilesVO;
+	
 		
 }

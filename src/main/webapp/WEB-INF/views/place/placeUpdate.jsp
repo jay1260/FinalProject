@@ -68,8 +68,8 @@
 			<input type="text" class="form-control" id="writer" name="writer" value="${up.writer}" readonly="readonly">
 		</div>
 		<div class="form-group col-xs-12 col-md-10">
-			<label for="address">식당 주소</label>
-			<input type="text" class="form-control" id="address" name="address" value="${up.address}">
+			<label for="roadFullAddr">식당 주소</label>
+			<input type="text" class="form-control" id="roadFullAddr" name="roadFullAddr" value="${up.roadFullAddr}">
 		</div>
 		<div class="form-group col-xs-12 col-md-10">
 			<label for="phone">식당 번호</label>
