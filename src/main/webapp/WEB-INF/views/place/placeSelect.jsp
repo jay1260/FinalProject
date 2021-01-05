@@ -228,7 +228,7 @@
 	/* 리뷰 작성 부분*/
 	.place_review{
 		position: relative;
-		margin-bottom: 50px;
+		margin-bottom: 5px;
 	}
 	.store_info h4{
 		margin-top: 24px;
@@ -394,7 +394,9 @@
 	}
 	.btn_sMore span{
 		padding-right: 30px;
+		font-size:18px;
 		display: inline-block;
+		color:#ff7400;
 		background: url("../image/icon/bg_btn_arr04.png") no-repeat right center;
 	}
 	/* 더보기 */
