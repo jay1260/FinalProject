@@ -233,7 +233,6 @@
 		<c:forEach items="${list}" var="place">
 			<li>
 				<div class="cont">
-					${place.num}
 					<a href="./placeSelect?num=${place.num}">
 						<span class="img">
 							<img alt="" src="../upload/place/${place.placeFileVO.fileName}" width="560" height="448">
@@ -252,7 +251,7 @@
 								${place.openTime} ~ ${place.closeTime}
 								<br>
 								<!-- 메뉴 -->
-								대표메뉴 ☞ ${place.menu}
+								대표메뉴 "${place.menu}"
 							</p>
 							<!-- 식당 주소 -->
 							<ul>
