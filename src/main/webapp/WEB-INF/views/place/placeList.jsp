@@ -87,7 +87,6 @@
 		padding-left: 7px;
 	}
 	.listTy1 ul{
-		overflow: hidden;
 		display: table;
 		width: 100%;
 		table-layout: fixed;
@@ -251,7 +250,7 @@
 								${place.openTime} ~ ${place.closeTime}
 								<br>
 								<!-- 메뉴 -->
-								대표메뉴 "${place.menu}"
+								대표메뉴 → ${place.menu}
 							</p>
 							<!-- 식당 주소 -->
 							<ul>
