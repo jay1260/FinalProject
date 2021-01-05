@@ -48,6 +48,8 @@
 	
 	.files{
 		margin-bottom: 4px;
+		border: none;
+
 	}
 	
 	.addrBtn{
@@ -57,6 +59,10 @@
 		border: none;
 		font-weight: 700;
 		color: red;
+	}
+	
+	.file-div{
+		margin-left: 23%;
 	}
 	
 </style>
@@ -127,14 +133,15 @@
 			<label for="contents">추천 이유</label>
 			<textarea class="form-control" rows="5" id="contents" name="contents"></textarea>
 		</div>
-		<div class="form-group col-xs-12 col-md-4">
-			<label for="photo" style="margin-left: 60px;">5장의 사진을 첨부해주세요.</label>
+		<div class="form-group col-sm-6 file-div" style="text-align: center;" >
+			<label for="files" style="margin-bottom: 10px;">5장의 사진을 첨부해주세요.</label>
 			<input type="file" class="form-control files" name="files">
 			<input type="file" class="form-control files" name="files">
 			<input type="file" class="form-control files" name="files">
 			<input type="file" class="form-control files" name="files">
 			<input type="file" class="form-control files" name="files">
 		</div>
+		
 
 		<div class="btn-css">		
 			<input type="submit" class="col-sm-9 col-md-6 col-lg-8 btn btn-warning" value="등록하기" id="insertBtn">

@@ -246,11 +246,11 @@
 							</div>
 							<!-- 식당 정보 -->
 							<p>
-								<!-- 영업시간 -->
-								${place.openTime} ~ ${place.closeTime}
-								<br>
 								<!-- 메뉴 -->
 								대표메뉴 → ${place.menu}
+								<br>
+								<!-- 영업시간 -->
+								${place.openTime} ~ ${place.closeTime}
 							</p>
 							<!-- 식당 주소 -->
 							<ul>
