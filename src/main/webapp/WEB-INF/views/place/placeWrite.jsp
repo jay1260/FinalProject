@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>    
 <!DOCTYPE html>
 <html>
 <head>
@@ -58,13 +59,17 @@
 		padding: 0 15px;
 		border: none;
 		font-weight: 700;
-		color: red;
+		color: blue;
 	}
 	
 	.file-div{
 		margin-left: 23%;
 	}
 	
+	.error{
+		font-weight:bold;
+		color: red;
+	}
 </style>
 </head>
 <body>
@@ -77,19 +82,20 @@
 </header>		
 <!-- 글쓰기 폼 -->
 <div class="container">
-	<form action="./placeWrite" method="post" enctype="multipart/form-data" name="form" id="form">
+	<form:form modelAttribute="placeVO" enctype="multipart/form-data" name="form" id="form">
 		<div class="form-group col-xs-12 col-md-4">
 			<label for="photo">대표사진을 첨부해주세요</label>
-			<input type="file" class="form-control" id="photo" name="photo">
+			<input type="file" class="form-control" id="photo" name="photo" accept="image/*">
 		</div>
 		<div class="form-group col-xs-12 col-md-10">
 			<label for="title">제목</label>
 			<span style="float: right;">40</span>
 			<span style="float: right;">/</span>
 			<span style="float: right;" id="keyValue">0</span>
-			<input type="text" class="form-control" id="title" name="title" placeholder="제목은 40글자 이내로 작성해주세요.">
+			<form:input path="title" class="form-control"/>
+			<form:errors path="title" cssClass="error"></form:errors>
 		</div>
-		<div class="form-group col-xs-12 col-md-10">
+		<div class="form-group col-xs-12 col-md-10" hidden="hidden">
 			<label for="writer">작성자</label>
 			<input type="text" class="form-control" id="writer" name="writer">
 		</div>
@@ -98,60 +104,100 @@
 			<input type="button" onClick="goPopup();" value="+도로명 주소 찾기" class="addrBtn">
 			<div id="list"></div>
 			<div id="callBackDiv">	
-			<input type="text" class="form-control" id="roadFullAddr" name="roadFullAddr" readonly="readonly">
+			<form:input path="roadFullAddr" class="form-control" name="roadFullAddr" id="roadFullAddr" readonly="true"/>
+			<form:errors path="roadFullAddr" cssClass="error"></form:errors>
 		</div>
 		</div>
 		<div class="form-group col-xs-12 col-md-10">
 			<label for="phone">식당 번호</label>
-			<input type="text" class="form-control" id="phone" name="phone">
+			<form:input path="phone" class="form-control"/>
+			<form:errors path="phone" cssClass="error"></form:errors>
 		</div>
 		<div class="form-group col-sm-6">
 			<label for="메뉴">대표 메뉴</label>
-			<input type="text" class="form-control" id="menu" name="menu">
+			<form:input path="menu" class="form-control"/>
+			<form:errors path="menu" cssClass="error"></form:errors>
 		</div>
 		<div class="form-group col-sm-6">
 			<label for="restaurant">식당 상호</label>
-			<input type="text" class="form-control" id="restaurant" name="restaurant">
+			<form:input path="restaurant" class="form-control"/>
+			<form:errors path="restaurant" cssClass="error"></form:errors>
 		</div>
 		<div class="form-group col-sm-6">
 			<label for="time">오픈 시간</label>
-			<input type="time" class="form-control" id="openTime" name="openTime">
+			<form:input path="openTime" class="form-control"/>
+			<form:errors path="openTime" cssClass="error"></form:errors>
 		</div>
 		<div class="form-group col-sm-6">
 			<label for="time">마감 시간</label>
-			<input type="time" class="form-control" id="closeTime" name="closeTime">
+			<form:input path="closeTime" class="form-control"/>
+			<form:errors path="closeTime" cssClass="error"></form:errors>
 		</div>
 		<div class="form-group col-sm-6">
 			<label for="price">가격대</label>
-			<input type="text" class="form-control" id="price" name="price">
+			<form:input path="price" class="form-control"/>
+			<form:errors path="price" cssClass="error"></form:errors>
 		</div>
 		<div class="form-group col-sm-6">
 			<label for="rest">휴무일</label>
-			<input type="text" class="form-control" id="rest" name="rest">
+			<form:input path="rest" class="form-control"/>
 		</div>
 		<div class="form-group col-xs-12 col-md-12">
 			<label for="contents">추천 이유</label>
-			<textarea class="form-control" rows="5" id="contents" name="contents"></textarea>
+			<form:textarea path="contents" id="contents"/>
 		</div>
 		<div class="form-group col-sm-6 file-div" style="text-align: center;" >
 			<label for="files" style="margin-bottom: 10px;">5장의 사진을 첨부해주세요.</label>
-			<input type="file" class="form-control files" name="files">
-			<input type="file" class="form-control files" name="files">
-			<input type="file" class="form-control files" name="files">
-			<input type="file" class="form-control files" name="files">
-			<input type="file" class="form-control files" name="files">
+			<input type="file" class="form-control files" id="myFile" name="files" accept="image/*" multiple size="5" onchange="myFunction()">
 		</div>
-		
-
+		<div class="form-group col-sm-6">
+			<p id="demo"></p>
+		</div>
 		<div class="btn-css">		
 			<input type="submit" class="col-sm-9 col-md-6 col-lg-8 btn btn-warning" value="등록하기" id="insertBtn">
 		</div>
-	</form>
+	</form:form>	
 </div>
 <c:import url="../template/footer.jsp"></c:import>
 
 </body>
 <script type="text/javascript">
+
+function myFunction(){
+	  var x = document.getElementById("myFile");
+	  var txt = "";
+
+	  if ('files' in x) {
+	    if (x.files.length > 5) {
+			alert("파일은 5개까지만 첨부해주세요!!");
+			x.value="";
+			return;
+	    }else{
+	    	txt += "<br><strong>" + "선택하신 파일정보입니다.</strong><br>";
+		    for (var i = 0; i < x.files.length; i++) {
+	        txt += "<br><strong>" + (i+1) + ".file </strong><br>";
+	        var file = x.files[i];
+	        if ('name' in file) {
+	          txt += "name: " + file.name + "<br>";
+	        }
+	      }
+	    }
+	  } 
+	  else {
+	    if (x.value == "") {
+	      txt += "Select one or more files.";
+	    } else {
+	      txt += "The files property is not supported by your browser!";
+	      txt  += "<br>The path of the selected file: " + x.value; // If the browser does not support the files property, it will return the path of the selected file instead. 
+	    }
+	  }
+	  document.getElementById("demo").innerHTML = txt;
+	}
+
+	$("#insertBtn").click(function(){
+		var fileCheck = $(".files").val();
+		alert(fileCheck);
+	});
 
 	$("#title").keyup(function(){
 		var titleLength = $(this).val().length;
