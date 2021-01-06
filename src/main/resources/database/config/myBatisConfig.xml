@@ -11,6 +11,7 @@
 		<typeAlias type="com.food.sbproject1.member.MemberVO" alias="MemberVO"/>
 		<typeAlias type="com.food.sbproject1.member.MemberFileVO" alias="MemberFileVO"/>
 		<typeAlias type="com.food.sbproject1.member.MemberRoleVO" alias="MemberRoleVO"/>
+		<typeAlias type="java.util.List" alias="List"/>
 		
 		<typeAlias type="com.food.sbproject1.place.PlaceFileVO" alias="PlaceFileVO"/>
 		

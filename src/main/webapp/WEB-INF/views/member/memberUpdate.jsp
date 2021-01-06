@@ -66,7 +66,7 @@
  		
  	</div>
  	<div class="revise">
- 		<form action="./memberUpdate?id=${member.id}" class ="mem" method="post" >
+ 		<form action="./memberUpdate" class ="mem" method="post" name="frm">
  	
  		<table>
 			<tr>
@@ -78,21 +78,21 @@
 			<div class="form-group" id="divgrade">
                 <label for="inputgrade" class="col-lg-2 control-label">등급</label>
                   <div class="col-lg-10">
-                     <input type="text" class="form-control" id="grade" data-rule-required="true"  maxlength="30" value="${role.grade}" readonly="readonly">
+                     <input type="text" class="form-control" id="grade" data-rule-required="true"  maxlength="30" value="${role.grade}" readonly="readonly" name="grade">
                    </div>
              </div>
  	
 	         <div class="form-group" id="divId">
                 <label for="inputId" class="col-lg-2 control-label">아이디</label>
                   <div class="col-lg-10">
-                     <input type="text" class="form-control" id="id" data-rule-required="true"  maxlength="30" readonly="readonly" value="${member.id}">
+                     <input type="text" class="form-control" id="id" data-rule-required="true"  maxlength="30" readonly="readonly" value="${members.id}"name="id">
                    </div>
              </div>
     
              <div class="form-group" id="divPassword">
                 <label for="inputPassword" class="col-lg-2 control-label">패스워드</label>
                   <div class="col-lg-10">
-                      <input type="password" class="form-control" id="password" name="excludeHangul" data-rule-required="true" placeholder="패스워드" maxlength="30" value="${member.pw}">
+                      <input type="password" class="form-control" id="password" name="excludeHangul" data-rule-required="true" placeholder="패스워드" maxlength="30" value="${members.pw}" name="pw">
                   </div>
              </div>
     
@@ -106,20 +106,20 @@
              <div class="form-group" id="divName">
                  <label for="inputName" class="col-lg-2 control-label">이름</label>
                   <div class="col-lg-10">
-                     <input type="text" class="form-control " id="name" data-rule-required="true" placeholder="한글만 입력 가능합니다." maxlength="15" value="${member.name}" readonly="readonly">
+                     <input type="text" class="form-control " id="name" data-rule-required="true" placeholder="한글만 입력 가능합니다." maxlength="15" value="${members.name}" readonly="readonly" name="name">
                   </div>
              </div>
     
              <div class="form-group" id="age">
                  <label for="age" class="col-lg-2 control-label">나이</label>
                   <div class="col-lg-10">
-                     <input type="text" class="form-control" id="age" data-rule-required="true" placeholder="나이입력" maxlength="15" value="${member.age}">  
+                     <input type="text" class="form-control" id="age" data-rule-required="true" placeholder="나이입력" maxlength="15" value="${members.age}" name="age">  
                   </div>
     
              <div class="form-group" id="email">
                  <label for="email" class="col-lg-2 control-label">이메일</label>
                   <div class="col-lg-10">
-                     <input type="text" class="form-control" id="email" data-rule-required="true" placeholder="이메일 입력" maxlength="15" value = "${member.email}">
+                     <input type="text" class="form-control" id="email" data-rule-required="true" placeholder="이메일 입력" maxlength="15" value = "${members.email}" name="email">
                   </div>
              </div>
     
@@ -136,4 +136,11 @@
  	
 <c:import url="../template/footer.jsp"></c:import>
 </body>
+<script type="text/javascript">
+	$("button#update").click(function(){
+		var id = $('input#age').val();
+		alert(id);
+		});
+	
+</script>
 </html>

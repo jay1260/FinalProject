@@ -28,7 +28,7 @@ class MemberMapperTest {
 		memberVO.setName("wr");
 		memberVO.setPw("1");
 		memberVO.setPw2("1");
-		memberVO.setId("cxz");
+		memberVO.setId("t3");
 		
 		int result=memberMapper.setMemberUpdate(memberVO);
 		
