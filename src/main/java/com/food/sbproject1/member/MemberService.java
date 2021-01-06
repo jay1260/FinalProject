@@ -14,10 +14,11 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.food.sbproject1.util.FileManager;
+import com.food.sbproject1.util.FilePathAppoint;
 import com.food.sbproject1.util.FilePathGenerator;
 
 @Service
-@Transactional(rollbackFor = Exception.class)
+
 public class MemberService  {
 
 	@Autowired
@@ -26,12 +27,16 @@ public class MemberService  {
 	@Autowired
 	private FilePathGenerator filePathGenerator;
 	
+	@Autowired
+	private FilePathAppoint filePathAppoint;
+	
 	@Value("${member.filePath}")
 	private String filePath;
 	
 	@Autowired
 	private FileManager fileManager;
 	
+	// 회원가입시 에러 확인
 	public boolean getMemberError(MemberVO memberVO, BindingResult bindingResult) throws Exception{
 		boolean result = false;
 		
@@ -51,47 +56,83 @@ public class MemberService  {
 		return result;
 	}
 	
+	// 로그인
 	public MemberVO getMemberLogin(MemberVO memberVO)throws Exception{
+		
+		System.out.println("id: "+memberVO.getId());
+		System.out.println("name:"+memberVO.getName());
+		System.out.println("age: "+memberVO.getAge());
+		System.out.println("email: "+memberVO.getEmail());
+	
+		System.out.println("===========================");
 		
 		return memberMapper.getMemberLogin(memberVO);
 	}
 	
-	public int setMemberJoin(MemberVO memberVO, MultipartFile multipartFile)throws Exception{
+	// 회원가입
+	public int setMemberJoin(MemberVO memberVO, MultipartFile memberPhoto, MemberRoleVO memberRoleVO)throws Exception{
 		
-		int result=memberMapper.setMemberJoin(memberVO);
+		 int result= memberMapper.setMemberJoin(memberVO);
+		 	
 		memberVO=memberMapper.getMemberId(memberVO);
 		
-		File file = filePathGenerator.getResourceLoader(this.filePath);
-			
-			String fileName= fileManager.saveFileCopy(multipartFile, file);
-			
-			MemberFileVO memberFileVO = new MemberFileVO();
-			memberFileVO.setFnum(memberFileVO.getFnum());
-			memberFileVO.setFileName(fileName);
-			memberFileVO.setOriName(multipartFile.getOriginalFilename());
-			memberFileVO.setId(memberVO.getId());
-					
-			result = memberMapper.setMemberFileInsert(memberFileVO);
-	
+		File file = filePathAppoint.getUseResoureLoader(this.filePath);
+		
+		  if(memberPhoto.getSize()!=0) {
+			  String fileName=fileManager.saveFileCopy(memberPhoto, file); 
+			  System.out.println(fileName);
+		  
+			  MemberFileVO memberFileVO = new MemberFileVO();
+			  memberFileVO.setFileName(fileName);
+			  memberFileVO.setOriName(memberPhoto.getOriginalFilename());
+			  memberFileVO.setId(memberVO.getId());
+		  
+			  memberRoleVO.setId(memberVO.getId());
+			  memberRoleVO.setGrade("3등급");
+		  
+			  result = memberMapper.setGradeInsert(memberRoleVO);
+		  
+			  System.out.println(memberRoleVO);
+		  
+			  result = memberMapper.setMemberFileInsert(memberFileVO); 
+
+				System.out.println("id: "+memberVO.getId());
+				System.out.println("name:"+memberVO.getName());
+				System.out.println("age: "+memberVO.getAge());
+				System.out.println("email: "+memberVO.getEmail());
+				System.out.println("file: "+memberFileVO.getOriName());
+				System.out.println("===========================");
+		  
+		  }
+		 	
 		return result;
 	}
+	
 	public MemberFileVO getFile(MemberFileVO memberFileVO)throws Exception{
 		return memberMapper.getFile(memberFileVO);
 	}
 	
-	public MemberVO getMemberPage(MemberVO memberVO)throws Exception{
-		return memberMapper.getMemberPage(memberVO);
+	// 회원정보
+	public MemberVO getOne(MemberVO memberVO) throws Exception{
+		return memberMapper.getOne(memberVO);
+	}
+	//정보수정
+	public int setMemberUpdate(MemberVO memberVO) throws Exception{
+		return memberMapper.setMemberUpdate(memberVO);
 	}
 	
+	//회원 탈퇴
 	public int setMemberDelete(MemberVO memberVO) throws Exception{
 		return memberMapper.setMemberDelete(memberVO);
 	}
+	//등급
+	public MemberRoleVO getGrade(MemberRoleVO memberRoleVO) throws Exception{
+		return memberMapper.getGrade(memberRoleVO);
+	}
 	
-	public int setMemberPage(MemberVO memberVO)throws Exception{
-		
-		int result = memberMapper.setMemberPage(memberVO);
-		
-		return result;
+	//등급추가	
+	public int setGradeInsert(MemberRoleVO memberRoleVO) throws Exception{
+		return memberMapper.setGradeInsert(memberRoleVO);
 	}
 	
 }

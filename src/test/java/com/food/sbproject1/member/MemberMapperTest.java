@@ -11,17 +11,26 @@ class MemberMapperTest {
 	@Autowired
 	private MemberMapper memberMapper;
 	
+	//@Test
+	void setDeleteTest()throws Exception{
+		MemberVO memberVO = new MemberVO();
+		memberVO.setId("test id1");
+		int result = memberMapper.setMemberDelete(memberVO);
+		
+		assertNotEquals(0, result);
+	}
+	
 	@Test
 	void setUpdateTest()throws Exception{
 		MemberVO memberVO = new MemberVO();
 		memberVO.setEmail("qwe@naver.com");
 		memberVO.setAge(15);
 		memberVO.setName("wr");
-		memberVO.setPw("123");
-		memberVO.setPw2("123");
-		memberVO.setId("kwr");
+		memberVO.setPw("1");
+		memberVO.setPw2("1");
+		memberVO.setId("t3");
 		
-		int result=memberMapper.setMemberPage(memberVO);
+		int result=memberMapper.setMemberUpdate(memberVO);
 		
 		assertNotEquals(0, result);
 	}
@@ -30,7 +39,6 @@ class MemberMapperTest {
 	void setInsertFileTest()throws Exception{
 		MemberFileVO memberFileVO = new MemberFileVO();
 		memberFileVO.setId("t2");
-		memberFileVO.setFnum(1);
 		memberFileVO.setFileName("testfileName");
 		memberFileVO.setOriName("testoriName");
 		int result = memberMapper.setMemberFileInsert(memberFileVO);

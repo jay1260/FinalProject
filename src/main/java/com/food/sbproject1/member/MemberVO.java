@@ -30,5 +30,5 @@ public class MemberVO {
 
 	private MemberFileVO memberFileVO;
 	
-	//private List<MemberRoleVO> role;
+	private List<MemberRoleVO> role;
 }

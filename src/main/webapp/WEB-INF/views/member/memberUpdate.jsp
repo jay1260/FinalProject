@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>No.1 맛집탐험</title>
+<title>Insert title here</title>
 <c:import url="../template/bootStrap.jsp"></c:import>
 <style type="text/css">
 .container{
@@ -49,15 +49,11 @@
 	margin-bottom: 20px;
 }
 
-
 </style>
 </head>
-
 <body>
 <c:import url="../template/header.jsp"></c:import>
-	
  <div class="container">
- 
  	<div class="page">
  		<table>
 		<tr>
@@ -66,14 +62,17 @@
 		</tr>
 		</table>
  	</div>
- 	
+ 	<div class="my-photo"> 		 		
+ 		
+ 	</div>
  	<div class="revise">
- 
+ 		<form action="./memberUpdate" class ="mem" method="post" name="frm">
+ 	
  		<table>
 			<tr>
 				<td><label for="inputphoto" class="col-lg-2 control-label"id="label">사진</label></td>
 				<td><img alt="" class = "logo"src="../image/member/unnamed.png"></td>
-				
+				<td><input type="file" class="photo-update"></td>
 			</tr>
 		</table>
 			<div class="form-group" id="divgrade">
@@ -86,50 +85,62 @@
 	         <div class="form-group" id="divId">
                 <label for="inputId" class="col-lg-2 control-label">아이디</label>
                   <div class="col-lg-10">
-                     <input type="text" class="form-control" id="id" data-rule-required="true"  maxlength="30" readonly="readonly" value="${members.id}">
+                     <input type="text" class="form-control" id="id" data-rule-required="true"  maxlength="30" readonly="readonly" value="${members.id}"name="id">
                    </div>
+             </div>
+    
+             <div class="form-group" id="divPassword">
+                <label for="inputPassword" class="col-lg-2 control-label">패스워드</label>
+                  <div class="col-lg-10">
+                      <input type="password" class="form-control" id="password" name="excludeHangul" data-rule-required="true" placeholder="패스워드" maxlength="30" value="${members.pw}" name="pw">
+                  </div>
+             </div>
+    
+             <div class="form-group" id="divPasswordCheck">
+                <label for="inputPasswordCheck" class="col-lg-2 control-label">패스워드 확인</label>
+                  <div class="col-lg-10">
+                      <input type="password" class="form-control" id="passwordCheck" data-rule-required="true" placeholder="패스워드 확인" maxlength="30" readonly="readonly">
+                  </div>
              </div>
     
              <div class="form-group" id="divName">
                  <label for="inputName" class="col-lg-2 control-label">이름</label>
                   <div class="col-lg-10">
-                     <input type="text" class="form-control " id="name" data-rule-required="true" placeholder="한글만 입력 가능합니다." maxlength="15" value="${members.name}" readonly="readonly">
+                     <input type="text" class="form-control " id="name" data-rule-required="true" placeholder="한글만 입력 가능합니다." maxlength="15" value="${members.name}" readonly="readonly" name="name">
                   </div>
              </div>
     
              <div class="form-group" id="age">
                  <label for="age" class="col-lg-2 control-label">나이</label>
                   <div class="col-lg-10">
-                     <input type="text" class="form-control" id="age" data-rule-required="true" placeholder="나이입력" maxlength="15" value="${members.age}" readonly="readonly">  
+                     <input type="text" class="form-control" id="age" data-rule-required="true" placeholder="나이입력" maxlength="15" value="${members.age}" name="age">  
                   </div>
     
              <div class="form-group" id="email">
                  <label for="email" class="col-lg-2 control-label">이메일</label>
                   <div class="col-lg-10">
-                     <input type="text" class="form-control" id="email" data-rule-required="true" placeholder="이메일 입력" maxlength="15" value = "${members.email}" readonly="readonly">
+                     <input type="text" class="form-control" id="email" data-rule-required="true" placeholder="이메일 입력" maxlength="15" value = "${members.email}" name="email">
                   </div>
              </div>
     
              <div class="update">
-					<button type="submit" class ="btn btn-warning" id="update" title="${members.id}">수정하러가기</button>
-					<button type="submit" class ="btn btn-danger" id="delete" title="${members.id}">탈퇴하기</button>   
+					<button type="submit" class ="btn btn-warning" id="update">수정하기</button>
+				   
              </div>
          
              </div>
- 	</div>
+		</form>
 
-</div>
+ 	</div>
+ </div>
  	
 <c:import url="../template/footer.jsp"></c:import>
 </body>
 <script type="text/javascript">
- $("#update").click(function(){
-	var id = $(this).attr("title");
-	location.href="./memberUpdate";
-}); 
-$("#delete").click(function(){
-	var id = $(this).attr("title");
-	location.href="./memberDelete?id="+id;
-});
+	$("button#update").click(function(){
+		var id = $('input#age').val();
+		alert(id);
+		});
+	
 </script>
 </html>

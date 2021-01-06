@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
  <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
  <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+ <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -79,27 +80,34 @@
       <label for="id">아이디</label>
       <!-- path:parameter Name -->
       <form:input type="text" path="id" class="form-control"/>
-      <form:errors path="id" cssClass="error"></form:errors>
+      <form:errors path="id" cssClass="error"></form:errors> 
     </div>
    
    <div class="form-group">
       <label for="password">비밀번호</label>
       <form:input  type="password" path="pw" class="form-control"/>
       <form:errors path="pw" cssClass="error"/>
-    </div>
-    
+   </div>
+   
     
    <div class="form-group">
       <label for="password">비밀번호확인</label>
       <form:input type="password" path="pw2" class="form-control"/>
       <form:errors path="pw2" cssClass="error"/>
-    </div>
+   </div>
 
 	<div class="form-group">
 	  <label for="name">이름</label>
       <!-- path:parameter Name -->
       <form:input type="text" path="name" class="form-control"/>
       <form:errors path="name" cssClass="error"/>
+    </div>
+    
+   	<div class="form-group">
+	  <label for="age">나이</label>
+      <!-- path:parameter Name -->
+      <form:input type="text" path="age" class="form-control"/>
+      <form:errors path="age" cssClass="error"/>
     </div>
     
     <div class="form-group">
@@ -111,7 +119,7 @@
    
     <div class="form-group">
 	  <label for="photo">본인사진</label>
-      <input type="file" class="form-control">
+      <input type="file" class="form-control"name="memberPhoto">
     </div>
     
     <button type="submit" class="btn btn-primary" id="reg">회원가입</button>

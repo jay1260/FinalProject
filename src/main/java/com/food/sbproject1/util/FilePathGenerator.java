@@ -17,6 +17,7 @@ public class FilePathGenerator {
 		String path = "classpath:/static/";
 		
 		File file = new File(resourceLoader.getResource(path).getFile(), filePath);
+		System.out.println(file.getAbsolutePath());
 		
 		if(!file.exists()) {
 			file.mkdir();			
