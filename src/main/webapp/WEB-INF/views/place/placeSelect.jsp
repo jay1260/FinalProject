@@ -399,6 +399,17 @@
 		color:#ff7400;
 		background: url("../image/icon/bg_btn_arr04.png") no-repeat right center;
 	}
+	.review-a{
+		color: #ff7400; 
+		font-size: 20px;
+	}
+	.review-a:hover, .review-a:active{
+		text-decoration: none;
+		color:#ff7400;
+		opacity: 0.6;
+		font-size: 22px;
+	}
+
 	/* 더보기 */
 </style>
 </head>
@@ -433,7 +444,7 @@
 				<header>
 					<div class=restaurant_title_wrap>
 						<span class="title">
-							<h1 class="restaurant_name">${one.restaurant}</h1>
+							<span class="restaurant_name">${one.restaurant}</span>
 							<!-- 별점 부분 -->
 							<strong class="rate-point">
 								<c:if test="${avg gt 0.0}">
@@ -482,6 +493,10 @@
 							<th style="vertical-align: top;">영업시간</th>
 							<td>${one.openTime} - ${one.closeTime}</td>
 						</tr>
+						<tr>
+							<th>가게번호</th>
+							<td>${one.phone}</td>
+						</tr>
 					</tbody>
 				</table>
 			</section>
@@ -525,6 +540,12 @@
 			<div class="tabs01">
 				<div></div>
 			</div>
+			<c:if test="${rCount eq 0}">
+				<h4 style="text-align: center; margin-bottom: 24px;" >
+					<a href="../review/reviewWrite?num=${one.num}" class="review-a">솔직한 평가를 기다립니다.</a>
+					<span style="display: block; margin-top: 15px; font-size: 14px;">↑ 리뷰쓰러 가기 ↑</span>
+				</h4>
+			</c:if>
 			
 			<div class="rList" id="listResult">
 				<!-- 리뷰 정보 확인 -->
