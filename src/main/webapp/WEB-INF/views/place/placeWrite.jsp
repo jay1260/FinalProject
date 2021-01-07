@@ -8,9 +8,6 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <c:import url="../template/bootStrap.jsp"></c:import>
-<!-- include summernote css/js -->
-<link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
-<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
 <style type="text/css">
 	.basic-info-list{
 		border-bottom: 1px solid #dbdbdb;
@@ -38,7 +35,7 @@
 	}
 	#insertBtn{
 		width:40%;
-		margin-top:40px;
+		margin-top:20px;
 		margin-left: 30%;
 		margin-right: 30%;
 		border: none;
@@ -70,6 +67,7 @@
 		font-weight:bold;
 		color: red;
 	}
+
 </style>
 </head>
 <body>
@@ -85,7 +83,7 @@
 	<form:form modelAttribute="placeVO" enctype="multipart/form-data" name="form" id="form">
 		<div class="form-group col-xs-12 col-md-4">
 			<label for="photo">대표사진을 첨부해주세요</label>
-			<input type="file" class="form-control" id="photo" name="photo" accept="image/*">
+			<input type="file" class="form-control" id="photo" name="photo" accept="image/*" required="required">
 		</div>
 		<div class="form-group col-xs-12 col-md-10">
 			<label for="title">제목</label>
@@ -109,7 +107,7 @@
 		</div>
 		</div>
 		<div class="form-group col-xs-12 col-md-10">
-			<label for="phone">식당 번호</label>
+			<label for="phone">식당 번호 → ex : 02-123-1234</label>
 			<form:input path="phone" class="form-control"/>
 			<form:errors path="phone" cssClass="error"></form:errors>
 		</div>
@@ -124,12 +122,12 @@
 			<form:errors path="restaurant" cssClass="error"></form:errors>
 		</div>
 		<div class="form-group col-sm-6">
-			<label for="time">오픈 시간</label>
+			<label for="time">오픈 시간 → ex : 13:00</label>
 			<form:input path="openTime" class="form-control"/>
 			<form:errors path="openTime" cssClass="error"></form:errors>
 		</div>
 		<div class="form-group col-sm-6">
-			<label for="time">마감 시간</label>
+			<label for="time">마감 시간 → ex : 22:00</label>
 			<form:input path="closeTime" class="form-control"/>
 			<form:errors path="closeTime" cssClass="error"></form:errors>
 		</div>
@@ -143,19 +141,21 @@
 			<form:input path="rest" class="form-control"/>
 		</div>
 		<div class="form-group col-xs-12 col-md-12">
-			<label for="contents">추천 이유</label>
-			<form:textarea path="contents" id="contents"/>
+			<label for="contents">추천하시는 이유가 있으면 작성해주세요.</label>
+			<form:textarea path="contents" id="contents" rows="15" class="form-control"/>
 		</div>
 		<div class="form-group col-sm-6 file-div" style="text-align: center;" >
-			<label for="files" style="margin-bottom: 10px;">5장의 사진을 첨부해주세요.</label>
-			<input type="file" class="form-control files" id="myFile" name="files" accept="image/*" multiple size="5" onchange="myFunction()">
+			<label for="files" style="margin-bottom: 10px; margin-top: 10px;">Ctrl, Shift를 이용하여 5장의 음식 사진을 첨부해주세요.</label>
+			<input type="file" class="form-control files" id="image" name="files" accept="image/*" multiple size="5" onchange="myFunction()" required="required">
 		</div>
-		<div class="form-group col-sm-6">
-			<p id="demo"></p>
+		<div class="form-group col-sm-6" style="width: 1100px;">
+			<p id="demo" style="text-align: center;"></p>
+			<div id="image_container" style="width: 1100px;"></div>
 		</div>
 		<div class="btn-css">		
 			<input type="submit" class="col-sm-9 col-md-6 col-lg-8 btn btn-warning" value="등록하기" id="insertBtn">
 		</div>
+		<img alt="" src="" >
 	</form:form>	
 </div>
 <c:import url="../template/footer.jsp"></c:import>
@@ -163,41 +163,47 @@
 </body>
 <script type="text/javascript">
 
-function myFunction(){
-	  var x = document.getElementById("myFile");
-	  var txt = "";
+	function myFunction(){
+		var x = document.getElementById("image");
+		var txt = "";
 
-	  if ('files' in x) {
-	    if (x.files.length > 5) {
-			alert("파일은 5개까지만 첨부해주세요!!");
-			x.value="";
-			return;
-	    }else{
-	    	txt += "<br><strong>" + "선택하신 파일정보입니다.</strong><br>";
-		    for (var i = 0; i < x.files.length; i++) {
-	        txt += "<br><strong>" + (i+1) + ".file </strong><br>";
-	        var file = x.files[i];
-	        if ('name' in file) {
-	          txt += "name: " + file.name + "<br>";
-	        }
-	      }
-	    }
-	  } 
-	  else {
-	    if (x.value == "") {
-	      txt += "Select one or more files.";
-	    } else {
-	      txt += "The files property is not supported by your browser!";
-	      txt  += "<br>The path of the selected file: " + x.value; // If the browser does not support the files property, it will return the path of the selected file instead. 
-	    }
-	  }
-	  document.getElementById("demo").innerHTML = txt;
+		if ('files' in x) {
+			if (x.files.length != 5)  {
+				alert("5개의 파일을 첨부해주세요!!");
+				x.value="";
+				return;
+			}else{
+		    	txt += "<br><strong>" + "선택하신 파일정보입니다.</strong><br><br>";
+			    for (var i = 0; i < x.files.length; i++) {
+		        txt += "<strong>" + (i+1) + "번 파일 : </strong>";
+		        var file = x.files[i];
+		        if ('name' in file) {
+		          txt += file.name + "<br><br>";
+		        }
+			}
+		}
 	}
+		document.getElementById("demo").innerHTML = txt;
+	} 
 
-	$("#insertBtn").click(function(){
-		var fileCheck = $(".files").val();
-		alert(fileCheck);
-	});
+/*	function preveal(event) { 
+		var fileList = event.target.files;
+		for (var image of fileList) { 
+			
+			var reader = new FileReader(); 
+
+			reader.onload = function(event) {
+				var img = document.createElement("img"); 
+				img.setAttribute("src", event.target.result);
+				img.setAttribute("width", "200px;");
+				img.setAttribute("height", "200px;");
+				document.querySelector("div#image_container").appendChild(img); 
+			};
+			reader.readAsDataURL(image);
+		}
+	}
+*/	
+
 
 	$("#title").keyup(function(){
 		var titleLength = $(this).val().length;
@@ -206,11 +212,6 @@ function myFunction(){
 		if(titleLength>=40){
 			alert("최대 40글자");
 		}
-	});
-
-	$("#contents").summernote({
-		placeholder:'추천하시는 이유가 있으면 작성해주세요~',
-		height:300
 	});
 
 
