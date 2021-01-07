@@ -27,6 +27,9 @@ public interface PlaceMapper {
 	// 맛집 등록
 	public int setInsert(PlaceVO placeVO) throws Exception;
 	
+	// 조회수
+	public int setHitUp(PlaceVO placeVO) throws Exception;
+	
 	// 대표 사진 등록
 	public int setInsertFile(PlaceFileVO placeFileVO) throws Exception;
 	

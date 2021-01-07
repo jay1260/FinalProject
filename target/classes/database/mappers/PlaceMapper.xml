@@ -45,15 +45,22 @@
 		values(#{num}, #{title}, #{writer}, #{contents}, sysdate(), 0, #{menu}, #{restaurant}, #{roadFullAddr}, #{phone}, #{openTime}, #{closeTime}, #{price}, #{rest})
 	</insert>
 	
+	<!-- 대표 사진 -->
 	<insert id="setInsertFile" parameterType="PlaceFileVO">
 		insert into placeFile(num, fileName, oriName)
 		values(#{num}, #{fileName}, #{oriName})
 	</insert>
 	
+	<!-- 음식 사진들 -->
 	<insert id="setInsertFiles" parameterType="PlaceFilesVO">
 		insert into placeFiles(num, fileName, oriName)
 		values(#{num}, #{fileName}, #{oriName})
 	</insert>
+	
+	<!-- 조회수 -->
+	<update id="setHitUp" parameterType="PlaceVO">
+		update place set hit = #{hit}+1 where num = #{num}
+	</update>
 	
 	<!-- 대표 사진 첨부 -->
 	<resultMap type="PlaceVO" id="getPlaceResult">

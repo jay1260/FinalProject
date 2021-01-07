@@ -10,7 +10,7 @@
 <c:import url="../template/bootStrap.jsp"></c:import>
 <style type="text/css">
 	body{
-		font-size: .95em;
+		font-size: 14px;
 		font-family: 'Nanum Gothic', sans-serif;
 		font-weight: 400;
 	}
@@ -118,6 +118,7 @@
 		position: relative;
 		padding-bottom: 10px;
 		min-height: 74px;
+		border-bottom: 1px solid #e9e9e9;
 	}
 	.restaurant-detail>header .title{
 		display: block;
@@ -135,7 +136,8 @@
 		display: inline-block;
 		max-width: 100%;
 		word-break:break-all;
-		font-size: 34px;
+		font-size: 24px;
+		font-weight: bold;
 	}
 
 	.restaurant-detail>header .title>.rate-point{
@@ -166,6 +168,16 @@
 		line-height: 1.3;
 		color: #9B9B9B;
 	}
+	.restaurant-detail>header .status{
+		font-size: 0.688rem;
+		color:#9b9b9b;
+		margin-left: 10px;
+	}
+	.restaurant-detail>header .status .hit{
+		background: url("../image/icon/bg_ico_s_click.png") no-repeat 0 center;
+		background-size: 14px 9px;
+		padding-left: 22px;
+	}
 	
 	/* 상세정보 */
 	.restaurant-detail .info{
@@ -177,7 +189,6 @@
 		width: 110px;
 		color: rgba(79,79,79,0.6);
 		line-height: 1.7;
-		font-size:1.5em;
 		text-align: left;
 		vertical-align: top;
 		padding-right: 10px;
@@ -185,7 +196,6 @@
 	}
 	.restaurant-detail .info td{
 		color: #4f4f4f;
-		font-size:1.355em;
 		line-height: 1.7;
 		text-align: left;
 		vertical-align: middle;
@@ -463,6 +473,9 @@
 							</button>
 						</div>
 					</div>
+					<div class="status">
+						<span class="hit">${one.hit}</span>
+					</div>
 				</header>
 				<table class="info no_menu">
 					<caption>식당 상세 정보</caption>
@@ -508,7 +521,7 @@
 						<div class="section_sectionContent">
 							<div class="section_own">
 								<p class="section_ownDesc"></p>
-								<p style="font-size: 1.75em;">${one.title}</p>
+								<p>${one.title}</p>
 							</div>
 						</div>
 					</section>
@@ -564,8 +577,6 @@
 		<button class="btn btn-warning" id="updateBtn" title="${one.num}">글 수정</button>
 		<button class="btn btn-danger" id="deleteBtn" title="${one.num}">글 삭제</button>
 	</div>
-	
-
 
 </div>
 <!--  -->

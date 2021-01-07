@@ -57,6 +57,11 @@ public class PlaceService {
 		return placeMapper.getList(pager);
 	}
 	
+	// 조회수
+	public int setHitUp(PlaceVO placeVO) throws Exception{
+		return placeMapper.setHitUp(placeVO);
+	}
+	
 	// 맛집 등록
 	public int setInsert(PlaceVO placeVO, MultipartFile photo, MultipartFile [] files) throws Exception{
 		// 1차로 HDD에 File 저장

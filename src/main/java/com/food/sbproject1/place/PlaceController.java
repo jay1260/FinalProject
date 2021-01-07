@@ -79,6 +79,7 @@ public class PlaceController {
 	public ModelAndView getOne(PlaceVO placeVO, ReviewVO reviewVO,Pager pager) throws Exception{
 		ModelAndView mv = new ModelAndView();
 		placeVO = placeService.getOne(placeVO);
+		int result = placeService.setHitUp(placeVO);
 		
 		reviewVO.setRef(placeVO.getNum());
 		System.out.println(reviewVO.getRef());

@@ -97,7 +97,7 @@
 			<input type="text" class="form-control" id="writer" name="writer">
 		</div>
 		<div class="form-group col-xs-12 col-md-10">
-			<label for="address">식당 주소</label>
+			<label for="address">★식당 주소★</label>
 			<input type="button" onClick="goPopup();" value="+도로명 주소 찾기" class="addrBtn">
 			<div id="list"></div>
 			<div id="callBackDiv">	
@@ -131,7 +131,7 @@
 			<form:errors path="closeTime" cssClass="error"></form:errors>
 		</div>
 		<div class="form-group col-sm-6">
-			<label for="price">가격대</label>
+			<label for="price">가격대 → ex : 10000원대</label>
 			<form:input path="price" class="form-control"/>
 			<form:errors path="price" cssClass="error"></form:errors>
 		</div>
@@ -140,7 +140,7 @@
 			<form:input path="rest" class="form-control"/>
 		</div>
 		<div class="form-group col-xs-12 col-md-12">
-			<label for="contents">추천하시는 이유가 있으면 작성해주세요.</label>
+			<label for="contents">추천하시는 이유를 작성해주세요.</label>
 			<form:textarea path="contents" id="contents" rows="15" class="form-control"/>
 		</div>
 		<div class="form-group col-sm-6 file-div" style="text-align: center;" >
@@ -150,7 +150,7 @@
 		<div class="form-group col-sm-6" style="width: 1100px;">
 			<p id="demo" style="text-align: center;"></p>
 			<p id="image_demo" style="text-align: center; font-size: 20px; color:#ff7400; font-weight: bold;"></p>
-			<div id="image_container" style="width: 1300px;"></div>
+			<div id="image_container" style="width: 1100px; text-align: center;" ></div>
 		</div>
 		<div class="btn-css">		
 			<input type="submit" class="col-sm-9 col-md-6 col-lg-8 btn btn-warning" value="등록하기" id="insertBtn">
@@ -168,7 +168,7 @@
 	      //div 내용 비워주기
 	      $('#image_container').empty();
 	    });
-	      
+	    
 	});//file change
     
 	function myFunction(){
@@ -192,7 +192,7 @@
 		        	txt += "<strong>" + (i+1) + "번 파일 : </strong>";
 		        	var file = x.files[i];
 		        	if ('name' in file) {
-		          		txt += file.name + "<br><br>";
+		          		txt += file.name + " ";
 		        	}
 				}
 			}demo.innerHTML = txt;
@@ -225,6 +225,7 @@
 	$("#title").keyup(function(){
 		var titleLength = $(this).val().length;
 		var remain = 0+titleLength
+
 		$("#keyValue").html(remain);
 		if(titleLength>=40){
 			alert("최대 40글자");
