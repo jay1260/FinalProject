@@ -47,16 +47,20 @@ public class PlaceController {
 	
 	// 글 수정하기
 	@PostMapping("placeUpdate")
-	public ModelAndView setUpdate(PlaceVO placeVO, long num) throws Exception{
+	public ModelAndView setUpdate(@Valid PlaceVO placeVO, BindingResult bindingResult, long num) throws Exception{
 		ModelAndView mv = new ModelAndView();
-		int result = placeService.setUpdate(placeVO);
+		if(bindingResult.hasErrors()) {
+			mv.setViewName("place/placeUpdate");
+		}else {
+			int result = placeService.setUpdate(placeVO);
 		
-		if(result>0) {
-			mv.addObject("msg", "수정 완료했습니다.");
-			placeVO = placeService.getOne(placeVO);
-			
-			mv.addObject("path", "./placeSelect?num="+num);
-			mv.setViewName("common/result");
+			if(result>0) {
+				mv.addObject("msg", "수정 완료했습니다.");
+				placeVO = placeService.getOne(placeVO);
+				
+				mv.addObject("path", "./placeSelect?num="+num);
+				mv.setViewName("common/result");
+			}
 		}
 		
 		return mv;

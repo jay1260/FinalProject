@@ -94,7 +94,7 @@
 		</div>
 		<div class="form-group col-xs-12 col-md-10" hidden="hidden">
 			<label for="writer">작성자</label>
-			<input type="text" class="form-control" id="writer" name="writer">
+			<input type="text" class="form-control" id="writer" name="writer" readonly="readonly">
 		</div>
 		<div class="form-group col-xs-12 col-md-10">
 			<label for="address">★식당 주소★</label>
@@ -110,7 +110,7 @@
 			<form:input path="phone" class="form-control"/>
 			<form:errors path="phone" cssClass="error"></form:errors>
 		</div>
-		<div class="form-group col-sm-6">
+		<div class="form-group col-sm-4">
 			<label for="메뉴">대표 메뉴</label>
 			<form:input path="menu" class="form-control"/>
 			<form:errors path="menu" cssClass="error"></form:errors>
@@ -120,22 +120,22 @@
 			<form:input path="restaurant" class="form-control"/>
 			<form:errors path="restaurant" cssClass="error"></form:errors>
 		</div>
-		<div class="form-group col-sm-6">
-			<label for="time">오픈 시간 → ex : 13:00</label>
-			<form:input path="openTime" class="form-control"/>
-			<form:errors path="openTime" cssClass="error"></form:errors>
-		</div>
-		<div class="form-group col-sm-6">
-			<label for="time">마감 시간 → ex : 22:00</label>
-			<form:input path="closeTime" class="form-control"/>
-			<form:errors path="closeTime" cssClass="error"></form:errors>
-		</div>
-		<div class="form-group col-sm-6">
+		<div class="form-group col-xs-12 col-md-10">
 			<label for="price">가격대 → ex : 10000원대</label>
 			<form:input path="price" class="form-control"/>
 			<form:errors path="price" cssClass="error"></form:errors>
 		</div>
-		<div class="form-group col-sm-6">
+		<div class="form-group col-sm-5">
+			<label for="time">오픈 시간 → ex : 13:00</label>
+			<form:input path="openTime" class="form-control"/>
+			<form:errors path="openTime" cssClass="error"></form:errors>
+		</div>
+		<div class="form-group col-sm-5">
+			<label for="time">마감 시간 → ex : 22:00</label>
+			<form:input path="closeTime" class="form-control"/>
+			<form:errors path="closeTime" cssClass="error"></form:errors>
+		</div>
+		<div class="form-group col-xs-12 col-md-10">
 			<label for="rest">휴무일</label>
 			<form:input path="rest" class="form-control"/>
 		</div>
@@ -220,8 +220,6 @@
 		}
 	}
 	
-
-
 	$("#title").keyup(function(){
 		var titleLength = $(this).val().length;
 		var remain = 0+titleLength
@@ -246,7 +244,7 @@
 		// 팝업페이지에서 주소입력한 정보를 받아서, 현 페이지에 정보를 등록합니다.
 		document.form.roadFullAddr.value = roadFullAddr;
 		
-}
+	}
 
 		
 	

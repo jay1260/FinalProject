@@ -365,7 +365,6 @@
 	}
 	.place_review .rList ul li .cont .score_story p{
 		color: #444;
-		font-size: 1.2em;
 		word-break:break-all;
 		padding: 9px 0 0;
 		line-height: 21px;
