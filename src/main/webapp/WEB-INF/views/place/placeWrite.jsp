@@ -67,7 +67,6 @@
 		font-weight:bold;
 		color: red;
 	}
-
 </style>
 </head>
 <body>
@@ -150,12 +149,12 @@
 		</div>
 		<div class="form-group col-sm-6" style="width: 1100px;">
 			<p id="demo" style="text-align: center;"></p>
-			<div id="image_container" style="width: 1100px;"></div>
+			<p id="image_demo" style="text-align: center; font-size: 20px; color:#ff7400; font-weight: bold;"></p>
+			<div id="image_container" style="width: 1300px;"></div>
 		</div>
 		<div class="btn-css">		
 			<input type="submit" class="col-sm-9 col-md-6 col-lg-8 btn btn-warning" value="등록하기" id="insertBtn">
 		</div>
-		<img alt="" src="" >
 	</form:form>	
 </div>
 <c:import url="../template/footer.jsp"></c:import>
@@ -174,29 +173,36 @@
     
 	function myFunction(){
 		var x = document.getElementById("image");
+		var demo = document.getElementById("demo");
+					
 		var txt = "";
 		
 		if ('files' in x) {
 			if (x.files.length != 5)  {
 				alert("5개의 파일을 첨부해주세요!!");
 				x.value="";
+				txt += "";
+				demo.innerHTML = txt;
+
 				return;
 			}else{
 		    	txt += "<br><strong>" + "선택하신 파일정보입니다.</strong><br><br>";
+
 			    for (var i = 0; i < x.files.length; i++) {
-		        txt += "<strong>" + (i+1) + "번 파일 : </strong>";
-		        var file = x.files[i];
-		        if ('name' in file) {
-		          txt += file.name + "<br><br>";
-		        }
-			}
-		}
-	}
-		document.getElementById("demo").innerHTML = txt;
+		        	txt += "<strong>" + (i+1) + "번 파일 : </strong>";
+		        	var file = x.files[i];
+		        	if ('name' in file) {
+		          		txt += file.name + "<br><br>";
+		        	}
+				}
+			}demo.innerHTML = txt;
+		}	
 	} 
 
 	function preveal(event) { 
 		var fileList = event.target.files;
+		var txt = "실제 업로드 될 파일의 크기입니다.";
+		
 		for (var image of fileList) { 
 			
 			var reader = new FileReader(); 
@@ -204,11 +210,13 @@
 			reader.onload = function(event) {
 				var img = document.createElement("img"); 
 				img.setAttribute("src", event.target.result);
-				img.setAttribute("width", "200px;");
-				img.setAttribute("height", "200px;");
+				img.setAttribute("width","294px;");
+				img.setAttribute("height","340px;");
+				img.setAttribute("style","margin:5px 5px;");
 				document.querySelector("div#image_container").appendChild(img); 
 			};
 			reader.readAsDataURL(image);
+			document.getElementById("image_demo").innerHTML = txt;
 		}
 	}
 	
