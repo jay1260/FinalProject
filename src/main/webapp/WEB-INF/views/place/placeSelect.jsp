@@ -268,7 +268,7 @@
 		float: left;
 		color: #999;
 		padding-left: 12px;
-		font-size: 1.4em;
+		font-size: 14px;
 	}
 	.txt_total ul li span{
 		color: #ff7400;
@@ -321,7 +321,7 @@
 	}
 	.place_review .rList ul li .cont .name_data strong{
 		float: left;
-		font-weight: 400;
+		font-weight: bold;
 	}
 	.writer_role{
 		float: left;
@@ -369,6 +369,7 @@
 		padding: 9px 0 0;
 		line-height: 21px;
 		letter-spacing: -1px;
+		font-size: 12px;
 	}
 
 	/* 리뷰 부분 end */
