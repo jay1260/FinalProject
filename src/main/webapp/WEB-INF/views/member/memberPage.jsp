@@ -72,7 +72,7 @@
  		<table>
 			<tr>
 				<td><label for="inputphoto" class="col-lg-2 control-label"id="label">사진</label></td>
-				<td><img alt="" class = "logo"src="../image/member/unnamed.png"></td>
+				<td><img alt="" class = "logo"src="../upload/member/${member.memberFileVO.fileName }"></td>
 				
 			</tr>
 		</table>

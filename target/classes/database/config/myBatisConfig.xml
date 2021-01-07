@@ -23,6 +23,10 @@
 		<!-- review 리뷰관련 -->
 		<typeAlias type="com.food.sbproject1.review.ReviewVO" alias="ReviewVO"/>
 		
+		
+		<!-- level -->
+		<typeAlias type="com.food.sbproject1.level.LevelVO" alias="LevelVO"/>
+		
 		<typeAlias type="com.food.sbproject1.util.Pager" alias="Pager"/>
 	</typeAliases>
 </configuration>

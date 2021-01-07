@@ -70,7 +70,7 @@ public class MemberController {
 		
 		if(memberVO !=null) {	
 			session.setAttribute("member", memberVO);
-			session.setAttribute("role", memberRoleVO);
+			session.setAttribute("role", memberRoleVO.getGrade());
 			mv.setViewName("redirect:../");
 			
 			System.out.println("id: "+memberVO.getId());
@@ -110,7 +110,7 @@ public class MemberController {
 		
 		 ModelAndView mv = new ModelAndView();
 		 mv.addObject("members", memberVO);
-		 mv.addObject("role",memberRoleVO);
+		 mv.addObject("role",memberRoleVO.getGrade());
 		 mv.setViewName("member/memberPage");
 		 
 		System.out.println("id: "+memberVO.getId());

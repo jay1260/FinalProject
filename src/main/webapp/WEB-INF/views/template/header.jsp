@@ -74,7 +74,7 @@
 					</a>
 				</li>
 				<li class="false">
-					<a href="#">
+					<a href="${pageContext.request.contextPath}/level/levelList">
 						<span>등업 게시판</span>
 					</a>
 				</li>

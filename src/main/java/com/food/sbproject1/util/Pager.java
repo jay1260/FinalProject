@@ -111,6 +111,7 @@ public class Pager {
 			System.out.println("totalBlock : " + totalBlock);
 			System.out.println("BeforeCheck : "+this.beforeCheck);
 			System.out.println("NextCheck : "+this.nextCheck);
+			System.out.println("totalCount: "+ totalCount);
 		}
 	
 }
