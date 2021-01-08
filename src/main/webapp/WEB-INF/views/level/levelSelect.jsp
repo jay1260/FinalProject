@@ -13,7 +13,7 @@
 		color: gray;
 		list-style: none;
 	}
-	
+
 </style>
 </head>
 <body>
@@ -27,12 +27,16 @@
 	
 	<div class = "date">
 		<ul class= "li">
-		<li id="writer">${level.writer}</li>
-		<li>${level.regDate }</li>
+		
 		</ul>
 	</div>
+	
+	
 
 </div>
 <c:import url="../template/footer.jsp"></c:import>
 </body>
+
+
+
 </html>
