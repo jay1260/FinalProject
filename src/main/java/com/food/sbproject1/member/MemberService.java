@@ -70,7 +70,7 @@ public class MemberService  {
 	}
 	
 	// 회원가입
-	public int setMemberJoin(MemberVO memberVO, MultipartFile memberPhoto, MemberRoleVO memberRoleVO)throws Exception{
+	public int setMemberJoin(MemberVO memberVO, MultipartFile memberPhoto)throws Exception{
 		
 		 int result= memberMapper.setMemberJoin(memberVO);
 		 	
@@ -87,12 +87,7 @@ public class MemberService  {
 			  memberFileVO.setOriName(memberPhoto.getOriginalFilename());
 			  memberFileVO.setId(memberVO.getId());
 		  
-			  memberRoleVO.setId(memberVO.getId());
-			  memberRoleVO.setGrade("3등급");
-		  
-			  result = memberMapper.setGradeInsert(memberRoleVO);
-		  
-			  System.out.println(memberRoleVO);
+			  memberVO.setLevel("3등급");
 		  
 			  result = memberMapper.setMemberFileInsert(memberFileVO); 
 
@@ -125,14 +120,6 @@ public class MemberService  {
 	public int setMemberDelete(MemberVO memberVO) throws Exception{
 		return memberMapper.setMemberDelete(memberVO);
 	}
-	//등급
-	public MemberRoleVO getGrade(MemberRoleVO memberRoleVO) throws Exception{
-		return memberMapper.getGrade(memberRoleVO);
-	}
 	
-	//등급추가	
-	public int setGradeInsert(MemberRoleVO memberRoleVO) throws Exception{
-		return memberMapper.setGradeInsert(memberRoleVO);
-	}
 	
 }

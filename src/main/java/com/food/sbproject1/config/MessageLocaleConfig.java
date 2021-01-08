@@ -20,23 +20,33 @@ public class MessageLocaleConfig implements WebMvcConfigurer {
 	@Bean
 	public LocaleResolver localeResolver() {
 		
-		SessionLocaleResolver localeResolver = new SessionLocaleResolver();
-		localeResolver.setDefaultLocale(Locale.KOREA);
+		//session
+		SessionLocaleResolver sessionLocaleResolver = new SessionLocaleResolver();
+		//기본값 한국어
+		sessionLocaleResolver.setDefaultLocale(Locale.KOREAN);
 		
-		return localeResolver;	
+	
+		return sessionLocaleResolver;
 	}
 	
+	//Interceptor 클래스의 객체 생성
 	@Bean
 	public LocaleChangeInterceptor localeChangeInterceptor() {
 		LocaleChangeInterceptor localeChangeInterceptor = new LocaleChangeInterceptor();
+		//parameter를 받아서 언어를 구분
+		//url주소?lang=ko
 		localeChangeInterceptor.setParamName("lang");
+		
 		return localeChangeInterceptor;
 	}
-
+	
+	
+	//LocaleChangeInterceptor 등록
 	@Override
 	public void addInterceptors(InterceptorRegistry registry) {
 		registry.addInterceptor(localeChangeInterceptor())
 		.addPathPatterns("/**");
+		
 		WebMvcConfigurer.super.addInterceptors(registry);
 	}
 	

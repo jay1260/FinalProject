@@ -22,10 +22,6 @@ public interface MemberMapper {
 	public int setMemberUpdate(MemberVO memberVO) throws Exception;
 	// 회원사진 불러오기
 	public MemberFileVO getFile(MemberFileVO memberFileVO)throws Exception;
-	// 등급추가
-	public int setGradeInsert(MemberRoleVO memberRoleVO) throws Exception;
-	// 등급불러오기
-	public MemberRoleVO getGrade(MemberRoleVO memberRoleVO) throws Exception;
-	
+
 	
 }

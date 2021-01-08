@@ -13,7 +13,7 @@
 
 }
 .page{
-	margin: 30px auto;
+	margin: 0 auto;
 	width: 25%;
 	height:50px;
 }
@@ -45,10 +45,25 @@
 #label{
 	width: 150px;
 }
-.update .delete{
+#update {
+	margin-bottom: 20px;
+	
+}
+#delete {
+	margin-bottom: 20px;
+	margin-right: 5px;
+}
+.logo{
+	width: 100px;
+	height: 100px;	
+	margin-top: 20px;
+	margin-bottom: 20px;
+	
+}
+.revise{
+	margin-top: 80px;
 	margin-bottom: 20px;
 }
-
 
 </style>
 </head>
@@ -72,14 +87,14 @@
  		<table>
 			<tr>
 				<td><label for="inputphoto" class="col-lg-2 control-label"id="label">사진</label></td>
-				<td><img alt="" class = "logo"src="../upload/member/${member.memberFileVO.fileName }"></td>
+				<td><img alt="" class = "logo"src="../upload/member/${member.memberFileVO.fileName}"></td>
 				
 			</tr>
 		</table>
 			<div class="form-group" id="divgrade">
                 <label for="inputgrade" class="col-lg-2 control-label">등급</label>
                   <div class="col-lg-10">
-                     <input type="text" class="form-control" id="grade" data-rule-required="true"  maxlength="30" value="${role.grade}" readonly="readonly" name="grade">
+                     <input type="text" class="form-control" id="grade" data-rule-required="true"  maxlength="30" value="${members.level}" readonly="readonly" name="grade">
                    </div>
              </div>
  	

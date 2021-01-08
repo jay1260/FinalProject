@@ -9,6 +9,7 @@
 <c:import url="../template/bootStrap.jsp"></c:import>
 
 <style type="text/css">
+
  .container{
  	width: 70%;
  	margin: 0 auto;
@@ -16,6 +17,10 @@
  .grade{
  	width: 15%;
  	margin: 0 auto;
+ }
+ 
+ .writebtn{
+ 	float: right;
  }
 </style>
 </head>
@@ -44,21 +49,23 @@
  	
   </table>
     </form>
-  	<input type = "submit" class = "btn btn-warning" value="글쓰기" id="write" >
-	
+    <c:if test="${ not empty member}">
+    <div class="writebtn">
+  		<input type = "submit" class = "btn btn-warning" value="글쓰기" id="write" >
+	</div>
+   </c:if>
 	<ul class="pagination">
 	  <c:if test="${pager.beforeCheck}">
-	  	<li><a href="./levelList?curPage=${pager.startNum-1}" class="lelist" title="${pager.startNum-1}">Before</a></li>
+	  	<li><a href="./levelList?curPage=${pager.startNum-1}" class="lelist" title="${pager.startNum-1}">Pre</a></li>
 	  </c:if>		
 	  <c:forEach begin="${pager.startNum}" end="${pager.lastNum}" var="i">
 	  	<li><a href="./levelList?curPage=${i}&search=${parger.search}" class="lelist" title="${i}" >${i}</a></li>
 	  </c:forEach>
 	  
 	  <c:if test="${pager.nextCheck}">
-	  	<li><a href="./levelList?curPage=${pager.startNum+1}" class="lelist" title="${pager.lastNum+1}">After</a></li>
+	  	<li><a href="./levelList?curPage=${pager.startNum+1}" class="lelist" title="${pager.lastNum+1}">Next</a></li>
 	  </c:if>
   	</ul>
-  	
 
 </div>
 <c:import url="../template/footer.jsp"></c:import>

@@ -14,7 +14,6 @@ public class ConfigInterceptor implements WebMvcConfigurer {
 	private CustomInterceptor customInterceptor;
 	
 	
-	
 	@Override
 	public void addInterceptors(InterceptorRegistry registry) {
 	
@@ -23,7 +22,7 @@ public class ConfigInterceptor implements WebMvcConfigurer {
 		.excludePathPatterns("/member/memberAgree")
 		.excludePathPatterns("/member/memberPage");
 		
-		
+		WebMvcConfigurer.super.addInterceptors(registry);
 	}
 	
 }

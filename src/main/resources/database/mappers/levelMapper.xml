@@ -33,4 +33,12 @@
   	</select>
   	
   	
+  	<update id="setUpdate" parameterType="LevelVO">
+  		update level set title=#{title}, contents=#{contents} where num=#{num}
+  	</update>
+  	
+  	<delete id="setDelete" parameterType="LevelVO">
+  		delete from level where num=#{num}
+  	</delete>
+  	
   </mapper>

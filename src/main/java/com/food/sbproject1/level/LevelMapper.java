@@ -17,4 +17,8 @@ public interface LevelMapper {
 	public int setInsert(LevelVO levelVO) throws Exception;
 	
 	public LevelVO getSelect(LevelVO levelVO) throws Exception;
+	
+	public int setUpdate(LevelVO levelVO) throws Exception;
+	
+	public int setDelete(LevelVO levelVO) throws Exception;
 }

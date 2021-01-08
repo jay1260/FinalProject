@@ -20,6 +20,7 @@ public class MemberVO {
 	private String id;
 	@Length(min=8, max=16)
 	private String pw;
+	
 	private String pw2;
 	@Size(min=2)
 	private String name;
@@ -27,7 +28,9 @@ public class MemberVO {
 	private int age;
 	@Email
 	private String email;
-
+	
+	private String level;
+	
 	private MemberFileVO memberFileVO;
 	
 	private List<MemberRoleVO> role;

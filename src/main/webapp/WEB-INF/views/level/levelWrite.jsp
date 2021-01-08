@@ -13,11 +13,10 @@
 <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
 <style type="text/css">
-	#id{
-		width: 200px;
-	}
+	
 	#sub{
 		float: right;
+		margin-right: 15px;
 	}
 </style>
 </head>
@@ -25,32 +24,33 @@
 <c:import url="../template/header.jsp"></c:import>
 
 <div class="container">
-  <form:form modelAttribute="levelVO" enctype="multipart/form-data">
+	<form action="./levelWrite" method="post" name="write" id="frm">
   
-    <div class="form-group">
-      <label for="writer">작성자</label>
-      <form:input path="writer"  class="form-control"  id="id" readonly="readonly" value="${member.id}"/>
-      <form:errors path="writer" cssClass="error"></form:errors>
-    </div>
+   
+	<div class="form-group col-xs-12 col-md-3">
+			<label for="writer">작성자</label>
+			<input type="text" class="form-control" id="writer" name="writer" readonly="readonly" value="${member.id}">
+	</div>
   
-  	 <div class="form-group">
-      <label for="title">제목</label>
-      <!-- path : parameter Name  -->
-      <form:input path="title" class="form-control" id="title"/>
-      <form:errors path="title" cssClass="error"></form:errors>
-    </div>
-    
-	<div class="form-group">
-	  <label for="contents">내용</label>
-	  <form:textarea path="contents" id="contents"/>
+  	 <div class="form-group col-xs-12 col-md-10">
+			<label for="title">제목</label>
+			<input type="text" class="form-control" id="title" name="title" placeholder="등업신청 합니다.">
 	</div>
 		
+		
+    
+	<div class="form-group col-xs-12 col-md-12">
+			<label for="contents">내용</label>
+			<textarea class="form-control" id="contents" name="contents"></textarea>
+		</div>
   	<div class="form-group" id ="write" >
-				<input type="submit" class="btn btn-warning" value="Write" id="sub">
+			<input type="submit" class="btn btn-warning" value="작성" id="sub">
 	</div>	
 	
- </form:form>
+	</form>
 </div>
+
+
 	
 <script type="text/javascript">
 	$('#contents').summernote({

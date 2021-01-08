@@ -32,4 +32,13 @@ public class LevelService {
 	public LevelVO getSelect(LevelVO levelVO)throws Exception{
 		return levelMapper.getSelect(levelVO);
 	}
+	
+	public int setUpdate(LevelVO levelVO) throws Exception{
+		return levelMapper.setUpdate(levelVO);
+	}
+	
+	public int setDelete(LevelVO levelVO) throws Exception{
+		return levelMapper.setDelete(levelVO);
+	}
+
 }

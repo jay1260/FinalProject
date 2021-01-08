@@ -11,14 +11,10 @@
 	
   
   	<insert id="setMemberJoin" parameterType="MemberVO">
-  		insert into member(id,pw,name,age,email)
-		values(#{id}, #{pw}, #{name}, #{age}, #{email})
+  		insert into member(id,pw,name,age,email, level)
+		values(#{id}, #{pw}, #{name}, #{age}, #{email}, '3등급')
   	</insert>
  	
- 	<insert id="setGradeInsert" parameterType="MemberRoleVO">
- 		insert into memberrole(grade,id) values('3등급',#{id})
- 	</insert>
- 
  	<insert id="setMemberFileInsert" parameterType="MemberFileVO">
 		insert into memberfile(id,fileName,oriName)
 		values(#{id}, #{fileName}, #{oriName})
@@ -29,9 +25,8 @@
     </select>
 
 	<select id="getMemberLogin" resultMap="memberLoginResult" parameterType="MemberVO">
-		select M.id, M.name, M.age, M.email, MR.grade, MF.fileName, MF.oriName
-		from member M inner join memberrole MR
-		on M.id = MR.id 
+		select M.id, M.name, M.age, M.email, M.level, MF.fileName, MF.oriName
+		from member M
 		left join memberfile MF 
 		on M.id = MF.id
 		where M.id= #{id} and M.pw= #{pw}
@@ -50,10 +45,7 @@
 			<result column="oriName" property="oriName"/>
 		</association>	
 		
-		<collection property="role" javaType="List" ofType="MemberRoleVO">
-			<id column="grade" property="grade"/>
-			<result column="id" property="id"/>
-		</collection>
+	
 	</resultMap>	
 	
 	

@@ -41,11 +41,11 @@ public class LevelController {
 	}
 	
 	@GetMapping("levelWrite")
-	public ModelAndView setInsert(LevelVO levelVO, HttpSession session)throws Exception{
+	public ModelAndView setInsert(LevelVO levelVO, MemberVO memberVO)throws Exception{
 		ModelAndView mv = new ModelAndView();
-		MemberVO memberVO = new MemberVO();
-		session.setAttribute("level", levelVO);
-		mv.addObject("member", memberVO);
+
+		mv.addObject("level", levelVO);
+		
 		mv.setViewName("level/levelWrite");
 		
 		return mv;
@@ -80,6 +80,50 @@ public class LevelController {
 		System.out.println("contents : "+levelVO.getContents());
 		System.out.println("writer: "+levelVO.getWriter());
 		System.out.println("id: "+memberVO.getId());
+		return mv;
+	}
+	
+	@GetMapping("levelUpdate")
+	public ModelAndView setUpdate(LevelVO levelVO)throws Exception{
+		ModelAndView mv = new ModelAndView();
+		
+		levelVO = levelService.getSelect(levelVO);
+		
+		mv.addObject("level", levelVO);
+		mv.setViewName("level/levelUpdate");
+		
+		return mv;
+	}
+	
+	@PostMapping("levelUpdate")
+	public ModelAndView setUpdate(LevelVO levelVO, long num)throws Exception{
+		ModelAndView mv = new ModelAndView();
+		int result = levelService.setUpdate(levelVO);
+		
+		String message="수정실패";
+		if(result>0) {
+			
+			levelVO = levelService.getSelect(levelVO);
+			message="수정성공";
+			mv.addObject("msg", message);
+			mv.addObject("path", "./levelList");
+			mv.setViewName("common/result");
+		}
+		
+		return mv;
+	}
+	@GetMapping("levelDelete")
+	public ModelAndView setDelete(LevelVO levelVO)throws Exception{
+		ModelAndView mv = new ModelAndView();
+		
+		int result = levelService.setDelete(levelVO);
+		String message="삭제실패";
+		if(result>0) {
+			message="삭제성공";
+			mv.addObject("msg", message);
+			mv.addObject("path", "./levelList");
+			mv.setViewName("common/result");
+		}
 		return mv;
 	}
 }

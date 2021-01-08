@@ -34,13 +34,13 @@ public class MemberController {
 	@PostMapping("memberJoin")
 	public ModelAndView setMemberJoin(@Valid MemberVO memberVO, BindingResult bindingResult,MultipartFile memberPhoto)throws Exception{
 			ModelAndView mv = new ModelAndView();
-			MemberRoleVO memberRoleVO = new MemberRoleVO();
+	
 			
 			if(memberService.getMemberError(memberVO, bindingResult)) {
 				mv.setViewName("member/memberJoin");
 			}
 			else {
-				int result = memberService.setMemberJoin(memberVO, memberPhoto, memberRoleVO);
+				int result = memberService.setMemberJoin(memberVO, memberPhoto);
 				if(result>0) {
 				String msg = "회원가입을 축하드립니다!";
 				mv.addObject("msg", msg);
@@ -65,19 +65,19 @@ public class MemberController {
 	@PostMapping("memberLogin")
 	public ModelAndView getMemberLogin(MemberVO memberVO, HttpSession session) throws Exception{
 		ModelAndView mv = new ModelAndView();
-		MemberRoleVO memberRoleVO = new MemberRoleVO();
+	
 		memberVO=memberService.getMemberLogin(memberVO);
 		
 		if(memberVO !=null) {	
 			session.setAttribute("member", memberVO);
-			session.setAttribute("role", memberRoleVO.getGrade());
+		
 			mv.setViewName("redirect:../");
 			
 			System.out.println("id: "+memberVO.getId());
 			System.out.println("name:"+memberVO.getName());
 			System.out.println("age: "+memberVO.getAge());
 			System.out.println("email: "+memberVO.getEmail());
-			System.out.println("grade: "+memberRoleVO.getGrade());
+
 			System.out.println("-----------------------------");
 		}
 		else {
@@ -105,12 +105,12 @@ public class MemberController {
 	@GetMapping("memberPage")
 	public ModelAndView getOne(MemberVO memberVO,HttpSession session)throws Exception{
 		memberVO=(MemberVO) session.getAttribute("member");
-		MemberRoleVO memberRoleVO = new MemberRoleVO();
+
 		memberVO=memberService.getOne(memberVO);
 		
 		 ModelAndView mv = new ModelAndView();
 		 mv.addObject("members", memberVO);
-		 mv.addObject("role",memberRoleVO.getGrade());
+		
 		 mv.setViewName("member/memberPage");
 		 
 		System.out.println("id: "+memberVO.getId());

@@ -48,6 +48,12 @@
 .update .delete{
 	margin-bottom: 20px;
 }
+.logo{
+	width: 100px;
+	height: 100px;	
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
 
 </style>
 </head>
@@ -71,14 +77,14 @@
  		<table>
 			<tr>
 				<td><label for="inputphoto" class="col-lg-2 control-label"id="label">사진</label></td>
-				<td><img alt="" class = "logo"src="../image/member/unnamed.png"></td>
-				<td><input type="file" class="photo-update"></td>
+				<td><img alt="" class = "logo"src="../upload/member/${member.memberFileVO.fileName }"></td>
+				
 			</tr>
 		</table>
 			<div class="form-group" id="divgrade">
                 <label for="inputgrade" class="col-lg-2 control-label">등급</label>
                   <div class="col-lg-10">
-                     <input type="text" class="form-control" id="grade" data-rule-required="true"  maxlength="30" value="${role.grade}" readonly="readonly" name="grade">
+                     <input type="text" class="form-control" id="grade" data-rule-required="true"  maxlength="30" value="${members.level}" readonly="readonly" name="level">
                    </div>
              </div>
  	
@@ -89,19 +95,7 @@
                    </div>
              </div>
     
-             <div class="form-group" id="divPassword">
-                <label for="inputPassword" class="col-lg-2 control-label">패스워드</label>
-                  <div class="col-lg-10">
-                      <input type="password" class="form-control" id="password" name="excludeHangul" data-rule-required="true" placeholder="패스워드" maxlength="30" value="${members.pw}" name="pw">
-                  </div>
-             </div>
-    
-             <div class="form-group" id="divPasswordCheck">
-                <label for="inputPasswordCheck" class="col-lg-2 control-label">패스워드 확인</label>
-                  <div class="col-lg-10">
-                      <input type="password" class="form-control" id="passwordCheck" data-rule-required="true" placeholder="패스워드 확인" maxlength="30" readonly="readonly">
-                  </div>
-             </div>
+
     
              <div class="form-group" id="divName">
                  <label for="inputName" class="col-lg-2 control-label">이름</label>
@@ -124,7 +118,7 @@
              </div>
     
              <div class="update">
-					<button type="submit" class ="btn btn-warning" id="update">수정하기</button>
+					<input type="submit" class ="btn btn-warning" id="update" value="수정하기"/>
              </div>
          
              </div>
