@@ -7,6 +7,9 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+<script type="text/javascript" src="jquery.validate.min.js"></script>
+<script type="text/javascript" src="additional-methods.min.js"></script>
 <c:import url="../template/bootStrap.jsp"></c:import>
 <style type="text/css">
 	.basic-info-list{
@@ -89,8 +92,8 @@
 			<span style="float: right;">40</span>
 			<span style="float: right;">/</span>
 			<span style="float: right;" id="keyValue">0</span>
-			<form:input path="title" class="form-control" maxlength="40"/>
-			<form:errors path="title" cssClass="error"></form:errors>
+			<form:input path="title" class="form-control" id="title"/>
+			<form:errors path="title" cssClass="error" id="title_demo"></form:errors>
 		</div>
 		<div class="form-group col-xs-12 col-md-10" hidden="hidden">
 			<label for="writer">작성자</label>
@@ -106,13 +109,13 @@
 		</div>
 		</div>
 		<div class="form-group col-xs-12 col-md-10">
-			<label for="phone">식당 번호</label>
-			<form:input path="phone" class="form-control" maxlength="14"/>
+			<label for="phone">식당 번호 → ex : 02-123-1234</label>
+			<form:input path="phone" class="form-control"/>
 			<form:errors path="phone" cssClass="error"></form:errors>
 		</div>
 		<div class="form-group col-sm-4">
 			<label for="메뉴">대표 메뉴</label>
-			<form:input path="menu" class="form-control" id="menu"/>
+			<form:input path="menu" class="form-control"/>
 			<form:errors path="menu" cssClass="error"></form:errors>
 		</div>
 		<div class="form-group col-sm-6">
@@ -121,18 +124,18 @@
 			<form:errors path="restaurant" cssClass="error"></form:errors>
 		</div>
 		<div class="form-group col-xs-12 col-md-10">
-			<label for="price">가격대</label>
-			<form:input path="price" class="form-control" placeholder="ex : 1인분 만원"/>
+			<label for="price">가격대 → ex : 10000원대</label>
+			<form:input path="price" class="form-control"/>
 			<form:errors path="price" cssClass="error"></form:errors>
 		</div>
 		<div class="form-group col-sm-5">
-			<label for="time">오픈 시간</label>
-			<form:input path="openTime" class="form-control" maxlength="5" placeholder="ex _ 오후 1시 -> 1300"/>
+			<label for="time">오픈 시간 → ex : 13:00</label>
+			<form:input path="openTime" class="form-control"/>
 			<form:errors path="openTime" cssClass="error"></form:errors>
 		</div>
 		<div class="form-group col-sm-5">
-			<label for="time">마감 시간</label>
-			<form:input path="closeTime" class="form-control" maxlength="5" placeholder="ex _ 오후 10시 -> 2200"/>
+			<label for="time">마감 시간 → ex : 22:00</label>
+			<form:input path="closeTime" class="form-control"/>
 			<form:errors path="closeTime" cssClass="error"></form:errors>
 		</div>
 		<div class="form-group col-xs-12 col-md-10">
@@ -160,7 +163,8 @@
 <c:import url="../template/footer.jsp"></c:import>
 
 </body>
-<script type="text/javascript" src="../js/placeWrite.js">
+<script type="text/javascript">
+	
 	$(document).ready(function (e){
 	    $("input[type='file']").change(function(e){
 	
@@ -170,6 +174,66 @@
 	    
 	});//file change
     
+	function myFunction(){
+		var x = document.getElementById("image");
+		var demo = document.getElementById("demo");
+					
+		var txt = "";
+		
+		if ('files' in x) {
+			if (x.files.length != 5)  {
+				alert("5개의 파일을 첨부해주세요!!");
+				x.value="";
+				txt += "";
+				demo.innerHTML = txt;
+
+				return;
+			}else{
+		    	txt += "<br><strong>" + "선택하신 파일정보입니다.</strong><br><br>";
+
+			    for (var i = 0; i < x.files.length; i++) {
+		        	txt += "<strong>" + (i+1) + "번 파일 : </strong>";
+		        	var file = x.files[i];
+		        	if ('name' in file) {
+		          		txt += file.name + " ";
+		        	}
+				}
+			}demo.innerHTML = txt;
+		}	
+	} 
+
+	function preveal(event) { 
+		var fileList = event.target.files;
+		var txt = "실제 업로드 될 파일의 크기입니다.";
+		
+		for (var image of fileList) { 
+			
+			var reader = new FileReader(); 
+
+			reader.onload = function(event) {
+				var img = document.createElement("img"); 
+				img.setAttribute("src", event.target.result);
+				img.setAttribute("width","294px;");
+				img.setAttribute("height","340px;");
+				img.setAttribute("style","margin:5px 5px;");
+				document.querySelector("div#image_container").appendChild(img); 
+			};
+			reader.readAsDataURL(image);
+			document.getElementById("image_demo").innerHTML = txt;
+		}
+	}
+	
+	$("#title").keyup(function(){
+		var titleLength = $(this).val().length;
+		var remain = 0+titleLength
+
+		$("#keyValue").html(remain);
+		if(titleLength>=40){
+			alert("최대 40글자");
+		}
+	});
+
+
 	function goPopup(){
 		// 주소검색을 수행할 팝업 페이지를 호출합니다.
 		// 호출된 페이지(jusopopup.jsp)에서 실제 주소검색URL(http://www.juso.go.kr/addrlink/addrLinkUrl.do)를 호출하게 됩니다.

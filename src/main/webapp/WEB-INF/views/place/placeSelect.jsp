@@ -143,6 +143,7 @@
 	.restaurant-detail>header .title>.rate-point{
 		color:#ff792a;
 		margin-left: 5px;
+		font-weight: bold;
 	}
 	.restaurant-detail>header .restaurant_action_button_wrap{
 		display: flex;
@@ -171,12 +172,13 @@
 	.restaurant-detail>header .status{
 		font-size: 0.688rem;
 		color:#9b9b9b;
-		margin-left: 10px;
+		margin-left: 3px;
 	}
-	.restaurant-detail>header .status .hit{
-		background: url("../image/icon/bg_ico_s_click.png") no-repeat 0 center;
-		background-size: 14px 9px;
-		padding-left: 22px;
+	.restaurant-detail>header .status .status_hit{
+		background: url("../image/icon/icon_hit.png") no-repeat 0 center;
+		background-size: 25px 19px;
+		padding-left: 29px;
+		font-size: 12px;
 	}
 	
 	/* 상세정보 */
@@ -474,7 +476,7 @@
 						</div>
 					</div>
 					<div class="status">
-						<span class="hit">${one.hit}</span>
+						<span class="status_hit">${one.hit}</span>
 					</div>
 				</header>
 				<table class="info no_menu">
