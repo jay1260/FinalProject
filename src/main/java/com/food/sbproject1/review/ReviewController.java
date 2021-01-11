@@ -19,6 +19,10 @@ public class ReviewController {
 	@Autowired
 	private PlaceService placeService;
 	
+	// 나의 리뷰
+	@GetMapping("reviewMyPage")
+	public void getMyReview() throws Exc
+	
 	// 리뷰 삭제
 	@PostMapping("reviewDelete")
 	public ModelAndView setReviewDelete(ReviewVO reviewVO) throws Exception{
