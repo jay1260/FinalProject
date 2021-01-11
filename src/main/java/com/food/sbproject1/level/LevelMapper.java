@@ -21,4 +21,8 @@ public interface LevelMapper {
 	public int setUpdate(LevelVO levelVO) throws Exception;
 	
 	public int setDelete(LevelVO levelVO) throws Exception;
+	
+	public int setReply(LevelVO levelVO) throws Exception;
+	
+	public int setUpdateReply(LevelVO levelVO) throws Exception;
 }

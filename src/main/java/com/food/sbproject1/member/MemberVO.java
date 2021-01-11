@@ -32,6 +32,5 @@ public class MemberVO {
 	private String level;
 	
 	private MemberFileVO memberFileVO;
-	
-	private List<MemberRoleVO> role;
+
 }

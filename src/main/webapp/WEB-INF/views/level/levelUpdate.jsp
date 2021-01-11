@@ -10,28 +10,40 @@
 <!-- include summernote css/js -->
 <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
+
+<style type="text/css">
+
+#update{
+	float: right;
+	margin-top: 50px;
+	margin-right: 20px;
+}
+
+
+</style>
 </head>
 <body>
 <c:import url="../template/header.jsp"></c:import>
 <div class="container">
-<form action="./levelUpdate?num=${level.num}">
+<form action="./levelUpdate?num=${level.num}" method="post">
+	
 	<div class="form-group col-xs-12 col-md-10">
-			<label for="title">제목</label>
-			<input type="text" class="form-control" id="title" name="title" value="${level.title}">
-		</div>
+			<label for="title" >제목</label>
+			<input type="text" class="form-control" id="title_1" name="title" value="${level.title}">
+	</div>
+	
 	<div class="form-group col-xs-12 col-md-10">
-			<label for="writer">작성자</label>
-			<input type="text" class="form-control" id="writer" name="writer" value="${level.writer}" readonly="readonly">
+			<label for="writer" >작성자</label>
+			<input type="text" class="form-control" id="writer_1" name="writer" value="${level.writer}" readonly="readonly">
 	</div>
 	
 	<div class="form-group col-xs-12 col-md-12">
-			<label for="contents">내용</label>
-			<textarea class="form-control" id="contents" name="contents">${level.contents}</textarea>
+			<label for="contents" >내용</label>
+			<textarea class="form-control" id="contents"  name="contents">${level.contents}</textarea>
 	</div>
 	
-	<div>
-		<input type="submit" class="btn btn-warning" value="수정하기">
-	</div>
+	<input type="submit" class="btn btn-warning" id="update" value="수정하기">
+
 
 </form>
 </div>
