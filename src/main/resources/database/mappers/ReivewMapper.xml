@@ -30,5 +30,10 @@
 	<delete id="setReviewDelete" parameterType="ReviewVO">
 		delete from review where num = #{num}
 	</delete>
+	
+	<!-- 나의 리뷰 -->
+	<select id="getMyReview" parameterType="ReviewVO" resultType="ReviewVO">
+		select * from review where writer = #{writer}
+	</select>
 
 </mapper>  

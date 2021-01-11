@@ -13,7 +13,21 @@
 <c:import url="../template/header.jsp"></c:import>
 
 <h3>나의 리뷰 페이지</h3>
-
+<table class="table table-hover">
+		<tr>
+			<th>Writer</th><th>contents</th><th>star</th><th>Date</th>
+		</tr>
+		<c:forEach items="${myRe}" var="myR">
+			<tr>
+				<td>${myR.writer}</td>
+				<td>${myR.contents}</td>
+				<td>${myR.star}</td>
+				<td>${myR.regDate}</td>
+				<td>${myR.ref}</td>
+			</tr>
+		</c:forEach>
+	</table>
+	
 <c:import url="../template/footer.jsp"></c:import>
 
 </body>

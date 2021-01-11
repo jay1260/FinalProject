@@ -1,5 +1,7 @@
 package com.food.sbproject1.review;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -21,7 +23,14 @@ public class ReviewController {
 	
 	// 나의 리뷰
 	@GetMapping("reviewMyPage")
-	public void getMyReview() throws Exc
+	public ModelAndView getMyReview(ReviewVO reviewVO) throws Exception{
+		ModelAndView mv = new ModelAndView();
+		
+		List<ReviewVO> ar = reviewService.getMyReview(reviewVO);
+		mv.addObject("myRe", ar);
+		
+		return mv;
+	}
 	
 	// 리뷰 삭제
 	@PostMapping("reviewDelete")
