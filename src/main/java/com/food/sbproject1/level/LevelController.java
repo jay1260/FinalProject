@@ -83,6 +83,31 @@ public class LevelController {
 		
 		return mv;
 	}
+	@GetMapping("levelReply")
+	public ModelAndView setRelply(Long num, LevelVO levelVO )throws Exception{
+		ModelAndView mv = new ModelAndView();
+		
+		
+		
+		mv.addObject("level", levelVO);
+		mv.setViewName("level/levelReply");
+		
+		return mv;
+	}
+	@PostMapping("levelReply")
+	public ModelAndView setReply(LevelVO levelVO)throws Exception{
+		ModelAndView mv = new ModelAndView();
+		String msg="작성 중 에러발생";
+		int result=levelService.setReply(levelVO);
+		if(result>0) {
+			msg="작성 완료";
+			mv.addObject("msg", msg);
+			mv.addObject("path", "./levelList");
+			mv.setViewName("common/result");
+		}
+		return mv;
+	}
+	
 	//게시슬 수정 폼 
 	@GetMapping("levelUpdate")
 	public ModelAndView setUpdate(LevelVO levelVO)throws Exception{

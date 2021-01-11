@@ -40,5 +40,11 @@ public class LevelService {
 	public int setDelete(LevelVO levelVO) throws Exception{
 		return levelMapper.setDelete(levelVO);
 	}
+	
+	public int setReply(LevelVO levelVO) throws Exception{
+		int result = levelMapper.setUpdateReply(levelVO);
+		result=levelMapper.setReply(levelVO);
+		return result;
+	}
 
 }
