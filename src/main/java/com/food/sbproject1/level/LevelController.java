@@ -84,7 +84,7 @@ public class LevelController {
 		return mv;
 	}
 	@GetMapping("levelReply")
-	public ModelAndView setRelply(Long num, LevelVO levelVO )throws Exception{
+	public ModelAndView setReply(Long num, LevelVO levelVO )throws Exception{
 		ModelAndView mv = new ModelAndView();
 		
 		

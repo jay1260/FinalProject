@@ -42,9 +42,11 @@ public class LevelService {
 	}
 	
 	public int setReply(LevelVO levelVO) throws Exception{
-		int result = levelMapper.setUpdateReply(levelVO);
-		result=levelMapper.setReply(levelVO);
-		return result;
+		return levelMapper.setReply(levelVO);
+	}
+	
+	public int setUpdateReply(LevelVO levelVO)throws Exception{
+		return levelMapper.setUpdateReply(levelVO);
 	}
 
 }

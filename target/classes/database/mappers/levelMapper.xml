@@ -41,4 +41,16 @@
   		delete from level where num=#{num}
   	</delete>
   	
+  	<insert id="setReply" parameterType="LevelVO">
+  		insert into level(title, writer, contents, regDate, hit) values (#{title}, #{writer}, #{contents}, now(), 0
+		(select ref from level where num=#{num}), 
+		(select step+1 from level where num=#{num}),
+		(select depth+1 from level where num=#{num}))
+  	</insert>
+  	
+   	<update id="setUpdateReply" parameterType="LevelVO">
+  		update level set step = step+1
+  		where ref = (select ref from level where num =# {num})
+  		and step> (select step from level where num =# {num})
+  	</update> 
   </mapper>

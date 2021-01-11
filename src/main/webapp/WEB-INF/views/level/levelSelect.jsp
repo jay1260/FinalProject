@@ -101,8 +101,8 @@
 	<input type="submit" class ="btn btn-warning"value="수정하기"id ="update"title="${level.num}">
 	<input type="submit" class="btn btn-danger" value="삭제하기" id="delete" title="${level.num}"/>
 	</c:if>
-	<c:if test="${member.id eq admin}">
-	<input type="submit" class ="btn btn-warning"value="답글달기"id ="update"title="${level.num}">
+	<c:if test="${member.id eq 'admin'}">
+	<input type="submit" class ="btn btn-warning"value="답글달기"id ="reply"title="${level.num}">
 	</c:if>
 
 </div>
@@ -121,6 +121,10 @@ $("#delete").click(function(){
 $("#list").click(function(){
 	location.href="./levelList";
 });
+$("#reply").click(function(){
+	var num = $(this).attr("title");
+	location.href="./levelReply";
+})
 
 </script>
 

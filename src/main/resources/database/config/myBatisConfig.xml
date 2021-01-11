@@ -8,6 +8,7 @@
 		<!-- java.lang -->
 		<typeAlias type="java.lang.Long" alias="Long"/>
 		<typeAlias type="java.lang.Float" alias="Float"/>
+		<typeAlias type="java.util.List" alias="List"/>
 	
 		<!-- place 맛집관련-->
 		<typeAlias type="com.food.sbproject1.place.PlaceVO" alias="PlaceVO"/>
@@ -18,7 +19,7 @@
 		<typeAlias type="com.food.sbproject1.member.MemberVO" alias="MemberVO"/>
 		<typeAlias type="com.food.sbproject1.member.MemberFileVO" alias="MemberFileVO"/>
 		<typeAlias type="com.food.sbproject1.member.MemberRoleVO" alias="MemberRoleVO"/>
-		<typeAlias type="java.util.List" alias="List"/>
+	
 		
 		<!-- review 리뷰관련 -->
 		<typeAlias type="com.food.sbproject1.review.ReviewVO" alias="ReviewVO"/>
