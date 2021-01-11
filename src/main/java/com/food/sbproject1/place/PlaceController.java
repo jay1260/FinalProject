@@ -2,15 +2,16 @@ package com.food.sbproject1.place;
 
 import java.util.List;
 
-import javax.servlet.http.HttpSession;
+import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -46,16 +47,20 @@ public class PlaceController {
 	
 	// 글 수정하기
 	@PostMapping("placeUpdate")
-	public ModelAndView setUpdate(PlaceVO placeVO, long num) throws Exception{
+	public ModelAndView setUpdate(@Valid PlaceVO placeVO, BindingResult bindingResult, long num) throws Exception{
 		ModelAndView mv = new ModelAndView();
-		int result = placeService.setUpdate(placeVO);
+		if(bindingResult.hasErrors()) {
+			mv.setViewName("place/placeUpdate");
+		}else {
+			int result = placeService.setUpdate(placeVO);
 		
-		if(result>0) {
-			mv.addObject("msg", "수정 완료했습니다.");
-			placeVO = placeService.getOne(placeVO);
-			
-			mv.addObject("path", "./placeSelect?num="+num);
-			mv.setViewName("common/result");
+			if(result>0) {
+				mv.addObject("msg", "수정 완료했습니다.");
+				placeVO = placeService.getOne(placeVO);
+				
+				mv.addObject("path", "./placeSelect?num="+num);
+				mv.setViewName("common/result");
+			}
 		}
 		
 		return mv;
@@ -78,6 +83,7 @@ public class PlaceController {
 	public ModelAndView getOne(PlaceVO placeVO, ReviewVO reviewVO,Pager pager) throws Exception{
 		ModelAndView mv = new ModelAndView();
 		placeVO = placeService.getOne(placeVO);
+		int result = placeService.setHitUp(placeVO);
 		
 		reviewVO.setRef(placeVO.getNum());
 		System.out.println(reviewVO.getRef());
@@ -111,20 +117,28 @@ public class PlaceController {
 	
 	// 맛집 추천 작성
 	@PostMapping("placeWrite")
-	public ModelAndView setInsert(PlaceVO placeVO, MultipartFile photo, MultipartFile [] files) throws Exception{
+	public ModelAndView setInsert(@Valid PlaceVO placeVO, BindingResult bindingResult, MultipartFile photo, MultipartFile [] files) throws Exception{
 		ModelAndView mv = new ModelAndView();
-		int result = placeService.setInsert(placeVO, photo, files);
-		if(result>0) {
-			mv.addObject("msg", "추천 감사합니다.");
-			mv.addObject("path", "./placeList");
-			mv.setViewName("common/result");
+		
+		if(bindingResult.hasErrors()) {
+			mv.setViewName("place/placeWrite");
+			
+		}else {
+			int result = placeService.setInsert(placeVO, photo, files);
+			
+			if(result>0) {
+				mv.addObject("msg", "추천 감사합니다.");
+				mv.addObject("path", "./placeList");
+				mv.setViewName("common/result");
+			}
 		}
+				
 		return mv;
 	}
 	
 	// 맛집 추천 작성 폼 이동
 	@GetMapping("placeWrite")
-	public void setInsert() throws Exception{}
+	public void setInsert(PlaceVO placeVO) throws Exception{}
 	
 	// 맛집 추천 리스트
 	@GetMapping("placeList")

@@ -10,7 +10,7 @@
 <c:import url="../template/bootStrap.jsp"></c:import>
 <style type="text/css">
 	body{
-		font-size: .95em;
+		font-size: 14px;
 		font-family: 'Nanum Gothic', sans-serif;
 		font-weight: 400;
 	}
@@ -118,6 +118,7 @@
 		position: relative;
 		padding-bottom: 10px;
 		min-height: 74px;
+		border-bottom: 1px solid #e9e9e9;
 	}
 	.restaurant-detail>header .title{
 		display: block;
@@ -135,12 +136,14 @@
 		display: inline-block;
 		max-width: 100%;
 		word-break:break-all;
-		font-size: 34px;
+		font-size: 24px;
+		font-weight: bold;
 	}
 
 	.restaurant-detail>header .title>.rate-point{
 		color:#ff792a;
 		margin-left: 5px;
+		font-weight: bold;
 	}
 	.restaurant-detail>header .restaurant_action_button_wrap{
 		display: flex;
@@ -166,6 +169,17 @@
 		line-height: 1.3;
 		color: #9B9B9B;
 	}
+	.restaurant-detail>header .status{
+		font-size: 0.688rem;
+		color:#9b9b9b;
+		margin-left: 3px;
+	}
+	.restaurant-detail>header .status .status_hit{
+		background: url("../image/icon/icon_hit.png") no-repeat 0 center;
+		background-size: 25px 19px;
+		padding-left: 29px;
+		font-size: 12px;
+	}
 	
 	/* 상세정보 */
 	.restaurant-detail .info{
@@ -177,7 +191,6 @@
 		width: 110px;
 		color: rgba(79,79,79,0.6);
 		line-height: 1.7;
-		font-size:1.5em;
 		text-align: left;
 		vertical-align: top;
 		padding-right: 10px;
@@ -185,7 +198,6 @@
 	}
 	.restaurant-detail .info td{
 		color: #4f4f4f;
-		font-size:1.355em;
 		line-height: 1.7;
 		text-align: left;
 		vertical-align: middle;
@@ -258,7 +270,7 @@
 		float: left;
 		color: #999;
 		padding-left: 12px;
-		font-size: 1.4em;
+		font-size: 14px;
 	}
 	.txt_total ul li span{
 		color: #ff7400;
@@ -311,7 +323,7 @@
 	}
 	.place_review .rList ul li .cont .name_data strong{
 		float: left;
-		font-weight: 400;
+		font-weight: bold;
 	}
 	.writer_role{
 		float: left;
@@ -355,30 +367,27 @@
 	}
 	.place_review .rList ul li .cont .score_story p{
 		color: #444;
-		font-size: 1.2em;
 		word-break:break-all;
 		padding: 9px 0 0;
 		line-height: 21px;
 		letter-spacing: -1px;
+		font-size: 12px;
 	}
 
 	/* 리뷰 부분 end */
 	
-	/*수정 삭제 버튼*/
-	#deleteBtn{
-		width: 200px;
-		margin-top: 8px;
-		background-color: white;
-		color: red;
-		outline: 0;
-	}
+	/*수정 버튼*/
+
 	#updateBtn{
 		width: 200px; 
-		margin-top:50px;
+		margin-top:58px;
 		background-color:white;
 		color:#ff7400;
 		display: block;
+		border:none;
 		outline: 0;
+		height:130px;
+		font-size: 20px;
 	}
 	
 	/* 더보기 */
@@ -399,6 +408,17 @@
 		color:#ff7400;
 		background: url("../image/icon/bg_btn_arr04.png") no-repeat right center;
 	}
+	.review-a{
+		color: #ff7400; 
+		font-size: 20px;
+	}
+	.review-a:hover, .review-a:active{
+		text-decoration: none;
+		color:#ff7400;
+		opacity: 0.6;
+		font-size: 22px;
+	}
+
 	/* 더보기 */
 </style>
 </head>
@@ -433,7 +453,7 @@
 				<header>
 					<div class=restaurant_title_wrap>
 						<span class="title">
-							<h1 class="restaurant_name">${one.restaurant}</h1>
+							<span class="restaurant_name">${one.restaurant}</span>
 							<!-- 별점 부분 -->
 							<strong class="rate-point">
 								<c:if test="${avg gt 0.0}">
@@ -451,6 +471,9 @@
 								<span class="review_writing_button_text">리뷰쓰기</span>
 							</button>
 						</div>
+					</div>
+					<div class="status">
+						<span class="status_hit">${one.hit}</span>
 					</div>
 				</header>
 				<table class="info no_menu">
@@ -482,6 +505,10 @@
 							<th style="vertical-align: top;">영업시간</th>
 							<td>${one.openTime} - ${one.closeTime}</td>
 						</tr>
+						<tr>
+							<th>가게번호</th>
+							<td>${one.phone}</td>
+						</tr>
 					</tbody>
 				</table>
 			</section>
@@ -493,7 +520,7 @@
 						<div class="section_sectionContent">
 							<div class="section_own">
 								<p class="section_ownDesc"></p>
-								<p style="font-size: 1.75em;">${one.title}</p>
+								<p>${one.title}</p>
 							</div>
 						</div>
 					</section>
@@ -525,6 +552,12 @@
 			<div class="tabs01">
 				<div></div>
 			</div>
+			<c:if test="${rCount eq 0}">
+				<h4 style="text-align: center; margin-bottom: 24px;" >
+					<a href="../review/reviewWrite?num=${one.num}" class="review-a">솔직한 평가를 기다립니다.</a>
+					<span style="display: block; margin-top: 15px; font-size: 14px;">↑ 리뷰쓰러 가기 ↑</span>
+				</h4>
+			</c:if>
 			
 			<div class="rList" id="listResult">
 				<!-- 리뷰 정보 확인 -->
@@ -541,10 +574,7 @@
 	
 	<div class="btn-div">
 		<button class="btn btn-warning" id="updateBtn" title="${one.num}">글 수정</button>
-		<button class="btn btn-danger" id="deleteBtn" title="${one.num}">글 삭제</button>
 	</div>
-	
-
 
 </div>
 <!--  -->
@@ -574,12 +604,6 @@
 	$("#updateBtn").click(function(){
 		var num = $(this).attr("title");
 		location.href="./placeUpdate?num="+num;
-	});
-
-	// 글 삭제 버튼
-	$("#deleteBtn").click(function(){
-		var num = $(this).attr("title");
-		location.href="./placeDelete?num="+num;
 	});
 
 	// 리뷰쓰기 버튼

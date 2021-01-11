@@ -6,9 +6,6 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<!-- include summernote css/js -->
-<link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
-<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
 <c:import url="../template/bootStrap.jsp"></c:import>
 <style type="text/css">
 	button{
@@ -170,9 +167,7 @@
 				<div class="ReviewWritingPage_EditorWrap">
 					<div class="ReviewEditor">
 						<div class="ReviewEditor_Editor_Wrap">
-						
-						<input type="text" id="writer" name="writer">
-						<input type="hidden" id="ref" name="ref" value="${getOne.num}">
+							<input type="hidden" id="ref" name="ref" value="${getOne.num}">
 							<div class="review_rating">
 					            <div class="rating">
 					                <input type="radio" name="star" id="rating1" value="1" class="rate_radio" title="1점">
@@ -187,16 +182,17 @@
 					                <label for="rating5">★</label>
 					            </div>
 					        </div>
-				
+					        <input type="text" name="restaurant" value="${getOne.restaurant}" hidden="hidden">
+							<input type="text" name="id">
 							<div class="ReviewWritingPage_RestaurantRecommendPickerWrap">
-								<textarea class="ReviewEditor_Editor" placeholder="아이디님 주문하신 메뉴는 어떠셨나요? 식당의 분위기와 서비스도 궁금해요!" style="overflow: hidden; overflow-wrap:break-word; height: 150px;" maxlength="10000" name="contents" id="contents"></textarea>
+								<textarea class="ReviewEditor_Editor" placeholder="아이디님 주문하신 메뉴는 어떠셨나요? 식당의 분위기와 서비스도 궁금해요!" style="overflow: hidden; overflow-wrap:break-word; height: 150px;" maxlength="1500" name="contents" id="contents"></textarea>
 							</div>
 						</div>
 						
 						<p class="ReviewEditor_TextLengthStateBox">
 							<span class="ReviewEditor_CurrentTextLength" id="keyVal">0</span>
 							<span class="ReviewEditor_TextLengthStateDivider">/</span>
-							<span class="ReviewEditor_MaxTextLength">10,000</span>
+							<span class="ReviewEditor_MaxTextLength">1,500</span>
 						</p>
 					</div>
 				</div>	
@@ -206,7 +202,7 @@
 		<div class="ReviewWritingPage_ButtonsWrap">
 			<div class="ReviewWritingPage_Buttons">
 				<input type="button" class="ReviewWritingPage_CancelButton" id="cancelBtn" value="취소">
-				<button class="ReviewWritingPage_SubmitButton" id="writeBtn">리뷰 올리기</button>
+				<input type="button" class="ReviewWritingPage_SubmitButton" id="writeBtn" value="리뷰 올리기">
 			</div>
 		</div>
 	</form>	
@@ -217,6 +213,17 @@
 </body>
 <script type="text/javascript">
 
+	$("#writeBtn").click(function(){
+		var contentsCheck = $("#contents").val().length;
+		var rate = ($('input:radio[name=star]').is(':checked'));
+
+		if(contentsCheck == 0 || rate == false){
+			alert("리뷰와 별점 선택은 필수입니다.");
+		}else{
+			$("#reviewFrm").submit();
+		}
+	});
+	
 	// 별점 디자인
 	$(".rating label").click(function(){
 		$(this).parent().children("label").removeClass("on");
@@ -228,6 +235,9 @@
 		var inputlength = $(this).val().length;
 		var remain = 0+ inputlength;
 		$("#keyVal").html(remain);
+		if(inputlength >= 1500){
+			alert("최대 1500자 까지 작성가능합니다.");
+		}
 	});
 
 	// 취소 버튼 전 페이지 이동

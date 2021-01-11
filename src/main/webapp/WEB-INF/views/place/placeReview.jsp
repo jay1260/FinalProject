@@ -18,7 +18,7 @@
 				<div class="cont">
 					<div class="cnt">
 						<div class="name_data">
-							<strong>${review.writer}</strong>
+							<strong>${review.id}</strong>
 							<em class="writer_role">회원등급</em>
 						</div>
 						<div class="score_story">

@@ -40,4 +40,9 @@ public class ReviewService {
 	public Long getReviewCount(Pager pager) throws Exception{
 		return reviewMapper.getReviewCount(pager);
 	}
+	
+	// 나의 리뷰
+	public List<ReviewVO> getMyReview(ReviewVO reviewVO) throws Exception{
+		return reviewMapper.getMyReview(reviewVO);
+	}
 }

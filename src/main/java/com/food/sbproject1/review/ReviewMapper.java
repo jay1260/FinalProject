@@ -23,4 +23,7 @@ public interface ReviewMapper {
 	
 	// 리뷰 삭제
 	public int setReviewDelete(ReviewVO reviewVO) throws Exception;
+	
+	// 나의 리뷰
+	public List<ReviewVO> getMyReview(ReviewVO reviewVO) throws Exception;
 }

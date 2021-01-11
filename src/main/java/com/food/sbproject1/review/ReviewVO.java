@@ -8,9 +8,10 @@ import lombok.Data;
 public class ReviewVO {
 
 	private long num;
-	private String writer;
+	private String id;
 	private String contents;
 	private long star;
 	private Date regDate;
 	private long ref;
+	private String restaurant;
 }

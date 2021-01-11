@@ -7,8 +7,8 @@
 	
 	<!-- 별점 리뷰 작성하기 -->
 	<insert id="setInsert" parameterType="ReviewVO">
-		insert into review(writer, contents, star, regDate, ref)
-		values(#{writer}, #{contents}, #{star}, sysdate(), #{ref})
+		insert into review(id, contents, star, regDate, ref, restaurant)
+		values(#{id}, #{contents}, #{star}, sysdate(), #{ref}, #{restaurant})
 	</insert>
 	
 	<!-- 리스트에 별점 뿌리기 -->
@@ -30,5 +30,9 @@
 	<delete id="setReviewDelete" parameterType="ReviewVO">
 		delete from review where num = #{num}
 	</delete>
-
+	
+	<!-- 나의 리뷰 -->
+	<select id="getMyReview" parameterType="ReviewVO" resultType="ReviewVO">
+		select * from review where id=#{id}
+	</select>
 </mapper>  
