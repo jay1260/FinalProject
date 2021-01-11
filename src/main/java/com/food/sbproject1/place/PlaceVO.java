@@ -9,6 +9,8 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
+import com.food.sbproject1.review.ReviewVO;
+
 import lombok.Data;
 
 @Data
@@ -49,7 +51,5 @@ public class PlaceVO {
 	
 	private PlaceFileVO placeFileVO;
 	
-	private List<PlaceFilesVO> placeFilesVO;
-	
-		
+	private List<PlaceFilesVO> placeFilesVO;	
 }

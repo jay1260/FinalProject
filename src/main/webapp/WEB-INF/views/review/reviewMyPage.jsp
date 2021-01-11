@@ -16,16 +16,8 @@
 	<h3 style="margin:30px 0;">아이디님의 작성 리뷰</h3>
 	<table class="table table-hover">
 		<tr>
-			<th>Writer</th><th>contents</th><th>star</th><th>Date</th>
+			<th>contents</th><th>star</th><th>Date</th>
 		</tr>
-		<c:forEach items="${myRe}" var="myR">
-			<tr>
-				<td>${myR.writer}</td>
-				<td>${myR.contents}</td>
-				<td>${myR.star}</td>
-				<td>${myR.regDate}</td>
-			</tr>
-		</c:forEach>
 	</table>
 </div>	
 <c:import url="../template/footer.jsp"></c:import>

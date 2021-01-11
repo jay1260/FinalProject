@@ -13,4 +13,5 @@ public class ReviewVO {
 	private long star;
 	private Date regDate;
 	private long ref;
+	private String restaurant;
 }

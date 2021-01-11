@@ -191,7 +191,7 @@
 <body>
 <c:import url="../template/header.jsp"></c:import>
 
-<c:if test="${!pager.notPage}">
+
 <!-- header 부분 -->
 <header class="basic-info-list">
 	<input type="button" class="btn btn-warning" value="맛집추천하기" id="writeBtn">
@@ -202,71 +202,71 @@
 <!-- header END -->
 
 <!-- Container 부분 -->
-<div class="sub_cont_gray01" id="tabMove1">
-	<div class="page_div" style="left: 15px;">
-		<c:if test="${pager.beforeCheck}">
-			<a href="./placeList?curPage=${pager.startNum-1}&search=${pager.search}" class="listMore">
-				<button class="btn page" id="back">
-					<img alt="이전" src="../image/icon/left-bt.png" style="height: 30px; width: 30px;">	
-				</button>
-			</a>
-		</c:if>
-	</div>
-	<div class="page_div" style="right: 15px;">
-		<c:if test="${pager.nextCheck}">
-			<a href="./placeList?curPage=${pager.startNum+1}&search=${pager.search}" class="listMore">
-				<button class="btn page" id="more">
-					<img alt="다음" src="../image/icon/right-bt.png" style="height: 30px; width:30px;">
-				</button>
-			</a>
-		</c:if>
-	</div>
-	<div class="listTy1">
-		<h3 class="title01" style="margin-top: 50px;">
-			추천 맛집( ${num} )
-			<span>원하시는 맛집을 함께 찾아보아요.</span>
-		</h3>
-			
-		<!-- 리스트 -->
-		<ul>
-		<c:forEach items="${list}" var="place">
-			<li>
-				<div class="cont">
-					<a href="./placeSelect?num=${place.num}">
-						<span class="img">
-							<c:if test="${not empty place.placeFileVO.fileName}">
-								<img alt="" src="../upload/place/${place.placeFileVO.fileName}" width="560" height="448">
-							</c:if>
-						</span>
-						<div class="cnt">
-							<!-- 별점 기능 구현 시도 
-							<em class="score">0.0</em>
-							<!-- -------------- -->
-							<!-- 식당 이름 -->
-							<div class="box_tit">
-								<strong class="store">${place.restaurant}</strong>
+<c:if test="${!pager.notPage}">
+	<div class="sub_cont_gray01" id="tabMove1">
+		<div class="page_div" style="left: 15px;">
+			<c:if test="${pager.beforeCheck}">
+				<a href="./placeList?curPage=${pager.startNum-1}&search=${pager.search}" class="listMore">
+					<button class="btn page" id="back">
+						<img alt="이전" src="../image/icon/left-bt.png" style="height: 30px; width: 30px;">	
+					</button>
+				</a>
+			</c:if>
+		</div>
+		<div class="page_div" style="right: 15px;">
+			<c:if test="${pager.nextCheck}">
+				<a href="./placeList?curPage=${pager.startNum+1}&search=${pager.search}" class="listMore">
+					<button class="btn page" id="more">
+						<img alt="다음" src="../image/icon/right-bt.png" style="height: 30px; width:30px;">
+					</button>
+				</a>
+			</c:if>
+		</div>
+		<div class="listTy1">
+			<h3 class="title01" style="margin-top: 50px;">
+				추천 맛집( ${num} )
+				<span>원하시는 맛집을 함께 찾아보아요.</span>
+			</h3>
+				
+			<!-- 리스트 -->
+			<ul>
+			<c:forEach items="${list}" var="place">
+				<li>
+					<div class="cont">
+						<a href="./placeSelect?num=${place.num}">
+							<span class="img">
+								<c:if test="${not empty place.placeFileVO.fileName}">
+									<img alt="" src="../upload/place/${place.placeFileVO.fileName}" width="560" height="448">
+								</c:if>
+							</span>
+							<div class="cnt">
+								<!-- 별점 기능 구현 시도 
+								<em class="score">0.0</em>
+								<!-- -------------- -->
+								<!-- 식당 이름 -->
+								<div class="box_tit">
+									<strong class="store">${place.restaurant}</strong>
+								</div>
+								<!-- 식당 정보 -->
+								<p>
+									<!-- 메뉴 -->
+									대표메뉴 → ${place.menu}
+									<br>
+									<!-- 영업시간 -->
+									${place.openTime} ~ ${place.closeTime}
+								</p>
+								<!-- 식당 주소 -->
+								<ul>
+									<li>${place.roadFullAddr}</li>
+								</ul>
 							</div>
-							<!-- 식당 정보 -->
-							<p>
-								<!-- 메뉴 -->
-								대표메뉴 → ${place.menu}
-								<br>
-								<!-- 영업시간 -->
-								${place.openTime} ~ ${place.closeTime}
-							</p>
-							<!-- 식당 주소 -->
-							<ul>
-								<li>${place.roadFullAddr}</li>
-							</ul>
-						</div>
-					</a>
-				</div>
-			</li>
-		</c:forEach>
-		</ul>
-			
+						</a>
+					</div>
+				</li>
+			</c:forEach>
+			</ul>	
+		</div>
 	</div>
-</div>
 </c:if>
 
 <c:if test="${pager.notPage}">
