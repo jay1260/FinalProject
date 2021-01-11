@@ -22,7 +22,7 @@ public class LevelController {
 	@Autowired
 	private LevelService levelService;
 	
-	
+	//게시글 목록
 	@GetMapping("levelList")
 	public String getList(Pager pager, HttpSession session) throws Exception{
 		
@@ -39,7 +39,7 @@ public class LevelController {
 		System.out.println("List");
 		return "level/levelList";
 	}
-	
+	//게시글 작성 폼
 	@GetMapping("levelWrite")
 	public ModelAndView setInsert(LevelVO levelVO, MemberVO memberVO)throws Exception{
 		ModelAndView mv = new ModelAndView();
@@ -51,7 +51,7 @@ public class LevelController {
 		return mv;
 	
 	}
-	
+	// 게시글 작성
 	@PostMapping("levelWrite")
 	public ModelAndView setInsert(LevelVO levelVO) throws Exception{
 		
@@ -65,24 +65,25 @@ public class LevelController {
 		}
 		return mv;
 	}
-	
+	// 선택 게시글
 	@GetMapping("levelSelect")
 	public ModelAndView getSelect(LevelVO levelVO, HttpSession session)throws Exception{
 		
 		ModelAndView mv = new ModelAndView();
-		MemberVO memberVO = new MemberVO();
+		
 		levelVO = levelService.getSelect(levelVO);
-
+		
+		
 		mv.addObject("level", levelVO);
 		mv.setViewName("level/levelSelect");
 		
 		System.out.println("title: "+levelVO.getTitle());
 		System.out.println("contents : "+levelVO.getContents());
 		System.out.println("writer: "+levelVO.getWriter());
-		System.out.println("id: "+memberVO.getId());
+		
 		return mv;
 	}
-	
+	//게시슬 수정 폼 
 	@GetMapping("levelUpdate")
 	public ModelAndView setUpdate(LevelVO levelVO)throws Exception{
 		ModelAndView mv = new ModelAndView();
@@ -94,7 +95,7 @@ public class LevelController {
 		
 		return mv;
 	}
-	
+	// 게시글 수정
 	@PostMapping("levelUpdate")
 	public ModelAndView setUpdate(LevelVO levelVO, long num)throws Exception{
 		ModelAndView mv = new ModelAndView();
@@ -112,6 +113,7 @@ public class LevelController {
 		
 		return mv;
 	}
+	//게시글 삭제 
 	@GetMapping("levelDelete")
 	public ModelAndView setDelete(LevelVO levelVO)throws Exception{
 		ModelAndView mv = new ModelAndView();
