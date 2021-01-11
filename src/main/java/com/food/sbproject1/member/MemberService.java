@@ -121,5 +121,4 @@ public class MemberService  {
 		return memberMapper.setMemberDelete(memberVO);
 	}
 	
-	
 }

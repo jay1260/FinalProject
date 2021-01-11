@@ -13,7 +13,7 @@
 		<c:forEach items="${rList}" var="review" varStatus="status">
 			<li>
 				<span class="img">
-					<img alt="리뷰남긴회원이미지" src="" width="64" height="64">
+					<img alt="리뷰남긴회원이미지" src="../upload/member/${member.memberFileVO.fileName}" width="64" height="64">
 				</span>
 				<div class="cont">
 					<div class="cnt">

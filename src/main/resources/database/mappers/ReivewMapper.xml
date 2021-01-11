@@ -35,4 +35,7 @@
 	<select id="getMyReview" parameterType="ReviewVO" resultType="ReviewVO">
 		select * from review where id=#{id}
 	</select>
+
+	
+			
 </mapper>  

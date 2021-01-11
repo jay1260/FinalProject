@@ -56,4 +56,5 @@
   	<delete id="setMemberDelete" parameterType="MemberVO">
 		delete from member where id= #{id} 
   	</delete>
+  	
   </mapper>
