@@ -376,21 +376,18 @@
 
 	/* 리뷰 부분 end */
 	
-	/*수정 삭제 버튼*/
-	#deleteBtn{
-		width: 200px;
-		margin-top: 8px;
-		background-color: white;
-		color: red;
-		outline: 0;
-	}
+	/*수정 버튼*/
+
 	#updateBtn{
 		width: 200px; 
-		margin-top:50px;
+		margin-top:58px;
 		background-color:white;
 		color:#ff7400;
 		display: block;
+		border:none;
 		outline: 0;
+		height:130px;
+		font-size: 20px;
 	}
 	
 	/* 더보기 */
@@ -577,7 +574,6 @@
 	
 	<div class="btn-div">
 		<button class="btn btn-warning" id="updateBtn" title="${one.num}">글 수정</button>
-		<button class="btn btn-danger" id="deleteBtn" title="${one.num}">글 삭제</button>
 	</div>
 
 </div>
@@ -608,12 +604,6 @@
 	$("#updateBtn").click(function(){
 		var num = $(this).attr("title");
 		location.href="./placeUpdate?num="+num;
-	});
-
-	// 글 삭제 버튼
-	$("#deleteBtn").click(function(){
-		var num = $(this).attr("title");
-		location.href="./placeDelete?num="+num;
 	});
 
 	// 리뷰쓰기 버튼
