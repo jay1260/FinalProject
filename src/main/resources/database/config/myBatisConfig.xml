@@ -23,6 +23,8 @@
 		<!-- review 리뷰관련 -->
 		<typeAlias type="com.food.sbproject1.review.ReviewVO" alias="ReviewVO"/>
 		
+		<!-- talk 소통관련 -->
+		<typeAlias type="com.food.sbproject1.talk.TalkVO" alias="TalkVO"/>
 		
 		<!-- level -->
 		<typeAlias type="com.food.sbproject1.level.LevelVO" alias="LevelVO"/>

@@ -69,7 +69,7 @@
 					</a>
 				</li>
 				<li class="false">
-					<a href="#">
+					<a href="${pageContext.request.contextPath}/talk/talkList">
 						<span>소통공간</span>
 					</a>
 				</li>
