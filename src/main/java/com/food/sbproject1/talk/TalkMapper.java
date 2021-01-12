@@ -20,4 +20,7 @@ public interface TalkMapper {
 	
 	// 소통 하나
 	public TalkVO getTalkOne(TalkVO talkVO) throws Exception;
+	
+	// 조회수
+	public int setTalkHit(TalkVO talkVO) throws Exception;
 }

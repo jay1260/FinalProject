@@ -15,6 +15,11 @@
 		select count(num) from talkPlace
 	</select>
 	
+	<!-- 조회수 -->
+	<update id="setTalkHit" parameterType="TalkVO">
+		update talkPlace set hit = #{hit}+1 where num = #{num}
+	</update>
+	
 	<!-- 소통 작성 -->
 	<insert id="setTalkWrite" parameterType="TalkVO">
 		insert into talkPlace(writer, title, contents, regDate, hit)

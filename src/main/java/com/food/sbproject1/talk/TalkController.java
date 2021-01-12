@@ -23,6 +23,7 @@ public class TalkController {
 	public ModelAndView getTalkOne(TalkVO talkVO) throws Exception{
 		ModelAndView mv = new ModelAndView();
 		talkVO = talkService.getTalkOne(talkVO);
+		int result = talkService.setTalkHit(talkVO);
 		mv.addObject("talkOne", talkVO);
 		mv.setViewName("talk/talkSelect");
 		

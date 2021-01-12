@@ -21,6 +21,11 @@ public class TalkService {
 		return talkMapper.getTalkList(pager);
 	}
 	
+	// 조회수
+	public int setTalkHit(TalkVO talkVO) throws Exception{
+		return talkMapper.setTalkHit(talkVO);
+	}
+	
 	// 소통 작성
 	public int setTalkWrite(TalkVO talkVO) throws Exception{
 		return talkMapper.setTalkWrite(talkVO);
