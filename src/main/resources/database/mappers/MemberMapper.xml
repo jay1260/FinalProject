@@ -38,6 +38,7 @@
 		<result column="pw2" property="pw2"/>
 		<result column="email" property="email"/>
 		<result column="age" property="age"/>
+		<result column="level" property="level"/>
 		
 		<association property="memberFileVO" javaType="MemberFileVO">
 			<id column="filenum" property="filenum"/>

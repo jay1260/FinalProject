@@ -17,8 +17,15 @@
 	</select>
 	
 	<!-- 해당 글 리뷰 정보 -->
-	<select id="getReviewList" resultType="ReviewVO" parameterType="Pager">
-		select * from review where ref = #{ref} order by num desc limit #{startRow}, 5;
+	<select id="getReviewList" resultMap="getReviewResult" parameterType="Pager">
+		select R.*, M.level, M.id, MF.fileName 
+		from review R inner join member M 
+		on R.id = M.id
+		inner join memberfile MF
+		on M.id = MF.id
+		where R.ref = #{ref} 
+		order by R.num desc 
+		limit #{startRow}, 5;
 	</select>
 	
 	<!-- 해당 글 리뷰 수 -->
@@ -35,7 +42,26 @@
 	<select id="getMyReview" parameterType="ReviewVO" resultType="ReviewVO">
 		select * from review where id=#{id}
 	</select>
-
 	
-			
+	<resultMap type="ReviewVO" id="getReviewResult">
+		<id property="num" column="num"></id>
+		<result property="id" column="id"/>
+		<result property="contents" column="contents"/>
+		<result property="star" column="star"/>
+		<result property="regDate" column="regDate"/>
+		<result property="ref" column="ref"/>
+		<result property="restaurant" column="restaurant"/>
+		
+		<association property="memberVO" resultMap="memberLevelResult" javaType="MemberVO"></association>
+		<association property="memberFileVO" resultMap="memberFileResult" javaType="MemberFileVO"></association>
+	</resultMap>
+	
+	<resultMap type="MemberVO" id="memberLevelResult">
+		<id property="id" column="id"/>
+		<result property="level" column="level"/>
+	</resultMap>
+	<resultMap type="MemberFileVO" id="memberFileResult">
+		<id property="id" column="id"/>
+		<result property="fileName" column="fileName"/>
+	</resultMap>		
 </mapper>  
