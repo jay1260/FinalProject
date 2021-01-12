@@ -52,7 +52,9 @@
 		text-align: right;
 	}
 	#deleteBtn{
-		padding: 10px 20px;
+		float:right;
+		margin-top:32px;
+		padding: 8px 16px;
 		border-radius: 12px;
 	}
 	.u_cbox_btn_upload{
@@ -72,6 +74,14 @@
 		color: #444;
 		margin-right: 15px;
 	}
+
+	.name_data{
+		margin:30px 0 25px 10px;
+	}
+	
+	.score_story{
+		margin-left: 10px;
+	}
 	
 </style>
 </head>
@@ -89,6 +99,7 @@
 						<span class="se-fs-">${talkOne.title}</span>
 					</p>
 				</div>
+				<input type="button" class="btn btn-danger" value="삭제하기" id="deleteBtn">
 				<div class="se-documentWriter">${talkOne.writer} <span style="margin-left: 8px; color: #bfbfbf;">${talkOne.regDate}</span></div>
 			</div>
 		</div>
@@ -103,22 +114,50 @@
 		</div>
 	</div>
 	
-	<div class="se-button">
-		<input type="button" class="btn btn-danger" value="삭제하기" id="deleteBtn">
-	</div>
-	<div class="container">
-		<h3 style="margin: 50px 0 30px 110px;">댓글 정보</h3>
-	</div>
 	<div class="container">
 		<form action="">
 			<div class="form-group col-xs-12 col-md-10" style="margin: 50px 0 30px 100px;">
 				<label for="contents">댓글 작성</label>
 				<textarea class="form-control" rows="10" id="contents" name="contents"></textarea>
 				<div>
-					<input type="button" class="u_cbox_btn_upload" value="작성"> 
+					<input type="button" class="u_cbox_btn_upload" value="등록"> 
 				</div>
 			</div>
 		</form>
+	</div>
+	<div class="container">
+		<h3 style="margin: 50px 0 15px 110px;">댓글</h3>
+		<div class="form-group col-xs-12 col-md-10" style="margin: 5px 0 30px 100px;">
+			<ul class="rList" style=" border: 1px solid #d9d9d9;">
+			<!-- 리뷰리스트 뿌리기 -->
+				<li style="border-bottom: 1px solid black; width: 96%; margin: 0 auto;">
+					<div class="cont">
+						<div class="cnt">
+							<div class="name_data">
+								<strong>작성자</strong>
+								<p style="display: inline-block; margin-left: 20px;">
+									댓글 작성 날짜
+								</p>
+							</div>
+							<div class="score_story">
+								<p style="margin-bottom: 15px; font-size: 16px;">
+									댓글을 뭐라고 작성할까요 뭐라고 작성을 할까요?
+								</p>
+								
+								<!-- 
+								<c:if test="${review.id eq member.id}">
+									<p style="float: right;">
+										<button class="del" title="${review.num}">리뷰_삭제</button>
+									</p>
+								</c:if>
+								 -->
+							</div>
+						</div>
+					</div>
+				</li>
+				<!--  -->
+			</ul>
+		</div>
 	</div>
 </div>
 

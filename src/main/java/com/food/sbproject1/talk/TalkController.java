@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.food.sbproject1.util.Pager;
+
 @Controller
 @RequestMapping("/talk/**")
 public class TalkController {
@@ -47,9 +49,9 @@ public class TalkController {
 	
 	// 소통 리스트
 	@GetMapping("talkList")
-	public ModelAndView getTalkList() throws Exception{
+	public ModelAndView getTalkList(Pager pager) throws Exception{
 		ModelAndView mv = new ModelAndView();
-		List<TalkVO> ar = talkService.getTalkList();
+		List<TalkVO> ar = talkService.getTalkList(pager);
 		mv.addObject("talkList", ar);
 		mv.setViewName("talk/talkList");
 		
