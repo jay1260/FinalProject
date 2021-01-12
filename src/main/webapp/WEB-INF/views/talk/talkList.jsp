@@ -32,6 +32,12 @@
 		text-align: center;
 	}
 	/* header END */
+	.table th{
+		text-align: center;
+	}
+	.table td{
+		text-align: center;
+	}
 </style>
 </head>
 <body>
@@ -52,8 +58,8 @@
 		<thead>
 			<tr>
 				<th>글 번호</th>
-				<th>작성자</th>
 				<th>제목</th>
+				<th>작성자</th>
 				<th>작성날짜</th>
 				<th>조회수</th>
 			</tr>
@@ -62,8 +68,8 @@
 			<tbody>
 				<tr>
 					<td>${talkList.num}</td>
+					<td style="font-weight: 700;"><a href="./talkSelect?num=${talkList.num}" style="opacity:0.5;">${talkList.title}</a></td>
 					<td>${talkList.writer}</td>
-					<td>${talkList.title}</td>
 					<td>${talkList.regDate}</td>
 					<td>${talkList.hit}</td>
 				</tr>
@@ -75,4 +81,9 @@
 <c:import url="../template/footer.jsp"></c:import>
 
 </body>
+<script type="text/javascript">
+	$("#writeBtn").click(function(){
+		location.href="./talkWrite";
+	});
+</script>
 </html>

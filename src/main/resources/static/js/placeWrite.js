@@ -80,7 +80,7 @@
 	
 			$("#keyValue").html(remain);
 			if(titleLength>=40){
-				alert("최대 40글자");
+				alert("최대 40글자까지 작성 가능합니다.");
 			}
 		});
 		

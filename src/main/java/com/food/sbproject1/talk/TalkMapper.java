@@ -10,4 +10,9 @@ public interface TalkMapper {
 	// 소통 리스트
 	public List<TalkVO> getTalkList() throws Exception;
 
+	// 소통 작성
+	public int setTalkWrite(TalkVO talkVO) throws Exception;
+	
+	// 소통 하나
+	public TalkVO getTalkOne(TalkVO talkVO) throws Exception;
 }

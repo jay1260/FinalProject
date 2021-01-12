@@ -5,8 +5,20 @@
   
 <mapper namespace="com.food.sbproject1.talk.TalkMapper">
 
+	<!-- 소통 리스트 -->
 	<select id="getTalkList" resultType="TalkVO">
 		select * from talkPlace order by num desc
+	</select>
+	
+	<!-- 소통 작성 -->
+	<insert id="setTalkWrite" parameterType="TalkVO">
+		insert into talkPlace(writer, title, contents, regDate, hit)
+		values(#{writer}, #{title}, #{contents}, sysdate(), 0)
+	</insert>
+	
+	<!-- 글 하나 -->
+	<select id="getTalkOne" parameterType="TalkVO" resultType="TalkVO">
+		select * from talkPlace where num = #{num}
 	</select>
 
 </mapper>  
