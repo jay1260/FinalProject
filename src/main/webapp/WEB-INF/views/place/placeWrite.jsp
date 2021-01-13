@@ -145,16 +145,15 @@
 		</div>
 		<div class="form-group col-sm-6 file-div" style="text-align: center;" >
 			<label for="files" style="margin-bottom: 10px; margin-top: 10px;">Ctrl, Shift를 이용하여 5장의 음식 사진을 첨부해주세요.</label>
-			<input type="file" class="form-control files" id="image" name="files" accept="image/*" multiple size="5" onchange="myFunction(); preveal(event);" required="required">
+			<input type="file" class="form-control files" id="image" name="files" accept="image/*" multiple size="5" onchange="preveal(event);" required="required">
 		</div>
-		<div class="form-group col-sm-6" style="width: 1100px; padding:0 !important; margin:0 !important; ">
-			<p id="demo" style="text-align: center;"></p>
-		</div>
+
 		<div class="btn-css">		
 			<input type="submit" class="col-sm-9 col-md-6 col-lg-8 btn btn-warning" value="등록하기" id="insertBtn">
 		</div>
 	</form:form>	
 </div>
+
 <p id="image_demo" style="text-align: center; font-size: 20px; color:#ff7400; font-weight: bold;"></p>		
 <div id="image_container" style="width: 1515px;  text-align: center; margin-bottom: 30px;"></div>
 

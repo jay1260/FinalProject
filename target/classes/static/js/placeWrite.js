@@ -21,35 +21,6 @@
 		document.form.roadFullAddr.value = roadFullAddr;
 		
 	}
-
-	// 파일 정보 뿌리기
-	function myFunction(){
-			var x = document.getElementById("image");
-			var demo = document.getElementById("demo");
-						
-			var txt = "";
-			
-			if ('files' in x) {
-				if (x.files.length != 5)  {
-					alert("5개의 파일을 첨부해주세요.");
-					x.value="";
-					txt += "";
-					demo.innerHTML = txt;
-	
-					return;
-				}else{
-			    	txt += "<br><strong>" + "선택하신 파일정보입니다.</strong><br><br>";
-	
-				    for (var i = 0; i < x.files.length; i++) {
-			        	txt += "<strong>" + (i+1) + "번 파일 : </strong>";
-			        	var file = x.files[i];
-			        	if ('name' in file) {
-			          		txt += file.name + " ";
-			        	}
-					}
-				}demo.innerHTML = txt;
-			}	
-		} 
 	
 		// 다중 파일 미리보기
 		function preveal(event) { 
