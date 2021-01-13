@@ -31,6 +31,11 @@ public class TalkService {
 		return talkMapper.setTalkWrite(talkVO);
 	}
 	
+	// 소통 삭제
+	public int setTalkDelete(TalkVO talkVO) throws Exception{
+		return talkMapper.setTalkDelete(talkVO);
+	}
+	
 	// 소통 하나
 	public TalkVO getTalkOne(TalkVO talkVO) throws Exception{
 		return talkMapper.getTalkOne(talkVO);

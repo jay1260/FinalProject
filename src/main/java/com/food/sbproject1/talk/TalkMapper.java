@@ -18,6 +18,9 @@ public interface TalkMapper {
 	// 소통 작성
 	public int setTalkWrite(TalkVO talkVO) throws Exception;
 	
+	// 소통 삭제
+	public int setTalkDelete(TalkVO talkVO) throws Exception;
+	
 	// 소통 하나
 	public TalkVO getTalkOne(TalkVO talkVO) throws Exception;
 	

@@ -117,6 +117,7 @@
 						<span class="se-fs-">${talkOne.title}</span>
 					</p>
 				</div>
+				<input type="text" value="${talkOne.num}" id="talkNum" hidden="hidden">
 				<input type="button" class="btn btn-danger" value="삭제하기" id="deleteBtn">
 				<div class="se-documentWriter">${talkOne.writer} <span style="margin-left: 8px; color: #bfbfbf;">${talkOne.regDate}</span></div>
 			</div>
@@ -185,4 +186,10 @@
 <c:import url="../template/footer.jsp"></c:import>
 
 </body>
+<script type="text/javascript">
+	$("#deleteBtn").click(function(){
+		var num = $("#talkNum").val();
+		location.href="./talkDelete?num="+num
+	});
+</script>
 </html>

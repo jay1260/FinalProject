@@ -53,6 +53,19 @@ public class TalkController {
 	@GetMapping("talkWrite")
 	public void getTalkWrite() throws Exception{}
 	
+	// 소통 삭제
+	@GetMapping("talkDelete")
+	public ModelAndView setTalkDelete(TalkVO talkVO) throws Exception{
+		ModelAndView mv = new ModelAndView();
+		int result = talkService.setTalkDelete(talkVO);
+		if(result>0) {
+			mv.addObject("msg", "소통 삭제");
+			mv.addObject("path", "./talkList");
+			mv.setViewName("common/result");
+		}
+		return mv;
+	}
+	
 	// 소통 리스트
 	@GetMapping("talkList")
 	public ModelAndView getTalkList(Pager pager, TalkReplyVO talkReplyVO) throws Exception{

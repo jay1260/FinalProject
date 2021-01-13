@@ -121,13 +121,13 @@
 		<c:if test="${pager.curPage gt 1}">
 			<a class="before" title="${pager.curPage-1}"><span>◀</span> 이전</a>
 		</c:if>
-	
-		<c:forEach begin="${pager.startNum}" end="${pager.lastNum}" var="i">
-			<a href="./talkList?curPage=${i}" title="${i}" id="pager_i">
-				${i}
-			</a>
-		</c:forEach>
-		
+		<c:if test="${not empty talkList}">	
+			<c:forEach begin="${pager.startNum}" end="${pager.lastNum}" var="i">
+				<a href="./talkList?curPage=${i}" title="${i}" id="pager_i">
+					${i}
+				</a>
+			</c:forEach>
+		</c:if>
 		<c:if test="${pager.curPage lt pager.totalPage}">
 			<a class="next" title="${pager.curPage+1}"> 다음<span>▶</span></a>
 		</c:if>

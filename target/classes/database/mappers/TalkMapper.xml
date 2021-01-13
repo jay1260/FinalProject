@@ -29,6 +29,11 @@
 		values(#{writer}, #{title}, #{contents}, sysdate(), 0)
 	</insert>
 	
+	<!-- 소통 삭제 -->
+	<delete id="setTalkDelete" parameterType="TalkVO">
+		delete from talkPlace where num = #{num}
+	</delete>
+	
 	<!-- 글 하나 -->
 	<select id="getTalkOne" parameterType="TalkVO" resultType="TalkVO">
 		select * from talkPlace where num = #{num}
