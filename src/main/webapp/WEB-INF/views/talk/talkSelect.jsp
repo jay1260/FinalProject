@@ -76,7 +76,7 @@
 	}
 
 	.name_data{
-		margin:30px 0 25px 10px;
+		margin:20px 0 10px 10px;
 	}
 	
 	.score_story{
@@ -115,12 +115,14 @@
 	</div>
 	
 	<div class="container">
-		<form action="">
+		<form action="./talkReply" method="post">
 			<div class="form-group col-xs-12 col-md-10" style="margin: 50px 0 30px 100px;">
 				<label for="contents">댓글 작성</label>
-				<textarea class="form-control" rows="10" id="contents" name="contents"></textarea>
+				<input type="text" value="${member.id}" name="writer" hidden="hidden">
+				<input type="text" value="${talkOne.num}" name="ref" hidden="hidden">
+				<textarea class="form-control" rows="10" id="reply" name="reply" maxlength="500"></textarea>
 				<div>
-					<input type="button" class="u_cbox_btn_upload" value="등록"> 
+					<input type="submit" class="u_cbox_btn_upload" value="등록"> 
 				</div>
 			</div>
 		</form>
@@ -129,32 +131,34 @@
 		<h3 style="margin: 50px 0 15px 110px;">댓글</h3>
 		<div class="form-group col-xs-12 col-md-10" style="margin: 5px 0 30px 100px;">
 			<ul class="rList" style=" border: 1px solid #d9d9d9;">
-			<!-- 리뷰리스트 뿌리기 -->
-				<li style="border-bottom: 1px solid black; width: 96%; margin: 0 auto;">
-					<div class="cont">
-						<div class="cnt">
-							<div class="name_data">
-								<strong>작성자</strong>
-								<p style="display: inline-block; margin-left: 20px;">
-									댓글 작성 날짜
-								</p>
-							</div>
-							<div class="score_story">
-								<p style="margin-bottom: 15px; font-size: 16px;">
-									댓글을 뭐라고 작성할까요 뭐라고 작성을 할까요?
-								</p>
-								
-								<!-- 
-								<c:if test="${review.id eq member.id}">
-									<p style="float: right;">
-										<button class="del" title="${review.num}">리뷰_삭제</button>
+				<!-- 리뷰리스트 뿌리기 -->
+				<c:forEach items="${replyList}" var="replyList">
+					<li style="border-bottom: 1px solid black; width: 96%; margin: 0 auto;">
+						<div class="cont">
+							<div class="cnt">
+								<div class="name_data">
+									<strong style="font-size: 18px; color: #ff7400;">${replyList.writer}</strong>
+									<p style="display: inline-block; margin-left: 10px; font-size: 12px;">
+										${replyList.regDate}
 									</p>
-								</c:if>
-								 -->
+								</div>
+								<div class="score_story">
+									<p style="margin-bottom: 15px; font-size: 14px;">
+										${replyList.reply}
+									</p>
+									
+									<!-- 
+									<c:if test="${review.id eq member.id}">
+										<p style="float: right;">
+											<button class="del" title="${review.num}">리뷰_삭제</button>
+										</p>
+									</c:if>
+									 -->
+								</div>
 							</div>
 						</div>
-					</div>
-				</li>
+					</li>
+				</c:forEach>
 				<!--  -->
 			</ul>
 		</div>

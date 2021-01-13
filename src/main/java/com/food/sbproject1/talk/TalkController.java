@@ -20,10 +20,15 @@ public class TalkController {
 	
 	// 소통 하나
 	@GetMapping("talkSelect")
-	public ModelAndView getTalkOne(TalkVO talkVO) throws Exception{
+	public ModelAndView getTalkOne(TalkVO talkVO, TalkReplyVO talkReplyVO) throws Exception{
 		ModelAndView mv = new ModelAndView();
 		talkVO = talkService.getTalkOne(talkVO);
 		int result = talkService.setTalkHit(talkVO);
+		
+		talkReplyVO.setRef(talkVO.getNum());
+		List<TalkReplyVO> ar = talkService.getReplyList(talkReplyVO);
+		
+		mv.addObject("replyList", ar);
 		mv.addObject("talkOne", talkVO);
 		mv.setViewName("talk/talkSelect");
 		
@@ -53,9 +58,27 @@ public class TalkController {
 	public ModelAndView getTalkList(Pager pager) throws Exception{
 		ModelAndView mv = new ModelAndView();
 		List<TalkVO> ar = talkService.getTalkList(pager);
+		
+		mv.addObject("pager", pager);
 		mv.addObject("talkList", ar);
 		mv.setViewName("talk/talkList");
 		
 		return mv;
 	}
+	
+	// 소통댓글
+	@PostMapping("talkReply")
+	public ModelAndView setTalkReply(TalkVO talkVO, TalkReplyVO talkReplyVO) throws Exception{
+		ModelAndView mv = new ModelAndView();
+		int result = talkService.setTalkReply(talkReplyVO);
+		
+		if(result>0) {
+			mv.addObject("msg", "댓글 작성");
+			mv.addObject("path", "./talkSelect?num="+talkReplyVO.getRef());
+			mv.setViewName("common/result");
+		}
+		
+		return mv;
+	}
+	
 }

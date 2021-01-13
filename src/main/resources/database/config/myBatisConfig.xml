@@ -25,6 +25,7 @@
 		
 		<!-- talk 소통관련 -->
 		<typeAlias type="com.food.sbproject1.talk.TalkVO" alias="TalkVO"/>
+		<typeAlias type="com.food.sbproject1.talk.TalkReplyVO" alias="TalkReplyVO"/>
 		
 		<!-- level -->
 		<typeAlias type="com.food.sbproject1.level.LevelVO" alias="LevelVO"/>

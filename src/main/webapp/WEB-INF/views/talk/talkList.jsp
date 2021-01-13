@@ -57,13 +57,14 @@
 	<table class="table table-hover">
 		<thead>
 			<tr>
-				<th>글 번호</th>
+				<th></th>
 				<th>제목</th>
 				<th>작성자</th>
-				<th>작성날짜</th>
-				<th>조회수</th>
+				<th>작성일</th>
+				<th>조회</th>
 			</tr>
 		</thead>
+			
 		<c:forEach items="${talkList}" var="talkList">
 			<tbody>
 				<tr>
@@ -76,7 +77,11 @@
 			</tbody>
 		</c:forEach>
 	</table>
+		<c:forEach begin="${pager.startNum}" end="${pager.lastNum}" var="i">
+			<a href="./talkList?curPage=${i}" title="${i}">${i}</a>
+		</c:forEach>
 </div>
+
 
 <c:import url="../template/footer.jsp"></c:import>
 

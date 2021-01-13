@@ -35,4 +35,14 @@ public class TalkService {
 	public TalkVO getTalkOne(TalkVO talkVO) throws Exception{
 		return talkMapper.getTalkOne(talkVO);
 	}
+	
+	// 소통 댓글
+	public int setTalkReply(TalkReplyVO talkReplyVO) throws Exception{
+		return talkMapper.setTalkReply(talkReplyVO);
+	}
+	
+	// 소통 댓글 리스트
+	public List<TalkReplyVO> getReplyList(TalkReplyVO talkReplyVO) throws Exception{
+		return talkMapper.getReplyList(talkReplyVO);
+	}
 }

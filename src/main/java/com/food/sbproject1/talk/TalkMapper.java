@@ -23,4 +23,10 @@ public interface TalkMapper {
 	
 	// 조회수
 	public int setTalkHit(TalkVO talkVO) throws Exception;
+	
+	// 소통 댓글
+	public int setTalkReply(TalkReplyVO talkReplyVO) throws Exception;
+	
+	// 소통 댓글 리스트
+	public List<TalkReplyVO> getReplyList(TalkReplyVO talkReplyVO) throws Exception;
 }
