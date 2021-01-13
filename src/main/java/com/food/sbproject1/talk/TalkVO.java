@@ -13,4 +13,5 @@ public class TalkVO {
 	private String contents;
 	private Date regDate;
 	private long hit;
+	private long reCount;
 }

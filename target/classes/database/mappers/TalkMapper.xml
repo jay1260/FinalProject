@@ -7,7 +7,10 @@
 
 	<!-- 소통 리스트 -->
 	<select id="getTalkList" resultType="TalkVO" parameterType="Pager">
-		select * from talkPlace order by num desc limit #{startRow}, 15
+		select TP.*,
+		(select count(*) from talkReply where ref=TP.num)as reCount
+		from talkPlace TP 
+		order by num desc limit #{startRow}, 15
 	</select>
 	
 	<!-- 소통 글 수 -->

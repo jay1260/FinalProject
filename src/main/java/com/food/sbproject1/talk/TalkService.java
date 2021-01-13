@@ -45,4 +45,5 @@ public class TalkService {
 	public List<TalkReplyVO> getReplyList(TalkReplyVO talkReplyVO) throws Exception{
 		return talkMapper.getReplyList(talkReplyVO);
 	}
+
 }

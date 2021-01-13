@@ -53,12 +53,17 @@
 		cursor: pointer;
 	}
 	a.next, a.before{
+		font-family: "Times New Roman", Times, serif;
 		border-color: #dedede;
 		font-weight: normal;
 		letter-spacing: -1px;
 	}
 	a.next, a.before{
 		margin-left: 2px;
+	}
+	#pager_i:active{
+		border-color:#e23c3c;
+		color: #e23c3c;;
 	}
 	
 </style>
@@ -92,24 +97,35 @@
 			<tbody>
 				<tr>
 					<td>${talkList.num}</td>
-					<td style="font-weight: 700;"><a href="./talkSelect?num=${talkList.num}" style="opacity:0.5;">${talkList.title}</a></td>
+					<td style="font-weight: 700;">
+						<a href="./talkSelect?num=${talkList.num}" style="opacity:0.5;"> ${talkList.title}
+							<c:if test="${talkList.reCount gt 0}">
+								<span style="color: red; margin-left: 3px;">[${talkList.reCount}]</span>
+							</c:if>
+						</a>
+					</td>
 					<td>${talkList.writer}</td>
 					<td>${talkList.regDate}</td>
 					<td>${talkList.hit}</td>
 				</tr>
 			</tbody>
+			
 		</c:forEach>
 	</table>
 	<div class="pager_div">
+		<input type="text" value="${pager.curPage}" hidden="hidden" id="cur">	
+		
 		<c:if test="${pager.beforeCheck}">
 			<a class="before" title="${pager.startNum-1}">◀◀</a>
 		</c:if>
 		<c:if test="${pager.curPage gt 1}">
-			<a class="before" title="${pager.curPage-1}"><span>◀</span>이전</a>
+			<a class="before" title="${pager.curPage-1}"><span>◀</span> 이전</a>
 		</c:if>
 	
 		<c:forEach begin="${pager.startNum}" end="${pager.lastNum}" var="i">
-			<a href="./talkList?curPage=${i}" title="${i}">${i}</a>
+			<a href="./talkList?curPage=${i}" title="${i}" id="pager_i">
+				${i}
+			</a>
 		</c:forEach>
 		
 		<c:if test="${pager.curPage lt pager.totalPage}">
@@ -117,7 +133,7 @@
 		</c:if>
 		<c:if test="${pager.nextCheck}">
 			<a class="next" title="${pager.lastNum+1}">▶▶</a>
-		</c:if>
+		</c:if>	
 	</div>	
 </div>
 
@@ -126,6 +142,7 @@
 
 </body>
 <script type="text/javascript">
+	
 	$("#writeBtn").click(function(){
 		location.href="./talkWrite";
 	});

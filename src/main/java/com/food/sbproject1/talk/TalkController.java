@@ -55,7 +55,7 @@ public class TalkController {
 	
 	// 소통 리스트
 	@GetMapping("talkList")
-	public ModelAndView getTalkList(Pager pager) throws Exception{
+	public ModelAndView getTalkList(Pager pager, TalkReplyVO talkReplyVO) throws Exception{
 		ModelAndView mv = new ModelAndView();
 		List<TalkVO> ar = talkService.getTalkList(pager);
 		
@@ -80,5 +80,6 @@ public class TalkController {
 		
 		return mv;
 	}
+	
 	
 }

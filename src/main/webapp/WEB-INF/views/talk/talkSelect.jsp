@@ -95,7 +95,12 @@
 		background-color: white;
 		color: #f44336;
 	}
-	
+	.rList li{
+		border-bottom: 2px solid black;
+	}
+	.rList li:nth-last-child(1){
+		border: none;
+	}
 </style>
 </head>
 <body>
@@ -148,7 +153,7 @@
 			<ul class="rList" style=" border: 1px solid #d9d9d9;">
 				<!-- 리뷰리스트 뿌리기 -->
 				<c:forEach items="${replyList}" var="replyList">
-					<li style="border-bottom: 1px solid black; width: 96%; margin: 0 auto;">
+					<li style="width: 96%; margin: 0 auto;">
 						<div class="cont">
 							<div class="cnt">
 								<div class="name_data">
