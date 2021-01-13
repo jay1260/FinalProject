@@ -118,11 +118,13 @@
 					</p>
 				</div>
 				<input type="text" value="${talkOne.num}" id="talkNum" hidden="hidden">
-				<input type="button" class="btn btn-danger" value="삭제하기" id="deleteBtn">
+				<c:if test="${talkOne.writer eq member.id}">
+					<input type="button" class="btn btn-danger" value="삭제하기" id="deleteBtn">
+				</c:if>
 				<div class="se-documentWriter">${talkOne.writer} <span style="margin-left: 8px; color: #bfbfbf;">${talkOne.regDate}</span></div>
 			</div>
 		</div>
-		<div class="se-documentTitle se-center" style="width: 800px; padding-top: 0;">
+		<div class="se-documentTitle se-center" style="width: 800px; padding-top: 0; border-bottom: 3px solid black;">
 			<div class="pcol1">
 				<div class="se-title-text">
 					<p class="se-text se-text-center" style="text-align: left;">
@@ -139,7 +141,7 @@
 				<label for="contents">댓글 작성</label>
 				<input type="text" value="${member.id}" name="writer" hidden="hidden">
 				<input type="text" value="${talkOne.num}" name="ref" hidden="hidden">
-				<textarea class="form-control" rows="10" id="reply" name="reply" maxlength="500"></textarea>
+				<textarea class="form-control" rows="10" id="reply" name="reply" maxlength="500" style="resize: none;"></textarea>
 				<div>
 					<input type="submit" class="u_cbox_btn_upload" value="등록"> 
 				</div>
@@ -148,7 +150,7 @@
 	</div>
 	<div class="container">
 	<c:if test="${not empty replyList}">
-		<h3 style="margin: 50px 0 15px 110px;">댓글</h3>
+		<em style="margin: 50px 0 15px 114px; font-size: 18px; ">댓글</em>
 		
 		<div class="form-group col-xs-12 col-md-10" style="margin: 5px 0 30px 100px;">
 			<ul class="rList" style=" border: 1px solid #d9d9d9;">

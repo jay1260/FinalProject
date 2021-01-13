@@ -57,6 +57,11 @@ public class PlaceService {
 		return placeMapper.getList(pager);
 	}
 	
+	// 메인 맛집 리스트
+	public List<PlaceVO> getMainList() throws Exception{
+		return placeMapper.getMainList();
+	}
+	
 	// 조회수
 	public int setHitUp(PlaceVO placeVO) throws Exception{
 		return placeMapper.setHitUp(placeVO);

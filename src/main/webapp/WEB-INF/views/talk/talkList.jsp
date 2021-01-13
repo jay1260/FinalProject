@@ -82,6 +82,7 @@
 <!-- header END -->
 
 <div class="container" style="margin: 50px auto;">
+
 	<table class="table table-hover">
 		<thead>
 			<tr>
