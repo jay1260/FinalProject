@@ -65,7 +65,7 @@
 					img.setAttribute("src", event.target.result);
 					img.setAttribute("width","294px;");
 					img.setAttribute("height","340px;");
-					img.setAttribute("style","margin:5px 5px;");
+					img.setAttribute("style","margin:5px 3px;");
 					document.querySelector("div#image_container").appendChild(img); 
 				};
 				reader.readAsDataURL(image);

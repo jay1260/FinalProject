@@ -240,7 +240,6 @@
 	/* 리뷰 작성 부분*/
 	.place_review{
 		position: relative;
-		margin-bottom: 5px;
 	}
 	.store_info h4{
 		margin-top: 24px;

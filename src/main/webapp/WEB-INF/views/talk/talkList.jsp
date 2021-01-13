@@ -38,6 +38,29 @@
 	.table td{
 		text-align: center;
 	}
+	.pager_div{
+		text-align: center; 
+		margin-top: 30px;
+	}
+	.pager_div a{
+		display: inline-block;
+		border: 1px solid transparent;
+		padding: 6px 8px;
+		font-family: verdana,'돋움', Dotum,sans-serif;
+		font-weight: bold;
+		vertical-align: middle;
+		text-decoration: none;
+		cursor: pointer;
+	}
+	a.next, a.before{
+		border-color: #dedede;
+		font-weight: normal;
+		letter-spacing: -1px;
+	}
+	a.next, a.before{
+		margin-left: 2px;
+	}
+	
 </style>
 </head>
 <body>
@@ -77,9 +100,25 @@
 			</tbody>
 		</c:forEach>
 	</table>
+	<div class="pager_div">
+		<c:if test="${pager.beforeCheck}">
+			<a class="before" title="${pager.startNum-1}">◀◀</a>
+		</c:if>
+		<c:if test="${pager.curPage gt 1}">
+			<a class="before" title="${pager.curPage-1}"><span>◀</span>이전</a>
+		</c:if>
+	
 		<c:forEach begin="${pager.startNum}" end="${pager.lastNum}" var="i">
 			<a href="./talkList?curPage=${i}" title="${i}">${i}</a>
 		</c:forEach>
+		
+		<c:if test="${pager.curPage lt pager.totalPage}">
+			<a class="next" title="${pager.curPage+1}"> 다음<span>▶</span></a>
+		</c:if>
+		<c:if test="${pager.nextCheck}">
+			<a class="next" title="${pager.lastNum+1}">▶▶</a>
+		</c:if>
+	</div>	
 </div>
 
 
@@ -89,6 +128,15 @@
 <script type="text/javascript">
 	$("#writeBtn").click(function(){
 		location.href="./talkWrite";
+	});
+
+	$(".next").click(function(){
+		var next = $(this).attr("title");
+		$(this).attr("href","./talkList?curPage="+next);
+	});
+	$(".before").click(function(){
+		var before = $(this).attr("title");
+		$(this).attr("href","./talkList?curPage="+before);
 	});
 </script>
 </html>

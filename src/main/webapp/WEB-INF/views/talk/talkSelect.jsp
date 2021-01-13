@@ -82,6 +82,19 @@
 	.score_story{
 		margin-left: 10px;
 	}
+	.button{
+		border: none;
+		color: white;
+		padding: 7px 16px;
+		text-align: center;
+		text-decoration: none;
+		font-size: 14px;
+		cursor: pointer;
+	}
+	.delBtn{
+		background-color: white;
+		color: #f44336;
+	}
 	
 </style>
 </head>
@@ -128,7 +141,9 @@
 		</form>
 	</div>
 	<div class="container">
+	<c:if test="${not empty replyList}">
 		<h3 style="margin: 50px 0 15px 110px;">댓글</h3>
+		
 		<div class="form-group col-xs-12 col-md-10" style="margin: 5px 0 30px 100px;">
 			<ul class="rList" style=" border: 1px solid #d9d9d9;">
 				<!-- 리뷰리스트 뿌리기 -->
@@ -141,19 +156,16 @@
 									<p style="display: inline-block; margin-left: 10px; font-size: 12px;">
 										${replyList.regDate}
 									</p>
+									<c:if test="${replyList.writer eq member.id}">
+										<p style="float: right;">
+											<button class="button delBtn" title="${replyList.num}">X</button>
+										</p>
+									</c:if>
 								</div>
 								<div class="score_story">
 									<p style="margin-bottom: 15px; font-size: 14px;">
 										${replyList.reply}
 									</p>
-									
-									<!-- 
-									<c:if test="${review.id eq member.id}">
-										<p style="float: right;">
-											<button class="del" title="${review.num}">리뷰_삭제</button>
-										</p>
-									</c:if>
-									 -->
 								</div>
 							</div>
 						</div>
@@ -162,9 +174,9 @@
 				<!--  -->
 			</ul>
 		</div>
+		</c:if>
 	</div>
 </div>
-
 <c:import url="../template/footer.jsp"></c:import>
 
 </body>
