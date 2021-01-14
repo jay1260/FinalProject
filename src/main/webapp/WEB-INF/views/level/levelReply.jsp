@@ -23,24 +23,27 @@
 
 <div class="container">
 	
-	<form action="./levelReply" method="post">
-			<div class="form-group col-xs-12 col-md-3">
+	<form action="./levelReply" method="post" name="frm">
+
+		<div class="form-group col-xs-12 col-md-3">
 			<label for="writer">작성자</label>
-			<input type="text" class="form-control" id="writer" name="writer" readonly="readonly" value="admin">
-	</div>
-  
-  	 <div class="form-group col-xs-12 col-md-10">
-			<label for="title">제목</label>
-			<input type="text" class="form-control" id="title" name="title" placeholder="등업신청 확인했습니다.">
-	</div>
-		
-	<div class="form-group col-xs-12 col-md-12">
-			<label for="contents">내용</label>
-			<textarea class="form-control" id="contents" name="contents" ></textarea>
+			<input type="text" class="form-control" id="writer" name="writer" readonly="readonly" value="${member.id}">
 		</div>
-  	<div class="form-group" id ="write" >
+  		
+  		 <div class="form-group col-xs-12 col-md-10">
+			<label for="title">제목</label>
+			<input type="text" class="form-control" id="title" name="title" value="등업확인 완료">
+		</div>
+		
+		<div class="form-group col-xs-12 col-md-12">
+			<label for="contents">내용</label>
+			<textarea class="form-control" id="contents" name="contents" value="등업완료 되었습니다."></textarea>
+		</div>
+  		<div class="form-group" id ="write" >
 			<input type="submit" class="btn btn-warning" value="작성" id="sub">
-	</div>	
+		</div>	
+		 ref:<input type="text" value ="${level.ref}" readonly="readonly">
+		depth:<input type="text" value="${level.depth}" readonly="readonly">
 	</form>
 	
 </div>

@@ -40,10 +40,17 @@
 	<c:forEach items="${list}" var="level">
   		<tr>
   			<td>${level.num}</td>
-  			<td><a href ="./levelSelect?num=${level.num}">${level.title}</a></td>
+  			<td>
+  				<a href ="./levelSelect?num=${level.num}">
+  					<c:catch>
+  						<c:forEach begin="1" end="${level.depth}"> ㄴ</c:forEach>
+  					</c:catch>
+  					${level.title}
+  				</a>
+  			</td>
   			<td>${level.writer}</td>
   			<td>${level.regDate}</td>
-  			<td>0</td>
+  			<td>${level.hit}</td>
   		</tr>
 	</c:forEach>
  	

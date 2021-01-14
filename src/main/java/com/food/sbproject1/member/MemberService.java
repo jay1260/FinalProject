@@ -1,6 +1,7 @@
 package com.food.sbproject1.member;
 
 import java.io.File;
+import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
@@ -16,6 +17,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.food.sbproject1.util.FileManager;
 import com.food.sbproject1.util.FilePathAppoint;
 import com.food.sbproject1.util.FilePathGenerator;
+import com.food.sbproject1.util.Pager;
 
 @Service
 
@@ -87,7 +89,7 @@ public class MemberService  {
 			  memberFileVO.setOriName(memberPhoto.getOriginalFilename());
 			  memberFileVO.setId(memberVO.getId());
 		  
-			  memberVO.setLevel("3등급");
+			  memberVO.setLevel(3);
 		  
 			  result = memberMapper.setMemberFileInsert(memberFileVO); 
 
@@ -121,5 +123,18 @@ public class MemberService  {
 		return memberMapper.setMemberDelete(memberVO);
 	}
 	
+	public List<MemberVO> getListPage(Pager pager) throws Exception{
+		pager.makeRow(10);
+		long totalCount =  memberMapper.getMemberCount(pager);
+		pager.makePage(totalCount, 1, 10);
+		
+		return memberMapper.getListPage(pager);
+	}
+	public long getMemberCount(Pager pager)throws Exception{
+		return memberMapper.getMemberCount(pager);
+	}
 	
+	public int levelUpdate(MemberVO memberVO) throws Exception{
+		return memberMapper.levelUpdate(memberVO);
+	}
 }

@@ -14,7 +14,6 @@ public class LevelVO {
 	private Date regDate;
 	private long hit;
 	private long ref;
-	private long step;
 	private long depth;
-	
+
 }

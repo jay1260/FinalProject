@@ -19,20 +19,19 @@
   	<select id="getList" resultType="LevelVO" parameterType="pager">
   		select * from level where
   		<include refid="getLevelList"></include>
-  		order by num desc limit #{startRow}, 10
+  		order by num asc limit #{startRow}, 10
   	</select>
   	
   	<insert id="setInsert" parameterType="LevelVO">
-  		insert into level (title, writer, contents, regDate, hit, ref, step, depth)
-  		values(#{title}, #{writer}, #{contents}, now(), 0, 0, 0, 0)
+  		insert into level (title, writer, contents, regDate, hit, ref, depth)
+  		values(#{title}, #{writer}, #{contents}, now(), 0, 0, 0)
   	</insert>
   	
   	<select id="getSelect" parameterType="LevelVO" resultType="LevelVO">
   		select * from level
 		where num=#{num}
   	</select>
-  	
-  	
+
   	<update id="setUpdate" parameterType="LevelVO">
   		update level set title=#{title}, contents=#{contents} where num=#{num}
   	</update>
@@ -40,17 +39,18 @@
   	<delete id="setDelete" parameterType="LevelVO">
   		delete from level where num=#{num}
   	</delete>
-  	
-  	<insert id="setReply" parameterType="LevelVO">
-  		insert into level(title, writer, contents, regDate, hit) values (#{title}, #{writer}, #{contents}, now(), 0
-		(select ref from level where num=#{num}), 
-		(select step+1 from level where num=#{num}),
-		(select depth+1 from level where num=#{num}))
+ 	
+  	<insert id="setReply" parameterType="LevelVO" useGeneratedKeys="true" keyProperty = "num">
+		insert into level(title, writer, contents, regDate, hit, ref, depth) 
+		values (#{title}, #{writer}, #{contents}, now(), 0, #{num} ,0)  
+		
   	</insert>
   	
-   	<update id="setUpdateReply" parameterType="LevelVO">
-  		update level set step = step+1
-  		where ref = (select ref from level where num =# {num})
-  		and step> (select step from level where num =# {num})
-  	</update> 
+  	<update id="setRefUpdate" parameterType="LevelVO">
+		update level set ref=#{num}, depth=#{depth}+1 where num=#{num}
+	</update>
+	
+	<update id="setHit" parameterType="LevelVO">
+		update level set hit = #{hit}+1 where num=#{num}
+	</update>
   </mapper>

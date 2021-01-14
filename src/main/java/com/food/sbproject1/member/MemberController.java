@@ -1,5 +1,7 @@
 package com.food.sbproject1.member;
 
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
@@ -15,6 +17,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
+
+import com.food.sbproject1.level.LevelVO;
+import com.food.sbproject1.util.Pager;
 
 @Controller
 @RequestMapping("/member/**")
@@ -194,6 +199,54 @@ public class MemberController {
 		
 		return mv;
 	}
+	
+	@GetMapping("adminPage")
+	public ModelAndView levelUpdate(MemberVO memberVO, Pager pager)throws Exception{
+		ModelAndView mv = new ModelAndView();
+		
+		List<MemberVO> ar = memberService.getListPage(pager); 
+		
+		long num = memberService.getMemberCount(pager);
+		
+
+		mv.addObject("num", num);
+		mv.addObject("pager", pager);
+		mv.addObject("list", ar);
+		
+		System.out.println("list");
+		System.out.println("id:"+memberVO.getId());
+		System.out.println("level: "+memberVO.getLevel());
+		System.out.println("=============================");
+		
+		mv.setViewName("./member/adminPage"); 	
+		
+		return mv;
+	
+	}
+	
+	@PostMapping("memberLevel")
+	public ModelAndView setLevelUpdate(MemberVO memberVO, Pager pager) throws Exception{
+		
+		ModelAndView mv = new ModelAndView();
+		
+			int result = memberService.levelUpdate(memberVO);
+			String msg="수정 실패";
+		if(result!=0) {
+			memberVO=memberService.getOne(memberVO);
+			msg="수정성공";
+			mv.addObject("msg", msg);
+			mv.addObject("path", "../");
+			mv.setViewName("common/result");
+			System.out.println("id: "+memberVO.getId());
+			System.out.println("level: "+memberVO.getLevel());
+			System.out.println("result: "+result);
+			System.out.println("=======================");
+				}
+			
+	
+		return mv;
+	}
+	
 
 	
 }

@@ -30,7 +30,6 @@ public class LevelController {
 		
 		long num = levelService.getCount(pager);
 		
-		
 		session.setAttribute("num", num);
 		session.setAttribute("pager", pager);
 		session.setAttribute("list", ar);
@@ -67,12 +66,20 @@ public class LevelController {
 	}
 	// 선택 게시글
 	@GetMapping("levelSelect")
-	public ModelAndView getSelect(LevelVO levelVO, HttpSession session)throws Exception{
+	public ModelAndView getSelect(LevelVO levelVO, HttpSession session, Pager pager)throws Exception{
 		
 		ModelAndView mv = new ModelAndView();
 		
 		levelVO = levelService.getSelect(levelVO);
 		
+		int result = levelService.setHit(levelVO);
+		
+		levelVO.setRef(levelVO.getNum());
+		/* pager.setRef(levelVO.getNum()); */
+		
+		System.out.println("num: " +levelVO.getNum());
+		System.out.println("ref:"+levelVO.getRef());
+		System.out.println("depth:"+levelVO.getDepth());
 		
 		mv.addObject("level", levelVO);
 		mv.setViewName("level/levelSelect");
@@ -84,25 +91,34 @@ public class LevelController {
 		return mv;
 	}
 	@GetMapping("levelReply")
-	public ModelAndView setReply(Long num, LevelVO levelVO )throws Exception{
+	public ModelAndView setReply(long num, LevelVO levelVO )throws Exception{
 		ModelAndView mv = new ModelAndView();
 		
-		
-		
+		levelVO=levelService.getSelect(levelVO);
+		levelVO.setRef(levelVO.getNum()); 
 		mv.addObject("level", levelVO);
-		mv.setViewName("level/levelReply");
 		
+		System.out.println("ref:"+levelVO.getRef());
+		System.out.println("depth:"+levelVO.getDepth());
+		System.out.println("==============================");
 		return mv;
 	}
+	
 	@PostMapping("levelReply")
 	public ModelAndView setReply(LevelVO levelVO)throws Exception{
 		ModelAndView mv = new ModelAndView();
 		String msg="작성 중 에러발생";
 		int result=levelService.setReply(levelVO);
+		
+		levelVO.setRef(levelVO.getNum()); 
+		System.out.println("ref:"+levelVO.getRef());
+		System.out.println("depth:"+levelVO.getDepth());
+		System.out.println("==============================");
 		if(result>0) {
+			result = levelService.setRefUpdate(levelVO);
 			msg="작성 완료";
 			mv.addObject("msg", msg);
-			mv.addObject("path", "./levelList");
+			mv.addObject("path", "./levelSelect?num="+levelVO.getRef());
 			mv.setViewName("common/result");
 		}
 		return mv;

@@ -1,7 +1,11 @@
 package com.food.sbproject1.member;
 
+import java.util.List;
+
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.web.multipart.MultipartFile;
+
+import com.food.sbproject1.util.Pager;
 
 @Mapper
 public interface MemberMapper {
@@ -22,6 +26,12 @@ public interface MemberMapper {
 	public int setMemberUpdate(MemberVO memberVO) throws Exception;
 	// 회원사진 불러오기
 	public MemberFileVO getFile(MemberFileVO memberFileVO)throws Exception;
+	//회원관리
+	public List<MemberVO> getListPage(Pager pager)throws Exception;
+	
+	public long getMemberCount(Pager pager) throws Exception;
+	
+	public int levelUpdate(MemberVO memberVO) throws Exception;
 
 	
 }

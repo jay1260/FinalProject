@@ -12,7 +12,7 @@ class LevelMapperTest {
 	@Autowired
 	private LevelMapper leveMapper; 
 	
-	@Test
+	//@Test
 	void insertTest() throws Exception {
 		
 		for(int i=0; i<100; i++) {
@@ -26,7 +26,28 @@ class LevelMapperTest {
 			System.out.println("end");
 			
 		}
+	
+	}
+	//@Test
+	void setReply() throws Exception{
 		
+		LevelVO levelVO = new LevelVO();
+		levelVO.setNum(10);
+		levelVO.setRef(levelVO.getNum());
+		
+		int result = leveMapper.setReply(levelVO);
+		System.out.println(levelVO.getRef());
+		
+		
+	}
+	@Test
+	void replyupdate() throws Exception{
+		LevelVO levelVO = new LevelVO();
+		levelVO.setNum(10);
+		levelVO.setRef(levelVO.getNum());
+		
+		int result = leveMapper.setRefUpdate(levelVO);
+		System.out.println(levelVO.getRef());
 	}
 
 }

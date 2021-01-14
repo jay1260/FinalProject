@@ -77,10 +77,11 @@
  		<table>
 			<tr>
 				<td><label for="inputphoto" class="col-lg-2 control-label"id="label">사진</label></td>
-				<td><img alt="" class = "logo"src="../upload/member/${member.memberFileVO.fileName }"></td>
+				<td><img alt="" class = "logo"src="../upload/member/${member.memberFileVO.fileName}"></td>
 				
 			</tr>
 		</table>
+		
 			<div class="form-group" id="divgrade">
                 <label for="inputgrade" class="col-lg-2 control-label">등급</label>
                   <div class="col-lg-10">
@@ -94,9 +95,7 @@
                      <input type="text" class="form-control" id="id" data-rule-required="true"  maxlength="30" readonly="readonly" value="${members.id}"name="id">
                    </div>
              </div>
-    
-
-    
+   
              <div class="form-group" id="divName">
                  <label for="inputName" class="col-lg-2 control-label">이름</label>
                   <div class="col-lg-10">

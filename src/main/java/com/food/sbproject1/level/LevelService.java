@@ -14,9 +14,9 @@ public class LevelService {
 	private LevelMapper levelMapper;
 	
 	public List<LevelVO> getList(Pager pager) throws Exception{
-		pager.makeRow(11);
+		pager.makeRow(10);
 		long totalCount = levelMapper.getCount(pager);
-		pager.makePage(totalCount, 1, 11);
+		pager.makePage(totalCount, 1, 10);
 		
 		return levelMapper.getList(pager);
 	}
@@ -45,8 +45,12 @@ public class LevelService {
 		return levelMapper.setReply(levelVO);
 	}
 	
-	public int setUpdateReply(LevelVO levelVO)throws Exception{
-		return levelMapper.setUpdateReply(levelVO);
+	public int setRefUpdate(LevelVO levelVO)throws Exception{
+		return levelMapper.setRefUpdate(levelVO);
+	}
+	
+	public int setHit(LevelVO levelVO) throws Exception{
+		return levelMapper.setHit(levelVO);
 	}
 
 }

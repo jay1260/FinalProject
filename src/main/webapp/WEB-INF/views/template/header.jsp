@@ -8,10 +8,14 @@
 			<div class="lang_word">
 				<div class="lang_box">
 					<span>${member.id}님</span>
-					<a href="${pageContext.request.contextPath}/member/memberPage" class="reset">내 정보</a>
+						<a href="${pageContext.request.contextPath}/member/memberPage" class="reset">내 정보</a>
+					<c:if test="${member.id eq 'admin'}">
+						<a href="${pageContext.request.contextPath}/member/adminPage" class="reset">회원관리</a>
+					</c:if>
 				</div>
 			</div>
 		</c:if>
+		
 		<!-- END -->
 			 
 		<!-- 로고, 로그인 -->
@@ -76,11 +80,6 @@
 				<li class="false">
 					<a href="${pageContext.request.contextPath}/level/levelList">
 						<span>등업 게시판</span>
-					</a>
-				</li>
-				<li class="false">
-					<a href="#">
-						<span>공지사항</span>
 					</a>
 				</li>
 			</ul>

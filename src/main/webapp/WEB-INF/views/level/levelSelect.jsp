@@ -42,8 +42,8 @@
 	.container{
 		margin-top : 100px;
 		margin-bottom : 20px;
-		border: 2px solid gray;
-	}
+		
+	} 
 	#delete{
 		margin-right: 20px;
 	}
@@ -80,6 +80,7 @@
 <div class="container">
 		
 	<a href="./levelList" id="back"> > 등업 게시판</a>
+	
 	<div class="title">
 		<h1 class="tt">${level.title}</h1>
 	</div>
@@ -123,7 +124,7 @@ $("#list").click(function(){
 });
 $("#reply").click(function(){
 	var num = $(this).attr("title");
-	location.href="./levelReply";
+	location.href="./levelReply?num="+num;
 })
 
 </script>

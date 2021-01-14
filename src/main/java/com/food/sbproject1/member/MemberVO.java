@@ -16,6 +16,7 @@ import lombok.Data;
 @Data
 public class MemberVO {
 
+	private long num;
 	@NotEmpty
 	private String id;
 	@Length(min=8, max=16)
@@ -29,7 +30,7 @@ public class MemberVO {
 	@Email
 	private String email;
 	
-	private String level;
+	private long level;
 	
 	private MemberFileVO memberFileVO;
 
