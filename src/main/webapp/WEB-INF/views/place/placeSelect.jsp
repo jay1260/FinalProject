@@ -372,7 +372,7 @@
 		letter-spacing: -1px;
 		font-size: 12px;
 	}
-
+	
 	/* 리뷰 부분 end */
 	
 	/*수정 버튼*/
