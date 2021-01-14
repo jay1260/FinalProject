@@ -51,6 +51,7 @@
 							<c:when test="${empty member}"><a href="${pageContext.request.contextPath}/member/memberLogin" class="login">로그인</a></c:when>
 						</c:choose>
 						
+						<input type="text" value="${member.id}" id="memberID" hidden="hidden">
 						<!-- 추후 쿠키 -->
 						<!-- Trigger/Open The Modal -->
 						<button id="myBtn" class="count">
@@ -65,12 +66,8 @@
 						  <!-- Modal content -->
 						  <div class="modal-content">
 						    <span class="close">&times;</span>
-						    회원님이 찜한 식당
-						    
-						    <c:forEach items="${likeList}" var="likeList">
-								<div>${likeList.num}</div>
-							</c:forEach>
-							<%@ include file="/WEB-INF/views/place/placeLikeList.jsp" %>
+						    회원님의 찜 목록입니다.
+							<div id="result" style="margin-top: 10px;"></div>
 						  </div>
 						</div>
 					</div>
@@ -106,6 +103,23 @@
 	var modal = document.getElementById("myModal");
 	var btn = document.getElementById("myBtn");
 	var span = document.getElementsByClassName("close")[0];
+
+	function getLikeList(){
+		var id = $("#memberID").val();
+		
+		$.ajax({
+			url:"../place/placeLikeList?id="+id,
+			type:"GET",
+			data:{id:id},
+			success:function(data){
+				$("#result").append(data);
+			}
+		})
+	}
+
+	$("#myBtn").click(function(){
+		getLikeList();
+	});
 	
 	btn.onclick = function() {
 	  modal.style.display = "block";
@@ -113,12 +127,13 @@
 	
 	span.onclick = function() {
 	  modal.style.display = "none";
+	  history.go(0);
 	}
 	
 	window.onclick = function(event) {
 	  if (event.target == modal) {
 	    modal.style.display = "none";
-	    
+	    history.go(0);
 	  }
 	}
 </script>

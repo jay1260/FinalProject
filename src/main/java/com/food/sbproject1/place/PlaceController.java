@@ -177,10 +177,12 @@ public class PlaceController {
 	public ModelAndView getPlaceLikeList(PlaceLikeVO placeLikeVO, MemberVO memberVO, HttpSession session) throws Exception{
 		ModelAndView mv = new ModelAndView();
 		memberVO = (MemberVO)session.getAttribute("member");
-		placeLikeVO.setId(memberVO.getId());
 		
-		List<PlaceLikeVO> ar = placeService.getPlaceLikeList(placeLikeVO);
-		mv.addObject("likeList", ar);
+		if(memberVO !=null) {
+			placeLikeVO.setId(memberVO.getId());
+			List<PlaceLikeVO> ar = placeService.getPlaceLikeList(placeLikeVO);
+			mv.addObject("likeList", ar);
+		}
 		
 		return mv;
 	}

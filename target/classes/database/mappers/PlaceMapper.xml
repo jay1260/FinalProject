@@ -91,12 +91,20 @@
 		<association property="placeFileVO" resultMap="placeFileResult" javaType="PlaceFileVO">
 		<!-- resultMap선언, javaType 선언 필수!!!! -->
 		</association>
+		<association property="placeLikeVO" resultMap="placeLikeResult" javaType="PlaceLikeVO">
+		</association>
 	</resultMap>
 
 	<resultMap type="PlaceFileVO" id="placeFileResult">
 		<id property="fnum" column="fnum"/>
 		<result property="fileName" column="fileName"/>
 		<result property="oriName" column="oriName"/>
+	</resultMap>
+	
+	<resultMap type="PlaceLikeVO" id="placeLikeResult">
+		<id property="num" column="num"/>
+		<result property="id" column="id"/>
+		<result property="placeLike" column="placeLike"/>
 	</resultMap>
 	
 	<!-- 사진 여러개 테스트 -->
@@ -139,8 +147,13 @@
 	</insert>
 	
 	<!-- 찜한 가게 -->
-	<select id="getPlaceLikeList" parameterType="PlaceLikeVO" resultType="PlaceLikeVO">
-		select * from placeLike where id=#{id}
+	<select id="getPlaceLikeList" parameterType="PlaceLikeVO" resultMap="getPlaceResult">
+		select P.restaurant, P.menu, PL.id, PL.placeLike, PF.fileName
+		from place P inner join placeLike PL
+		on P.num = PL.placeLike
+		inner join placeFile PF
+		on PL.placeLike = PF.num
+		where PL.id = #{id}
 	</select>
 	
 	<!-- 찜한 가게 수 -->
