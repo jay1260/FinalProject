@@ -164,6 +164,14 @@
 		background-size: cover;
 		background-repeat: no-repeat;
 	}
+	.restaurant-detail>header .review_liking_button_icon{
+		display: block;
+		width: 32px;
+		height: 32px;
+		background-image: url("../image/icon/bg_ico_b_favorit.png");
+		background-size: cover;
+		background-repeat: no-repeat;
+	}
 	.restaurant-detail>header .review_writing_button_text{
 		margin-top: 12px;
 		line-height: 1.3;
@@ -179,6 +187,10 @@
 		background-size: 25px 19px;
 		padding-left: 29px;
 		font-size: 12px;
+	}
+
+	.review_writing_button span:hover {
+		color: #ff7400;
 	}
 	
 	/* 상세정보 */
@@ -303,6 +315,7 @@
 		height: 64px;
 		background: url("../image/icon/bg_photo_basic01.png") no-repeat 0 0;
 	}
+	
 	.place_review .rList ul li .img > img{
 		position: absolute;
 		left: 0;
@@ -469,7 +482,15 @@
 								<i class="review_writing_button_icon"></i>
 								<span class="review_writing_button_text">리뷰쓰기</span>
 							</button>
+							<form action="./placeLike" method="post" id="likeFrm">
+							<input type="text" value="${member.id}" id="likeMember" name="id" hidden="hidden">
+							<button class="review_writing_button" id="likeBtn" name="placeLike" value="${one.num}">
+								<i class="review_liking_button_icon"></i>
+								<span class="review_writing_button_text">가게 찜</span>
+							</button>
+							</form>
 						</div>
+						
 					</div>
 					<div class="status">
 						<span class="status_hit">${one.hit}</span>
@@ -584,7 +605,7 @@
 	var curPage=1;
 	getList();
 	var total = $("#total").attr("title");
-
+	
 	// 더보기 버튼 클릭
 	$("#sMoreBtn").click(function(){	
 		curPage++;

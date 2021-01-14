@@ -2,6 +2,8 @@ package com.food.sbproject1.place;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -147,13 +149,42 @@ public class PlaceController {
 		List<PlaceVO> ar = placeService.getList(pager);
 		
 		long num = placeService.getCount(pager);
-				
+		
 		mv.addObject("num", num);
 		mv.addObject("pager", pager);
 		mv.addObject("list", ar);
 		mv.setViewName("place/placeList");
 		return mv;
 	}
+	
+	// 가게 찜
+	@PostMapping("placeLike")
+	public ModelAndView setPlaceLikeInsert(PlaceLikeVO placeLikeVO, HttpServletRequest request) throws Exception{
+		ModelAndView mv = new ModelAndView();
+		int result = placeService.setPlaceLikeInsert(placeLikeVO);
+		String referer = request.getHeader("referer");
+		if(result>0) {
+			mv.addObject("msg", "찜 완료");
+			mv.addObject("path", referer);
+			mv.setViewName("common/result");
+		}
+		
+		return mv;
+	}
+	
+	// 찜 목록
+	@GetMapping("placeLikeList")
+	public ModelAndView getPlaceLikeList(PlaceLikeVO placeLikeVO, MemberVO memberVO, HttpSession session) throws Exception{
+		ModelAndView mv = new ModelAndView();
+		memberVO = (MemberVO)session.getAttribute("member");
+		placeLikeVO.setId(memberVO.getId());
+		
+		List<PlaceLikeVO> ar = placeService.getPlaceLikeList(placeLikeVO);
+		mv.addObject("likeList", ar);
+		
+		return mv;
+	}
+	
 	
 	@GetMapping("jusoPopup")
 	public void getJusoPopup() throws Exception{

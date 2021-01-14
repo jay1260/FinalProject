@@ -197,6 +197,7 @@
 	<input type="button" class="btn btn-warning" value="맛집추천하기" id="writeBtn">
 	<div class="inner" style="padding-bottom: 10px;">
 		<h1 class="title">고객님들이 함께 엄선한 인기 맛집입니다.</h1>
+		<h1>${count}</h1>
 	</div>
 </header>
 <!-- header END -->
@@ -268,7 +269,6 @@
 		</div>
 	</div>
 </c:if>
-
 <c:if test="${pager.notPage}">
 	<h1 style="text-align: center; margin: 205px 0;">현재 페이지는 게시물이 존재하지 않습니다.</h1>
 </c:if>

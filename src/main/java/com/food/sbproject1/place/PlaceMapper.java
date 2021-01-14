@@ -38,4 +38,13 @@ public interface PlaceMapper {
 	
 	// 음식 사진 등록
 	public int setInsertFiles(PlaceFilesVO placeFilesVO) throws Exception;
+	
+	// 가게 찜
+	public int setPlaceLikeInsert(PlaceLikeVO placeLikeVO) throws Exception;
+	
+	// 찜한 가게
+	public List<PlaceLikeVO> getPlaceLikeList(PlaceLikeVO placeLikeVO) throws Exception;
+	
+	// 찜한 가게 수
+	public Long getPlaceLikeCount(PlaceLikeVO placeLikeVO) throws Exception;
 }

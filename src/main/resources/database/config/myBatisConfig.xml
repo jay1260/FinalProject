@@ -14,6 +14,7 @@
 		<typeAlias type="com.food.sbproject1.place.PlaceVO" alias="PlaceVO"/>
 		<typeAlias type="com.food.sbproject1.place.PlaceFileVO" alias="PlaceFileVO"/>
 		<typeAlias type="com.food.sbproject1.place.PlaceFilesVO" alias="PlaceFilesVO"/>
+		<typeAlias type="com.food.sbproject1.place.PlaceLikeVO" alias="PlaceLikeVO"/>
 		
 		<!-- member -->
 		<typeAlias type="com.food.sbproject1.member.MemberVO" alias="MemberVO"/>

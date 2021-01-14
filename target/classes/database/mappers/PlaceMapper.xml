@@ -133,4 +133,19 @@
 		where P.num=#{num}
 	</select>
 	
+	<!-- 가게 찜 -->
+	<insert id="setPlaceLikeInsert" parameterType="PlaceLikeVO">
+		insert into placeLike(id, placeLike) values(#{id}, #{placeLike})
+	</insert>
+	
+	<!-- 찜한 가게 -->
+	<select id="getPlaceLikeList" parameterType="PlaceLikeVO" resultType="PlaceLikeVO">
+		select * from placeLike where id=#{id}
+	</select>
+	
+	<!-- 찜한 가게 수 -->
+	<select id="getPlaceLikeCount" parameterType="PlaceLikeVO" resultType="Long">
+		select count(*) placeLike where id = #{id}
+	</select>
+	
 </mapper>  

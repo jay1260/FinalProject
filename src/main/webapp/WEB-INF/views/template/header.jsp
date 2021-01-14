@@ -66,27 +66,12 @@
 						  <div class="modal-content">
 						    <span class="close">&times;</span>
 						    회원님이 찜한 식당
-						    <div class="UserRestaurantHistory__HistoryContainer">
-						    	<ul class="UserRestaurantHistory__RestaurantList">
-						    		<li class="UserRestaurantHistory__RestaurantItem">
-						    			<!-- 찜 리스트 가져오기 -->
-						    			<section class="RestaurantHorizontalItem">
-						    				<a href="#" class="RestaurantHorizontalItem__Link">
-						    					<div class="RestaurantHorizontalItem__Picture" style="background-image: url('../image/food/food1.jpg');"></div>
-						    				</a>
-						    				<div class="RestaurantHorizontalItem__Info">
-						    					<a href="#">
-						    						<h3 class="RestaurantHorizontalItem__Name">식당이름</h3>
-						    					</a>
-						    					<span class="RestaurantHorizontalItem__MetroAndCuisine">메뉴</span>
-						    				</div>
-						    			</section>
-						    			<!--  -->
-						    		</li>
-						    	</ul>
-						    </div>
+						    
+						    <c:forEach items="${likeList}" var="likeList">
+								<div>${likeList.num}</div>
+							</c:forEach>
+							<%@ include file="/WEB-INF/views/place/placeLikeList.jsp" %>
 						  </div>
-						
 						</div>
 					</div>
 				</div>
@@ -133,6 +118,7 @@
 	window.onclick = function(event) {
 	  if (event.target == modal) {
 	    modal.style.display = "none";
+	    
 	  }
 	}
 </script>
