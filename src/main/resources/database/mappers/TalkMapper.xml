@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="com.food.sbproject1.talk.TalkMapper">
+
+	<!-- 소통 리스트 -->
+	<select id="getTalkList" resultType="TalkVO" parameterType="Pager">
+		select TP.*,
+		(select count(*) from talkReply where ref=TP.num)as reCount
+		from talkPlace TP 
+		order by num desc limit #{startRow}, 15
+	</select>
+	
+	<!-- 소통 글 수 -->
+	<select id="getTalkCount" resultType="Long" parameterType="Pager">
+		select count(num) from talkPlace
+	</select>
+	
+	<!-- 조회수 -->
+	<update id="setTalkHit" parameterType="TalkVO">
+		update talkPlace set hit = #{hit}+1 where num = #{num}
+	</update>
+	
+	<!-- 소통 작성 -->
+	<insert id="setTalkWrite" parameterType="TalkVO">
+		insert into talkPlace(writer, title, contents, regDate, hit)
+		values(#{writer}, #{title}, #{contents}, sysdate(), 0)
+	</insert>
+	
+	<!-- 소통 삭제 -->
+	<delete id="setTalkDelete" parameterType="TalkVO">
+		delete from talkPlace where num = #{num}
+	</delete>
+	
+	<!-- 글 하나 -->
+	<select id="getTalkOne" parameterType="TalkVO" resultType="TalkVO">
+		select * from talkPlace where num = #{num}
+	</select>
+	
+	<!-- 소통 댓글 -->
+	<insert id="setTalkReply" parameterType="TalkReplyVO">
+		insert into talkReply(writer, reply, ref, regDate)
+		values(#{writer}, #{reply}, #{ref}, sysdate())
+	</insert>
+	
+	<!-- 소통 댓글 리스트 -->
+	<select id="getReplyList" resultType="TalkReplyVO" parameterType="TalkReplyVO">
+		select * from talkReply where ref = #{ref}
+	</select>
+
+</mapper>  

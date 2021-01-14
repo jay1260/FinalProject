@@ -7,7 +7,6 @@ import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -15,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.food.sbproject1.member.MemberVO;
 import com.food.sbproject1.review.ReviewService;
 import com.food.sbproject1.review.ReviewVO;
 import com.food.sbproject1.util.Pager;
@@ -80,7 +80,7 @@ public class PlaceController {
 	
 	// 상세 글 조회
 	@GetMapping("placeSelect")
-	public ModelAndView getOne(PlaceVO placeVO, ReviewVO reviewVO,Pager pager) throws Exception{
+	public ModelAndView getOne(PlaceVO placeVO, ReviewVO reviewVO, MemberVO memberVO,Pager pager) throws Exception{
 		ModelAndView mv = new ModelAndView();
 		placeVO = placeService.getOne(placeVO);
 		int result = placeService.setHitUp(placeVO);
@@ -155,7 +155,6 @@ public class PlaceController {
 		return mv;
 	}
 	
-
 	@GetMapping("jusoPopup")
 	public void getJusoPopup() throws Exception{
 	}

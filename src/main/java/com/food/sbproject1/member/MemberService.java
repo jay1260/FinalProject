@@ -123,6 +123,7 @@ public class MemberService  {
 		return memberMapper.setMemberDelete(memberVO);
 	}
 	
+<<<<<<< HEAD
 	public List<MemberVO> getListPage(Pager pager) throws Exception{
 		pager.makeRow(10);
 		long totalCount =  memberMapper.getMemberCount(pager);
@@ -137,4 +138,6 @@ public class MemberService  {
 	public int levelUpdate(MemberVO memberVO) throws Exception{
 		return memberMapper.levelUpdate(memberVO);
 	}
+=======
+>>>>>>> gb_0111
 }

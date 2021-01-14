@@ -24,6 +24,9 @@ public interface PlaceMapper {
 	// 맛집 추천글 리스트
 	public List<PlaceVO> getList(Pager pager) throws Exception;
 	
+	// 메인 맛집 리스트
+	public List<PlaceVO> getMainList() throws Exception;
+	
 	// 맛집 등록
 	public int setInsert(PlaceVO placeVO) throws Exception;
 	

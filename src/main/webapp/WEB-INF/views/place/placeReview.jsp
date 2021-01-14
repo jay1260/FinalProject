@@ -13,13 +13,13 @@
 		<c:forEach items="${rList}" var="review" varStatus="status">
 			<li>
 				<span class="img">
-					<img alt="리뷰남긴회원이미지" src="" width="64" height="64">
+					<img alt="리뷰남긴회원이미지" src="../upload/member/${review.memberFileVO.fileName}" width="64" height="64">
 				</span>
 				<div class="cont">
 					<div class="cnt">
 						<div class="name_data">
 							<strong>${review.id}</strong>
-							<em class="writer_role">회원등급</em>
+							<em class="writer_role">${review.memberVO.level}</em>
 						</div>
 						<div class="score_story">
 							<div class="newStarBox">
@@ -38,9 +38,11 @@
 							<p style="display: inline-block;">
 								${review.regDate}
 							</p>
-							<p style="float: right;">
-								<button class="del" title="${review.num}">리뷰_삭제</button>
-							</p>
+							<c:if test="${review.id eq member.id}">
+								<p style="float: right;">
+									<button class="del" title="${review.num}">리뷰_삭제</button>
+								</p>
+							</c:if>
 						</div>
 					</div>
 				</div>

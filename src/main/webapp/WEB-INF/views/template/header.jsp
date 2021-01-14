@@ -16,8 +16,11 @@
 			</div>
 		</c:if>
 		
+<<<<<<< HEAD
 		<!-- END -->
 			 
+=======
+>>>>>>> gb_0111
 		<!-- 로고, 로그인 -->
 		<div class="header">
 			<h1 class="logo ko" style="margin-top: 0px;">
@@ -53,11 +56,42 @@
 						</c:choose>
 						
 						<!-- 추후 쿠키 -->
-						<a href="#layer_h_cont2" class="count">
+						<!-- Trigger/Open The Modal -->
+						<button id="myBtn" class="count">
 							<span>
 								<em>0</em>
 							</span>
-						</a>
+						</button>
+						
+						<!-- The Modal -->
+						<div id="myModal" class="modal">
+						
+						  <!-- Modal content -->
+						  <div class="modal-content">
+						    <span class="close">&times;</span>
+						    회원님이 찜한 식당
+						    <div class="UserRestaurantHistory__HistoryContainer">
+						    	<ul class="UserRestaurantHistory__RestaurantList">
+						    		<li class="UserRestaurantHistory__RestaurantItem">
+						    			<!-- 찜 리스트 가져오기 -->
+						    			<section class="RestaurantHorizontalItem">
+						    				<a href="#" class="RestaurantHorizontalItem__Link">
+						    					<div class="RestaurantHorizontalItem__Picture" style="background-image: url('../image/food/food1.jpg');"></div>
+						    				</a>
+						    				<div class="RestaurantHorizontalItem__Info">
+						    					<a href="#">
+						    						<h3 class="RestaurantHorizontalItem__Name">식당이름</h3>
+						    					</a>
+						    					<span class="RestaurantHorizontalItem__MetroAndCuisine">메뉴</span>
+						    				</div>
+						    			</section>
+						    			<!--  -->
+						    		</li>
+						    	</ul>
+						    </div>
+						  </div>
+						
+						</div>
 					</div>
 				</div>
 			</div>
@@ -73,7 +107,7 @@
 					</a>
 				</li>
 				<li class="false">
-					<a href="#">
+					<a href="${pageContext.request.contextPath}/talk/talkList">
 						<span>소통공간</span>
 					</a>
 				</li>
@@ -87,4 +121,23 @@
 		<!-- 메뉴바 END -->
 	</div>
 	<div id="emptyHeader" style="display: block; width: 100%; height: 158px;"></div>
+<script type="text/javascript">
+	var modal = document.getElementById("myModal");
+	var btn = document.getElementById("myBtn");
+	var span = document.getElementsByClassName("close")[0];
+	
+	btn.onclick = function() {
+	  modal.style.display = "block";
+	}
+	
+	span.onclick = function() {
+	  modal.style.display = "none";
+	}
+	
+	window.onclick = function(event) {
+	  if (event.target == modal) {
+	    modal.style.display = "none";
+	  }
+	}
+</script>
 </header>

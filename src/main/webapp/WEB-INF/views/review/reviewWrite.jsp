@@ -183,9 +183,9 @@
 					            </div>
 					        </div>
 					        <input type="text" name="restaurant" value="${getOne.restaurant}" hidden="hidden">
-							<input type="text" name="id">
+							<input type="text" name="id" value="${member.id}" hidden="hidden">
 							<div class="ReviewWritingPage_RestaurantRecommendPickerWrap">
-								<textarea class="ReviewEditor_Editor" placeholder="아이디님 주문하신 메뉴는 어떠셨나요? 식당의 분위기와 서비스도 궁금해요!" style="overflow: hidden; overflow-wrap:break-word; height: 150px;" maxlength="1500" name="contents" id="contents"></textarea>
+								<textarea class="ReviewEditor_Editor" placeholder="${member.id}님 주문하신 메뉴는 어떠셨나요? 식당의 분위기와 서비스도 궁금해요!" style="overflow: hidden; overflow-wrap:break-word; height: 150px;" maxlength="1500" name="contents" id="contents"></textarea>
 							</div>
 						</div>
 						

@@ -75,116 +75,28 @@
 	<!-- 섹션 third End -->
 	
 	<!-- 섹션 last 부분 -->
+
 	<section class="home-main-section background-gray">
 		<div class="home-hot-content">
 			<h1 class="home-main-title text-center home-hot-title">
 				요즘 떠오르는 맛집
 			</h1>
 			<div class="cards-wrap">
+				<c:forEach items="${mainList}" var="mainList">
 				<article class="card-top">
-					<a class="card-link" href="#">
+					<a class="card-link" href="/place/placeSelect?num=${mainList.num}">
 						<div class="card-photo">
-							<img alt="" src="../image/food/food1.jpg">
+							<img alt="" src="../upload/place/${mainList.placeFileVO.fileName}">
 						</div>
 						<div class="card-desc">
-							<h2 class="card-title">돼지고기 정말 맛있는 집</h2>
+							<h2 class="card-title">${mainList.restaurant}</h2>
 							<div class="card-info">
-								목살 구이 맛집
+								${mainList.menu } 맛집
 							</div>
 						</div>
 					</a>
 				</article>
-				<article class="card-top">
-					<a class="card-link" href="#">
-						<div class="card-photo">
-							<img alt="" src="../image/food/food2.jpeg">
-						</div>
-						<div class="card-desc">
-							<h2 class="card-title">100년을 이어갈 손맛</h2>
-							<div class="card-info">
-								추억의 돈가스
-							</div>
-						</div>
-					</a>
-				</article>
-				<article class="card-top">
-					<a class="card-link" href="#">
-						<div class="card-photo">
-							<img alt="" src="../image/food/food3.jpg">
-						</div>
-						<div class="card-desc">
-							<h2 class="card-title">켜켜이 쌓인 재료의 하모니</h2>
-							<div class="card-info">
-								샌드위치 신흥 맛집
-							</div>
-						</div>
-					</a>
-				</article>
-				<article class="card-top">
-					<a class="card-link" href="#">
-						<div class="card-photo">
-							<img alt="" src="../image/food/food4.jpg">
-						</div>
-						<div class="card-desc">
-							<h2 class="card-title">맛있는 식사 후에는?</h2>
-							<div class="card-info">
-								달콤한 디저트 맛집
-							</div>
-						</div>
-					</a>
-				</article>
-				<article class="card-top">
-					<a class="card-link" href="#">
-						<div class="card-photo">
-							<img alt="" src="../image/food/food5.jpg">
-						</div>
-						<div class="card-desc">
-							<h2 class="card-title">인생 고기를 만나다!</h2>
-							<div class="card-info">
-								꼭 가야하는 소고기 맛집
-							</div>
-						</div>
-					</a>
-				</article>
-				<article class="card-top">
-					<a class="card-link" href="#">
-						<div class="card-photo">
-							<img alt="" src="../image/food/food6.jpg">
-						</div>
-						<div class="card-desc">
-							<h2 class="card-title">생활의 달인!!</h2>
-							<div class="card-info">
-								김밥 맛집
-							</div>
-						</div>
-					</a>
-				</article>
-				<article class="card-top">
-					<a class="card-link" href="#">
-						<div class="card-photo">
-							<img alt="" src="../image/food/food7.jpg">
-						</div>
-						<div class="card-desc">
-							<h2 class="card-title">칼국수에 매우 진심이다</h2>
-							<div class="card-info">
-								칼국수 맛집
-							</div>
-						</div>
-					</a>
-				</article>
-				<article class="card-top">
-					<a class="card-link" href="#">
-						<div class="card-photo">
-							<img alt="" src="../image/food/food8.jpg">
-						</div>
-						<div class="card-desc">
-							<h2 class="card-title">프리미엄 숙성 한우</h2>
-							<div class="card-info">
-								오마카세 맛집
-							</div>
-						</div>
-					</a>
-				</article>
+				</c:forEach>
 			</div>
 		</div>
 	</section>

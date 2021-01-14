@@ -40,6 +40,14 @@
 		order by P.num desc limit #{startRow}, 12
 	</select>
 	
+	<!-- 메인 떠오르는 맛집 -->
+	<select id="getMainList" resultMap="getPlaceResult">
+		select P.*, PF.*
+		from place P left join placeFile PF
+		on(P.num = PF.num)
+		order by rand() limit 8
+	</select>
+	
 	<!-- 맛집 추천 작성 -->
 	<insert id="setInsert" parameterType="PlaceVO" useGeneratedKeys="true" keyProperty="num">
 		insert into place(num, title, writer, contents, regDate, hit, menu, restaurant, roadFullAddr, phone, openTime, closeTime, price, rest)

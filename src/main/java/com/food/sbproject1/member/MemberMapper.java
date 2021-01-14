@@ -26,6 +26,7 @@ public interface MemberMapper {
 	public int setMemberUpdate(MemberVO memberVO) throws Exception;
 	// 회원사진 불러오기
 	public MemberFileVO getFile(MemberFileVO memberFileVO)throws Exception;
+<<<<<<< HEAD
 	//회원관리
 	public List<MemberVO> getListPage(Pager pager)throws Exception;
 	
@@ -33,5 +34,7 @@ public interface MemberMapper {
 	
 	public int levelUpdate(MemberVO memberVO) throws Exception;
 
+=======
+>>>>>>> gb_0111
 	
 }

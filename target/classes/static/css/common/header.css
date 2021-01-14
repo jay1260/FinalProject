@@ -1,7 +1,8 @@
 @charset "UTF-8";
 	#header{
 		border-top: 1px solid #aeaeae;
-		border-bottom:2px solid #000;
+		border-bottom: 1px solid #DBDBDB;
+		box-shadow: 0 4px 11px rgba(0,0,0,0.1);
 		min-height: 110px;
 		background: #fff;
 		min-width: 1024px;
@@ -189,6 +190,95 @@
 	#header .gnb ul li a span:hover, #header .gnb ul li a span:active{
 		color:#66b3ff;
 		font-size: 110%;
+	}
+	
+	/* The Modal (background) */
+	.modal {
+	  display: none; /* Hidden by default */
+	  position: fixed; /* Stay in place */
+	  z-index: 1; /* Sit on top */
+	  padding-top: 100px; /* Location of the box */
+	  left: 0;
+	  top: 0;
+	  width: 100%; /* Full width */
+	  height: 100%; /* Full height */
+	  overflow: auto; /* Enable scroll if needed */
+	  background-color: rgb(0,0,0); /* Fallback color */
+	  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+	}
+	
+	/* Modal Content */
+	.modal-content {
+	  background-color: #fefefe;
+	  margin-right:20px;
+	  padding: 20px;
+	  border: 1px solid #888;
+	  width: 24%;
+	  float: right;
+	}
+	
+	/* The Close Button */
+	.close {
+	  color: #aaaaaa;
+	  float: right;
+	  font-size: 28px;
+	  font-weight: bold;
+	}
+	
+	.close:hover,
+	.close:focus {
+	  color: #000;
+	  text-decoration: none;
+	  cursor: pointer;
+	}
+	#myBtn{
+		border: 0; 
+		outline: 0; 
+		padding: 0; 
+		background: white;
+	}
+	.UserRestaurantHistory__HistoryContainer{
+		height: 500px;
+		overflow-y:auto; 
+	}
+	.UserRestaurantHistory__RestaurantList{
+		margin: 16px 10px 0 16px;
+	}
+	.UserRestaurantHistory__RestaurantItem{
+		position: relative;
+	}
+	.RestaurantHorizontalItem{
+		display: -webkit-flex;
+		height: 86px;
+		margin-bottom: 16px;
+	}
+	.RestaurantHorizontalItem__Picture{
+		width: 70px;
+		height: 70px;
+		margin-right: 16px;
+		background-size: cover;
+		background-position: 50% 50%;
+		background-color: #E6E6E6;
+	}
+	.RestaurantHorizontalItem__Info{
+		display: -webkit-flex;
+		flex-direction:column;
+		-webkit-box-direction:normal;
+		-webkit-box-orient:vertical;
+		min-width:0;
+		line-height: 22px;
+	}
+	.RestaurantHorizontalItem__Name{
+		overflow: hidden;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+		font-size: 16px;
+		color: #000000;
+		font-weight: normal;
+	}
+	.RestaurantHorizontalItem__MetroAndCuisine{
+		font-size: 12px;
+		color: 6a6a6a;
 	}
 	
 	

@@ -65,6 +65,7 @@
 		delete from member where id= #{id} 
   	</delete>
   	
+<<<<<<< HEAD
  	<select id="getMemberCount" parameterType="Pager" resultType="long">
   		select count(num) from member where
   		<include refid="getMember"></include>
@@ -80,4 +81,6 @@
   		update member set level=#{level}-1 where id=#{id}
   	</update>
   	
+=======
+>>>>>>> gb_0111
   </mapper>
