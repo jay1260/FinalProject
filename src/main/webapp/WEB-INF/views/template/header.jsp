@@ -15,12 +15,8 @@
 				</div>
 			</div>
 		</c:if>
-		
-<<<<<<< HEAD
 		<!-- END -->
 			 
-=======
->>>>>>> gb_0111
 		<!-- 로고, 로그인 -->
 		<div class="header">
 			<h1 class="logo ko" style="margin-top: 0px;">
