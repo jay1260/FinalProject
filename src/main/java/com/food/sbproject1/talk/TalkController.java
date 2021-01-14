@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.food.sbproject1.notice.NoticeService;
+import com.food.sbproject1.notice.NoticeVO;
 import com.food.sbproject1.util.Pager;
 
 @Controller
@@ -17,6 +19,8 @@ public class TalkController {
 
 	@Autowired
 	private TalkService talkService;
+	@Autowired
+	private NoticeService noticeService;
 	
 	// 소통 하나
 	@GetMapping("talkSelect")
@@ -70,10 +74,13 @@ public class TalkController {
 	@GetMapping("talkList")
 	public ModelAndView getTalkList(Pager pager, TalkReplyVO talkReplyVO) throws Exception{
 		ModelAndView mv = new ModelAndView();
-		List<TalkVO> ar = talkService.getTalkList(pager);
+		
+		List<NoticeVO> nar = noticeService.getNoticeList();
+		List<TalkVO> tar = talkService.getTalkList(pager);
 		
 		mv.addObject("pager", pager);
-		mv.addObject("talkList", ar);
+		mv.addObject("noticeList", nar);
+		mv.addObject("talkList", tar);
 		mv.setViewName("talk/talkList");
 		
 		return mv;

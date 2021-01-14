@@ -9,7 +9,7 @@
 <c:import url="../template/bootStrap.jsp"></c:import>
 <style type="text/css">
 	/* header 부분 */
-	#writeBtn{
+	.writeBtn{
 		float: right;
 		margin-top: 50px;
 		margin-right: 50px;
@@ -66,6 +66,14 @@
 		color: #e23c3c;;
 	}
 	
+	tr>td{
+		padding: 14px 8px !important;
+	}
+
+	.notice_table tr>td{
+		background-color: #f6f7fc;
+	}
+	
 </style>
 </head>
 <body>
@@ -74,7 +82,8 @@
 
 <!-- header 부분 -->
 <header class="basic-info-list">
-	<input type="button" class="btn btn-warning" value="소통하기" id="writeBtn">
+	<input type="button" class="btn btn-warning writeBtn" value="공지하기" id="nWriteBtn">
+	<input type="button" class="btn btn-warning writeBtn" value="소통하기" id="tWriteBtn">
 	<div class="inner" style="padding-bottom: 10px;">
 		<h1 class="title"><span style="color: #ff7400;">No.1 맛집탐험</span> 회원들의 소통공간입니다.</h1>
 	</div>
@@ -93,7 +102,21 @@
 				<th>조회</th>
 			</tr>
 		</thead>
+		<c:forEach items="${noticeList}" var="noticeList">
+			<tbody class="notice_table">
+				<tr>
+					<td></td>
+					<td style="font-weight: 700;">
+						<a href="../notice/noticeSelect?num=${noticeList.num}" style="opacity:0.9;"> ${noticeList.title}
+						</a>
+					</td>
+					<td style="color: #ff8533; font-weight: 600;">NO.1 맛집탐험</td>
+					<td>${noticeList.regDate}</td>
+					<td>${noticeList.hit}</td>
+				</tr>
+			</tbody>
 			
+		</c:forEach>	
 		<c:forEach items="${talkList}" var="talkList">
 			<tbody>
 				<tr>
@@ -143,8 +166,12 @@
 
 </body>
 <script type="text/javascript">
-	
-	$("#writeBtn").click(function(){
+
+	$("#nWriteBtn").click(function(){
+		location.href="./talkWrite";
+	});
+
+	$("#tWriteBtn").click(function(){
 		location.href="./talkWrite";
 	});
 

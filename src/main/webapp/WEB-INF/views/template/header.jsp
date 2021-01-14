@@ -77,11 +77,7 @@
 						<span>등업 게시판</span>
 					</a>
 				</li>
-				<li class="false">
-					<a href="#">
-						<span>공지사항</span>
-					</a>
-				</li>
+				
 			</ul>
 		</div>
 		<!-- 메뉴바 END -->
