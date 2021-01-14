@@ -84,7 +84,7 @@
 			<div class="cards-wrap">
 				<c:forEach items="${mainList}" var="mainList">
 				<article class="card-top">
-					<a class="card-link" href="#">
+					<a class="card-link" href="/place/placeSelect?num=${mainList.num}">
 						<div class="card-photo">
 							<img alt="" src="../upload/place/${mainList.placeFileVO.fileName}">
 						</div>

@@ -45,7 +45,7 @@ public class TalkController {
 		ModelAndView mv = new ModelAndView();
 		int result = talkService.setTalkWrite(talkVO);
 		if(result>0) {
-			mv.addObject("msg", "소통 완료~~");
+			mv.addObject("msg", "소통이 작성되었습니다.");
 			mv.addObject("path", "./talkList");
 		}
 		
@@ -63,7 +63,7 @@ public class TalkController {
 		ModelAndView mv = new ModelAndView();
 		int result = talkService.setTalkDelete(talkVO);
 		if(result>0) {
-			mv.addObject("msg", "소통 삭제");
+			mv.addObject("msg", "소통을 삭제했습니다.");
 			mv.addObject("path", "./talkList");
 			mv.setViewName("common/result");
 		}
@@ -93,7 +93,7 @@ public class TalkController {
 		int result = talkService.setTalkReply(talkReplyVO);
 		
 		if(result>0) {
-			mv.addObject("msg", "댓글 작성");
+			mv.addObject("msg", "댓글이 작성되었습니다.");
 			mv.addObject("path", "./talkSelect?num="+talkReplyVO.getRef());
 			mv.setViewName("common/result");
 		}

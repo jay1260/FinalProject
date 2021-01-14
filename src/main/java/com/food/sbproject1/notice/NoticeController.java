@@ -1,7 +1,5 @@
 package com.food.sbproject1.notice;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -39,6 +37,8 @@ public class NoticeController {
 	public ModelAndView getNoticeOne(NoticeVO noticeVO) throws Exception{
 		ModelAndView mv = new ModelAndView();
 		noticeVO = noticeService.getNoticeOne(noticeVO);
+		int result = noticeService.setNoticeHit(noticeVO);
+		
 		mv.addObject("noticeOne", noticeVO);
 		mv.setViewName("notice/noticeSelect");
 		
@@ -52,7 +52,7 @@ public class NoticeController {
 		int result = noticeService.setNoticeDelete(noticeVO);
 		
 		if(result>0) {
-			mv.addObject("msg", "삭제 완료.");
+			mv.addObject("msg", "공지가 삭제되었습니다.");
 			mv.addObject("path", "../talk/talkList");
 			mv.setViewName("common/result");
 		}

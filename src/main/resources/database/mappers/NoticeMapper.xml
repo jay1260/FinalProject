@@ -25,5 +25,10 @@
 	<delete id="setNoticeDelete" parameterType="NoticeVO">
 		delete from notice where num = #{num}
 	</delete>
+	
+	<!-- 조회수 -->
+	<update id="setNoticeHit" parameterType="NoticeVO">
+		update notice set hit=#{hit}+1 where num = #{num} 
+	</update>
 
 </mapper>  

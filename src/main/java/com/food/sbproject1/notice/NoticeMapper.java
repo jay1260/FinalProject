@@ -18,4 +18,7 @@ public interface NoticeMapper {
 	
 	// 공지 삭제
 	public int setNoticeDelete(NoticeVO noticeVO) throws Exception;
+	
+	// 조회수
+	public int setNoticeHit(NoticeVO noticeVO) throws Exception;
 }

@@ -11,8 +11,16 @@
 	/* header 부분 */
 	.writeBtn{
 		float: right;
+		border:1px solid #dfdfdf;
+		background-color: #353d55;
+		
+	}
+	#nWriteBtn{
 		margin-top: 50px;
 		margin-right: 50px;
+	}
+	#tWriteBtn{
+		margin-bottom: 15px;
 	}
 	.basic-info-list{
 		border-bottom: 1px solid #dbdbdb;
@@ -32,12 +40,10 @@
 		text-align: center;
 	}
 	/* header END */
-	.table th{
+	.table_first{
 		text-align: center;
 	}
-	.table td{
-		text-align: center;
-	}
+
 	.pager_div{
 		text-align: center; 
 		margin-top: 30px;
@@ -73,6 +79,10 @@
 	.notice_table tr>td{
 		background-color: #f6f7fc;
 	}
+	.notice_span{
+		margin-right: 10px;
+		opacity: 0.6;
+	}
 	
 </style>
 </head>
@@ -83,7 +93,7 @@
 <!-- header 부분 -->
 <header class="basic-info-list">
 	<input type="button" class="btn btn-warning writeBtn" value="공지하기" id="nWriteBtn">
-	<input type="button" class="btn btn-warning writeBtn" value="소통하기" id="tWriteBtn">
+	
 	<div class="inner" style="padding-bottom: 10px;">
 		<h1 class="title"><span style="color: #ff7400;">No.1 맛집탐험</span> 회원들의 소통공간입니다.</h1>
 	</div>
@@ -91,15 +101,15 @@
 <!-- header END -->
 
 <div class="container" style="margin: 50px auto;">
-
+	<input type="button" class="btn btn-warning writeBtn" value="소통하기" id="tWriteBtn">
 	<table class="table table-hover">
 		<thead>
 			<tr>
 				<th></th>
-				<th>제목</th>
-				<th>작성자</th>
-				<th>작성일</th>
-				<th>조회</th>
+				<th class="table_first">제목</th>
+				<th class="table_second">작성자</th>
+				<th class="table_first">작성일</th>
+				<th class="table_first">조회</th>
 			</tr>
 		</thead>
 		<c:forEach items="${noticeList}" var="noticeList">
@@ -107,12 +117,13 @@
 				<tr>
 					<td></td>
 					<td style="font-weight: 700;">
+						<span class="notice_span">전체공지</span>
 						<a href="../notice/noticeSelect?num=${noticeList.num}" style="opacity:0.9;"> ${noticeList.title}
 						</a>
 					</td>
 					<td style="color: #ff8533; font-weight: 600;">NO.1 맛집탐험</td>
-					<td>${noticeList.regDate}</td>
-					<td>${noticeList.hit}</td>
+					<td class="table_first">${noticeList.regDate}</td>
+					<td class="table_first">${noticeList.hit}</td>
 				</tr>
 			</tbody>
 			
@@ -120,7 +131,7 @@
 		<c:forEach items="${talkList}" var="talkList">
 			<tbody>
 				<tr>
-					<td>${talkList.num}</td>
+					<td></td>
 					<td style="font-weight: 700;">
 						<a href="./talkSelect?num=${talkList.num}" style="opacity:0.5;"> ${talkList.title}
 							<c:if test="${talkList.reCount gt 0}">
@@ -129,8 +140,8 @@
 						</a>
 					</td>
 					<td>${talkList.writer}</td>
-					<td>${talkList.regDate}</td>
-					<td>${talkList.hit}</td>
+					<td class="table_first">${talkList.regDate}</td>
+					<td class="table_first">${talkList.hit}</td>
 				</tr>
 			</tbody>
 			

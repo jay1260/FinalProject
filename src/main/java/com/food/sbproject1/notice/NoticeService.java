@@ -30,4 +30,9 @@ public class NoticeService {
 	public int setNoticeDelete(NoticeVO noticeVO) throws Exception{
 		return noticeMapper.setNoticeDelete(noticeVO);
 	}
+	
+	// 조회수
+	public int setNoticeHit(NoticeVO noticeVO) throws Exception{
+		return noticeMapper.setNoticeHit(noticeVO);
+	}
 }
