@@ -30,5 +30,10 @@
 	<update id="setNoticeHit" parameterType="NoticeVO">
 		update notice set hit=#{hit}+1 where num = #{num} 
 	</update>
+	
+	<!-- 공지 수 확인 -->
+	<select id="getNoticeCount" resultType="Long">
+		select count(num) from notice
+	</select>
 
 </mapper>  

@@ -17,6 +17,8 @@
 	
 	.writeBtn{
 		float: right;
+		border:1px solid #dfdfdf;
+		background-color: #353d55;
 		margin: 25px 15px 40px 0;
 	}
 </style>
@@ -42,7 +44,7 @@
 		</div>
 		<div class="form-group col-xs-12 col-md-12">
 			<label for="contents">내용</label>
-			<textarea class="form-control" rows="15" id="contents" name="contents"></textarea>
+			<textarea class="form-control" rows="15" id="contents" name="contents" style="resize: none;"></textarea>
 		</div>
 		
 		<input type="button" class="btn btn-primary writeBtn" id="tWriteBtn" value="소통하기">

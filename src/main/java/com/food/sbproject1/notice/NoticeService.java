@@ -35,4 +35,9 @@ public class NoticeService {
 	public int setNoticeHit(NoticeVO noticeVO) throws Exception{
 		return noticeMapper.setNoticeHit(noticeVO);
 	}
+	
+	// 공지 수 확인
+	public Long getNoticeCount() throws Exception{
+		return noticeMapper.getNoticeCount();
+	}
 }

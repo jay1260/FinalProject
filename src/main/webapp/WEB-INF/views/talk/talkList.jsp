@@ -81,7 +81,7 @@
 	}
 	.notice_span{
 		margin-right: 10px;
-		opacity: 0.6;
+		opacity: 0.5;
 	}
 	
 </style>
@@ -95,7 +95,7 @@
 	<input type="button" class="btn btn-warning writeBtn" value="공지하기" id="nWriteBtn">
 	
 	<div class="inner" style="padding-bottom: 10px;">
-		<h1 class="title"><span style="color: #ff7400;">No.1 맛집탐험</span> 회원들의 소통공간입니다.</h1>
+		<h1 class="title"><span style="color: #ff7400; font-weight: 700;">No.1 맛집탐험</span> 회원들의 소통공간입니다.</h1>
 	</div>
 </header>
 <!-- header END -->
@@ -118,7 +118,10 @@
 					<td></td>
 					<td style="font-weight: 700;">
 						<span class="notice_span">전체공지</span>
-						<a href="../notice/noticeSelect?num=${noticeList.num}" style="opacity:0.9;"> ${noticeList.title}
+						<a href="../notice/noticeSelect?num=${noticeList.num}" style="opacity:0.9;"> 
+						<span style="color: #000000;">
+						${noticeList.title}
+						</span>
 						</a>
 					</td>
 					<td style="color: #ff8533; font-weight: 600;">NO.1 맛집탐험</td>
@@ -133,7 +136,7 @@
 				<tr>
 					<td></td>
 					<td style="font-weight: 700;">
-						<a href="./talkSelect?num=${talkList.num}" style="opacity:0.5;"> ${talkList.title}
+						<a href="./talkSelect?num=${talkList.num}" style="color: #000000; opacity: 0.8;"> ${talkList.title}
 							<c:if test="${talkList.reCount gt 0}">
 								<span style="color: red; margin-left: 3px;">[${talkList.reCount}]</span>
 							</c:if>

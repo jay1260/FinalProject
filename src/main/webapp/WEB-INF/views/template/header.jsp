@@ -48,11 +48,34 @@
 						</c:choose>
 						
 						<!-- 추후 쿠키 -->
-						<a href="#layer_h_cont2" class="count">
+						<!-- Trigger/Open The Modal -->
+						<button id="myBtn" class="count">
 							<span>
 								<em>0</em>
 							</span>
-						</a>
+						</button>
+						
+						<!-- The Modal -->
+						<div id="myModal" class="modal">
+						
+						  <!-- Modal content -->
+						  <div class="modal-content">
+						    <span class="close">&times;</span>
+						    찜한 식당
+						    <table>
+						    	<tr>
+						    		<td>1</td>
+						    	</tr>
+						    	<tr>
+						    		<td>2</td>
+						    	</tr>
+						    	<tr>
+						    		<td>3</td>
+						    	</tr>
+						    </table>
+						  </div>
+						
+						</div>
 					</div>
 				</div>
 			</div>
@@ -77,10 +100,28 @@
 						<span>등업 게시판</span>
 					</a>
 				</li>
-				
 			</ul>
 		</div>
 		<!-- 메뉴바 END -->
 	</div>
 	<div id="emptyHeader" style="display: block; width: 100%; height: 158px;"></div>
+<script type="text/javascript">
+	var modal = document.getElementById("myModal");
+	var btn = document.getElementById("myBtn");
+	var span = document.getElementsByClassName("close")[0];
+	
+	btn.onclick = function() {
+	  modal.style.display = "block";
+	}
+	
+	span.onclick = function() {
+	  modal.style.display = "none";
+	}
+	
+	window.onclick = function(event) {
+	  if (event.target == modal) {
+	    modal.style.display = "none";
+	  }
+	}
+</script>
 </header>

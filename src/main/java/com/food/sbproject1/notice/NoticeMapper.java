@@ -21,4 +21,7 @@ public interface NoticeMapper {
 	
 	// 조회수
 	public int setNoticeHit(NoticeVO noticeVO) throws Exception;
+	
+	// 공지 수 확인
+	public Long getNoticeCount() throws Exception;
 }

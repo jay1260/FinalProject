@@ -18,6 +18,7 @@ public class NoticeController {
 	@PostMapping("noticeWrite")
 	public ModelAndView setNoticeWrite(NoticeVO noticeVO) throws Exception{
 		ModelAndView mv = new ModelAndView();
+		
 		int result = noticeService.setNoticeWrite(noticeVO);
 		if(result>0) {
 			mv.addObject("msg", "공지사항 작성 완료되었습니다.");
