@@ -45,9 +45,12 @@
 			<label for="contents">내용</label>
 			<textarea class="form-control" rows="15" id="contents" name="contents" style="resize: none;"></textarea>
 		</div>
-		
-		<input type="button" class="btn btn-primary writeBtn" id="tWriteBtn" value="소통하기">
-		<input type="button" class="btn btn-primary writeBtn" id="nWriteBtn" value="공지하기">
+		<c:if test="${member.id ne 'admin'}">
+			<input type="button" class="btn btn-primary writeBtn" id="tWriteBtn" value="소통하기">
+		</c:if>
+		<c:if test="${member.id eq 'admin'}">
+			<input type="button" class="btn btn-primary writeBtn" id="nWriteBtn" value="공지하기">
+		</c:if>	
 	</form>
 </div>
 <c:import url="../template/footer.jsp"></c:import>
