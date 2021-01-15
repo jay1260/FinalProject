@@ -2,13 +2,11 @@ package com.food.sbproject1.member;
 
 import java.util.List;
 
-<<<<<<< HEAD
+
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-=======
-import javax.servlet.http.HttpServletRequest;
->>>>>>> gb_0114
+
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
@@ -26,8 +24,6 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.food.sbproject1.level.LevelVO;
-import com.food.sbproject1.place.PlaceLikeVO;
-import com.food.sbproject1.place.PlaceService;
 import com.food.sbproject1.util.Pager;
 
 @Controller
