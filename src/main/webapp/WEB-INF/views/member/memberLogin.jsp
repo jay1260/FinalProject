@@ -58,7 +58,7 @@
 		</table>
 	  </div>
    	  <div class="form-group" id="inputID">
-	    <input type="text" class="form-control" id="id"name="id" placeholder="ID 입력">
+	    <input type="text" class="form-control" id="id"name="id" placeholder="ID 입력" value="${cookie.remember.value}" required="required">
 	  </div>
 	
 	  <div class="form-group" id="inputPw">
@@ -67,7 +67,7 @@
 	   <button type="submit" class="btn btn-warning log" >로그인</button>
 	
 	  <div class="checkbox">
-	    <label><input type="checkbox"> ID기억하기</label>
+	    <label><input type="checkbox" id="rememberId"  name ="remember"> ID기억하기</label>
 	  </div>
 	 
 	  <div class ="member">
@@ -81,7 +81,8 @@
 </div>	
 </div>
 <c:import url="../template/footer.jsp"></c:import>
-
-
 </body>
+<script type="text/javascript">
+
+</script>
 </html>

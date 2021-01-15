@@ -2,6 +2,9 @@ package com.food.sbproject1.member;
 
 import java.util.List;
 
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
@@ -32,7 +35,11 @@ public class MemberController {
 	
 	//약관동의
 	@GetMapping("memberAgree")
-	public void memberAgree()throws Exception{
+	public ModelAndView memberAgree()throws Exception{
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("member/memberAgree");
+		
+		return mv;
 	}
 	
 	//회원가입
@@ -68,9 +75,22 @@ public class MemberController {
 	}
 	//로그인
 	@PostMapping("memberLogin")
-	public ModelAndView getMemberLogin(MemberVO memberVO, HttpSession session) throws Exception{
+	public ModelAndView getMemberLogin(MemberVO memberVO, HttpSession session, String remember, HttpServletResponse response, HttpServletRequest request) throws Exception{
 		ModelAndView mv = new ModelAndView();
 	
+		if(remember!=null) {
+			Cookie cookie = new Cookie("remember", memberVO.getId());
+			cookie.setMaxAge(60*5);
+			cookie.setPath("/");
+			response.addCookie(cookie);
+			
+		}
+		else {
+			Cookie cookie = new Cookie("remember", "");
+			cookie.setMaxAge(0);
+			cookie.setPath("/");
+			response.addCookie(cookie);
+		}
 		memberVO=memberService.getMemberLogin(memberVO);
 		
 		if(memberVO !=null) {	
@@ -82,7 +102,7 @@ public class MemberController {
 			System.out.println("name:"+memberVO.getName());
 			System.out.println("age: "+memberVO.getAge());
 			System.out.println("email: "+memberVO.getEmail());
-
+		
 			System.out.println("-----------------------------");
 		}
 		else {

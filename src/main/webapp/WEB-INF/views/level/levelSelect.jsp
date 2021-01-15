@@ -67,6 +67,9 @@
 		margin-top: 20px;
 		color:orange;
 	}
+	#reply{
+		margin-right: 20px;
+	}
 
 </style>
 </head>

@@ -89,10 +89,8 @@
   		<input type = "submit" class = "btn btn-warning" value="글쓰기" id="write" >
 	</div>
    </c:if>
-    </form>
- </div>   
-
-	<ul class="pagination">
+   
+   	<ul class="pagination">
 	  <c:if test="${pager.beforeCheck}">
 	  	<li><a href="./levelList?curPage=${pager.startNum-1}" class="lelist" title="${pager.startNum-1}">Pre</a></li>
 	  </c:if>		
@@ -104,8 +102,12 @@
 	  	<li><a href="./levelList?curPage=${pager.startNum+1}" class="lelist" title="${pager.lastNum+1}">Next</a></li>
 	  </c:if>
   	</ul>
+   
+    </form>
+ </div>   
 
-</div>
+
+
 <c:import url="../template/footer.jsp"></c:import>
 </body>
 

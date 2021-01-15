@@ -43,10 +43,10 @@
 <body>
 <div class="container">
 
-<a href="../"><img alt="" src="../image/member/Agree.png" class="img" id="all"></a>
-<h5 class="agreement"><input type="checkbox" id="all">개인정보 수집 및 이용, 위치정보 이용약관(선택), 프로모션 정보 수신(선택)에 모두 동의합니다.</h5>
+<a href="../"><img alt="" src="../image/member/Agree.png" class="img" ></a>
+<h5 class="agreement"><input type="checkbox" id="all" class="ch">개인정보 수집 및 이용, 위치정보 이용약관(선택), 프로모션 정보 수신(선택)에 모두 동의합니다.</h5>
 <div class="form-group">
-      <label for="comment"class="comment">개인정보 수집 및 이용동의<input type="checkbox" id="c1" name="c1"></label>
+      <label for="comment"class="comment">개인정보 수집 및 이용동의<input type="checkbox" id="c1" name="ch1" class="ch"></label>
       <textarea class="form-control" rows="5" cols="100" id="comment" readonly="readonly">
 
 개인정보보호법에 따라 네이버에 회원가입 신청하시는 분께 수집하는 개인정보의 항목, 개인정보의 수집 및 이용목적, 개인정보의 보유 및 이용기간, 동의 거부권 및 동의 거부 시 불이익에 관한 사항을 안내 드리오니 자세히 읽은 후 동의하여 주시기 바랍니다.
@@ -82,9 +82,9 @@
 </div>
 
 <div class="form-group">
-      <label for="comment"class="comment">위치정보 약관동의<input type="checkbox" id="c2" name="c2"></label>
+      <label for="comment"class="comment">위치정보 약관동의<input type="checkbox" id="c2" name="ch2" class="ch" ></label>
       <textarea class="form-control" rows="5" cols="100" id="comment" readonly="readonly">
-위치정보 이용약관에 동의하시면, 위치를 활용한 광고 정보 수신 등을 포함하는 네이버 위치기반 서비스를 이용할 수 있습니다.
+위치정보 이용약관에 동의하시면, 위치를 활용한 광고 정보 수신 등을 포함하는 No.1 맛집탐험 위치기반 서비스를 이용할 수 있습니다.
 
 
 제 1 조 (목적)
@@ -156,19 +156,58 @@
 </textarea>
 </div>
 <div class="form-group">
-      <label for="comment"class="comment">프로모션 정보 수신동의<input type="checkbox" id="c3" name="c3"></label>
+      <label for="comment"class="comment">프로모션 정보 수신동의<input type="checkbox" id="c3" name="c3" class="ch" name="ch3"></label>
       <textarea class="form-control" rows="5" cols="100" id="comment" readonly="readonly">
-네이버에서 제공하는 이벤트/혜택 등 다양한 정보를 휴대전화(네이버앱 알림 또는 문자), 이메일로 받아보실 수 있습니다. 
+No1. 맛집탐험에서 제공하는 이벤트/혜택 등 다양한 정보를 휴대전화(네이버앱 알림 또는 문자), 이메일로 받아보실 수 있습니다. 
 일부 서비스(별도 회원 체계로 운영하거나 네이버 가입 이후 추가 가입하여 이용하는 서비스 등)의 경우, 개별 서비스에 대해 별도 수신 동의를 받을 수 있으며,
  이때에도 수신 동의에 대해 별도로 안내하고 동의를 받습니다.
 </textarea>
 </div>
-	<a href="./memberJoin"><input type="button" value="확인" class = "btn btn-primary"></a>
+	<input type="submit" value="확인" class = "btn btn-warning" id="join">
 </div>
 
 <c:import url="../template/footer.jsp"></c:import>
 
 <script type="text/javascript">
+var btn = document.getElementById("join")
+var ch= document.getElementsByClassName("ch");
+var allChecked = document.getElementById("all");
+
+allChecked.addEventListener('click', function (){
+    for(var i=0;i<ch.length;i++){
+       ch[i].checked = allChecked.checked;
+ }
+    
+ });
+ 
+for(var i=0;i<ch.length;i++){
+	   ch[i].addEventListener('click', function (){
+	      var result= true;
+	      for(var j=0;j<c1.length;j++){
+	         if(!ch[j].checked){
+	            result= false;
+	         }
+	      }
+	         
+	      allChecked.checked = result;
+	   });
+	   
+	   }
+ btn.addEventListener('click', function(){
+	
+
+	var c1 = document.getElementById("c1");
+	var c2 = document.getElementById("c2");
+
+	if(c1.checked && c2.checked){
+			console.log("OK");
+			location.href="./memberJoin";
+		}
+	else{
+			alert("필수항목을 동의해주세요");
+			
+		}
+	})
 
 
 </script>
