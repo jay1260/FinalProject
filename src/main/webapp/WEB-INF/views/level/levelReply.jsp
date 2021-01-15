@@ -37,13 +37,12 @@
 		
 		<div class="form-group col-xs-12 col-md-12">
 			<label for="contents">내용</label>
-			<textarea class="form-control" id="contents" name="contents" value="등업완료 되었습니다."></textarea>
+			<textarea class="form-control" id="contents" name="contents">등업완료 되었습니다.</textarea>
 		</div>
   		<div class="form-group" id ="write" >
 			<input type="submit" class="btn btn-warning" value="작성" id="sub">
 		</div>	
-		 ref:<input type="text" value ="${level.ref}" readonly="readonly">
-		depth:<input type="text" value="${level.depth}" readonly="readonly">
+		
 	</form>
 	
 </div>

@@ -25,7 +25,7 @@ public class LevelController {
 	//게시글 목록
 	@GetMapping("levelList")
 	public String getList(Pager pager, HttpSession session) throws Exception{
-		
+	
 		List<LevelVO> ar = levelService.getList(pager);
 		
 		long num = levelService.getCount(pager);
@@ -33,7 +33,7 @@ public class LevelController {
 		session.setAttribute("num", num);
 		session.setAttribute("pager", pager);
 		session.setAttribute("list", ar);
-		
+	
 		
 		System.out.println("List");
 		return "level/levelList";

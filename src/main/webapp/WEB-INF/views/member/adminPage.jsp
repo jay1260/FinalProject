@@ -8,8 +8,18 @@
 <title>Insert title here</title>
 <c:import url="../template/bootStrap.jsp"></c:import>
 <style type="text/css">
+ body{
+		font-family: 'Nanum Gothic', sans-serif;
+	}
 	.level{
 		margin-top: 30px;
+		text-align: center;
+		font-size:26px;
+		color: #000000;
+		line-height: 1.2em;
+	}
+	.header_list{
+		margin: 0 auto;
 	}
 </style>
 </head>
@@ -18,30 +28,38 @@
 
 <div class="container">
 	<div class ="level">
-			<h3>회원 관리</h3>
+		<table class="header_list">
+			<tr>
+			<td><img alt="" src="../image/member/unnamed.png"></td>
+			<td><h3>회원 관리</h3></td>
+			</tr>
+		</table>	
 	</div>
-  <form action="memberLevel?id=${member.id}" id="frm" name="adminpage" method="post">
-  
+<div class="adminpage" style="margin:50px auto;">
+
   <input type="hidden" name="curPage" id="curPage" value=1>
+  <input type="hidden" name="id" id="id">
+  <input type="hidden" name="level" id="level">
   	<table class="table table-hober">
   	<tr>
   		<td>ID</td><td>Name</td><td>Email</td><td>Level</td><td>등급관리</td>
   	</tr>
   	<c:forEach items="${list}" var="member">
   	<tr>
-  		<td id="id">${member.id}</td>
-  		<td>${member.name}</td>
-  		<td>${member.email}</td>
-  		<td>${member.level}</td>
+  		<td id="id" title="${member.id}">${member.id}</td>
+  		<td id="name" title="${member.name}">${member.name}</td>
+  		<td id="email" title="${member.email}">${member.email}</td>
+  		<td id="level" title="${member.level }">${member.level}</td>
   		<td>
   			<c:if test="${member.level eq 3 || member.level eq 2}">
-  			<input type="submit" value="등급올리기" class="btn btn-warning" title="${member.id}" id="btn" name="btn">
+  			<a href="./adminPage?id=${member.id}&level=${member.level}" id="link"><input type="button" value="등급올리기" class="btn btn-warning" title="${member.id}" id="btn" name="id"></a>
   			</c:if>
   		</td>
   	</tr>
   	</c:forEach>
 	</table>
-	
+
+</div>	
 	<ul class="pagination">
 	  <c:if test="${pager.beforeCheck}">
 	  	<li><a href="./adminPage?curPage=${pager.startNum-1}" class="adlist" title="${pager.startNum-1}">Pre</a></li>
@@ -55,17 +73,13 @@
 	  </c:if>
   	</ul>
   	
-	</form>
-	</div>
+	
+</div>
                                                
 <c:import url="../template/footer.jsp"></c:import>
 </body>
 <script type="text/javascript">
-	$('#btn').click(function(){
-	var id=$('#id').val();
-	alert(id);
-	var num = $(this).attr("title");
-		location.href="./memberLevel?id="+id;
-	});
+
+	
 </script>
 </html>

@@ -73,9 +73,9 @@
 <body>
 <c:import url="../template/header.jsp"></c:import>
 <ul>
-<li><input type = "submit" value="이전" class="btn btn-warning" id ="pre" title="${level.num}"></li>
-<li><input type = "submit" value="목록" class="btn btn-warning" id ="list"></li>
-<li><input type = "submit" value="다음" class="btn btn-warning" id ="next" title="${level.num}"></li>
+<li><a href="./levelSelect?num=${level.num-1}"><input type = "button" value="이전" class="btn btn-warning" id ="pre" title="${level.num}"></a></li>
+<li><input type ="submit" value="목록" class="btn btn-warning" id ="list"></li>
+<li><a href="./levelSelect?num=${level.num+1}"><input type = "button" value="다음" class="btn btn-warning" id ="next" title="${level.num}"></a></li>
 </ul>
 <div class="container">
 		

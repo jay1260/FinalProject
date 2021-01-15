@@ -205,47 +205,32 @@ public class MemberController {
 		ModelAndView mv = new ModelAndView();
 		
 		List<MemberVO> ar = memberService.getListPage(pager); 
-		
+		memberService.getMemberLogin(memberVO);			
 		long num = memberService.getMemberCount(pager);
+		int result = memberService.levelUpdate(memberVO);
+		String msg="수정 실패";
+	
+	if(result!=0) {
 		
-
+		msg="수정성공";
+		mv.addObject("msg", msg);
+		mv.addObject("path", "./adminPage");
+		mv.setViewName("common/result");
+	}
 		mv.addObject("num", num);
 		mv.addObject("pager", pager);
 		mv.addObject("list", ar);
-		
+
 		System.out.println("list");
 		System.out.println("id:"+memberVO.getId());
 		System.out.println("level: "+memberVO.getLevel());
 		System.out.println("=============================");
 		
-		mv.setViewName("./member/adminPage"); 	
-		
 		return mv;
 	
 	}
 	
-	@PostMapping("memberLevel")
-	public ModelAndView setLevelUpdate(MemberVO memberVO, Pager pager) throws Exception{
-		
-		ModelAndView mv = new ModelAndView();
-		
-			int result = memberService.levelUpdate(memberVO);
-			String msg="수정 실패";
-		if(result!=0) {
-			memberVO=memberService.getOne(memberVO);
-			msg="수정성공";
-			mv.addObject("msg", msg);
-			mv.addObject("path", "../");
-			mv.setViewName("common/result");
-			System.out.println("id: "+memberVO.getId());
-			System.out.println("level: "+memberVO.getLevel());
-			System.out.println("result: "+result);
-			System.out.println("=======================");
-				}
-			
 	
-		return mv;
-	}
 	
 
 	

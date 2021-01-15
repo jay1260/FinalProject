@@ -44,7 +44,7 @@
 <div class="container">
 
 <a href="../"><img alt="" src="../image/member/Agree.png" class="img" id="all"></a>
-<h5 class="agreement"><input type="checkbox">개인정보 수집 및 이용, 위치정보 이용약관(선택), 프로모션 정보 수신(선택)에 모두 동의합니다.</h5>
+<h5 class="agreement"><input type="checkbox" id="all">개인정보 수집 및 이용, 위치정보 이용약관(선택), 프로모션 정보 수신(선택)에 모두 동의합니다.</h5>
 <div class="form-group">
       <label for="comment"class="comment">개인정보 수집 및 이용동의<input type="checkbox" id="c1" name="c1"></label>
       <textarea class="form-control" rows="5" cols="100" id="comment" readonly="readonly">
@@ -169,6 +169,7 @@
 <c:import url="../template/footer.jsp"></c:import>
 
 <script type="text/javascript">
+
 
 </script>
 

@@ -22,16 +22,45 @@
  .writebtn{
  	float: right;
  }
+ body{
+		font-family: 'Nanum Gothic', sans-serif;
+	}
+.basic-info-list .title{
+		margin-top: 11px;
+		font-size:26px;
+		color: #000000;
+		line-height: 1.2em;
+		text-align: center;
+	}
+.title_2{
+		margin-top: 11px;
+		font-size:15px;
+		color: #000000;
+		line-height: 1.2em;
+		text-align: center;
+}
+	.basic-info-list{
+		border-bottom: 1px solid #dbdbdb;
+		background-color: #f7f7f7;
+	}
+	.basic-info-list>.inner{
+		margin: 0 auto;
+		padding: 38px 30px 20px 30px;
+		width: 860px;
+	}
 </style>
 </head>
 <c:import url="../template/header.jsp"></c:import>
 <body>
 
-<div class="container">
-	<div class ="grade">
-			<h3>등업게시판</h3>
+<header class="basic-info-list">
+	<div class="inner" style="padding-bottom: 10px;">
+		<h1 class="title">등업게시판</h1>
+		<h4 class="title_2">등업하여 더 많은 음식점을 추천해주세요</h4>
 	</div>
-  <form action="./levelList" id="frm" name="levelSelect">
+</header>
+<div class="container" style="margin: 50px auto;">
+  <form action="./levelWrite" id="frm" name="levelSelect">
   <input type="hidden" name="curPage" id="curPage" value=1>
   	<table class="table table-hober">
   	<tr>
@@ -55,12 +84,14 @@
 	</c:forEach>
  	
   </table>
-    </form>
-    <c:if test="${ not empty member}">
+      <c:if test="${member.level eq 3 || member.level eq 2}">
     <div class="writebtn">
   		<input type = "submit" class = "btn btn-warning" value="글쓰기" id="write" >
 	</div>
    </c:if>
+    </form>
+ </div>   
+
 	<ul class="pagination">
 	  <c:if test="${pager.beforeCheck}">
 	  	<li><a href="./levelList?curPage=${pager.startNum-1}" class="lelist" title="${pager.startNum-1}">Pre</a></li>
