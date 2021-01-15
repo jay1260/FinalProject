@@ -168,7 +168,7 @@
 	
 	<!-- 찜한 가게 수 -->
 	<select id="getPlaceLikeCount" parameterType="PlaceLikeVO" resultType="Long">
-		select count(*) placeLike where id = #{id}
+		select count(*) from placeLike where id = #{id}
 	</select>
 	
 </mapper>  

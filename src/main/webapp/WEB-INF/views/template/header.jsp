@@ -54,11 +54,20 @@
 						<input type="text" value="${member.id}" id="memberID" hidden="hidden">
 						<!-- 추후 쿠키 -->
 						<!-- Trigger/Open The Modal -->
+						<c:if test="${not empty member.id}">
+						<button id="myBtn" class="count">
+							<span>
+								<em id="likeCount">${placeLikeCount}</em>
+							</span>
+						</button>
+						</c:if>
+						<c:if test="${empty member.id}">
 						<button id="myBtn" class="count">
 							<span>
 								<em>0</em>
 							</span>
 						</button>
+						</c:if>
 						
 						<!-- The Modal -->
 						<div id="myModal" class="modal">

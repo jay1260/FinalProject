@@ -2,6 +2,7 @@ package com.food.sbproject1.member;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
@@ -19,6 +20,8 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.food.sbproject1.level.LevelVO;
+import com.food.sbproject1.place.PlaceLikeVO;
+import com.food.sbproject1.place.PlaceService;
 import com.food.sbproject1.util.Pager;
 
 @Controller
@@ -26,6 +29,8 @@ import com.food.sbproject1.util.Pager;
 public class MemberController {
 	@Autowired
 	private MemberService memberService;
+	@Autowired
+	private PlaceService placeService;
 	
 	@Value("${member.filePath")
 	private String filePath;
@@ -68,7 +73,7 @@ public class MemberController {
 	}
 	//로그인
 	@PostMapping("memberLogin")
-	public ModelAndView getMemberLogin(MemberVO memberVO, HttpSession session) throws Exception{
+	public ModelAndView getMemberLogin(MemberVO memberVO, HttpSession session, PlaceLikeVO placeLikeVO) throws Exception{
 		ModelAndView mv = new ModelAndView();
 	
 		memberVO=memberService.getMemberLogin(memberVO);
@@ -76,6 +81,10 @@ public class MemberController {
 		if(memberVO !=null) {	
 			session.setAttribute("member", memberVO);
 		
+			placeLikeVO.setId(memberVO.getId());
+			long num = placeService.getPlaceLikeCount(placeLikeVO);
+			session.setAttribute("placeLikeCount", num);
+			
 			mv.setViewName("redirect:../");
 			
 			System.out.println("id: "+memberVO.getId());
@@ -91,6 +100,7 @@ public class MemberController {
 			mv.addObject("path", "./memberLogin");
 			mv.setViewName("common/result");
 		}
+		
 		return mv;
 	}
 	
