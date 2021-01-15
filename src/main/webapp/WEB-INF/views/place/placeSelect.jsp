@@ -483,12 +483,14 @@
 								<span class="review_writing_button_text">리뷰쓰기</span>
 							</button>
 							<form action="./placeLike" method="post" id="likeFrm">
+							
 							<input type="text" value="${member.id}" id="likeMember" name="id" hidden="hidden">
-							<button class="review_writing_button" id="likeBtn" name="placeLike" value="${one.num}">
+							<input type="text" value="${one.num}" id="likePlace" name="placeLike" hidden="hidden">
+							</form>
+							<button class="review_writing_button" id="likeBtn">
 								<i class="review_liking_button_icon"></i>
 								<span class="review_writing_button_text">가게 찜</span>
 							</button>
-							</form>
 						</div>
 						
 					</div>
@@ -606,6 +608,15 @@
 	var curPage=1;
 	getList();
 	var total = $("#total").attr("title");
+
+	$("#likeBtn").click(function(){
+		var member = $("#likeMember").val();
+		if(member){
+			$("#likeFrm").submit();
+		}else{
+			alert("로그인 후 이용가능합니다.");
+		}	
+	});
 	
 	// 더보기 버튼 클릭
 	$("#sMoreBtn").click(function(){	
