@@ -19,7 +19,7 @@
 					<div class="cnt">
 						<div class="name_data">
 							<strong>${review.id}</strong>
-							<em class="writer_role">${review.memberVO.level}</em>
+							<em class="writer_role">${review.memberVO.level}등급</em>
 						</div>
 						<div class="score_story">
 							<div class="newStarBox">
