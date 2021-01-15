@@ -182,7 +182,6 @@ public class PlaceController {
 			placeLikeVO.setId(memberVO.getId());
 			List<PlaceLikeVO> ar = placeService.getPlaceLikeList(placeLikeVO);
 			long num = placeService.getPlaceLikeCount(placeLikeVO);
-			
 			mv.addObject("placeLikeCount", num);
 			mv.addObject("likeList", ar);
 		}

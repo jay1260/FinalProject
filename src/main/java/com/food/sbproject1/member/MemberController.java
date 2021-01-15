@@ -78,6 +78,7 @@ public class MemberController {
 		
 		if(memberVO !=null) {	
 			session.setAttribute("member", memberVO);
+			
 			mv.setViewName("redirect:../");
 			
 			System.out.println("id: "+memberVO.getId());

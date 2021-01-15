@@ -115,7 +115,8 @@
 	var span = document.getElementsByClassName("close")[0];
 
 	myPlaceLike();
-	
+
+	// 찜한 가게 수
 	function myPlaceLike(){
 		var likeCount = document.getElementById("likeCount");
 		var loginID = $("#memberID").val();
@@ -128,10 +129,12 @@
 		}
 	}
 
+	// 로그아웃 스토리지 삭제
 	$("#logOut").click(function(){
 		localStorage.removeItem("count");
 	});
-	
+
+	// 찜 목록 삭제
 	$("#likeResult").on("click",".likeDelete", function(){
 		var likeDeleteNum = $(this).attr("title");
 		$.ajax({
@@ -148,19 +151,6 @@
 			}
 		});
 	});
-	
-	function getLikeList(){
-		var id = $("#memberID").val();
-		
-		$.ajax({
-			url:"../place/placeLikeList?id="+id,
-			type:"GET",
-			data:{id:id},
-			success:function(data){
-				$("#likeResult").append(data);
-			}
-		})
-	}
 
 	$("#myBtn").click(function(){
 		getLikeList();
@@ -181,5 +171,20 @@
 	    history.go(0);
 	  }
 	}
+
+	// 찜 목록
+	function getLikeList(){
+		var id = $("#memberID").val();
+		
+		$.ajax({
+			url:"../place/placeLikeList?id="+id,
+			type:"GET",
+			data:{id:id},
+			success:function(data){
+				$("#likeResult").append(data);
+			}
+		})
+	}
+	
 </script>
 </header>
