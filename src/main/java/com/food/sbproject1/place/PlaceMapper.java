@@ -45,6 +45,9 @@ public interface PlaceMapper {
 	// 찜한 가게
 	public List<PlaceLikeVO> getPlaceLikeList(PlaceLikeVO placeLikeVO) throws Exception;
 	
+	// 찜 삭제
+	public int setPlaceLikeDelete(PlaceLikeVO placeLikeVO) throws Exception;
+	
 	// 찜한 가게 수
 	public Long getPlaceLikeCount(PlaceLikeVO placeLikeVO) throws Exception;
 }

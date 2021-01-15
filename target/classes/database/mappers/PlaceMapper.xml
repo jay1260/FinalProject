@@ -148,13 +148,18 @@
 	
 	<!-- 찜한 가게 -->
 	<select id="getPlaceLikeList" parameterType="PlaceLikeVO" resultMap="getPlaceResult">
-		select P.restaurant, P.menu, PL.id, PL.placeLike, PF.fileName
+		select P.restaurant, P.menu, PL.id, PL.placeLike, PL.num, PF.fileName
 		from place P inner join placeLike PL
 		on P.num = PL.placeLike
 		inner join placeFile PF
 		on PL.placeLike = PF.num
 		where PL.id = #{id}
 	</select>
+	
+	<!-- 찜 삭제 -->
+	<delete id="setPlaceLikeDelete" parameterType="PlaceLikeVO">
+		delete from placeLike where num = #{num}
+	</delete>
 	
 	<!-- 찜한 가게 수 -->
 	<select id="getPlaceLikeCount" parameterType="PlaceLikeVO" resultType="Long">

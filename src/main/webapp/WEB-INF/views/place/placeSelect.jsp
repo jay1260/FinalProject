@@ -578,10 +578,11 @@
 					<span style="display: block; margin-top: 15px; font-size: 14px;">↑ 리뷰쓰러 가기 ↑</span>
 				</h4>
 			</c:if>
-			
+			<c:if test="${rCount gt 0}">
 			<div class="rList" id="listResult">
 				<!-- 리뷰 정보 확인 -->
 			</div>
+			</c:if>
 			
 			<c:if test="${pager.nextCheck}">
 				<button class="btn_sMore" id="sMoreBtn"><span>더보기</span></button>

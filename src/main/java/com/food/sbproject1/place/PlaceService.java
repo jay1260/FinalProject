@@ -115,6 +115,11 @@ public class PlaceService {
 		return placeMapper.getPlaceLikeList(placeLikeVO);
 	}
 	
+	// 찜 삭제
+	public int setPlaceLikeDelete(PlaceLikeVO placeLikeVO) throws Exception{
+		return placeMapper.setPlaceLikeDelete(placeLikeVO);
+	}
+	
 	// 찜 수
 	public Long getPlaceLikeCount(PlaceLikeVO placeLikeVO) throws Exception{
 		return placeMapper.getPlaceLikeCount(placeLikeVO);

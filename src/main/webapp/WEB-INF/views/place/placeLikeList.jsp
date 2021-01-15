@@ -18,15 +18,22 @@
 					</a>
 					<span class="RestaurantHorizontalItem__MetroAndCuisine">${likeList.menu}</span>	
 				</div>
-				<button class="RestaurantHorizontalItem__WannagoButton" class="likeDelete" style="height: 53px;">X</button>
+				<button class="RestaurantHorizontalItem__WannagoButton likeDelete" title="${likeList.placeLikeVO.num}" style="height: 53px;">X</button>
 			</section>
 		</c:forEach>	
 		<!--  -->
 		</c:if>
-		</li>
-		<c:if test="${empty member.id}">
+		<c:if test="${not empty member.id && empty likeList}">
 			<span style="color: #ff7400; font-weight: 700;">회원님의 찜 목록은 비어있습니다.</span>
+			<br>
+			<a href="/place/placeList"><span style="font-size: 18px;" > 찜 하러 가볼까요? </span></a>
 		</c:if>
+		<c:if test="${empty member.id}">
+			<a href="/member/memberLogin">
+				<span style="color: #ff7400; font-weight: 700;">로그인 후 확인 가능합니다.</span>
+			</a>
+		</c:if>
+		</li>
 	</ul>	
 </div>
 

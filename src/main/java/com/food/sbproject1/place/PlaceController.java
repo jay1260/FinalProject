@@ -187,6 +187,20 @@ public class PlaceController {
 		return mv;
 	}
 	
+	// 찜 삭제
+	@PostMapping("placeLikeDelete")
+	public ModelAndView setPlaceLikeDelete(PlaceLikeVO placeLikeVO) throws Exception{
+		ModelAndView mv = new ModelAndView();
+		int result = placeService.setPlaceLikeDelete(placeLikeVO);
+			
+		System.out.println(result);
+		
+		mv.addObject("msg", result);
+		mv.setViewName("common/ajaxResult");
+		
+		return mv;
+	}
+	
 	
 	@GetMapping("jusoPopup")
 	public void getJusoPopup() throws Exception{

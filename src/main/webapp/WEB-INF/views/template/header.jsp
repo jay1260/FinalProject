@@ -67,7 +67,7 @@
 						  <div class="modal-content">
 						    <span class="close">&times;</span>
 						    회원님의 찜 목록입니다.
-							<div id="result" style="margin-top: 10px;"></div>
+							<div id="likeResult" style="margin-top: 10px;"></div>
 						  </div>
 						</div>
 					</div>
@@ -104,6 +104,23 @@
 	var btn = document.getElementById("myBtn");
 	var span = document.getElementsByClassName("close")[0];
 
+	$("#likeResult").on("click",".likeDelete", function(){
+		var likeDeleteNum = $(this).attr("title");
+		$.ajax({
+			url:"../place/placeLikeDelete?num="+likeDeleteNum,
+			type:"POST",
+			data:{likeDeleteNum:likeDeleteNum},
+			success:function(data){
+				data=data.trim();
+				if(data>0){
+					alert("찜 삭제!!");
+					$("#likeResult").html('');
+					getLikeList();
+				}
+			}
+		});
+	});
+	
 	function getLikeList(){
 		var id = $("#memberID").val();
 		
@@ -112,7 +129,7 @@
 			type:"GET",
 			data:{id:id},
 			success:function(data){
-				$("#result").append(data);
+				$("#likeResult").append(data);
 			}
 		})
 	}

@@ -21,7 +21,7 @@
 		select R.*, M.level, M.id, MF.fileName 
 		from review R inner join member M 
 		on R.id = M.id
-		inner join memberfile MF
+		left join memberfile MF
 		on M.id = MF.id
 		where R.ref = #{ref} 
 		order by R.num desc 
