@@ -46,7 +46,7 @@
 						<!-- 로그인 -->
 						<c:choose>
 							<c:when test="${not empty member}">
-							<a href="${pageContext.request.contextPath}/member/memberLogout" class="login">로그아웃</a>
+							<a href="${pageContext.request.contextPath}/member/memberLogout" class="login" id="logOut">로그아웃</a>
 							</c:when>
 							<c:when test="${empty member}"><a href="${pageContext.request.contextPath}/member/memberLogin" class="login">로그인</a></c:when>
 						</c:choose>
@@ -57,14 +57,14 @@
 						<c:if test="${not empty member.id}">
 						<button id="myBtn" class="count">
 							<span>
-								<em id="likeCount">${placeLikeCount}</em>
+								<em id="likeCount"></em>
 							</span>
 						</button>
 						</c:if>
 						<c:if test="${empty member.id}">
 						<button id="myBtn" class="count">
 							<span>
-								<em>0</em>
+								<em id="likeCount">0</em>
 							</span>
 						</button>
 						</c:if>
@@ -109,10 +109,29 @@
 	</div>
 	<div id="emptyHeader" style="display: block; width: 100%; height: 158px;"></div>
 <script type="text/javascript">
+
 	var modal = document.getElementById("myModal");
 	var btn = document.getElementById("myBtn");
 	var span = document.getElementsByClassName("close")[0];
 
+	myPlaceLike();
+	
+	function myPlaceLike(){
+		var likeCount = document.getElementById("likeCount");
+		var loginID = $("#memberID").val();
+		var countValue = localStorage.getItem("count");
+		
+		if(countValue>0){
+			likeCount.innerHTML=countValue;
+		}else{
+			likeCount.innerHTML=0;
+		}
+	}
+
+	$("#logOut").click(function(){
+		localStorage.removeItem("count");
+	});
+	
 	$("#likeResult").on("click",".likeDelete", function(){
 		var likeDeleteNum = $(this).attr("title");
 		$.ajax({

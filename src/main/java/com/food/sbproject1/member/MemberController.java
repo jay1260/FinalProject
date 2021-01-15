@@ -29,8 +29,6 @@ import com.food.sbproject1.util.Pager;
 public class MemberController {
 	@Autowired
 	private MemberService memberService;
-	@Autowired
-	private PlaceService placeService;
 	
 	@Value("${member.filePath")
 	private String filePath;
@@ -73,18 +71,13 @@ public class MemberController {
 	}
 	//로그인
 	@PostMapping("memberLogin")
-	public ModelAndView getMemberLogin(MemberVO memberVO, HttpSession session, PlaceLikeVO placeLikeVO) throws Exception{
+	public ModelAndView getMemberLogin(MemberVO memberVO, HttpSession session) throws Exception{
 		ModelAndView mv = new ModelAndView();
 	
 		memberVO=memberService.getMemberLogin(memberVO);
 		
 		if(memberVO !=null) {	
 			session.setAttribute("member", memberVO);
-		
-			placeLikeVO.setId(memberVO.getId());
-			long num = placeService.getPlaceLikeCount(placeLikeVO);
-			session.setAttribute("placeLikeCount", num);
-			
 			mv.setViewName("redirect:../");
 			
 			System.out.println("id: "+memberVO.getId());

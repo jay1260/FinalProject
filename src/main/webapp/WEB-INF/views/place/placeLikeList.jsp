@@ -16,6 +16,7 @@
 					<a href="${pageContext.request.contextPath}/place/placeSelect?num=${likeList.placeLikeVO.placeLike}">
 						<h3 class="RestaurantHorizontalItem__Name" style="color: #ff7400; font-weight: 800;">${likeList.restaurant}</h3>
 					</a>
+					<input type="text" id="placeLikeCount" value="${placeLikeCount}" hidden="hidden">
 					<span class="RestaurantHorizontalItem__MetroAndCuisine">${likeList.menu}</span>	
 				</div>
 				<button class="RestaurantHorizontalItem__WannagoButton likeDelete" title="${likeList.placeLikeVO.num}" style="height: 53px;">X</button>
@@ -34,6 +35,10 @@
 			</a>
 		</c:if>
 		</li>
-	</ul>	
+	</ul>
+<script type="text/javascript">
+	var likeCount = $("#placeLikeCount").val();
+	localStorage.setItem("count", likeCount);
+</script>	
 </div>
 
