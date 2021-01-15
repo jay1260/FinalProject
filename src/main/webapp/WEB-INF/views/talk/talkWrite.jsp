@@ -31,9 +31,8 @@
 		소통 작성
 	</h3>
 	<form action="" method="post" id="talkFrm">
-		<!-- 
 		<input type="text" value="${member.id}" name="writer" hidden="hidden">
-		 -->
+
 		<div class="form-group col-xs-12 col-md-10">
 			<label for="title">제목</label>
 			<span style="float: right;">30</span>
