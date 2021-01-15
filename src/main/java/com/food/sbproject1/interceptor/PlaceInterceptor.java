@@ -22,7 +22,11 @@ public class PlaceInterceptor implements HandlerInterceptor{
 		
 		if(memberVO!=null) {
 			check = true;
+			if(memberVO.getLevel() == 1) {
+				check = true;
+			}
 		}
+		
 		else {
 			request.setAttribute("msg", "로그인 후 이용가능합니다.");
 			request.setAttribute("path", "../member/memberLogin");	
