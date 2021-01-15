@@ -614,7 +614,10 @@
 		if(member){
 			$("#likeFrm").submit();
 		}else{
-			alert("로그인 후 이용가능합니다.");
+			confirm("로그인 후 이용가능합니다. 로그인 하시겠습니까?");
+			if(confirm){
+				location.href="../member/memberLogin";
+			}
 		}	
 	});
 	
