@@ -104,4 +104,29 @@ public class PlaceService {
 		
 		return result;
 	}
+	
+	// 가게 찜
+	public int setPlaceLikeInsert(PlaceLikeVO placeLikeVO) throws Exception{
+		return placeMapper.setPlaceLikeInsert(placeLikeVO);
+	}
+	
+	// 찜 리스트
+	public List<PlaceLikeVO> getPlaceLikeList(PlaceLikeVO placeLikeVO) throws Exception{
+		return placeMapper.getPlaceLikeList(placeLikeVO);
+	}
+	
+	// 찜 삭제
+	public int setPlaceLikeDelete(PlaceLikeVO placeLikeVO) throws Exception{
+		return placeMapper.setPlaceLikeDelete(placeLikeVO);
+	}
+	
+	// 찜 중복
+	public PlaceLikeVO getPlaceLikeConfirm(PlaceLikeVO placeLikeVO) throws Exception{
+		return placeMapper.getPlaceLikeConfirm(placeLikeVO);
+	}
+	
+	// 찜 수
+	public Long getPlaceLikeCount(PlaceLikeVO placeLikeVO) throws Exception{
+		return placeMapper.getPlaceLikeCount(placeLikeVO);
+	}
 }

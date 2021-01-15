@@ -2,9 +2,13 @@ package com.food.sbproject1.member;
 
 import java.util.List;
 
+<<<<<<< HEAD
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+=======
+import javax.servlet.http.HttpServletRequest;
+>>>>>>> gb_0114
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
@@ -22,6 +26,8 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.food.sbproject1.level.LevelVO;
+import com.food.sbproject1.place.PlaceLikeVO;
+import com.food.sbproject1.place.PlaceService;
 import com.food.sbproject1.util.Pager;
 
 @Controller
@@ -95,7 +101,7 @@ public class MemberController {
 		
 		if(memberVO !=null) {	
 			session.setAttribute("member", memberVO);
-		
+			
 			mv.setViewName("redirect:../");
 			
 			System.out.println("id: "+memberVO.getId());
@@ -111,6 +117,7 @@ public class MemberController {
 			mv.addObject("path", "./memberLogin");
 			mv.setViewName("common/result");
 		}
+		
 		return mv;
 	}
 	

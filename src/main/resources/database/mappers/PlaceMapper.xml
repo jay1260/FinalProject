@@ -91,12 +91,20 @@
 		<association property="placeFileVO" resultMap="placeFileResult" javaType="PlaceFileVO">
 		<!-- resultMap선언, javaType 선언 필수!!!! -->
 		</association>
+		<association property="placeLikeVO" resultMap="placeLikeResult" javaType="PlaceLikeVO">
+		</association>
 	</resultMap>
 
 	<resultMap type="PlaceFileVO" id="placeFileResult">
 		<id property="fnum" column="fnum"/>
 		<result property="fileName" column="fileName"/>
 		<result property="oriName" column="oriName"/>
+	</resultMap>
+	
+	<resultMap type="PlaceLikeVO" id="placeLikeResult">
+		<id property="num" column="num"/>
+		<result property="id" column="id"/>
+		<result property="placeLike" column="placeLike"/>
 	</resultMap>
 	
 	<!-- 사진 여러개 테스트 -->
@@ -131,6 +139,36 @@
 		from place P left join placeFiles PFS
 		on P.num = PFS.num
 		where P.num=#{num}
+	</select>
+	
+	<!-- 가게 찜 -->
+	<insert id="setPlaceLikeInsert" parameterType="PlaceLikeVO">
+		insert into placeLike(id, placeLike) values(#{id}, #{placeLike})
+	</insert>
+	
+	<!-- 찜한 가게 -->
+	<select id="getPlaceLikeList" parameterType="PlaceLikeVO" resultMap="getPlaceResult">
+		select P.restaurant, P.menu, PL.id, PL.placeLike, PL.num, PF.fileName
+		from place P inner join placeLike PL
+		on P.num = PL.placeLike
+		inner join placeFile PF
+		on PL.placeLike = PF.num
+		where PL.id = #{id}
+	</select>
+	
+	<!-- 찜 삭제 -->
+	<delete id="setPlaceLikeDelete" parameterType="PlaceLikeVO">
+		delete from placeLike where num = #{num}
+	</delete>
+	
+	<!-- 찜 중복 확인 -->
+	<select id="getPlaceLikeConfirm" resultType="PlaceLikeVO" parameterType="PlaceLikeVO">
+		select * from placeLike where placeLike = #{placeLike} and id = #{id}
+	</select>
+	
+	<!-- 찜한 가게 수 -->
+	<select id="getPlaceLikeCount" parameterType="PlaceLikeVO" resultType="Long">
+		select count(*) from placeLike where id = #{id}
 	</select>
 	
 </mapper>  

@@ -92,8 +92,9 @@
 
 <!-- header 부분 -->
 <header class="basic-info-list">
-	<input type="button" class="btn btn-warning writeBtn" value="공지하기" id="nWriteBtn">
-	
+	<c:if test="${member.id eq 'admin'}">
+		<input type="button" class="btn btn-warning writeBtn" value="공지하기" id="nWriteBtn">
+	</c:if>
 	<div class="inner" style="padding-bottom: 10px;">
 		<h1 class="title"><span style="color: #ff7400; font-weight: 700;">No.1 맛집탐험</span> 회원들의 소통공간입니다.</h1>
 	</div>
@@ -101,7 +102,9 @@
 <!-- header END -->
 
 <div class="container" style="margin: 50px auto;">
-	<input type="button" class="btn btn-warning writeBtn" value="소통하기" id="tWriteBtn">
+	<c:if test="${member.id ne'admin'}">
+		<input type="button" class="btn btn-warning writeBtn" value="소통하기" id="tWriteBtn">
+	</c:if>
 	<table class="table table-hover">
 		<thead>
 			<tr>

@@ -52,4 +52,6 @@ public class PlaceVO {
 	private PlaceFileVO placeFileVO;
 	
 	private List<PlaceFilesVO> placeFilesVO;	
+	
+	private PlaceLikeVO placeLikeVO;
 }

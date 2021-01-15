@@ -46,18 +46,28 @@
 						<!-- 로그인 -->
 						<c:choose>
 							<c:when test="${not empty member}">
-							<a href="${pageContext.request.contextPath}/member/memberLogout" class="login">로그아웃</a>
+							<a href="${pageContext.request.contextPath}/member/memberLogout" class="login" id="logOut">로그아웃</a>
 							</c:when>
 							<c:when test="${empty member}"><a href="${pageContext.request.contextPath}/member/memberLogin" class="login">로그인</a></c:when>
 						</c:choose>
 						
+						<input type="text" value="${member.id}" id="memberID" hidden="hidden">
 						<!-- 추후 쿠키 -->
 						<!-- Trigger/Open The Modal -->
+						<c:if test="${not empty member.id}">
 						<button id="myBtn" class="count">
 							<span>
-								<em>0</em>
+								<em id="likeCount"></em>
 							</span>
 						</button>
+						</c:if>
+						<c:if test="${empty member.id}">
+						<button id="myBtn" class="count">
+							<span>
+								<em id="likeCount">0</em>
+							</span>
+						</button>
+						</c:if>
 						
 						<!-- The Modal -->
 						<div id="myModal" class="modal">
@@ -65,28 +75,9 @@
 						  <!-- Modal content -->
 						  <div class="modal-content">
 						    <span class="close">&times;</span>
-						    회원님이 찜한 식당
-						    <div class="UserRestaurantHistory__HistoryContainer">
-						    	<ul class="UserRestaurantHistory__RestaurantList">
-						    		<li class="UserRestaurantHistory__RestaurantItem">
-						    			<!-- 찜 리스트 가져오기 -->
-						    			<section class="RestaurantHorizontalItem">
-						    				<a href="#" class="RestaurantHorizontalItem__Link">
-						    					<div class="RestaurantHorizontalItem__Picture" style="background-image: url('../image/food/food1.jpg');"></div>
-						    				</a>
-						    				<div class="RestaurantHorizontalItem__Info">
-						    					<a href="#">
-						    						<h3 class="RestaurantHorizontalItem__Name">식당이름</h3>
-						    					</a>
-						    					<span class="RestaurantHorizontalItem__MetroAndCuisine">메뉴</span>
-						    				</div>
-						    			</section>
-						    			<!--  -->
-						    		</li>
-						    	</ul>
-						    </div>
+						    회원님의 찜 목록입니다.
+							<div id="likeResult" style="margin-top: 10px;"></div>
 						  </div>
-						
 						</div>
 					</div>
 				</div>
@@ -118,9 +109,52 @@
 	</div>
 	<div id="emptyHeader" style="display: block; width: 100%; height: 158px;"></div>
 <script type="text/javascript">
+
 	var modal = document.getElementById("myModal");
 	var btn = document.getElementById("myBtn");
 	var span = document.getElementsByClassName("close")[0];
+
+	myPlaceLike();
+
+	// 찜한 가게 수
+	function myPlaceLike(){
+		var likeCount = document.getElementById("likeCount");
+		var loginID = $("#memberID").val();
+		var countValue = localStorage.getItem("count");
+		
+		if(countValue>0){
+			likeCount.innerHTML=countValue;
+		}else{
+			likeCount.innerHTML=0;
+		}
+	}
+
+	// 로그아웃 스토리지 삭제
+	$("#logOut").click(function(){
+		localStorage.removeItem("count");
+	});
+
+	// 찜 목록 삭제
+	$("#likeResult").on("click",".likeDelete", function(){
+		var likeDeleteNum = $(this).attr("title");
+		$.ajax({
+			url:"../place/placeLikeDelete?num="+likeDeleteNum,
+			type:"POST",
+			data:{likeDeleteNum:likeDeleteNum},
+			success:function(data){
+				data=data.trim();
+				if(data>0){
+					alert("찜 삭제!!");
+					$("#likeResult").html('');
+					getLikeList();
+				}
+			}
+		});
+	});
+
+	$("#myBtn").click(function(){
+		getLikeList();
+	});
 	
 	btn.onclick = function() {
 	  modal.style.display = "block";
@@ -128,12 +162,29 @@
 	
 	span.onclick = function() {
 	  modal.style.display = "none";
+	  history.go(0);
 	}
 	
 	window.onclick = function(event) {
 	  if (event.target == modal) {
 	    modal.style.display = "none";
+	    history.go(0);
 	  }
 	}
+
+	// 찜 목록
+	function getLikeList(){
+		var id = $("#memberID").val();
+		
+		$.ajax({
+			url:"../place/placeLikeList?id="+id,
+			type:"GET",
+			data:{id:id},
+			success:function(data){
+				$("#likeResult").append(data);
+			}
+		})
+	}
+	
 </script>
 </header>

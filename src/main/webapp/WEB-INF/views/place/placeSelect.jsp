@@ -164,6 +164,14 @@
 		background-size: cover;
 		background-repeat: no-repeat;
 	}
+	.restaurant-detail>header .review_liking_button_icon{
+		display: block;
+		width: 32px;
+		height: 32px;
+		background-image: url("../image/icon/bg_ico_b_favorit.png");
+		background-size: cover;
+		background-repeat: no-repeat;
+	}
 	.restaurant-detail>header .review_writing_button_text{
 		margin-top: 12px;
 		line-height: 1.3;
@@ -179,6 +187,10 @@
 		background-size: 25px 19px;
 		padding-left: 29px;
 		font-size: 12px;
+	}
+
+	.review_writing_button span:hover {
+		color: #ff7400;
 	}
 	
 	/* 상세정보 */
@@ -303,6 +315,7 @@
 		height: 64px;
 		background: url("../image/icon/bg_photo_basic01.png") no-repeat 0 0;
 	}
+	
 	.place_review .rList ul li .img > img{
 		position: absolute;
 		left: 0;
@@ -469,7 +482,17 @@
 								<i class="review_writing_button_icon"></i>
 								<span class="review_writing_button_text">리뷰쓰기</span>
 							</button>
+							<form action="./placeLike" method="post" id="likeFrm">
+							
+							<input type="text" value="${member.id}" id="likeMember" name="id" hidden="hidden">
+							<input type="text" value="${one.num}" id="likePlace" name="placeLike" hidden="hidden">
+							</form>
+							<button class="review_writing_button" id="likeBtn">
+								<i class="review_liking_button_icon"></i>
+								<span class="review_writing_button_text">가게 찜</span>
+							</button>
 						</div>
+						
 					</div>
 					<div class="status">
 						<span class="status_hit">${one.hit}</span>
@@ -557,10 +580,11 @@
 					<span style="display: block; margin-top: 15px; font-size: 14px;">↑ 리뷰쓰러 가기 ↑</span>
 				</h4>
 			</c:if>
-			
+			<c:if test="${rCount gt 0}">
 			<div class="rList" id="listResult">
 				<!-- 리뷰 정보 확인 -->
 			</div>
+			</c:if>
 			
 			<c:if test="${pager.nextCheck}">
 				<button class="btn_sMore" id="sMoreBtn"><span>더보기</span></button>
@@ -585,6 +609,32 @@
 	getList();
 	var total = $("#total").attr("title");
 
+	// 찜 버튼
+	$("#likeBtn").click(function(){
+		var member = $("#likeMember").val();
+		var placeLike = $("#likePlace").val();
+
+		$.post("./placeLikeConfirm?placeLike="+placeLike+"&id="+member,{placeLike:placeLike, member:member},function(data){
+			data=data.trim();
+			if(member && data == 0){
+				$("#likeFrm").submit();
+			}
+			else if(data == 1){
+				alert("이미 찜한 가게입니다.");
+			}
+			else{
+				var a = confirm("로그인 후 이용가능합니다. 로그인 하시겠습니까?");
+				if(a){
+					location.href="../member/memberLogin";
+				}else{
+					
+				}
+			}
+		});
+
+	});
+
+	
 	// 더보기 버튼 클릭
 	$("#sMoreBtn").click(function(){	
 		curPage++;
