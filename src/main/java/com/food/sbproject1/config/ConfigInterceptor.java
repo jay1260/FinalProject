@@ -8,6 +8,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import com.food.sbproject1.interceptor.CustomInterceptor;
 import com.food.sbproject1.interceptor.LevelInterceptor;
 import com.food.sbproject1.interceptor.MemberInterceptor;
+import com.food.sbproject1.interceptor.PlaceInterceptor;
 
 @Configuration
 public class ConfigInterceptor implements WebMvcConfigurer {
@@ -17,6 +18,9 @@ public class ConfigInterceptor implements WebMvcConfigurer {
 	
 	@Autowired
 	private LevelInterceptor levelInterceptor;
+	
+	@Autowired
+	private PlaceInterceptor placeInterceptor;
 	
 	@Override
 	public void addInterceptors(InterceptorRegistry registry) {
@@ -34,6 +38,9 @@ public class ConfigInterceptor implements WebMvcConfigurer {
 		.addPathPatterns("/level/levelUpdate")
 		.addPathPatterns("/level/levelWrite")
 		.addPathPatterns("/level/levelReply");
+		
+		registry.addInterceptor(placeInterceptor).addPathPatterns("/place/placeWrite");
+		
 				
 		WebMvcConfigurer.super.addInterceptors(registry);
 	}
