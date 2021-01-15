@@ -120,6 +120,11 @@ public class PlaceService {
 		return placeMapper.setPlaceLikeDelete(placeLikeVO);
 	}
 	
+	// 찜 중복
+	public PlaceLikeVO getPlaceLikeConfirm(PlaceLikeVO placeLikeVO) throws Exception{
+		return placeMapper.getPlaceLikeConfirm(placeLikeVO);
+	}
+	
 	// 찜 수
 	public Long getPlaceLikeCount(PlaceLikeVO placeLikeVO) throws Exception{
 		return placeMapper.getPlaceLikeCount(placeLikeVO);

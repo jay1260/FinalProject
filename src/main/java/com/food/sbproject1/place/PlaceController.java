@@ -201,6 +201,22 @@ public class PlaceController {
 		return mv;
 	}
 	
+	// 찜 중복
+	@PostMapping("placeLikeConfirm")
+	public ModelAndView getPlaceLikeConfirm(PlaceLikeVO placeLikeVO) throws Exception{
+		ModelAndView mv = new ModelAndView();
+		placeLikeVO = placeService.getPlaceLikeConfirm(placeLikeVO);
+		int result = 1; // 있는 상태
+		
+		if(placeLikeVO == null) {
+			result = 0; // 없는 상태
+		}
+		mv.addObject("msg", result);
+		mv.setViewName("common/ajaxResult");
+	
+		return mv;
+	}
+	
 	
 	@GetMapping("jusoPopup")
 	public void getJusoPopup() throws Exception{

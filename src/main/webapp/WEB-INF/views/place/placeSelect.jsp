@@ -609,17 +609,33 @@
 	getList();
 	var total = $("#total").attr("title");
 
+	// 찜 버튼
 	$("#likeBtn").click(function(){
 		var member = $("#likeMember").val();
-		if(member){
-			$("#likeFrm").submit();
-		}else{
-			confirm("로그인 후 이용가능합니다. 로그인 하시겠습니까?");
-			if(confirm){
-				location.href="../member/memberLogin";
+		var placeLike = $("#likePlace").val();
+
+		$.post("./placeLikeConfirm?placeLike="+placeLike+"&id="+member,{placeLike:placeLike, member:member},function(data){
+			data=data.trim();
+			if(member && data == 0){
+				$("#likeFrm").submit();
 			}
-		}	
+			else if(data == 1){
+				alert("이미 찜한 가게입니다.");
+			}
+			else{
+				var a = confirm("로그인 후 이용가능합니다. 로그인 하시겠습니까?");
+				if(a){
+					location.href="../member/memberLogin";
+				}else{
+					
+				}
+			}
+		});
+
+		
+
 	});
+
 	
 	// 더보기 버튼 클릭
 	$("#sMoreBtn").click(function(){	

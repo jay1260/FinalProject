@@ -161,6 +161,11 @@
 		delete from placeLike where num = #{num}
 	</delete>
 	
+	<!-- 찜 중복 확인 -->
+	<select id="getPlaceLikeConfirm" resultType="PlaceLikeVO" parameterType="PlaceLikeVO">
+		select * from placeLike where placeLike = #{placeLike} and id = #{id}
+	</select>
+	
 	<!-- 찜한 가게 수 -->
 	<select id="getPlaceLikeCount" parameterType="PlaceLikeVO" resultType="Long">
 		select count(*) placeLike where id = #{id}
