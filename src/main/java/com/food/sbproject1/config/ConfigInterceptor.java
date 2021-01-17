@@ -7,6 +7,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 import com.food.sbproject1.interceptor.LevelInterceptor;
 import com.food.sbproject1.interceptor.MemberInterceptor;
+import com.food.sbproject1.interceptor.NoticeReviseInterceptor;
 import com.food.sbproject1.interceptor.PlaceInterceptor;
 import com.food.sbproject1.interceptor.PlaceLevelInterceptor;
 import com.food.sbproject1.interceptor.PlaceReviseInterceptor;
@@ -32,6 +33,9 @@ public class ConfigInterceptor implements WebMvcConfigurer {
 	
 	@Autowired
 	private TalkReviseInterceptor talkReviseInterceptor;
+	
+	@Autowired
+	private NoticeReviseInterceptor noticeReviseInterceptor;
 	
 	@Override
 	public void addInterceptors(InterceptorRegistry registry) {
@@ -64,6 +68,8 @@ public class ConfigInterceptor implements WebMvcConfigurer {
 		.addPathPatterns("/place/placeDelete");
 		
 		registry.addInterceptor(talkReviseInterceptor).addPathPatterns("/talk/talkDelete");
+		
+		registry.addInterceptor(noticeReviseInterceptor).addPathPatterns("/notice/noticeDelete");
 		
 		WebMvcConfigurer.super.addInterceptors(registry);
 	}
