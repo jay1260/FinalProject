@@ -26,10 +26,18 @@
 <body>
 <c:import url="../template/header.jsp"></c:import>
 <div class="container">
-	<h3 class="write_top">
-		<span style="color: #ff7400;"> NO.1 맛집탐험</span>
-		소통 작성
-	</h3>
+	<c:if test="${member.id ne 'admin'}">
+		<h3 class="write_top">
+			<span style="color: #ff7400;"> NO.1 맛집탐험</span> 소통 작성
+		</h3>
+	</c:if>	
+	
+	<c:if test="${member.id eq 'admin'}">
+		<h3 class="write_top">
+			<span style="color: #ff7400;"> NO.1 맛집탐험</span> 공지 작성
+		</h3>
+	</c:if>	
+	
 	<form action="" method="post" id="talkFrm">
 		<input type="text" value="${member.id}" name="writer" hidden="hidden">
 
