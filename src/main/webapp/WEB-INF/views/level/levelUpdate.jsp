@@ -39,7 +39,7 @@
 	
 	<div class="form-group col-xs-12 col-md-12">
 			<label for="contents" >내용</label>
-			<textarea class="form-control" id="contents"  name="contents">${level.contents}</textarea>
+			<textarea class="form-control" id="contents"  name="contents" style="resize: none;">${level.contents}</textarea>
 	</div>
 	
 	<input type="submit" class="btn btn-warning" id="update" value="수정하기">

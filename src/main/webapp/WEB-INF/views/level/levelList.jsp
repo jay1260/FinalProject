@@ -84,10 +84,10 @@
 	</c:forEach>
  	
   </table>
-      <c:if test="${member.level eq 3 || member.level eq 2}">
-    <div class="writebtn">
-  		<input type = "submit" class = "btn btn-warning" value="글쓰기" id="write" >
-	</div>
+    <c:if test="${member.level eq 3 || member.level eq 2}">
+    	<div class="writebtn">
+  			<input type = "submit" class = "btn btn-warning" value="글쓰기" id="write" >
+		</div>
    </c:if>
    
    	<ul class="pagination">

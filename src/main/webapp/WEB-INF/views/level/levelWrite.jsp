@@ -41,7 +41,7 @@
     
 	<div class="form-group col-xs-12 col-md-12">
 			<label for="contents">내용</label>
-			<textarea class="form-control" id="contents" name="contents"></textarea>
+			<textarea class="form-control" id="contents" name="contents" style="resize: none;"></textarea>
 		</div>
   	<div class="form-group" id ="write" >
 			<input type="submit" class="btn btn-warning" value="작성" id="sub">
