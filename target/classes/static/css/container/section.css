@@ -90,9 +90,10 @@
 		align-items: center;
 	}
 	.home-main-section .home-main-image-02{
-		background-size: 546px 740px;
-		width: 546px;
-		height: 740px;
+		background-image:url("");
+		background-size: 720px 680px;
+		width: 720px;
+		height: 680px;
 	}
 	/*section third End*/
 	
@@ -165,7 +166,6 @@
 	}
 	
 	.section3{
-		
 		width: 826px;
 		height: 242px;
 		float: right;

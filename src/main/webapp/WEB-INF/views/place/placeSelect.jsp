@@ -11,7 +11,6 @@
 <style type="text/css">
 	body{
 		font-size: 14px;
-		font-family: 'Nanum Gothic', sans-serif;
 		font-weight: 400;
 	}
 

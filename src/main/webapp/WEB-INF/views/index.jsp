@@ -71,9 +71,6 @@
 				</p>
 				
 			</div>
-			<div>
-			<img  class="section3" alt="" src="./image/section/section3.png">
-			</div>
 		</div>
 			
 	</section>
