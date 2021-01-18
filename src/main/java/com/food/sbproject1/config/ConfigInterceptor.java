@@ -5,9 +5,14 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
-import com.food.sbproject1.interceptor.CustomInterceptor;
 import com.food.sbproject1.interceptor.LevelInterceptor;
 import com.food.sbproject1.interceptor.MemberInterceptor;
+import com.food.sbproject1.interceptor.NoticeReviseInterceptor;
+import com.food.sbproject1.interceptor.PlaceInterceptor;
+import com.food.sbproject1.interceptor.PlaceLevelInterceptor;
+import com.food.sbproject1.interceptor.PlaceReviseInterceptor;
+import com.food.sbproject1.interceptor.TalkLevelInterceptor;
+import com.food.sbproject1.interceptor.TalkReviseInterceptor;
 
 @Configuration
 public class ConfigInterceptor implements WebMvcConfigurer {
@@ -17,6 +22,24 @@ public class ConfigInterceptor implements WebMvcConfigurer {
 	
 	@Autowired
 	private LevelInterceptor levelInterceptor;
+	
+	@Autowired
+	private PlaceInterceptor placeInterceptor;
+	
+	@Autowired
+	private PlaceLevelInterceptor placeLevelInterceptor;
+	
+	@Autowired
+	private PlaceReviseInterceptor placeReviseInterceptor;
+	
+	@Autowired
+	private TalkReviseInterceptor talkReviseInterceptor;
+	
+	@Autowired
+	private NoticeReviseInterceptor noticeReviseInterceptor;
+	
+	@Autowired
+	private TalkLevelInterceptor talkLevelInterceptor;
 	
 	@Override
 	public void addInterceptors(InterceptorRegistry registry) {
@@ -34,7 +57,26 @@ public class ConfigInterceptor implements WebMvcConfigurer {
 		.addPathPatterns("/level/levelUpdate")
 		.addPathPatterns("level/levelWrite")
 		.addPathPatterns("/level/levelReply");
-				
+		
+		registry.addInterceptor(placeInterceptor)
+		.addPathPatterns("/place/placeWrite")
+		.addPathPatterns("/place/placeReview")
+		.addPathPatterns("/place/placeLike")
+		.addPathPatterns("/review/reviewWrite")
+		.addPathPatterns("/talk/talkWrite");
+		
+		registry.addInterceptor(placeLevelInterceptor).addPathPatterns("/place/placeWrite");
+		
+		registry.addInterceptor(placeReviseInterceptor)
+		.addPathPatterns("/place/placeUpdate")
+		.addPathPatterns("/place/placeDelete");
+		
+		registry.addInterceptor(talkReviseInterceptor).addPathPatterns("/talk/talkDelete");
+		
+		registry.addInterceptor(noticeReviseInterceptor).addPathPatterns("/notice/noticeDelete");
+		
+		registry.addInterceptor(talkLevelInterceptor).addPathPatterns("/talk/talkWrite");
+		
 		WebMvcConfigurer.super.addInterceptors(registry);
 	}
 	

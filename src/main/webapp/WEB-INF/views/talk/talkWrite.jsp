@@ -7,6 +7,8 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <c:import url="../template/bootStrap.jsp"></c:import>
+<link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
 <style type="text/css">
 	.write_top{
 		text-align:center; 
@@ -21,15 +23,26 @@
 		background-color: #353d55;
 		margin: 25px 15px 40px 0;
 	}
+	.note-editor .note-toolbar, .note-popover .popover-content{
+		display: none !important;
+	}
 </style>
 </head>
 <body>
 <c:import url="../template/header.jsp"></c:import>
 <div class="container">
-	<h3 class="write_top">
-		<span style="color: #ff7400;"> NO.1 맛집탐험</span>
-		소통 작성
-	</h3>
+	<c:if test="${member.id ne 'admin'}">
+		<h3 class="write_top">
+			<span style="color: #ff7400;"> NO.1 맛집탐험</span> 소통 작성
+		</h3>
+	</c:if>	
+	
+	<c:if test="${member.id eq 'admin'}">
+		<h3 class="write_top">
+			<span style="color: #ff7400;"> NO.1 맛집탐험</span> 공지 작성
+		</h3>
+	</c:if>	
+	
 	<form action="" method="post" id="talkFrm">
 		<input type="text" value="${member.id}" name="writer" hidden="hidden">
 
@@ -90,6 +103,10 @@
 		if(titleLength>=30){
 			alert("최대 30글자까지 작성 가능합니다.");
 		}
+	});
+
+	$("#contents").summernote({
+		height:300,
 	});
 </script>
 </html>

@@ -594,10 +594,11 @@
 		</div>
 		<!-- 리뷰 작성 -->	
 	</div>	
-	
-	<div class="btn-div">
-		<button class="btn btn-warning" id="updateBtn" title="${one.num}">글 수정</button>
-	</div>
+	<c:if test="${member.id eq one.writer}">
+		<div class="btn-div">
+			<button class="btn btn-warning" id="updateBtn" title="${one.num}">글 수정</button>
+		</div>
+	</c:if>
 
 </div>
 <!--  -->

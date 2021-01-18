@@ -64,7 +64,7 @@
 						<c:if test="${empty member.id}">
 						<button id="myBtn" class="count">
 							<span>
-								<em id="likeCount">0</em>
+								<em id="likeCount"></em>
 							</span>
 						</button>
 						</c:if>
@@ -114,6 +114,7 @@
 	var btn = document.getElementById("myBtn");
 	var span = document.getElementsByClassName("close")[0];
 
+
 	myPlaceLike();
 
 	// 찜한 가게 수
@@ -125,7 +126,7 @@
 		if(countValue>0){
 			likeCount.innerHTML=countValue;
 		}else{
-			likeCount.innerHTML=0;
+			likeCount.innerHTML="★";
 		}
 	}
 

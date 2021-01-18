@@ -37,7 +37,9 @@ public class PlaceController {
 	@GetMapping("placeDelete")
 	public ModelAndView setDelete(PlaceVO placeVO) throws Exception{
 		ModelAndView mv = new ModelAndView();
+		
 		int result = placeService.setDelete(placeVO);
+		
 		if(result>0) {
 			mv.addObject("msg", "삭제 완료했습니다.");
 			mv.addObject("path", "./placeList");
@@ -84,11 +86,11 @@ public class PlaceController {
 	@GetMapping("placeSelect")
 	public ModelAndView getOne(PlaceVO placeVO, ReviewVO reviewVO, MemberVO memberVO,Pager pager) throws Exception{
 		ModelAndView mv = new ModelAndView();
+		
 		placeVO = placeService.getOne(placeVO);
 		int result = placeService.setHitUp(placeVO);
 		
 		reviewVO.setRef(placeVO.getNum());
-		System.out.println(reviewVO.getRef());
 		pager.setRef(placeVO.getNum());
 		
 		List<ReviewVO> ar = reviewService.getReviewList(pager);
@@ -108,12 +110,14 @@ public class PlaceController {
 	@GetMapping("placeReview")
 	public ModelAndView getPlaceReviewList(Pager pager, PlaceVO placeVO) throws Exception{
 		ModelAndView mv = new ModelAndView();
+		
 		placeVO = placeService.getOne(placeVO);
 		pager.setRef(placeVO.getNum());
 		List<ReviewVO> ar = reviewService.getReviewList(pager);
 		
 		mv.addObject("rList", ar);
 		mv.setViewName("place/placeReview");
+		
 		return mv;
 	}
 	
@@ -146,14 +150,15 @@ public class PlaceController {
 	@GetMapping("placeList")
 	public ModelAndView getList(Pager pager) throws Exception{
 		ModelAndView mv = new ModelAndView();
-		List<PlaceVO> ar = placeService.getList(pager);
 		
+		List<PlaceVO> ar = placeService.getList(pager);
 		long num = placeService.getCount(pager);
 		
 		mv.addObject("num", num);
 		mv.addObject("pager", pager);
 		mv.addObject("list", ar);
 		mv.setViewName("place/placeList");
+		
 		return mv;
 	}
 	
@@ -161,10 +166,12 @@ public class PlaceController {
 	@PostMapping("placeLike")
 	public ModelAndView setPlaceLikeInsert(PlaceLikeVO placeLikeVO, HttpServletRequest request) throws Exception{
 		ModelAndView mv = new ModelAndView();
+		
 		int result = placeService.setPlaceLikeInsert(placeLikeVO);
 		String referer = request.getHeader("referer");
+		
 		if(result>0) {
-			mv.addObject("msg", "찜 완료");
+			mv.addObject("msg", "찜 완료!!");
 			mv.addObject("path", referer);
 			mv.setViewName("common/result");
 		}
@@ -180,8 +187,10 @@ public class PlaceController {
 		
 		if(memberVO !=null) {
 			placeLikeVO.setId(memberVO.getId());
+			
 			List<PlaceLikeVO> ar = placeService.getPlaceLikeList(placeLikeVO);
 			long num = placeService.getPlaceLikeCount(placeLikeVO);
+			
 			mv.addObject("placeLikeCount", num);
 			mv.addObject("likeList", ar);
 		}
