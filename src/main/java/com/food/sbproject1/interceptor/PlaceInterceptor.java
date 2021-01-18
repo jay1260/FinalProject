@@ -26,7 +26,7 @@ public class PlaceInterceptor implements HandlerInterceptor{
 		}
 		
 		else {
-			request.setAttribute("msg", "로그인 후 이용가능합니다.");
+			request.setAttribute("msg", "로그인 후 이용 가능합니다.");
 			request.setAttribute("path", "../member/memberLogin");	
 			RequestDispatcher view = request.getRequestDispatcher("../WEB-INF/views/common/result.jsp");
 			view.forward(request, response);		
