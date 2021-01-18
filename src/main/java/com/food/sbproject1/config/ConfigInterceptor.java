@@ -32,7 +32,7 @@ public class ConfigInterceptor implements WebMvcConfigurer {
 		.excludePathPatterns("/level/levelList")
 		.excludePathPatterns("/level/levelSelect")
 		.addPathPatterns("/level/levelUpdate")
-		.addPathPatterns("/level/levelWrite")
+		.addPathPatterns("level/levelWrite")
 		.addPathPatterns("/level/levelReply");
 				
 		WebMvcConfigurer.super.addInterceptors(registry);

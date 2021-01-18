@@ -69,9 +69,13 @@
 				<p class="text-m">
 					소소한 재미, 웃음 공유해요.
 				</p>
+				
 			</div>
-			
+			<div>
+			<img  class="section3" alt="" src="./image/section/section3.png">
+			</div>
 		</div>
+			
 	</section>
 	<!-- 섹션 third End -->
 	

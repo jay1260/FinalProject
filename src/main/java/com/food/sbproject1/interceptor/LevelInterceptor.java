@@ -23,10 +23,9 @@ public class LevelInterceptor implements HandlerInterceptor{
 		HttpSession session = request.getSession();
 		MemberVO memberVO = (MemberVO) session.getAttribute("member");
 		
-		if(memberVO.getId().equals("admin")) {
+		if(memberVO.getId().equals("admin")|| memberVO.getLevel()==3 || memberVO.getLevel()==2) {
 				result = true;
 				
-		
 		}
 
 		else {
