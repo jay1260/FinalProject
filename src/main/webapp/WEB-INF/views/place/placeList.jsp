@@ -9,9 +9,6 @@
 <c:import url="../template/bootStrap.jsp"></c:import>
 <style type="text/css">
 	/* 공통 CSS 부분 */
-	body{
-		font-family: 'Nanum Gothic', sans-serif;
-	}
 	a:hover{
 		color:#ff7400;
 	}
