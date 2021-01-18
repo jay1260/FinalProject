@@ -107,7 +107,7 @@
 		</div>
 		<div class="form-group col-xs-12 col-md-10">
 			<label for="phone">식당 번호</label>
-			<form:input path="phone" class="form-control" maxlength="14"/>
+			<form:input path="phone" class="form-control" maxlength="14" placeholder="021231234"/>
 			<form:errors path="phone" cssClass="error"></form:errors>
 		</div>
 		<div class="form-group col-sm-4">
@@ -127,12 +127,12 @@
 		</div>
 		<div class="form-group col-sm-5">
 			<label for="time">오픈 시간</label>
-			<form:input path="openTime" class="form-control" maxlength="5" placeholder="ex _ 오후 1시 -> 1300"/>
+			<form:input path="openTime" class="form-control" maxlength="5" placeholder="1300"/>
 			<form:errors path="openTime" cssClass="error"></form:errors>
 		</div>
 		<div class="form-group col-sm-5">
 			<label for="time">마감 시간</label>
-			<form:input path="closeTime" class="form-control" maxlength="5" placeholder="ex _ 오후 10시 -> 2200"/>
+			<form:input path="closeTime" class="form-control" maxlength="5" placeholder="2200"/>
 			<form:errors path="closeTime" cssClass="error"></form:errors>
 		</div>
 		<div class="form-group col-xs-12 col-md-10">

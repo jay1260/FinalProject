@@ -7,6 +7,8 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <c:import url="../template/bootStrap.jsp"></c:import>
+<link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
 <style type="text/css">
 	.write_top{
 		text-align:center; 
@@ -20,6 +22,9 @@
 		border:1px solid #dfdfdf;
 		background-color: #353d55;
 		margin: 25px 15px 40px 0;
+	}
+	.note-editor .note-toolbar, .note-popover .popover-content{
+		display: none !important;
 	}
 </style>
 </head>
@@ -98,6 +103,10 @@
 		if(titleLength>=30){
 			alert("최대 30글자까지 작성 가능합니다.");
 		}
+	});
+
+	$("#contents").summernote({
+		height:300,
 	});
 </script>
 </html>

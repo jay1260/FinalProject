@@ -11,6 +11,7 @@ import com.food.sbproject1.interceptor.NoticeReviseInterceptor;
 import com.food.sbproject1.interceptor.PlaceInterceptor;
 import com.food.sbproject1.interceptor.PlaceLevelInterceptor;
 import com.food.sbproject1.interceptor.PlaceReviseInterceptor;
+import com.food.sbproject1.interceptor.TalkLevelInterceptor;
 import com.food.sbproject1.interceptor.TalkReviseInterceptor;
 
 @Configuration
@@ -36,6 +37,9 @@ public class ConfigInterceptor implements WebMvcConfigurer {
 	
 	@Autowired
 	private NoticeReviseInterceptor noticeReviseInterceptor;
+	
+	@Autowired
+	private TalkLevelInterceptor talkLevelInterceptor;
 	
 	@Override
 	public void addInterceptors(InterceptorRegistry registry) {
@@ -70,6 +74,8 @@ public class ConfigInterceptor implements WebMvcConfigurer {
 		registry.addInterceptor(talkReviseInterceptor).addPathPatterns("/talk/talkDelete");
 		
 		registry.addInterceptor(noticeReviseInterceptor).addPathPatterns("/notice/noticeDelete");
+		
+		registry.addInterceptor(talkLevelInterceptor).addPathPatterns("/talk/talkWrite");
 		
 		WebMvcConfigurer.super.addInterceptors(registry);
 	}
