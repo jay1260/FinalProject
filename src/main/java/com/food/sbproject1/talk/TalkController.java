@@ -101,5 +101,14 @@ public class TalkController {
 		return mv;
 	}
 	
+	//소통 댓글 삭제
+	@GetMapping("talkReplyDelete")
+	public ModelAndView setReplyDelete(TalkReplyVO talkReplyVO) throws Exception{
+		ModelAndView mv = new ModelAndView();
+		int result = talkService.setReplyDelete(talkReplyVO);
+		
+		return mv;
+	}
+	
 	
 }

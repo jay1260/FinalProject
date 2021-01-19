@@ -267,7 +267,7 @@
 	</div>
 </c:if>
 <c:if test="${pager.notPage}">
-	<h1 style="text-align: center; margin: 205px 0;">현재 페이지는 게시물이 존재하지 않습니다.</h1>
+	<h2 style="text-align: center; margin: 205px 0;">현재 페이지는 게시물이 존재하지 않습니다.</h2>
 </c:if>
 <!-- Container END -->
 

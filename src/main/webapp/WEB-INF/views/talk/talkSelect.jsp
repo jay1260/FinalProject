@@ -166,7 +166,7 @@
 									</p>
 									<c:if test="${replyList.writer eq member.id}">
 										<p style="float: right;">
-											<button class="button delBtn" title="${replyList.num}">X</button>
+											<input type="button" value="X" class="button delBtn" title="${replyList.num}" id="deleteBtn">
 										</p>
 									</c:if>
 								</div>
@@ -190,8 +190,8 @@
 </body>
 <script type="text/javascript">
 	$("#deleteBtn").click(function(){
-		var num = $("#talkNum").val();
-		location.href="./talkDelete?num="+num
+		var num = $(this).attr("title");
+		location.href="./talkReplyDelete?num="+num;
 	});
 </script>
 </html>

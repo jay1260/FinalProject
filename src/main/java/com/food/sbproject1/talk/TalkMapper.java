@@ -32,5 +32,8 @@ public interface TalkMapper {
 	
 	// 소통 댓글 리스트
 	public List<TalkReplyVO> getReplyList(TalkReplyVO talkReplyVO) throws Exception;
+	
+	// 소통 댓글 삭제
+	public int setReplyDelete(TalkReplyVO talkReplyVO) throws Exception;
 
 }
