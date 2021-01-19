@@ -30,7 +30,7 @@
 		bottom: 0;
 		width: 804px;
 		height: 685px;
-		background: #FBF7F2  no-repeat;
+		background: #FBF7F2 url("/image/section/chef-3036025_1920-removebg-preview.png")  no-repeat;
 		background-size: 804px 685px;
 	}
 	/*section top END*/
@@ -38,6 +38,7 @@
 	/*section second 부분*/
 	.home-main-section{
 		padding: 6rem 0;
+		background-color: #E6F3E6;
 	}
 	.home-main-section .home-main-content{
 		width: 1024px;
@@ -50,9 +51,10 @@
 		display: inline-block;
 	}
 	.home-main-section .home-main-image-01{
-		background-size: 532px 684px;
-		width: 532px;
-		height: 684px;
+		background-image:url("/image/section/drink-5648296_1920.png");
+		background-size: 540px 634px;
+		width: 540px;
+		height: 634px;
 	}
 	.home-main-section .home-main-title{
 		font-size: 4rem;
@@ -82,7 +84,7 @@
 	
 	/*section third 부분*/
 	.background-pale-green{
-		background-color: #E6F3E6;
+		background-color: rgb(255, 255, 255);
 	}
 	.home-main-section .home-main-reverse{
 		display: flex;
@@ -90,10 +92,10 @@
 		align-items: center;
 	}
 	.home-main-section .home-main-image-02{
-		background-image:url("");
-		background-size: 720px 680px;
-		width: 720px;
-		height: 680px;
+		background-image:url("/image/section/note-4437201_1920.png");
+		background-size: 680px 500px;
+		width: 680px;
+		height: 500px;
 	}
 	/*section third End*/
 	
