@@ -22,6 +22,11 @@
 		
 	}
 	
+	$("#deleteBtn").click(function(){
+		var num = $(this).attr("title");
+		location.href="./placeDelete?num="+num;
+	});
+	
 		// 다중 파일 미리보기
 		function preveal(event) { 
 			var fileList = event.target.files;

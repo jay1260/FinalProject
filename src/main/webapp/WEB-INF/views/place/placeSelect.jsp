@@ -538,6 +538,7 @@
 				<div class="section_section">
 					<section class="section_section ownSection">
 						<h3 class="section_sectionTitle" style="margin-top: 10px;">제목</h3>
+						<input type="text" value="${one.writer}" id="writer" hidden="hidden">
 						<div class="section_sectionContent">
 							<div class="section_own">
 								<p class="section_ownDesc"></p>
@@ -612,7 +613,13 @@
 	// 찜 버튼
 	$("#likeBtn").click(function(){
 		var member = $("#likeMember").val();
+		var writer = $("#writer").val();
 		var placeLike = $("#likePlace").val();
+
+		if(member === writer){
+			alert("본인 게시글에 찜은 불가합니다.");
+			return false;
+		}
 
 		$.post("./placeLikeConfirm?placeLike="+placeLike+"&id="+member,{placeLike:placeLike, member:member},function(data){
 			data=data.trim();

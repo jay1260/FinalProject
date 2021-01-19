@@ -110,48 +110,11 @@
 	<div id="emptyHeader" style="display: block; width: 100%; height: 158px;"></div>
 <script type="text/javascript">
 
+	myPlaceLike();
+	
 	var modal = document.getElementById("myModal");
 	var btn = document.getElementById("myBtn");
 	var span = document.getElementsByClassName("close")[0];
-
-
-	myPlaceLike();
-
-	// 찜한 가게 수
-	function myPlaceLike(){
-		var likeCount = document.getElementById("likeCount");
-		var loginID = $("#memberID").val();
-		var countValue = localStorage.getItem("count");
-		
-		if(countValue>0){
-			likeCount.innerHTML=countValue;
-		}else{
-			likeCount.innerHTML="★";
-		}
-	}
-
-	// 로그아웃 스토리지 삭제
-	$("#logOut").click(function(){
-		localStorage.removeItem("count");
-	});
-
-	// 찜 목록 삭제
-	$("#likeResult").on("click",".likeDelete", function(){
-		var likeDeleteNum = $(this).attr("title");
-		$.ajax({
-			url:"../place/placeLikeDelete?num="+likeDeleteNum,
-			type:"POST",
-			data:{likeDeleteNum:likeDeleteNum},
-			success:function(data){
-				data=data.trim();
-				if(data>0){
-					alert("찜 삭제!!");
-					$("#likeResult").html('');
-					getLikeList();
-				}
-			}
-		});
-	});
 
 	$("#myBtn").click(function(){
 		getLikeList();
@@ -172,6 +135,41 @@
 	    history.go(0);
 	  }
 	}
+
+	// 찜 목록 삭제
+	$("#likeResult").on("click",".likeDelete", function(){
+		var likeDeleteNum = $(this).attr("title");
+		$.ajax({
+			url:"../place/placeLikeDelete?num="+likeDeleteNum,
+			type:"POST",
+			data:{likeDeleteNum:likeDeleteNum},
+			success:function(data){
+				data=data.trim();
+				if(data>0){
+					alert("찜 삭제!!");
+					$("#likeResult").html('');
+					getLikeList();
+				}
+			}
+		});
+	});
+
+	// 찜한 가게 수
+	function myPlaceLike(){
+		var likeCount = document.getElementById("likeCount");
+		var countValue = localStorage.getItem("count");
+		
+		if(countValue>0){
+			likeCount.innerHTML=countValue;
+		}else{
+			likeCount.innerHTML="★";
+		}
+	}
+
+	// 로그아웃 스토리지 삭제
+	$("#logOut").click(function(){
+		localStorage.removeItem("count");
+	});
 
 	// 찜 목록
 	function getLikeList(){

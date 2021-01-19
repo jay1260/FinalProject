@@ -78,6 +78,7 @@
 <!-- 글쓰기 폼 -->
 <div class="container">
 	<form:form modelAttribute="placeVO" name="form" id="form">
+
 		<div class="form-group col-xs-12 col-md-10">
 			<label for="title">제목</label>
 			<form:input path="title" class="form-control" value="${up.title}"/>
@@ -136,7 +137,7 @@
 		</div>
 		<div class="btn-css">		
 			<input type="submit" class=" btn btn-warning" value="수정하기" id="insertBtn">
-					<input type="button" class="btn btn-danger" id="deleteBtn" title="${up.num}" value="글 삭제하기">
+			<input type="button" class="btn btn-danger" value="글 삭제하기" id="deleteBtn" title="${up.num}">
 		</div>
 	</form:form>
 </div>
