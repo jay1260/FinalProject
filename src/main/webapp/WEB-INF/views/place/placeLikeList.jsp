@@ -42,9 +42,5 @@
 		</c:if>
 		</li>
 	</ul>
-<script type="text/javascript">
-	var likeCount = $("#placeLikeCount").val();
-	localStorage.setItem("count", likeCount);
-</script>	
 </div>
 
