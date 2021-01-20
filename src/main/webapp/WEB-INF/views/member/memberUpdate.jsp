@@ -129,9 +129,6 @@
 <c:import url="../template/footer.jsp"></c:import>
 </body>
 <script type="text/javascript">
-$("button#update").click(function(){
-	var id = $('input#age').val();
-	alert(id);
-	});
+
 </script>
 </html>

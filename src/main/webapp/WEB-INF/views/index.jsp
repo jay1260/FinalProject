@@ -61,18 +61,18 @@
 		<div class="home-main-content home-main-reverse">
 			<div class="home-main-image home-main-image-02"></div>
 			<div>
-				<h1 class="home-main-title">
+				<h1 class="home-main-title" id = section-3>
 					우리 같이
 					<br>
 					수다도 떨어요
 				</h1>
-				<p class="text-m">
+				<p class="text-m" id= "section-3-txt">
 					소소한 재미, 웃음 공유해요.
 				</p>
 				
 			</div>
 			<div>
-			<img  class="section3" alt="" src="./image/section/section3.png">
+			<img  class="section3" alt="" src="./image/section/aa.png" style="width: 500px;" height="800px;" >
 			</div>
 		</div>
 			

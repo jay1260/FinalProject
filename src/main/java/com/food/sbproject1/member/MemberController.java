@@ -100,12 +100,6 @@ public class MemberController {
 			
 			mv.setViewName("redirect:../");
 			
-			System.out.println("id: "+memberVO.getId());
-			System.out.println("name:"+memberVO.getName());
-			System.out.println("age: "+memberVO.getAge());
-			System.out.println("email: "+memberVO.getEmail());
-		
-			System.out.println("-----------------------------");
 		}
 		else {
 			String message="아이디 또는 비밀번호가 틀렸습니다.";
@@ -253,6 +247,8 @@ public class MemberController {
 	
 	}
 	
+
+
 	
 	
 
