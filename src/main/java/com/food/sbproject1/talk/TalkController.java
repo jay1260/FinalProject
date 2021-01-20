@@ -2,6 +2,8 @@ package com.food.sbproject1.talk;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -103,9 +105,16 @@ public class TalkController {
 	
 	//소통 댓글 삭제
 	@GetMapping("talkReplyDelete")
-	public ModelAndView setReplyDelete(TalkReplyVO talkReplyVO) throws Exception{
+	public ModelAndView setReplyDelete(TalkReplyVO talkReplyVO, HttpServletRequest request) throws Exception{
 		ModelAndView mv = new ModelAndView();
 		int result = talkService.setReplyDelete(talkReplyVO);
+		String referer = request.getHeader("referer");
+		
+		if(result>0) {
+			mv.addObject("msg", "댓글 삭제");
+			mv.addObject("path", referer);
+			mv.setViewName("common/result");
+		}
 		
 		return mv;
 	}
