@@ -133,7 +133,7 @@
 		</div>
 		<div class="form-group col-xs-12 col-md-12">
 			<label for="contents">추천 이유</label>
-			<form:textarea path="contents" class="form-control" value="${up.contents}" rows="15"/>
+			<textarea rows="15" class="form-control" id="contents" name="contents">${up.contents}</textarea>
 		</div>
 		<div class="btn-css">		
 			<input type="submit" class=" btn btn-warning" value="수정하기" id="insertBtn">
