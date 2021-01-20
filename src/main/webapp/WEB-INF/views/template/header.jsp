@@ -27,7 +27,7 @@
 				<form action="${pageContext.request.contextPath}/place/placeList">
 					<div>					
 						<label class="label" style="padding: 0; margin-bottom: 0;"></label>
-						<input type="text" name="search" placeholder="우리 동네 맛집은 어디?">
+						<input type="text" name="search" placeholder="우리 동네 맛집은 어디?" value="${pager.search}">
 					</div>
 				
 					<button class="btn_sch" style="border: none;">
@@ -66,7 +66,12 @@
 						  <!-- Modal content -->
 						  <div class="modal-content">
 						    <span class="close">&times;</span>
+						    <c:if test="${not empty member.id}">
 						    회원님의 찜 목록입니다.
+						    </c:if>
+						    <c:if test="${empty member.id}">
+						    찜 목록 확인은 로그인을 진행해주세요.
+						    </c:if>
 							<div id="likeResult" style="margin-top: 10px;"></div>
 						  </div>
 						</div>

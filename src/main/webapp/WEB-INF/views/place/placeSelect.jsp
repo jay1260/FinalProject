@@ -43,15 +43,18 @@
 	/* 이미지 부분 */
 	.restaurant-photos{
 		width: 100%;
+		max-width:100%;
 		overflow: hidden;
 	}
 	.owl-carousel{
 		position: relative;
+		max-width:100%;
 		width: 100%;
 	}
 	.owl-carousel .owl-wrapper-outer{
 		overflow: hidden;
 		position: relative;
+		max-width:100%;
 		width: 100%;
 	}
 	.restaurant-photos .owl-item{
@@ -439,7 +442,7 @@
 <aside class="restaurant-photos">
 	<div class="list-photo_wrap owl-carousel owl-theme" style="opacity: 1; display: block;">
 		<div class="owl-wrapper-outer">
-			<div class="owl-wrapper" style="width: 3000px; left: 0px; display: block; transform: translate3d(0px, 0px, 0px); transition: all 200ms ease 0s;">
+			<div class="owl-wrapper" style="width: 3000px; left: 0px; display: block;">
 				<!-- 이미지 반복 최대 5개 -->
 				<c:forEach items="${one.placeFilesVO}" var="file">
 					<div class="owl-item" style="width: 300px; margin-top:4px;">
