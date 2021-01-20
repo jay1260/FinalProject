@@ -124,7 +124,7 @@
 				<div class="se-documentWriter">${talkOne.writer} <span style="margin-left: 8px; color: #bfbfbf;">${talkOne.regDate}</span></div>
 			</div>
 		</div>
-		<div class="se-documentTitle se-center" style="width: 800px; padding-top: 0; border-bottom: 3px solid black;">
+		<div class="se-documentTitle se-center" style="width: 800px; padding-top: 0;">
 			<div class="pcol1">
 				<div class="se-title-text">
 					<p class="se-text se-text-center" style="text-align: left;">
@@ -137,7 +137,7 @@
 	
 	<div class="container">
 		<form action="./talkReply" method="post">
-			<div class="form-group col-xs-12 col-md-10" style="margin: 50px 0 30px 100px;">
+			<div class="form-group col-xs-12 col-md-10" style="margin: 50px 0 30px 100px; ">
 				<label for="contents">댓글 작성</label>
 				<input type="text" value="${member.id}" name="writer" hidden="hidden">
 				<input type="text" value="${talkOne.num}" name="ref" hidden="hidden">
@@ -166,7 +166,7 @@
 									</p>
 									<c:if test="${replyList.writer eq member.id}">
 										<p style="float: right;">
-											<button class="button delBtn" title="${replyList.num}">X</button>
+											<input type="button" value="X" class="button delBtn" title="${replyList.num}" id="replyDeleteBtn">
 										</p>
 									</c:if>
 								</div>
@@ -189,9 +189,13 @@
 
 </body>
 <script type="text/javascript">
+	$("#replyDeleteBtn").click(function(){
+		var num = $(this).attr("title");
+		location.href="./talkReplyDelete?num="+num;
+	});
 	$("#deleteBtn").click(function(){
 		var num = $("#talkNum").val();
-		location.href="./talkDelete?num="+num
+		location.href="./talkDelete?num="+num;
 	});
 </script>
 </html>

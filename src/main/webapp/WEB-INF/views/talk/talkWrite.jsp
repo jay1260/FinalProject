@@ -76,7 +76,7 @@
 		
 		$("#talkFrm").attr("action","./talkWrite");
 		if(title==0 || contents==0){
-			alert("내용을 작성해주세요.");
+			alert("필수항목을 작성해주세요.");
 		}else{
 			$("#talkFrm").submit();
 		}
@@ -88,7 +88,7 @@
 		
 		$("#talkFrm").attr("action","../notice/noticeWrite");
 		if(title==0 || contents==0){
-			alert("내용을 작성해주세요.");
+			alert("필수항목을 작성해주세요.");
 		}else{
 			$("#talkFrm").submit();
 		}

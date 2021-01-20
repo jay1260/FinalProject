@@ -27,7 +27,7 @@
 				<form action="${pageContext.request.contextPath}/place/placeList">
 					<div>					
 						<label class="label" style="padding: 0; margin-bottom: 0;"></label>
-						<input type="text" name="search" placeholder="우리 동네 맛집은 어디?">
+						<input type="text" name="search" placeholder="우리 동네 맛집은 어디?" value="${pager.search}">
 					</div>
 				
 					<button class="btn_sch" style="border: none;">
@@ -52,22 +52,13 @@
 						</c:choose>
 						
 						<input type="text" value="${member.id}" id="memberID" hidden="hidden">
-						<!-- 추후 쿠키 -->
+
 						<!-- Trigger/Open The Modal -->
-						<c:if test="${not empty member.id}">
 						<button id="myBtn" class="count">
 							<span>
-								<em id="likeCount"></em>
+								<em>★</em>
 							</span>
 						</button>
-						</c:if>
-						<c:if test="${empty member.id}">
-						<button id="myBtn" class="count">
-							<span>
-								<em id="likeCount"></em>
-							</span>
-						</button>
-						</c:if>
 						
 						<!-- The Modal -->
 						<div id="myModal" class="modal">
@@ -75,7 +66,12 @@
 						  <!-- Modal content -->
 						  <div class="modal-content">
 						    <span class="close">&times;</span>
+						    <c:if test="${not empty member.id}">
 						    회원님의 찜 목록입니다.
+						    </c:if>
+						    <c:if test="${empty member.id}">
+						    찜 목록 확인은 로그인을 진행해주세요.
+						    </c:if>
 							<div id="likeResult" style="margin-top: 10px;"></div>
 						  </div>
 						</div>
@@ -109,49 +105,10 @@
 	</div>
 	<div id="emptyHeader" style="display: block; width: 100%; height: 158px;"></div>
 <script type="text/javascript">
-
+	
 	var modal = document.getElementById("myModal");
 	var btn = document.getElementById("myBtn");
 	var span = document.getElementsByClassName("close")[0];
-
-
-	myPlaceLike();
-
-	// 찜한 가게 수
-	function myPlaceLike(){
-		var likeCount = document.getElementById("likeCount");
-		var loginID = $("#memberID").val();
-		var countValue = localStorage.getItem("count");
-		
-		if(countValue>0){
-			likeCount.innerHTML=countValue;
-		}else{
-			likeCount.innerHTML="★";
-		}
-	}
-
-	// 로그아웃 스토리지 삭제
-	$("#logOut").click(function(){
-		localStorage.removeItem("count");
-	});
-
-	// 찜 목록 삭제
-	$("#likeResult").on("click",".likeDelete", function(){
-		var likeDeleteNum = $(this).attr("title");
-		$.ajax({
-			url:"../place/placeLikeDelete?num="+likeDeleteNum,
-			type:"POST",
-			data:{likeDeleteNum:likeDeleteNum},
-			success:function(data){
-				data=data.trim();
-				if(data>0){
-					alert("찜 삭제!!");
-					$("#likeResult").html('');
-					getLikeList();
-				}
-			}
-		});
-	});
 
 	$("#myBtn").click(function(){
 		getLikeList();
@@ -172,6 +129,24 @@
 	    history.go(0);
 	  }
 	}
+
+	// 찜 목록 삭제
+	$("#likeResult").on("click",".likeDelete", function(){
+		var likeDeleteNum = $(this).attr("title");
+		$.ajax({
+			url:"../place/placeLikeDelete?num="+likeDeleteNum,
+			type:"POST",
+			data:{likeDeleteNum:likeDeleteNum},
+			success:function(data){
+				data=data.trim();
+				if(data>0){
+					alert("찜 삭제!!");
+					$("#likeResult").html('');
+					getLikeList();
+				}
+			}
+		});
+	});
 
 	// 찜 목록
 	function getLikeList(){

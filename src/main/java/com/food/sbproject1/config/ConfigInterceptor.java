@@ -12,6 +12,7 @@ import com.food.sbproject1.interceptor.PlaceInterceptor;
 import com.food.sbproject1.interceptor.PlaceLevelInterceptor;
 import com.food.sbproject1.interceptor.PlaceReviseInterceptor;
 import com.food.sbproject1.interceptor.TalkLevelInterceptor;
+import com.food.sbproject1.interceptor.TalkReplyReviseInterceptor;
 import com.food.sbproject1.interceptor.TalkReviseInterceptor;
 
 @Configuration
@@ -41,6 +42,9 @@ public class ConfigInterceptor implements WebMvcConfigurer {
 	@Autowired
 	private TalkLevelInterceptor talkLevelInterceptor;
 	
+	@Autowired
+	private TalkReplyReviseInterceptor talkReplyReviseInterceptor;
+	
 	@Override
 	public void addInterceptors(InterceptorRegistry registry) {
 	
@@ -63,7 +67,8 @@ public class ConfigInterceptor implements WebMvcConfigurer {
 		.addPathPatterns("/place/placeReview")
 		.addPathPatterns("/place/placeLike")
 		.addPathPatterns("/review/reviewWrite")
-		.addPathPatterns("/talk/talkWrite");
+		.addPathPatterns("/talk/talkWrite")
+		.addPathPatterns("/talk/talkReply");
 		
 		registry.addInterceptor(placeLevelInterceptor).addPathPatterns("/place/placeWrite");
 		
@@ -76,6 +81,8 @@ public class ConfigInterceptor implements WebMvcConfigurer {
 		registry.addInterceptor(noticeReviseInterceptor).addPathPatterns("/notice/noticeDelete");
 		
 		registry.addInterceptor(talkLevelInterceptor).addPathPatterns("/talk/talkWrite");
+		
+		registry.addInterceptor(talkReplyReviseInterceptor).addPathPatterns("/talk/talkReplyDelete");
 		
 		WebMvcConfigurer.super.addInterceptors(registry);
 	}

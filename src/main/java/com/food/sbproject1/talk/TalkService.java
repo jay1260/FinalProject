@@ -50,5 +50,10 @@ public class TalkService {
 	public List<TalkReplyVO> getReplyList(TalkReplyVO talkReplyVO) throws Exception{
 		return talkMapper.getReplyList(talkReplyVO);
 	}
+	
+	// 소통 댓글 삭제
+	public int setReplyDelete(TalkReplyVO talkReplyVO) throws Exception{
+		return talkMapper.setReplyDelete(talkReplyVO);
+	}
 
 }

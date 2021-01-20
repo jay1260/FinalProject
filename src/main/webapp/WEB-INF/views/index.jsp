@@ -32,7 +32,28 @@
 	</section>
 	<!-- 섹션 top END -->
 	
-	<!-- 섹션 second 부분 -->
+	
+	
+	<!-- 섹션 third 부분 -->
+	<section class="home-main-section background-pale-green">
+		<div class="home-main-content home-main-reverse">
+			<div class="home-main-image home-main-image-02"></div>
+			<div>
+				<h1 class="home-main-title">
+					우리 같이
+					<br>
+					수다도 떨어요
+				</h1>
+				<p class="text-m">
+					소소한 재미, 웃음 공유해요.
+				</p>
+				
+			</div>
+		</div>
+			
+	</section>
+	<!-- 섹션 third End -->
+		<!-- 섹션 second 부분 -->
 	<section class="home-main-section">
 		<div class="home-main-content">
 			<div class="home-main-image home-main-image-01"></div>
@@ -55,6 +76,7 @@
 		</div>
 	</section>
 	<!-- 섹션 second End -->
+<<<<<<< HEAD
 	
 	<!-- 섹션 third 부분 -->
 	<section class="home-main-section background-pale-green">
@@ -79,6 +101,8 @@
 	</section>
 	<!-- 섹션 third End -->
 	
+=======
+>>>>>>> gb_0118
 	<!-- 섹션 last 부분 -->
 
 	<section class="home-main-section background-gray">
@@ -105,7 +129,9 @@
 			</div>
 		</div>
 	</section>
+
 	<!-- 섹션 last End -->
+	
 <c:import url="./template/footer.jsp"></c:import>	
 </body>
 </html>

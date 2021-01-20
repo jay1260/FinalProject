@@ -35,7 +35,7 @@ public class PlaceVO {
 	@NotEmpty(message = "주소를 선택해주세요.")
 	private String roadFullAddr; // 식당 도로명 주소
 	
-	@Pattern(regexp = "^(\\d{2}|\\d{3}|\\d{4})-(\\d{3}|\\d{4})-(\\d{4})$", message = "전화번호 형태로 입력해주세요")
+	@NotEmpty(message = "전화번호를 입력해주세요.")
 	private String phone;		// 식당번호
 	
 	@Pattern(regexp = "^(\\d{2}):(\\d{2})", message = "24시 기준 00:00형태로 입력해주세요.")

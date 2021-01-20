@@ -11,7 +11,6 @@
 <style type="text/css">
 	body{
 		font-size: 14px;
-		font-family: 'Nanum Gothic', sans-serif;
 		font-weight: 400;
 	}
 
@@ -44,15 +43,18 @@
 	/* 이미지 부분 */
 	.restaurant-photos{
 		width: 100%;
+		max-width:100%;
 		overflow: hidden;
 	}
 	.owl-carousel{
 		position: relative;
+		max-width:100%;
 		width: 100%;
 	}
 	.owl-carousel .owl-wrapper-outer{
 		overflow: hidden;
 		position: relative;
+		max-width:100%;
 		width: 100%;
 	}
 	.restaurant-photos .owl-item{
@@ -440,7 +442,7 @@
 <aside class="restaurant-photos">
 	<div class="list-photo_wrap owl-carousel owl-theme" style="opacity: 1; display: block;">
 		<div class="owl-wrapper-outer">
-			<div class="owl-wrapper" style="width: 3000px; left: 0px; display: block; transform: translate3d(0px, 0px, 0px); transition: all 200ms ease 0s;">
+			<div class="owl-wrapper" style="width: 3000px; left: 0px; display: block;">
 				<!-- 이미지 반복 최대 5개 -->
 				<c:forEach items="${one.placeFilesVO}" var="file">
 					<div class="owl-item" style="width: 300px; margin-top:4px;">
@@ -539,6 +541,7 @@
 				<div class="section_section">
 					<section class="section_section ownSection">
 						<h3 class="section_sectionTitle" style="margin-top: 10px;">제목</h3>
+						<input type="text" value="${one.writer}" id="writer" hidden="hidden">
 						<div class="section_sectionContent">
 							<div class="section_own">
 								<p class="section_ownDesc"></p>
@@ -613,7 +616,13 @@
 	// 찜 버튼
 	$("#likeBtn").click(function(){
 		var member = $("#likeMember").val();
+		var writer = $("#writer").val();
 		var placeLike = $("#likePlace").val();
+
+		if(member === writer){
+			alert("본인 게시글에 찜은 불가합니다.");
+			return false;
+		}
 
 		$.post("./placeLikeConfirm?placeLike="+placeLike+"&id="+member,{placeLike:placeLike, member:member},function(data){
 			data=data.trim();

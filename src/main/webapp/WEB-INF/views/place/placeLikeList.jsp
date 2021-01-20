@@ -25,20 +25,22 @@
 		<!--  -->
 		</c:if>
 		<c:if test="${not empty member.id && empty likeList}">
-			<span style="color: #ff7400; font-weight: 700;">회원님의 찜 목록은 비어있습니다.</span>
+			<div style="text-align: center;">
+				<span style="color: #ff7400; font-weight: 700;">회원님의 찜 목록은 비어있습니다.</span>
+			</div>
 			<br>
-			<a href="/place/placeList"><span style="font-size: 18px;" > 찜 하러 가볼까요? </span></a>
+			<div style="text-align: center; margin-top: 50px;">
+				<a href="/place/placeList">
+					<span style="font-size: 20px;" >찜 하러 가볼까요? </span>	
+				</a>
+			</div>
 		</c:if>
 		<c:if test="${empty member.id}">
 			<a href="/member/memberLogin">
-				<span style="color: #ff7400; font-weight: 700;">로그인 후 확인 가능합니다.</span>
+				<span style="color: #ff7400; font-weight: 700; font-size: 18px;" >로그인 하러가기</span>
 			</a>
 		</c:if>
 		</li>
 	</ul>
-<script type="text/javascript">
-	var likeCount = $("#placeLikeCount").val();
-	localStorage.setItem("count", likeCount);
-</script>	
 </div>
 

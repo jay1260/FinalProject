@@ -49,5 +49,9 @@
 	<select id="getReplyList" resultType="TalkReplyVO" parameterType="TalkReplyVO">
 		select * from talkReply where ref = #{ref}
 	</select>
+	
+	<delete id="setReplyDelete" parameterType="TalkReplyVO">
+		delete from talkReply where num = #{num}
+	</delete>
 
 </mapper>  

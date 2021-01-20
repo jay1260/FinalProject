@@ -22,6 +22,11 @@
 		
 	}
 	
+	$("#deleteBtn").click(function(){
+		var num = $(this).attr("title");
+		location.href="./placeDelete?num="+num;
+	});
+	
 		// 다중 파일 미리보기
 		function preveal(event) { 
 			var fileList = event.target.files;
@@ -62,7 +67,13 @@
 	
 	        if( str.length < 4){
 	            return str;
-	        }else if(str.length == 9){
+	        }else if(str.length == 8){
+	        	tmp += str.substr(0,4);
+	        	tmp += '-';
+	        	tmp += str.substr(4);
+	        	return tmp;
+	        }
+	        else if(str.length == 9){
 				tmp += str.substr(0, 2);
 				tmp +='-';
 				tmp += str.substr(2, 3);

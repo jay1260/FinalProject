@@ -94,7 +94,7 @@
 		</div>
 		<div class="form-group col-xs-12 col-md-10" hidden="hidden">
 			<label for="writer">작성자</label>
-			<input type="text" class="form-control" id="writer" name="writer" readonly="readonly">
+			<input type="text" class="form-control" value="${member.id}" id="writer" name="writer" readonly="readonly">
 		</div>
 		<div class="form-group col-xs-12 col-md-10">
 			<label for="address">★식당 주소★</label>
