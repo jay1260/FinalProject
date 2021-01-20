@@ -91,17 +91,13 @@
 		flex-direction: row-reverse;
 		align-items: center;
 	}
-	.home-main-section .home-main-image-02{
-<<<<<<< HEAD
-		
+	.home-main-section .home-main-image-02{		
 		width: 546px;
 		height: 740px;
-=======
 		background-image:url("/image/section/note-4437201_1920.png");
 		background-size: 680px 500px;
 		width: 680px;
 		height: 500px;
->>>>>>> gb_0118
 	}
 
 	/*section third End*/
@@ -174,13 +170,9 @@
 		margin-right: 0;
 	}
 	
-<<<<<<< HEAD
-	
-=======
 	.section3{
 		width: 826px;
 		height: 242px;
 		float: right;
 	}
->>>>>>> gb_0118
 	/*section last End*/

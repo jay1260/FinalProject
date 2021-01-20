@@ -76,7 +76,6 @@
 		</div>
 	</section>
 	<!-- 섹션 second End -->
-<<<<<<< HEAD
 	
 	<!-- 섹션 third 부분 -->
 	<section class="home-main-section background-pale-green">
@@ -101,8 +100,6 @@
 	</section>
 	<!-- 섹션 third End -->
 	
-=======
->>>>>>> gb_0118
 	<!-- 섹션 last 부분 -->
 
 	<section class="home-main-section background-gray">
