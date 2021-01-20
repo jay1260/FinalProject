@@ -1,0 +1,129 @@
+CREATE TABLE `member` (
+  `id` varchar(255) NOT NULL,
+  `pw` varchar(255) DEFAULT NULL,
+  `name` varchar(255) DEFAULT NULL,
+  `age` int DEFAULT NULL,
+  `email` varchar(255) DEFAULT NULL,
+  `level` int DEFAULT NULL,
+  `num` int DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+
+CREATE TABLE `memberfile` (
+  `filenum` int NOT NULL AUTO_INCREMENT,
+  `id` varchar(255) DEFAULT NULL,
+  `fileName` varchar(255) DEFAULT NULL,
+  `oriName` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`filenum`),
+  KEY `id_idx` (`id`),
+  CONSTRAINT `id` FOREIGN KEY (`id`) REFERENCES `member` (`id`) ON DELETE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8;
+
+
+CREATE TABLE `level` (
+  `num` int NOT NULL AUTO_INCREMENT,
+  `writer` varchar(255) DEFAULT NULL,
+  `title` varchar(255) DEFAULT NULL,
+  `contents` longtext,
+  `regDate` date DEFAULT NULL,
+  `hit` int DEFAULT NULL,
+  `ref` int DEFAULT NULL,
+  `depth` int DEFAULT NULL,
+  PRIMARY KEY (`num`)
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
+
+CREATE TABLE `notice` (
+  `num` int NOT NULL AUTO_INCREMENT,
+  `writer` varchar(255) DEFAULT NULL,
+  `title` varchar(255) DEFAULT NULL,
+  `contents` varchar(255) DEFAULT NULL,
+  `regDate` date DEFAULT NULL,
+  `hit` int DEFAULT NULL,
+  PRIMARY KEY (`num`),
+  KEY `id_nt_fk_idx` (`writer`),
+  CONSTRAINT `id_nt_fk` FOREIGN KEY (`writer`) REFERENCES `member` (`id`) ON DELETE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+
+CREATE TABLE `place` (
+  `num` int NOT NULL AUTO_INCREMENT,
+  `title` varchar(255) DEFAULT NULL,
+  `writer` varchar(255) DEFAULT NULL,
+  `contents` longtext,
+  `regDate` date DEFAULT NULL,
+  `hit` int DEFAULT NULL,
+  `menu` varchar(255) DEFAULT NULL,
+  `restaurant` varchar(255) DEFAULT NULL,
+  `roadFullAddr` varchar(255) DEFAULT NULL,
+  `phone` varchar(255) DEFAULT NULL,
+  `openTime` varchar(255) DEFAULT NULL,
+  `closeTime` varchar(255) DEFAULT NULL,
+  `price` varchar(255) DEFAULT NULL,
+  `rest` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`num`)
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8;
+
+CREATE TABLE `placeFile` (
+  `fnum` int NOT NULL AUTO_INCREMENT,
+  `num` int DEFAULT NULL,
+  `fileName` varchar(255) DEFAULT NULL,
+  `oriName` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`fnum`),
+  KEY `num_idx` (`num`),
+  CONSTRAINT `num` FOREIGN KEY (`num`) REFERENCES `place` (`num`) ON DELETE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8;
+
+CREATE TABLE `placeFiles` (
+  `fnum` int NOT NULL AUTO_INCREMENT,
+  `num` int DEFAULT NULL,
+  `fileName` varchar(255) DEFAULT NULL,
+  `oriName` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`fnum`),
+  KEY `PFS_NUM_FK_idx` (`num`),
+  CONSTRAINT `PFS_NUM_FK` FOREIGN KEY (`num`) REFERENCES `place` (`num`) ON DELETE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=66 DEFAULT CHARSET=utf8;
+
+CREATE TABLE `placeLike` (
+  `num` int NOT NULL AUTO_INCREMENT,
+  `id` varchar(255) DEFAULT NULL,
+  `placeLike` int DEFAULT NULL,
+  PRIMARY KEY (`num`),
+  KEY `id_pl_fk_idx` (`id`),
+  CONSTRAINT `id_pl_fk` FOREIGN KEY (`id`) REFERENCES `member` (`id`) ON DELETE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=30 DEFAULT CHARSET=utf8;
+
+CREATE TABLE `review` (
+  `num` int NOT NULL AUTO_INCREMENT,
+  `id` varchar(255) DEFAULT NULL,
+  `contents` longtext,
+  `star` int DEFAULT NULL,
+  `regDate` date DEFAULT NULL,
+  `ref` int DEFAULT NULL,
+  `restaurant` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`num`),
+  KEY `id_re_fk_idx` (`id`),
+  CONSTRAINT `id_re_fk` FOREIGN KEY (`id`) REFERENCES `member` (`id`) ON DELETE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
+
+CREATE TABLE `talkPlace` (
+  `num` int NOT NULL AUTO_INCREMENT,
+  `writer` varchar(255) DEFAULT NULL,
+  `title` varchar(255) DEFAULT NULL,
+  `contents` longtext,
+  `regDate` date DEFAULT NULL,
+  `hit` int DEFAULT NULL,
+  PRIMARY KEY (`num`),
+  KEY `id_tp_fk_idx` (`writer`),
+  CONSTRAINT `id_tp_fk` FOREIGN KEY (`writer`) REFERENCES `member` (`id`) ON DELETE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+
+CREATE TABLE `talkReply` (
+  `num` int NOT NULL AUTO_INCREMENT,
+  `writer` varchar(255) DEFAULT NULL,
+  `reply` longtext,
+  `ref` int DEFAULT NULL,
+  `regDate` date DEFAULT NULL,
+  PRIMARY KEY (`num`),
+  KEY `id_tr_fk_idx` (`writer`),
+  CONSTRAINT `id_tr_fk` FOREIGN KEY (`writer`) REFERENCES `member` (`id`) ON DELETE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
