@@ -52,22 +52,13 @@
 						</c:choose>
 						
 						<input type="text" value="${member.id}" id="memberID" hidden="hidden">
-						<!-- 추후 쿠키 -->
+
 						<!-- Trigger/Open The Modal -->
-						<c:if test="${not empty member.id}">
 						<button id="myBtn" class="count">
 							<span>
-								<em id="likeCount"></em>
+								<em>★</em>
 							</span>
 						</button>
-						</c:if>
-						<c:if test="${empty member.id}">
-						<button id="myBtn" class="count">
-							<span>
-								<em id="likeCount"></em>
-							</span>
-						</button>
-						</c:if>
 						
 						<!-- The Modal -->
 						<div id="myModal" class="modal">
@@ -109,8 +100,6 @@
 	</div>
 	<div id="emptyHeader" style="display: block; width: 100%; height: 158px;"></div>
 <script type="text/javascript">
-
-	myPlaceLike();
 	
 	var modal = document.getElementById("myModal");
 	var btn = document.getElementById("myBtn");
@@ -152,23 +141,6 @@
 				}
 			}
 		});
-	});
-
-	// 찜한 가게 수
-	function myPlaceLike(){
-		var likeCount = document.getElementById("likeCount");
-		var countValue = localStorage.getItem("count");
-		
-		if(countValue>0){
-			likeCount.innerHTML=countValue;
-		}else{
-			likeCount.innerHTML="★";
-		}
-	}
-
-	// 로그아웃 스토리지 삭제
-	$("#logOut").click(function(){
-		localStorage.removeItem("count");
 	});
 
 	// 찜 목록
