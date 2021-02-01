@@ -62,16 +62,18 @@ public class ConfigInterceptor implements WebMvcConfigurer {
 		.addPathPatterns("level/levelWrite")
 		.addPathPatterns("/level/levelReply");
 		
+		// 로그인 후 이용가능
 		registry.addInterceptor(placeInterceptor)
 		.addPathPatterns("/place/placeWrite")
-		.addPathPatterns("/place/placeReview")
 		.addPathPatterns("/place/placeLike")
 		.addPathPatterns("/review/reviewWrite")
 		.addPathPatterns("/talk/talkWrite")
 		.addPathPatterns("/talk/talkReply");
 		
+		// 1등급부터 맛집 추천 가능
 		registry.addInterceptor(placeLevelInterceptor).addPathPatterns("/place/placeWrite");
 		
+		// 작성자만 글 수정 가능
 		registry.addInterceptor(placeReviseInterceptor)
 		.addPathPatterns("/place/placeUpdate")
 		.addPathPatterns("/place/placeDelete");

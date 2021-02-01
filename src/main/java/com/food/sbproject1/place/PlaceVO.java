@@ -3,13 +3,8 @@ package com.food.sbproject1.place;
 import java.sql.Date;
 import java.util.List;
 
-import javax.validation.constraints.Max;
 import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
-import javax.validation.constraints.Size;
-
-import com.food.sbproject1.review.ReviewVO;
 
 import lombok.Data;
 
